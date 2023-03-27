@@ -12,16 +12,25 @@ if (global.is_host)
 	//Check for death
 	if (hp <= 0)
 		instance_destroy();
-		
-	//Check for damage w/ player
-	var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, PLAYER, false, true);
 	
-	if (_c != noone)
+	//multiplayer
+	var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id};
+	send_data(_s);
+}
+else
+{
+	sync_position();	
+}
+
+
+//Check for damage outside of global.is_host condition
+var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
+	
+if (_c != noone)
+{
+	with _c
 	{
-		with _c
-		{
-			motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
-			hp -= other.damage;
-		}
+		motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
+		hp -= other.damage;
 	}
 }

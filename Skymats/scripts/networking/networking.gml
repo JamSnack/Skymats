@@ -34,7 +34,7 @@ function send_data(data_struct, specific_socket = -1)
 	if (_b == -1) then show_debug_message("buffer_write failed.");
 	
 	//show_debug_message(json_map);
-	var packet_sent = 0;
+	var packet_sent = -1;
 	
 	if (global.is_host && specific_socket == -1)
 	{
@@ -169,10 +169,6 @@ function handle_data(data)
 						target_y = _y;
 						create_new = false;
 							
-						//Bounce this data to other clients
-						if (global.is_host)
-							send_data(parsed_data);
-							
 						//Break
 						break;
 					}
@@ -180,6 +176,46 @@ function handle_data(data)
 					
 				if (create_new)
 					instance_create_layer(_x, _y, "Instances", obj_item, {connected_id: _id, image_index: _item_id, item_id: _item_id})	
+			}
+			break;
+			
+			case "enemy_pos":
+			{	
+				var _x = parsed_data.x;
+				var _y = parsed_data.y;
+				var _id = parsed_data.connected_id;
+				var create_new = true;
+				
+				with (ENEMY)
+				{
+					if (_id == connected_id)
+					{
+						target_x = _x;
+						target_y = _y;
+						create_new = false;
+							
+						//Break
+						break;
+					}
+				}
+					
+				if (create_new)
+					instance_create_layer(_x, _y, "Instances", ENEMY, {connected_id: _id})
+			}
+			break;
+			
+			case "enemy_destroy":
+			{
+				var _id = parsed_data.connected_id;
+				
+				with (ENEMY)
+				{
+					if (connected_id == _id)
+					{
+						instance_destroy();
+						break;
+					}
+				}
 			}
 			break;
 			

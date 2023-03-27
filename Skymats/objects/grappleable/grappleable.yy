@@ -6,8 +6,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "GRAPPLEABLE",
-    "path": "objects/GRAPPLEABLE/GRAPPLEABLE.yy",
+    "name": "SYNC",
+    "path": "objects/SYNC/SYNC.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -29,7 +29,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "OBSTA",
+  "name": "GRAPPLEABLE",
   "tags": [],
   "resourceType": "GMObject",
 }

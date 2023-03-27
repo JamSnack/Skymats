@@ -6,8 +6,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "SYNC",
-    "path": "objects/SYNC/SYNC.yy",
+    "name": "ENTITY",
+    "path": "objects/ENTITY/ENTITY.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

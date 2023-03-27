@@ -42,6 +42,5 @@ if (global.is_host)
 }
 else
 {
-	x = lerp(x, target_x, 0.33);
-	y = lerp(y, target_y, 0.33);
+	sync_position();
 }

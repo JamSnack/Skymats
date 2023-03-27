@@ -3,7 +3,7 @@
 
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
-key_down  =  keyboard_check(ord("S"));
+//key_down  =  keyboard_check(ord("S"));
 key_right =  keyboard_check(ord("D"));
 
 var hmove = (key_right - key_left);
@@ -41,6 +41,18 @@ if (grappling)
 {
 	motion_add_custom(point_direction(x, y, grapple_point_x, grapple_point_y), stat_grapple_force);
 	grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
+	
+	//Keep hook on moving enemies
+	if (instance_exists(grappling_to) && grappling_to.object_index == ENEMY)
+	{
+		grapple_point_x = grappling_to.x;
+		grapple_point_y = grappling_to.y;
+	}
+	else if (!instance_exists(grappling_to))
+	{
+		grappling = false;
+		grapple_is_launching = false;
+	}
 }
 
 if (mouse_check_button(mb_right))
@@ -62,19 +74,25 @@ else
 if (grapple_is_launching)
 {
 	var grapple_speed = stat_grapple_speed;
-	var _c = collision_line(grapple_point_x, grapple_point_y, grapple_point_x + lengthdir_x(grapple_speed, grapple_direction), grapple_point_y + lengthdir_y(grapple_speed, grapple_direction), OBSTA, true, true);
+	var _c = collision_line(grapple_point_x, grapple_point_y, grapple_point_x + lengthdir_x(grapple_speed, grapple_direction), grapple_point_y + lengthdir_y(grapple_speed, grapple_direction), GRAPPLEABLE, true, true);
 	
 	if (_c != noone)
 	{
-		var _r = 0;
-		while (collision_line(grapple_point_x, grapple_point_y, grapple_point_x + lengthdir_x(1, grapple_direction), grapple_point_y + lengthdir_y(1, grapple_direction), OBSTA, true, true) == noone)
+		grappling_to = _c;
+		
+		//Grab onto the outside of a tile or set grapple to an enemy point
+		if (_c.object_index == TILE)
 		{
-			grapple_point_x += lengthdir_x(1, grapple_direction);
-			grapple_point_y += lengthdir_y(1, grapple_direction);
-			_r += 1;
+			var _r = 0;
+			while (collision_line(grapple_point_x, grapple_point_y, grapple_point_x + lengthdir_x(1, grapple_direction), grapple_point_y + lengthdir_y(1, grapple_direction), GRAPPLEABLE, true, true) == noone)
+			{
+				grapple_point_x += lengthdir_x(1, grapple_direction);
+				grapple_point_y += lengthdir_y(1, grapple_direction);
+				_r += 1;
 			
-			if (_r > grapple_speed)
-				break;
+				if (_r > grapple_speed)
+					break;
+			}
 		}
 		
 		grappling = true;
@@ -193,8 +211,11 @@ if (hp <= 0)
 }
 
 //Send coordinates
-if (global.client_id != -1 && global.multiplayer && current_time mod 4 == 0)
+if ((x != xprevious || y != yprevious) && global.client_id != -1 && global.multiplayer && position_update_delay == 0)
 {
 	var _struct = {cmd: "player_pos", x: x, y: y, id: global.client_id};
 	send_data(_struct);
+	position_update_delay = 3;
 }
+else if position_update_delay > 0
+	position_update_delay--;

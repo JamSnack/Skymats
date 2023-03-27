@@ -3,6 +3,7 @@
 depth = -1;
 
 max_walkspeed = 3;
+position_update_delay = 10;
 
 //Grappling
 grapple_point_x = 0;
@@ -24,6 +25,8 @@ mine_cooldown = 0;
 stat_grapple_force = 0.35; //How much force is applied to the player
 stat_grapple_speed = 12; //How fast the hook travels
 stat_grapple_range = 240; //How far the hook can go (600 is about the edge of the screen)
+
+grappled_to = noone;
 
 //- mining tool
 stat_mine_level = 1; //Determines which blocks can be destroyed and not

@@ -15,6 +15,12 @@ function approach(a, b, amt)
 	    return max(a - amt, b);	
 }
 
+function sync_position()
+{
+	x = lerp(x, target_x, 0.33);
+	y = lerp(y, target_y, 0.33);
+}
+
 function calculate_collisions()
 {
 	//Horizontal collision
