@@ -134,7 +134,7 @@ if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_c
 			send_data({cmd: "request_tile_hit", x: mouse_x, y: mouse_y});	
 		}
 		
-		mine_cooldown = 30;
+		mine_cooldown = stat_mine_cooldown;
 	}
 }
 else if (mine_cooldown > 0) mine_cooldown--;

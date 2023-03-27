@@ -18,7 +18,14 @@ grapple_direction = 0;
 mine_cooldown = 0;
 
 //Stats
+
+//- grapple
 stat_grapple_force = 0.5; //How much force is applied to the player
 stat_grapple_speed = 12; //How fast the hook travels
 stat_grapple_range = 240; //How far the hook can go (600 is about the edge of the screen)
+
+//- mining tool
 stat_mine_level = 1; //Determines which blocks can be destroyed and not
+stat_mine_cooldown = 30; //Determines how much time must pass before the pickaxe can be swung again
+
+//- jetpack
