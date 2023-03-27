@@ -7,10 +7,11 @@ key_down  =  keyboard_check(ord("S"));
 key_right =  keyboard_check(ord("D"));
 
 var hmove = (key_right - key_left);
+var on_ground = (collision_point(x, bbox_bottom+1, OBSTA, false, true) != noone);
 //var vmove = (key_down  -   key_up);
 
 //Increase speed based on movement
-if (collision_point(x, bbox_bottom+1, OBSTA, false, true) != noone)
+if (on_ground)
 	hspd = approach(hspd, hmove*max_walkspeed, 0.25);
 else
 	hspd = approach(hspd, hmove*max_walkspeed, 0.1);
@@ -21,7 +22,8 @@ vspd += GRAVITY*weight;
 //Jump
 if (key_up && collision_rectangle(bbox_left, bbox_top+2, bbox_right, bbox_bottom+2, OBSTA, false, true) != noone)
 {
-	vspd = -2.5;
+	//vspd = -2.5;
+	motion_add_custom(90, 2.5);
 }
 
 //Collision
@@ -30,10 +32,6 @@ calculate_collisions();
 //sprite
 if (hmove != 0)
 	image_xscale = hmove;
-
-
-
-
 
 
 //Grappling hook
@@ -139,6 +137,60 @@ if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_c
 }
 else if (mine_cooldown > 0) mine_cooldown--;
 
+//Jetpack
+if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
+{
+	jetpack_fuel -= 1;
+	jetpack_regen_cooldown = stat_jetpack_cooldown;
+	motion_add_custom(90, stat_jetpack_strength);
+}
+else if (!on_ground && jetpack_init_delay > 0)
+	jetpack_init_delay--;
+else if (on_ground)
+	jetpack_init_delay = jetpack_set_init_delay;
+
+if (jetpack_regen_cooldown > 0)
+	jetpack_regen_cooldown--;
+else if (jetpack_fuel < stat_jetpack_fuel)
+{
+	jetpack_fuel += stat_jetpack_regen_rate;	
+}
+
+//Auto-Attack
+if (weapon_cooldown > 0)
+	weapon_cooldown--;
+	
+if (instance_exists(ENEMY) && weapon_cooldown <= 0)
+{
+	var _e = collision_circle(x, y, stat_weapon_range, ENEMY, false, true);
+	
+	//Hit the nearby mob
+	if (_e != noone)
+	{
+		//Deal damange
+		_e.hp -= stat_weapon_damage;
+		
+		//Weapon dooldown
+		weapon_cooldown = stat_weapon_cooldown;
+		
+		//knockback
+		var dir_knock = point_direction(x, y, _e.x, _e.y);
+		
+		with (_e)
+			motion_add_custom(dir_knock, other.stat_weapon_knockback);
+		
+		//Hit effect
+		instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+	}
+}
+
+//Death
+if (hp <= 0)
+{
+	hp = max_hp;
+	x = 1432;
+	y = 3392;
+}
 
 //Send coordinates
 if (global.client_id != -1 && global.multiplayer && current_time mod 4 == 0)

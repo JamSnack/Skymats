@@ -48,6 +48,12 @@ function calculate_collisions()
 	y += vspd;	
 }
 
+function clamp_speed(min_hspd, max_hspd, min_vspd, max_vspd)
+{
+	hspd = clamp(hspd, min_hspd, max_hspd);
+	vspd = clamp(vspd, min_vspd, max_vspd);
+}
+
 function get_item_name(item_id)
 {
 	
