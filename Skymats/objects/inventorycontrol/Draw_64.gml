@@ -6,8 +6,8 @@ if (inventory_open_animation > 0)
 {
 	var inventory_open_evaluated = animcurve_channel_evaluate(inventory_open_animcurve_channel, inventory_open_animation);
 	
-	var _x = 10;
-	var _y = 80;
+	var _x = 1366/2 - 200;
+	var _y = 710;
 	var _size = 32;
 	var _offset = 5;
 	var row_size = 10;

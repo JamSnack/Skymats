@@ -1,38 +1,22 @@
 /// @description
 
 //Init inventory
-function item(_name = "", _item_id = 0, _amount = 0) constructor
-{
-	name      =    _name;
-	item_id   = _item_id;
-	amount    =  _amount;
-	
-	static isEmpty = function()
-	{
-		return (name == "" && item_id == 0 && amount = 0);
-	}
-	
-	static equals = function(_name, _item_id)
-	{
-		return (name == _name && item_id == _item_id);	
-	}
-	
-	static toString = function()
-	{
-		return string("Item is: { Name:" + name + ", Item ID: " + string(item_id)) + "}";	
-	}
-}
-
-
 //Fill inventory with emptiness
 global.inventory = {
 	contents    : array_create(40, 0),
-	size        : 40,
+	size        : 10,
 	selected_slot : -1,
 	
 	deleteItemAtSlot : function(slot) {
 		delete contents[slot];
 		contents[slot] = new item();
+	},
+	
+	subtractItemAtSlot : function(slot, _amount){
+		contents[slot].amount -= _amount;
+		
+		if (contents[slot].amount <= 0)
+			deleteItemAtSlot(slot);
 	},
 	
 	firstEmptySlot : function() {
@@ -92,7 +76,7 @@ for (var i = 0; i < global.inventory.size; i++)
 
 
 //Animation
-inventory_open_animation = 0;
+inventory_open_animation = 1;
 inventory_open = true;
 
 inventory_open_animcurve_channel = animcurve_get_channel(curve, 0);

@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-inventory_open_animation = approach(inventory_open_animation, inventory_open, 0.05);
+//inventory_open_animation = approach(inventory_open_animation, inventory_open, 0.05);
 
 if (keyboard_check_released(vk_escape))
 	inventory_open = !inventory_open;

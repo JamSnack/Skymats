@@ -25,3 +25,9 @@ if (weapon_cooldown > 0)
 	draw_rectangle_color(x-20, y+30, x+20, y+30+4, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(x-20, y+30, x-20 + 40*(weapon_cooldown/stat_weapon_cooldown), y+30+4, c_red, c_red, c_red, c_red, false);
 }
+
+//Tile placement
+if (global.inventory.selected_slot != -1 && get_tile_object_from_item(global.inventory.contents[global.inventory.selected_slot].item_id) != -1)
+{
+	draw_sprite(spr_place_item, current_time/100, get_coordinate_on_world_grid(mouse_x+8), get_coordinate_on_world_grid(mouse_y+8));
+}

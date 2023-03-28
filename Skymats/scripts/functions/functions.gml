@@ -91,6 +91,42 @@ function motion_add_custom(_direction, _speed)
 	speed = 0;
 }
 
+function get_tile_object_from_item(item_id)
+{
+	switch item_id
+	{
+		case ITEM_ID.grass: { return obj_grass; } break;
+		default:			{ return -1;        } break;
+	}
+}
+
+function get_coordinate_on_world_grid(x)
+{
+	return floor(x/16)*16;
+}
+
+function item(_name = "", _item_id = 0, _amount = 0) constructor
+{
+	name      =    _name;
+	item_id   = _item_id;
+	amount    =  _amount;
+	
+	static isEmpty = function()
+	{
+		return (name == "" && item_id == 0 && amount = 0);
+	}
+	
+	static equals = function(_name, _item_id)
+	{
+		return (name == _name && item_id == _item_id);	
+	}
+	
+	static toString = function()
+	{
+		return string("Item is: { Name:" + name + ", Item ID: " + string(item_id)) + "}";	
+	}
+}
+
 enum ITEM_ID
 {
 	none,

@@ -131,7 +131,9 @@ if (y > WORLD_BOUND_BOTTOM)
 	motion_add_custom(90, 1);
 	
 //Tile mininig
-if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_check_button(mb_left))
+var _selected_slot = global.inventory.selected_slot;
+
+if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_check_button(mb_left))
 {
 	_tile = collision_point(mouse_x, mouse_y, OBSTA, false, true)
 	
@@ -154,6 +156,19 @@ if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_c
 	}
 }
 else if (mine_cooldown > 0) mine_cooldown--;
+
+//Tile placement
+if (global.inventory.selected_slot != -1)
+{
+	var tile_selected = global.inventory.contents[_selected_slot];
+	var object_selected = get_tile_object_from_item(tile_selected.item_id);
+	
+	if (tile_selected.amount > 0 &&  object_selected != -1 && mouse_check_button_released(mb_left))
+	{
+		instance_create_layer(get_coordinate_on_world_grid(mouse_x+8), get_coordinate_on_world_grid(mouse_y+8), "Instances", object_selected);
+		global.inventory.subtractItemAtSlot(_selected_slot, 1);
+	}
+}
 
 //Jetpack
 if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
