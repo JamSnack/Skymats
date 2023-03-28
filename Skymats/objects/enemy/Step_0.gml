@@ -14,7 +14,7 @@ if (global.is_host)
 		instance_destroy();
 	
 	//multiplayer
-	var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id};
+	var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp};
 	send_data(_s);
 }
 else

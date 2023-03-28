@@ -111,7 +111,7 @@ function handle_data(data)
 					}
 					
 					if (create_new)
-						instance_create_layer(_x, _y, "Instances", obj_player_dummy, {connected_id: _id})	
+						instance_create_layer(_x, _y, "Instances", obj_player_dummy, {connected_id: _id, connected_socket: async_load[? "id"]})	
 				}
 			}
 			break;
@@ -192,6 +192,7 @@ function handle_data(data)
 					{
 						target_x = _x;
 						target_y = _y;
+						hp = parsed_data.hp;
 						create_new = false;
 							
 						//Break
@@ -201,6 +202,21 @@ function handle_data(data)
 					
 				if (create_new)
 					instance_create_layer(_x, _y, "Instances", ENEMY, {connected_id: _id})
+			}
+			break;
+			
+			case "request_enemy_hurt":
+			{
+				var _id = parsed_data.connected_id;
+				
+				with (ENEMY)
+				{
+					if (_id == connected_id)
+					{
+						hurt_enemy(self, parsed_data.dir_knock, parsed_data.knock_amt, parsed_data.damage);
+						break;
+					}
+				}
 			}
 			break;
 			

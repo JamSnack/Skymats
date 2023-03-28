@@ -21,6 +21,18 @@ function sync_position()
 	y = lerp(y, target_y, 0.33);
 }
 
+function hurt_enemy(inst, k_direction, k_amt, damage)
+{
+	if (instance_exists(inst))
+	{
+		with (inst)
+		{
+			motion_add_custom(k_direction, k_amt);
+			hp -= damage;	
+		}
+	}
+}
+
 function calculate_collisions()
 {
 	//Horizontal collision

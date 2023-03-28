@@ -185,17 +185,18 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 	//Hit the nearby mob
 	if (_e != noone)
 	{
-		//Deal damange
-		_e.hp -= stat_weapon_damage;
-		
 		//Weapon dooldown
 		weapon_cooldown = stat_weapon_cooldown;
 		
-		//knockback
+		//knockback direction
 		var dir_knock = point_direction(x, y, _e.x, _e.y);
 		
-		with (_e)
-			motion_add_custom(dir_knock, other.stat_weapon_knockback);
+		//Deal damage and apply knockback
+		if (global.is_host)
+		{
+			hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
+		}
+		else send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
 		
 		//Hit effect
 		instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
