@@ -4,7 +4,7 @@
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
-  "persistent": true,
+  "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
@@ -30,7 +30,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "clientControl",
+  "name": "inventoryControl",
   "tags": [],
   "resourceType": "GMObject",
 }

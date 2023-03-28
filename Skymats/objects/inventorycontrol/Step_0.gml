@@ -7,7 +7,12 @@ if (keyboard_check_released(vk_escape))
 	inventory_open = !inventory_open;
 	
 //Hotbar
-if (keyboard_check_released(ord("0")))
+//- select nothing
+if (keyboard_check_released(vk_lshift) || keyboard_check_released(vk_rshift))
+	global.inventory.selected_slot = -1;
+	
+//- select an item
+else if (keyboard_check_released(ord("0")))
 	global.inventory.selected_slot = 9;
 else if (keyboard_check_released(ord("1")))
 	global.inventory.selected_slot = 0;

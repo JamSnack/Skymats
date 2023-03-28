@@ -28,7 +28,7 @@ function item(_name = "", _item_id = 0, _amount = 0) constructor
 global.inventory = {
 	contents    : array_create(40, 0),
 	size        : 40,
-	selected_slot : 0,
+	selected_slot : -1,
 	
 	deleteItemAtSlot : function(slot) {
 		delete contents[slot];
