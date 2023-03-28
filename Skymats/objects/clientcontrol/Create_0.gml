@@ -55,6 +55,7 @@ global.inventory = {
 		{
 			contents[_f].item_id = _item_id;
 			contents[_f].amount = _amount;
+			//obj_player.weight += _amount/10; //TODO: Replace this with an encumberance mechanic. Probably some add_weight() function that uses a player's capacity stat
 		}
 	},
 	
@@ -64,8 +65,8 @@ global.inventory = {
 		{
 			if (contents[i].equals(_name, _item_id))
 			{
-				show_debug_message("add");
 				contents[i].amount += _amount;
+				//obj_player.weight += _amount/10;
 				return i;
 			}
 		}
