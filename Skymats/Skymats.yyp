@@ -49,6 +49,7 @@
     {"id":{"name":"__scribble_config_defaults","path":"scripts/__scribble_config_defaults/__scribble_config_defaults.yy",},"order":2,},
     {"id":{"name":"scribble_glyph_set","path":"scripts/scribble_glyph_set/scribble_glyph_set.yy",},"order":17,},
     {"id":{"name":"scribble_fallback_bulletpoint","path":"sprites/scribble_fallback_bulletpoint/scribble_fallback_bulletpoint.yy",},"order":12,},
+    {"id":{"name":"obj_market","path":"objects/obj_market/obj_market.yy",},"order":16,},
     {"id":{"name":"__scribble_class_page","path":"scripts/__scribble_class_page/__scribble_class_page.yy",},"order":5,},
     {"id":{"name":"scribble_external_sound_remove","path":"scripts/scribble_external_sound_remove/scribble_external_sound_remove.yy",},"order":3,},
     {"id":{"name":"__scribble_system","path":"scripts/__scribble_system/__scribble_system.yy",},"order":10,},
