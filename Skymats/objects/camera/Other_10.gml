@@ -3,18 +3,11 @@ last_chunk_x = x;
 last_chunk_y = y;
 
 //Deactivate all tiles
-//instance_deactivate_object(TILE);
+instance_deactivate_object(TILE);
 		
 //Reactivate tiles around the player
 var _boundary = boundary_size*2;
 instance_activate_region(last_chunk_x-_boundary, last_chunk_y-_boundary, _boundary*2, _boundary*2, true);
-
-//Request surrounding chunks if client
-if (!global.is_host && sync_delay == 0)
-{
-	sync_chunks();
-	sync_delay = 10;
-}
 		
 //This should happen because we just deactivated all tiles and we need to make sure enemies don't clip into things
 /*if (global.is_host == true)

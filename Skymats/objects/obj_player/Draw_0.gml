@@ -30,7 +30,7 @@ if (weapon_cooldown > 0)
 var _x = get_coordinate_on_world_grid(mouse_x+8);
 var _y = get_coordinate_on_world_grid(mouse_y+8);
 
-if (global.inventory.selected_slot != -1 && distance_to_point(_x, _y) < 16*5 && get_tile_object_from_item(global.inventory.contents[global.inventory.selected_slot].item_id) != -1)
+if (global.inventory.selected_slot != -1 && distance_to_point(_x, _y) < 16*5 && get_tile_object_from_item(global.inventory.contents[global.inventory.selected_slot].item_id) != -1 && collision_point(_x, _y, OBSTA, false, true) == noone)
 {
 	draw_sprite(spr_place_item, current_time/100, _x, _y);
 }

@@ -8,7 +8,7 @@ switch(t)
 		ds_list_add(global.socket_list, _sock);
 		
 		//Start sending world data
-		//instance_create_layer(0, room_height, "Instances", obj_multiplayer_world_loader, {target_socket: _sock});
+		instance_create_layer(0, room_height, "Instances", obj_multiplayer_world_loader, {target_socket: _sock});
 		
 		show_debug_message("Played connected");
 	}

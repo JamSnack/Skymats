@@ -2,8 +2,10 @@
 // You can write your code in this editor
 depth = -1;
 
+hmove = 0;
 max_walkspeed = 3;
 position_update_delay = 10;
+client_can_place_tile = true;
 
 //Grappling
 grapple_point_x = 0;

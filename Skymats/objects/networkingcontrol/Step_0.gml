@@ -19,3 +19,14 @@ else
 	if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 		send_data({cmd: "request_client_id"});
 }
+
+//Enemy spawning
+if (global.is_host)
+{
+	if (enemy_spawn_delay <= 0)
+	{
+		enemy_spawn_delay = 60*60*irandom_range(2,5);
+		instance_create_layer(4000, 4000, "Instances", ENEMY);
+	}
+	else enemy_spawn_delay--;
+}

@@ -271,17 +271,25 @@ function handle_data(data)
 			{
 				if (global.is_host)
 				{
-					instance_create_layer(parsed_data.x, parsed_data.y, "Instances", get_tile_object_from_item(parsed_data.item_id));
+					var _c = collision_point(parsed_data.x, parsed_data.y, OBSTA, false, true);
 					
-					//subtract from client inventory
-					send_data({cmd: "create_tile_success", item_id: parsed_data.item_id}, async_load[? "id"]);
+					if (_c == noone)
+					{
+						instance_create_layer(parsed_data.x, parsed_data.y, "Instances", get_tile_object_from_item(parsed_data.item_id));
+					
+						//subtract from client inventory
+						send_data({cmd: "create_tile_success", item_id: parsed_data.item_id}, async_load[? "id"]);
+					}
 				}
 			}
 			break;
 			
 			case "create_tile_success":
 			{
-				global.inventory.subtractItem();
+				global.inventory.subtractItem(parsed_data.item_id, 1);
+				
+				if (instance_exists(obj_player))
+					obj_player.client_can_place_tile = true;
 			}
 			break;
 			
@@ -323,20 +331,22 @@ function handle_data(data)
 				//show_debug_message(parsed_data);
 				
 				//Erase all tiles currently in the chunk
-				while (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
+				/*while (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
 				{
 					with (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
 						instance_destroy();
-				}
+				}*/
 				
 				//Create new tiles
-				var _tiles = parsed_data.tiles;
+				instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_chunk_loader, {tiles: parsed_data.tiles});
+				
+				/*var _tiles = parsed_data.tiles;
 				
 				for (var _i = 0; _i < array_length(_tiles); _i++)
 				{
 					var tile = _tiles[_i];
 					instance_create_layer(tile.x, tile.y, "Instances", get_tile_object_from_item(tile.item_id));
-				}
+				}*/
 			}
 			break;
 			

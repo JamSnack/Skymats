@@ -9,7 +9,6 @@ lerped_zoom = zoom;
 
 last_chunk_x = 0;
 last_chunk_y = 0;
-boundary_size = CHUNK_HEIGHT;
+boundary_size = 368;
 
-sync_delay = 60*5;
-
+sync_delay = 60*120;

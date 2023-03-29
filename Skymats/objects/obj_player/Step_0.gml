@@ -9,7 +9,7 @@ key_up    =  keyboard_check(ord("W"));
 //key_down  =  keyboard_check(ord("S"));
 key_right =  keyboard_check(ord("D"));
 
-var hmove = (key_right - key_left);
+hmove = (key_right - key_left);
 var on_ground = (collision_point(x, bbox_bottom+1, OBSTA, false, true) != noone);
 //var vmove = (key_down  -   key_up);
 
@@ -161,13 +161,12 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 else if (mine_cooldown > 0) mine_cooldown--;
 
 //Tile placement
-if (global.inventory.selected_slot != -1)
+if (client_can_place_tile && global.inventory.selected_slot != -1)
 {
 	var tile_selected = global.inventory.contents[_selected_slot];
 	var object_selected = get_tile_object_from_item(tile_selected.item_id);
 	var _x = get_coordinate_on_world_grid(mouse_x+8);
 	var _y = get_coordinate_on_world_grid(mouse_y+8);
-	
 	
 	if (point_distance(x, y, _x, _y) < 16*5 && tile_selected.amount > 0 &&  object_selected != -1 && mouse_check_button(mb_left) && collision_point(_x, _y, OBSTA, false, true) == noone)
 	{
@@ -176,7 +175,11 @@ if (global.inventory.selected_slot != -1)
 			instance_create_layer(_x, _y, "Instances", object_selected);
 			global.inventory.subtractItemAtSlot(_selected_slot, 1);
 		}
-		else send_data({cmd: "request_create_tile", x: _x, y: _y, item_id: tile_selected.item_id});
+		else
+		{
+			send_data({cmd: "request_create_tile", x: _x, y: _y, item_id: tile_selected.item_id});
+			client_can_place_tile = false;
+		}
 	}
 }
 
