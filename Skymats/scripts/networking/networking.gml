@@ -266,6 +266,19 @@ function handle_data(data)
 			
 			case "create_tile":
 			{
+				var _x = parsed_data.x;
+				var _y = parsed_data.y;
+				
+				//activate space to check if it is occupied
+				instance_activate_region(_x-1, _y-1, 2, 2, true);
+				
+				//check if space is aleady occupied. If so, replace it.
+				var _col = collision_point(_x, _y, TILE, false, true);
+				
+				if (_col != noone)
+					with (_col) instance_destroy();
+				
+				//Spawn the new tile
 				var _t = get_tile_object_from_item(parsed_data.item_id);
 				
 				if (_t != -1)
@@ -294,6 +307,30 @@ function handle_data(data)
 			case "world_loaded":
 			{
 				global.game_state = "PLAY";
+			}
+			break;
+			
+			case "request_chunk":
+			{
+				if (global.is_host)
+				{
+					var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
+					
+					//If the world loader requested doesn't exist or one does exist but it is far away:
+					if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
+					{
+						instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
+					}
+				}
+			}
+			break;
+			
+			case "chunk_sent":
+			{
+				var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_client_request_chunk);
+				
+				if (_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) <= 1)
+					with _r instance_destroy();
 			}
 			break;
 			

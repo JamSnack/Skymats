@@ -34,6 +34,13 @@ if (collision_list_size == 0)
 	instance_deactivate_object(TILE);
 	with (camera)
 		event_user(0);
+		
+	//Kill early if single_chunk
+	if (single_chunk)
+	{
+		send_data({cmd: "chunk_sent", x: x, y: y}, target_socket);
+		instance_destroy();	
+	}
 
 	//Push boundary
 	x += boundary_width;

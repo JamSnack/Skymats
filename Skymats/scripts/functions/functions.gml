@@ -6,6 +6,8 @@
 #macro WORLD_BOUND_RIGHT room_width
 #macro WORLD_BOUND_TOP 0
 #macro WORLD_BOUND_BOTTOM room_height
+#macro CHUNK_WIDTH 16*12*2
+#macro CHUNK_HEIGHT 16*12
 
 function approach(a, b, amt)
 {
