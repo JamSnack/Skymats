@@ -7,8 +7,8 @@ switch(t)
 		var _sock = async_load[? "socket"];
 		ds_list_add(global.socket_list, _sock);
 		
-		//Create dummy player
-		//instance_create_layer(1616, 4824, "Instances", obj_player_dummy, {connected_socket: _sock, target_x: 1616, target_y: 4824});
+		//Start sending world data
+		instance_create_layer(0, 0, "Instances", obj_multiplayer_world_loader, {target_socket: _sock});
 		
 		show_debug_message("Played connected");
 	}

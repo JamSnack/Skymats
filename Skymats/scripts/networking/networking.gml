@@ -136,6 +136,7 @@ function handle_data(data)
 				{
 					var _x = parsed_data.x;
 					var _y = parsed_data.y;
+					var exists = false;
 				
 					instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
@@ -148,7 +149,13 @@ function handle_data(data)
 							instance_destroy();
 							event_user(0);
 						}
+						
+						exists = true;
 					}
+					
+					//This tile doesn't exist on the host world: destroy it on the client world
+					if (!exists)
+						send_data({cmd: "destroy_tile", x: _x, y: _y});
 				}
 			}
 			break;

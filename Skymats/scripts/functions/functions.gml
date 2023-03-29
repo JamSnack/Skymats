@@ -95,9 +95,10 @@ function get_tile_object_from_item(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass: { return obj_grass; } break;
-		case ITEM_ID.stone: { return obj_stone; } break;
-		default:			{ return -1;        } break;
+		case ITEM_ID.grass:  { return obj_grass; } break;
+		case ITEM_ID.stone:  { return obj_stone; } break;
+		case ITEM_ID.copper: { return obj_copper;} break;
+		default:			 { return -1;        } break;
 	}
 }
 
@@ -200,5 +201,6 @@ enum ITEM_ID
 	none,
 	grass,
 	stone,
+	copper,
 	last
 }
