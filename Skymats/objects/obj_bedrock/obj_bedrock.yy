@@ -31,8 +31,8 @@
     {"propertyId":{"name":"tile_level","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"99","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Tiles",
+    "path": "folders/Objects/Tiles.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_bedrock",

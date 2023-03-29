@@ -19,6 +19,17 @@ global.inventory = {
 			deleteItemAtSlot(slot);
 	},
 	
+	subtractItem : function(item_id, _amount){
+		for (var i = 0; i < size; i++)
+		{
+			if (contents[i].item_id == item_id)
+			{
+				subtractItemAtSlot(i, _amount);
+				return i;
+			}
+		}
+	},
+	
 	firstEmptySlot : function() {
 		
 		for (var i = 0; i < size; i++)

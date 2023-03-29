@@ -1,4 +1,4 @@
 /// @description Insert description here
 // You can write your code in this editor
-image_index = item_id;
-event_user(1);
+
+image_alpha = 0.25;

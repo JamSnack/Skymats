@@ -162,11 +162,18 @@ if (global.inventory.selected_slot != -1)
 {
 	var tile_selected = global.inventory.contents[_selected_slot];
 	var object_selected = get_tile_object_from_item(tile_selected.item_id);
+	var _x = get_coordinate_on_world_grid(mouse_x+8);
+	var _y = get_coordinate_on_world_grid(mouse_y+8);
 	
-	if (tile_selected.amount > 0 &&  object_selected != -1 && mouse_check_button_released(mb_left))
+	
+	if (point_distance(x, y, _x, _y) < 16*5 && tile_selected.amount > 0 &&  object_selected != -1 && mouse_check_button(mb_left) && collision_point(_x, _y, OBSTA, false, true) == noone)
 	{
-		instance_create_layer(get_coordinate_on_world_grid(mouse_x+8), get_coordinate_on_world_grid(mouse_y+8), "Instances", object_selected);
-		global.inventory.subtractItemAtSlot(_selected_slot, 1);
+		if (global.is_host)
+		{
+			instance_create_layer(_x, _y, "Instances", object_selected);
+			global.inventory.subtractItemAtSlot(_selected_slot, 1);
+		}
+		else send_data({cmd: "request_create_tile", x: _x, y: _y, item_id: tile_selected.item_id});
 	}
 }
 

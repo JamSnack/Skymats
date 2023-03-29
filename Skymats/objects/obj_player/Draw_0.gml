@@ -27,7 +27,7 @@ if (weapon_cooldown > 0)
 }
 
 //Tile placement
-if (global.inventory.selected_slot != -1 && get_tile_object_from_item(global.inventory.contents[global.inventory.selected_slot].item_id) != -1)
+if (global.inventory.selected_slot != -1 && distance_to_point(mouse_x, mouse_y) < 16*5 && get_tile_object_from_item(global.inventory.contents[global.inventory.selected_slot].item_id) != -1)
 {
 	draw_sprite(spr_place_item, current_time/100, get_coordinate_on_world_grid(mouse_x+8), get_coordinate_on_world_grid(mouse_y+8));
 }

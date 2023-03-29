@@ -256,6 +256,33 @@ function handle_data(data)
 			}
 			break;
 			
+			case "create_tile":
+			{
+				var _t = get_tile_object_from_item(parsed_data.item_id);
+				
+				if (_t != -1)
+					instance_create_layer(parsed_data.x, parsed_data.y, "Instances", _t);
+			}
+			break;
+			
+			case "request_create_tile":
+			{
+				if (global.is_host)
+				{
+					instance_create_layer(parsed_data.x, parsed_data.y, "Instances", get_tile_object_from_item(parsed_data.item_id));
+					
+					//subtract from client inventory
+					send_data({cmd: "create_tile_success", item_id: parsed_data.item_id}, async_load[? "id"]);
+				}
+			}
+			break;
+			
+			case "create_tile_success":
+			{
+				global.inventory.subtractItem();
+			}
+			break;
+			
 			default: { show_debug_message("data received: " + parsed_data.cmd); }
 		}
 	}

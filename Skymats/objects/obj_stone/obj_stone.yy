@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_grass",
-    "path": "sprites/spr_grass/spr_grass.yy",
+    "name": "spr_stone",
+    "path": "sprites/spr_stone/spr_stone.yy",
   },
   "solid": false,
   "visible": true,
@@ -27,14 +27,14 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Tiles",
     "path": "folders/Objects/Tiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_grass",
+  "name": "obj_stone",
   "tags": [],
   "resourceType": "GMObject",
 }
