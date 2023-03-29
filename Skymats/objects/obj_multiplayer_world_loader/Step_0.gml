@@ -14,7 +14,9 @@ instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
 
 //Figure out what's in it
 if (collision_list_size == 0)
+{
 	collision_list_size = collision_rectangle_list(x, y, x + boundary_width, y + boundary_height, TILE, false, true, collision_list, false);
+}
 else
 {
 	//- send data
@@ -46,8 +48,11 @@ if (collision_list_size == 0)
 		y += boundary_height;
 	
 		if (y >= room_height)
+		{
+			send_data({cmd: "world_loaded"}, target_socket);
 			instance_destroy(); //mission complete!
+		}
 			
-		show_debug_message("Next row!");
+		//show_debug_message("Next row!");
 	}
 }

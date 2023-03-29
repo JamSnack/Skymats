@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if (global.game_state == "LOAD")
+	exit;
+
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
 //key_down  =  keyboard_check(ord("S"));

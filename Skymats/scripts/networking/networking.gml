@@ -13,6 +13,7 @@ function connect_to_server(ip, port)
 		//Success
 		show_debug_message("Connected to server");
 		global.multiplayer = true;
+		global.game_state = "Load";
 	}
 	else
 	{
@@ -287,6 +288,12 @@ function handle_data(data)
 			case "create_tile_success":
 			{
 				global.inventory.subtractItem();
+			}
+			break;
+			
+			case "world_loaded":
+			{
+				global.game_state = "PLAY";
 			}
 			break;
 			

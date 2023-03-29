@@ -16,6 +16,6 @@ if (room == Room2)
 }
 else
 {
-	if (global.is_host == false && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
+	if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 		send_data({cmd: "request_client_id"});
 }
