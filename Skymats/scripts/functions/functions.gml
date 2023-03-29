@@ -128,6 +128,73 @@ function item(_name = "", _item_id = 0, _amount = 0) constructor
 	}
 }
 
+function tile_is_adjacent(x, y, object)
+{
+	var left  = collision_point(x - 16, y,       object, false, true);
+	var right = collision_point(x + 16, y,       object, false, true);
+	var top   = collision_point(x,      y - 16,  object, false, true);
+	var down  = collision_point(x,      y + 16 , object, false, true);
+	
+	var _r = choose(1, 2, 3, 4);
+	
+	switch (_r)
+	{
+		case 1:
+		{
+			if (left != noone)
+				return left;
+			else if (right != noone)
+				return right;
+			else if (top != noone)
+				return top;
+			else if (down != noone)
+				return down;
+		}
+		break;
+		
+		case 2:
+		{
+			if (right != noone)
+				return right;
+			else if (left != noone)
+				return left;
+			else if (top != noone)
+				return top;
+			else if (down != noone)
+				return down;
+		}
+		break;
+		
+		case 3:
+		{
+			if (top != noone)
+				return top;
+			else if (down != noone)
+				return down;
+			else if (left != noone)
+				return left;
+			else if (right != noone)
+				return right;
+		}
+		break;
+		
+		case 4:
+		{
+			if (down != noone)
+				return down;
+			else if (top != noone)
+				return top;
+			else if (left != noone)
+				return left;
+			else if (right != noone)
+				return right;
+		}
+		break;
+	}
+
+	return noone;
+}	
+
 enum ITEM_ID
 {
 	none,
