@@ -6,3 +6,7 @@ local_camera = view_get_camera(view_current);
 
 zoom = 2;
 lerped_zoom = zoom;
+
+last_chunk_x = 0;
+last_chunk_y = 0;
+boundary_size = 768*2;
