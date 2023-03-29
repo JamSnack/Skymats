@@ -242,3 +242,6 @@ if ((x != xprevious || y != yprevious) && global.client_id != -1 && global.multi
 }
 else if position_update_delay > 0
 	position_update_delay--;
+	
+//clamp speeds
+clamp_speed(-32, 32, -32, 32);
