@@ -13,7 +13,7 @@ function connect_to_server(ip, port)
 		//Success
 		show_debug_message("Connected to server");
 		global.multiplayer = true;
-		global.game_state = "Load";
+		global.game_state = "LOAD";
 	}
 	else
 	{

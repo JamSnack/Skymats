@@ -1,9 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (target_socket == -1)
-	exit;
-	
-if (!global.is_host)
+if (!global.is_host || target_socket == -1)
 {
 	instance_destroy();
 	exit;
@@ -45,9 +42,9 @@ if (collision_list_size == 0)
 	{
 		x = 0;
 		
-		y += boundary_height;
+		y -= boundary_height;
 	
-		if (y >= room_height)
+		if (y <= 0)
 		{
 			send_data({cmd: "world_loaded"}, target_socket);
 			instance_destroy(); //mission complete!
