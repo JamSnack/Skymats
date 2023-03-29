@@ -5,3 +5,5 @@ boundary_height = CHUNK_HEIGHT;
 
 collision_list = ds_list_create();
 collision_list_size = 0;
+
+packet_string = "";

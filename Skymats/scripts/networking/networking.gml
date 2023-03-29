@@ -13,7 +13,7 @@ function connect_to_server(ip, port)
 		//Success
 		show_debug_message("Connected to server");
 		global.multiplayer = true;
-		global.game_state = "LOAD";
+		//global.game_state = "LOAD";
 	}
 	else
 	{
@@ -124,10 +124,7 @@ function handle_data(data)
 				
 				instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
-				var _c = collision_point(_x, _y, TILE, false, true);
-				
-				if (_c != noone)
-					with _c instance_destroy();
+				instance_create_layer(_x, _y, "Instances", obj_tile_breaker);
 			}
 			break;
 			
@@ -137,26 +134,10 @@ function handle_data(data)
 				{
 					var _x = parsed_data.x;
 					var _y = parsed_data.y;
-					var exists = false;
 				
 					instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
-					var _c = collision_point(_x, _y, TILE, false, true);
-					
-					if (_c != noone)
-					{
-						with _c 
-						{	
-							instance_destroy();
-							event_user(0);
-						}
-						
-						exists = true;
-					}
-					
-					//This tile doesn't exist on the host world: destroy it on the client world
-					if (!exists)
-						send_data({cmd: "destroy_tile", x: _x, y: _y});
+					instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {drop_item: true, connected_socket: async_load[? "id"]});
 				}
 			}
 			break;
@@ -314,11 +295,14 @@ function handle_data(data)
 			{
 				if (global.is_host)
 				{
+					show_debug_message("Chunk requested");
 					var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
 					
 					//If the world loader requested doesn't exist or one does exist but it is far away:
 					if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
 					{
+						show_debug_message(parsed_data.x);
+						show_debug_message(parsed_data.y);
 						instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
 					}
 				}
@@ -331,6 +315,28 @@ function handle_data(data)
 				
 				if (_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) <= 1)
 					with _r instance_destroy();
+			}
+			break;
+			
+			case "create_chunk":
+			{
+				//show_debug_message(parsed_data);
+				
+				//Erase all tiles currently in the chunk
+				while (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
+				{
+					with (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
+						instance_destroy();
+				}
+				
+				//Create new tiles
+				var _tiles = parsed_data.tiles;
+				
+				for (var _i = 0; _i < array_length(_tiles); _i++)
+				{
+					var tile = _tiles[_i];
+					instance_create_layer(tile.x, tile.y, "Instances", get_tile_object_from_item(tile.item_id));
+				}
 			}
 			break;
 			

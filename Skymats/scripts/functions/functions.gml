@@ -6,8 +6,9 @@
 #macro WORLD_BOUND_RIGHT room_width
 #macro WORLD_BOUND_TOP 0
 #macro WORLD_BOUND_BOTTOM room_height
-#macro CHUNK_WIDTH 16*12*2
-#macro CHUNK_HEIGHT 16*12
+
+#macro CHUNK_WIDTH 1586
+#macro CHUNK_HEIGHT 768
 
 function approach(a, b, amt)
 {
@@ -72,6 +73,28 @@ function clamp_speed(min_hspd, max_hspd, min_vspd, max_vspd)
 {
 	hspd = clamp(hspd, min_hspd, max_hspd);
 	vspd = clamp(vspd, min_vspd, max_vspd);
+}
+
+function sync_chunks()
+{
+	if (!global.is_host)
+	{
+		instance_create_layer(x, y, "Instances", obj_client_request_chunk);
+		instance_create_layer(x, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
+		instance_create_layer(x, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
+		instance_create_layer(x+CHUNK_WIDTH, y, "Instances", obj_client_request_chunk);
+		//instance_create_layer(x, y, "Instances", obj_client_request_chunk);
+		
+		
+		//for (var _i = 0; _i < 3; _i++)
+			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y, "Instances", obj_client_request_chunk);
+		
+		//for (var _i = 0; _i < 3; _i++)
+			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
+		
+		//for (var _i = 0; _i < 3; _i++)
+			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);	
+	}
 }
 
 function get_item_name(item_id)

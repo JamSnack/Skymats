@@ -6,6 +6,11 @@ if (!global.is_host || target_socket == -1)
 	exit;
 }
 
+//Create a buffer to use later
+if (packet_string = "")
+	packet_string = "{\"cmd\": \"create_chunk\", \"x\": " + string(x) + ", \"y\":" + string(y) + ", \"tiles\": [";
+//buffer_write(packet_batch, buffer_text, json_stringify({cmd: "create_chunk"}));
+
 //Activate a chunk
 instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
 
@@ -17,18 +22,41 @@ if (collision_list_size == 0)
 else
 {
 	//- send data
-	//show_debug_message("Sending data... " + string(target_socket));
-	var _ti = collision_list[| --collision_list_size];
+	//show_debug_message("Sending data... " + string(collision_list_size));
+	var _c = collision_list_size;
 	
-	if (instance_exists(_ti))
-		send_data({cmd: "create_tile", x: _ti.x, y: _ti.y, item_id: _ti.item_id}, target_socket);
+	repeat(_c)
+	{
+		var _ti = collision_list[| --collision_list_size];
+	
+		if (instance_exists(_ti))
+		{
+			//ds_list_add(packet_list, {_ti:item_id, _ti:x, _ti:y});
+			packet_string += "{\"item_id\": " + string(_ti.item_id) + ", \"x\": " + string(_ti.x) + ", \"y\": " + string(_ti.y) +"}, ";
+			//var _data = json_stringify({cmd: "create_tile", item_id: _ti.item_id, x: _ti.x, y: _ti.y});
+			//buffer_write(packet_batch, buffer_text, _data);
+			//send_data({cmd: "create_tile", x: _ti.x, y: _ti.y, item_id: _ti.item_id}, target_socket);
+		}
+	}
 }
 
 //Time to reset the object and contineu:
 if (collision_list_size == 0)
 {
-	//Reset list
+	//Send the batch 
+	//show_debug_message("Sending chunk...");
+	packet_string += "]}";
+	//show_debug_message(packet_string);
+	//show_debug_message(json_parse(packet_string));
+	
+	packet_batch = buffer_create(128, buffer_grow, 1);
+	buffer_write(packet_batch, buffer_text, packet_string);
+	network_send_packet(target_socket, packet_batch, buffer_tell(packet_batch));
+	
+	//Reset list and buffer
 	ds_list_clear(collision_list);
+	packet_string = "";
+	buffer_delete(packet_batch);
 
 	//Deactivate tiles but run camera's reactivation event
 	instance_deactivate_object(TILE);
@@ -38,6 +66,7 @@ if (collision_list_size == 0)
 	//Kill early if single_chunk
 	if (single_chunk)
 	{
+		//show_debug_message("Chunk sent! destroying object");
 		send_data({cmd: "chunk_sent", x: x, y: y}, target_socket);
 		instance_destroy();	
 	}
