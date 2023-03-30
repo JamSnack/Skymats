@@ -15,16 +15,33 @@ if (display_market_animation > 0)
 	var _x = _w - 400 + 20;
 	
 	//- Grapple
-	draw_text_scribble(_x, 30 + 10, "Grappling Hook \n  - Range\n  - Hook Speed\n  - Pull Strength");
+	draw_text_scribble(_x, 30 + 10, "Grappling Hook" +
+	"\n  - Range - " + string(get_upgrade_cost(1)) +
+	"\n  - Hook Speed - " + string(get_upgrade_cost(2)) +
+	"\n  - Pull Strength - " + string(get_upgrade_cost(3))
+	);
 	
 	//- Mining Tool
-	draw_text_scribble(_x, 30 + 86, "Mining Tool \n  - Strength\n  - Speed");
+	draw_text_scribble(_x, 30 + 86, "Mining Tool" + 
+	"\n  - Strength - " + string(get_upgrade_cost(4)) +
+	"\n  - Speed - "+ string(get_upgrade_cost(5))
+	);
 	
 	//- Weapon
-	draw_text_scribble(_x, 30 + 146, "Weapon \n  - Damage\n  - Speed\n  - Range\n  - Knockback");
+	draw_text_scribble(_x, 30 + 146, "Weapon" +  
+	"\n  - Damage - " + string(get_upgrade_cost(6)) +
+	"\n  - Speed - " + string(get_upgrade_cost(7)) +
+	"\n  - Range - " + string(get_upgrade_cost(8)) +
+	"\n  - Knockback - " + string(get_upgrade_cost(9)) 
+	);
 	
 	//- Jetpack
-	draw_text_scribble(_x, 30 + 246, "Jetpack \n  - Fuel\n  - Force\n  - Cooldown Delay\n  - Regen Rate");
+	draw_text_scribble(_x, 30 + 246, "Jetpack" +  
+	"\n  - Fuel - " + string(get_upgrade_cost(10)) +
+	"\n  - Force - " + string(get_upgrade_cost(11)) +
+	"\n  - Cooldown Delay - " + string(get_upgrade_cost(12)) +
+	"\n  - Regen Rate - " + string(get_upgrade_cost(13))
+	);
 	
 	//- Gold
 	if (instance_exists(obj_player))
