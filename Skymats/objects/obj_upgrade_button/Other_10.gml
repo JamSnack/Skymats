@@ -13,5 +13,9 @@ if (instance_exists(obj_player))
 		
 		//TODO: apply stat boost
 		obj_player.upgrades_purchased[upgrade_id]++;
+		apply_upgrade(upgrade_id);
+		
+		//with (obj_player)
+			//init_player();
 	}
 }

@@ -190,6 +190,7 @@ if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 		vspd = approach(vspd, 0, 0.175);
 	
 	jetpack_fuel -= 1;
+	show_debug_message(stat_jetpack_strength);
 	jetpack_regen_cooldown = stat_jetpack_cooldown;
 	motion_add_custom(90, stat_jetpack_strength);
 }

@@ -248,16 +248,19 @@ enum UPGRADE
 	grapple_range,
 	grapple_travel,
 	grapple_strength,
+	
 	mine_strength,
 	mine_speed,
-	jetpack_fuel,
-	jetpack_force,
-	jetpack_cooldown,
-	jetpack_regen_rate,
+	
 	weapon_speed,
 	weapon_damage,
 	weapon_range,
 	weapon_knockback,
+	
+	jetpack_fuel,
+	jetpack_force,
+	jetpack_cooldown,
+	jetpack_regen_rate,
 	last
 }
 
@@ -267,7 +270,7 @@ function get_upgrade_cost(upgrade_id)
 	{
 		var _up = obj_player.upgrades_purchased[upgrade_id];
 		
-		switch upgrade_id
+		switch (upgrade_id)
 		{
 			case UPGRADE.grapple_range:		{ return power(5, _up); } break;
 			case UPGRADE.grapple_travel:	{ return power(5, _up); } break;
@@ -297,20 +300,20 @@ function apply_upgrade(upgrade_id)
 	if (instance_exists(obj_player))
 	{
 		var _up = obj_player.upgrades_purchased[upgrade_id];
-		
+	
 		switch (upgrade_id)
 		{
-			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = _up } break;
-			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = _up } break;
-			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = _up } break;
+			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = 155 + 25*_up; } break;
+			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = 6 + 2*_up; } break;
+			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = 0.25 + 0.05*_up; } break;
 											 
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = _up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = _up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel        = _up; } break;
-			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = _up; } break;
-			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = _up; } break;
-			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = _up; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*30; } break;
+			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.15 + _up*0.025; } break;
+			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
+			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
 											  
 			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = _up; } break;
 			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = _up; } break;
@@ -318,4 +321,14 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = _up; } break;
 		}
 	}
+}
+
+function init_player()
+{
+	weapon_cooldown = stat_weapon_cooldown
+	
+	jetpack_fuel = stat_jetpack_fuel;
+	jetpack_regen_cooldown = stat_jetpack_cooldown;
+	jetpack_set_init_delay = 15; 
+	jetpack_init_delay = jetpack_set_init_delay; //How long it takes for the jetpack to be usable after leaving the ground
 }
