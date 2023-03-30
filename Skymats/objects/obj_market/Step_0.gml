@@ -7,6 +7,7 @@ if (instance_exists(obj_player))
 	
 	if (_p != noone)
 	{
+		//Accrue wealth
 		for (var _i = 0; _i < global.inventory.size; _i++)
 		{
 			var _slot = global.inventory.contents[_i];
@@ -20,5 +21,10 @@ if (instance_exists(obj_player))
 				global.inventory.deleteItemAtSlot(_i);
 			}
 		}
-	}
+		
+		//Market stuff
+		display_market_animation = lerp(display_market_animation, 1, 0.1);
+	} 
+	else display_market_animation = lerp(display_market_animation, 0, 0.1);
 }
+else display_market_animation = lerp(display_market_animation, 0, 0.1);

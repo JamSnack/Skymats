@@ -240,3 +240,54 @@ enum ITEM_ID
 	copper,
 	last
 }
+
+
+enum UPGRADE
+{
+	none,
+	grapple_range,
+	grapple_travel,
+	grapple_strength,
+	mine_strength,
+	mine_speed,
+	jetpack_fuel,
+	jetpack_force,
+	jetpack_cooldown,
+	jetpack_regen_rate,
+	weapon_speed,
+	weapon_damage,
+	weapon_range,
+	weapon_knockback,
+	last
+}
+
+function get_upgrade_cost(upgrade_id)
+{
+	if (instance_exists(obj_player))
+	{
+		var upgrades = obj_player.upgrades_purchased;
+		
+		switch upgrade_id
+		{
+			case UPGRADE.grapple_range:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.grapple_travel:	{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.grapple_strength:  { return power(5, upgrades[upgrade_id]); } break;
+			
+			case UPGRADE.mine_strength:	    { return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.mine_speed:		{ return power(5, upgrades[upgrade_id]); } break;
+			
+			case UPGRADE.jetpack_fuel:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.jetpack_force:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.jetpack_cooldown:	{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.jetpack_regen_rate:{ return power(5, upgrades[upgrade_id]); } break;
+			
+			case UPGRADE.weapon_speed:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.weapon_damage:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.weapon_range:		{ return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.weapon_knockback:  { return power(5, upgrades[upgrade_id]); } break;
+			
+			default: { return 1337; } break;
+		}
+	}
+	else return noone;
+}

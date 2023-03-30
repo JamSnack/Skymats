@@ -29,8 +29,6 @@ stat_grapple_force = 0.35; //How much force is applied to the player
 stat_grapple_speed = 12; //How fast the hook travels
 stat_grapple_range = 240; //How far the hook can go (600 is about the edge of the screen)
 
-grappled_to = noone;
-
 //- mining tool
 stat_mine_level = 1; //Determines which blocks can be destroyed and not
 stat_mine_cooldown = 30; //Determines how much time must pass before the pickaxe can be swung again
@@ -53,3 +51,7 @@ stat_weapon_knockback = 6;
 stat_weapon_range = 28;
 
 weapon_cooldown = stat_weapon_cooldown;
+
+
+//init upgrades purchased list
+upgrades_purchased = array_create(UPGRADE.last, 1);
