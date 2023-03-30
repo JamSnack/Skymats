@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_copper/spr_copper.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_copper/spr_copper.yy",},"LayerId":{"name":"87f2eca9-6571-4137-8c56-6424df29c936","path":"sprites/spr_copper/spr_copper.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_copper","path":"sprites/spr_copper/spr_copper.yy",},"resourceVersion":"1.0","name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_silver/spr_silver.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_silver/spr_silver.yy",},"LayerId":{"name":"87f2eca9-6571-4137-8c56-6424df29c936","path":"sprites/spr_silver/spr_silver.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_silver","path":"sprites/spr_silver/spr_silver.yy",},"resourceVersion":"1.0","name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_copper","path":"sprites/spr_copper/spr_copper.yy",},
+    "spriteId": {"name":"spr_silver","path":"sprites/spr_silver/spr_silver.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"30a45ac9-eba7-488e-8dfc-d448a1fa7add","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_copper/spr_copper.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"6a80dc6b-186d-4db9-98a8-b283173e15b9","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"52b9ecf2-dcd5-4a81-b2a3-4feddc597f29","path":"sprites/spr_silver/spr_silver.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,9 +58,9 @@
     "yorigin": 8,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_copper","path":"sprites/spr_copper/spr_copper.yy",},
+    "parent": {"name":"spr_silver","path":"sprites/spr_silver/spr_silver.yy",},
     "resourceVersion": "1.4",
-    "name": "spr_copper",
+    "name": "spr_silver",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -73,7 +73,7 @@
     "path": "folders/Sprites/Mats.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_copper",
+  "name": "spr_silver",
   "tags": [],
   "resourceType": "GMSprite",
 }

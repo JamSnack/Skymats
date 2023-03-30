@@ -133,7 +133,9 @@ function get_item_value(item_id)
 	{
 		case ITEM_ID.grass:  { return  1; } break;
 		case ITEM_ID.stone:  { return  2; } break;
-		case ITEM_ID.copper: { return  5; } break;
+		case ITEM_ID.copper: { return  4; } break;
+		case ITEM_ID.silver: { return  5; } break;
+		case ITEM_ID.gold:   { return  8; } break;
 		default:			 { return -1; } break;
 	}
 }
@@ -238,6 +240,8 @@ enum ITEM_ID
 	grass,
 	stone,
 	copper,
+	silver,
+	gold,
 	last
 }
 
