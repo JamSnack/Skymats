@@ -34,3 +34,15 @@ if (_c != noone)
 		hp -= other.damage;
 	}
 }
+
+
+//Personal tile culling
+//This should happen because we just deactivated all tiles and we need to make sure enemies don't clip into things
+if (global.is_host == true && tile_culling_delay <= 0)
+{
+	var _boundary = 16*4;
+	instance_activate_region(x-_boundary, y-_boundary, _boundary, _boundary, true);
+	
+	tile_culling_delay = 10;
+} else if tile_culling_delay > 0
+	tile_culling_delay--;
