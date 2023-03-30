@@ -303,22 +303,22 @@ function apply_upgrade(upgrade_id)
 	
 		switch (upgrade_id)
 		{
-			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = 155 + 25*_up; } break;
+			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = 100 + 25*_up; } break;
 			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = 6 + 2*_up; } break;
 			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = 0.25 + 0.05*_up; } break;
 											 
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = _up; } break;
-			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = _up; } break;
+			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 4*_up; } break;
 											 
 			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*30; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.15 + _up*0.025; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
 											  
-			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = _up; } break;
+			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = 100 - 10*_up; } break;
 			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = _up; } break;
-			case UPGRADE.weapon_range:		{ obj_player.stat_weapon_range      = _up; } break;
-			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = _up; } break;
+			case UPGRADE.weapon_range:		{ obj_player.stat_weapon_range      = 24 + _up; } break;
+			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = 5 + _up; } break;
 		}
 	}
 }

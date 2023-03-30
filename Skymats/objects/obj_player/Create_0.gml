@@ -27,11 +27,11 @@ mine_cooldown = 0;
 //- grapple
 stat_grapple_force = 0.25; //How much force is applied to the player +0.5
 stat_grapple_speed = 6; //How fast the hook travels +2
-stat_grapple_range = 160; //How far the hook can go (600 is about the edge of the screen) +20
+stat_grapple_range = 100; //How far the hook can go (600 is about the edge of the screen) +20
 
 //- mining tool
 stat_mine_level = 1; //Determines which blocks can be destroyed and not
-stat_mine_cooldown = 30; //Determines how much time must pass before the pickaxe can be swung again
+stat_mine_cooldown = 45; //Determines how much time must pass before the pickaxe can be swung again
 
 //- jetpack
 stat_jetpack_fuel = 50; //How many frames can pass before the jetpack runs out of fuel. +30
@@ -40,7 +40,7 @@ stat_jetpack_cooldown = 90; //How many frames of inactivity need to pass before 
 stat_jetpack_regen_rate = 0.2; //How much jetpack fuel regenerates each frame. +0.05
 
 //- weapon
-stat_weapon_cooldown = 90; //How many frames it takes to prepare the auto-attack
+stat_weapon_cooldown = 100; //How many frames it takes to prepare the auto-attack
 stat_weapon_damage = 1;
 stat_weapon_knockback = 6;
 stat_weapon_range = 28;
