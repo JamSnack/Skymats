@@ -31,7 +31,8 @@ for (var i = 0; i < column_height; i++)
 	
 	if (cutoff_start == 0 && cutoff_end == 0 && irandom(60) == 3 && (current_y + 16*i) > 7 )
 	{
-		instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator);
+		var chosen_ore = choose_ore(current_y);
+		instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
 	}
 }
 

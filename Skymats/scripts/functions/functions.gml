@@ -123,7 +123,9 @@ function get_tile_object_from_item(item_id)
 		case ITEM_ID.grass:  { return obj_grass; } break;
 		case ITEM_ID.stone:  { return obj_stone; } break;
 		case ITEM_ID.copper: { return obj_copper;} break;
-		default:			 { return -1;        } break;
+		case ITEM_ID.silver: { return obj_silver;} break;
+		case ITEM_ID.gold:   { return obj_gold;  } break;
+		default:			 { return obj_bedrock;        } break;
 	}
 }
 
@@ -237,12 +239,15 @@ function tile_is_adjacent(x, y, object)
 enum ITEM_ID
 {
 	none,
+	
 	grass,
 	stone,
+	
 	copper,
 	silver,
 	gold,
-	last
+	
+	last_ore
 }
 
 
@@ -335,4 +340,23 @@ function init_player()
 	jetpack_regen_cooldown = stat_jetpack_cooldown;
 	jetpack_set_init_delay = 15; 
 	jetpack_init_delay = jetpack_set_init_delay; //How long it takes for the jetpack to be usable after leaving the ground
+}
+
+global.ore_distribution = array_create(ITEM_ID.last_ore);
+global.ore_distribution[ITEM_ID.copper] = { high: 7000, low: 8000 };
+global.ore_distribution[ITEM_ID.silver] = { high: 6500, low: 7500 };
+global.ore_distribution[ITEM_ID.gold] =   { high: 0, low: 6500 };
+
+
+function choose_ore(y)
+{
+	var _g = global.ore_distribution;
+	
+	for (var _i = ITEM_ID.last_ore-1; _i > ITEM_ID.stone; _i--)
+	{
+		if (y > _g[_i].high && y < _g[_i].low && y < irandom_range(_g[_i].high, _g[_i].low))
+			return _i;	
+	}
+	
+	return ITEM_ID.grass;
 }
