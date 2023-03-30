@@ -48,7 +48,7 @@ if (display_market_animation > 0)
 		draw_text_scribble(_w-260, 500 - 60, "Gold - " + string(obj_player.gold));
 		
 	//- Instructions
-	draw_text_scribble(_w-411, 500 + 12, "Use Arrow Keys (up/down) or W/S to select.\nPress Enter to confirm purchase.");
+	draw_text_scribble(_w-411, 500 + 12, "Mouse over an upgrade you'd like to buy.\nLeft click to purchase it.");
 	
 	//reset
 	draw_set_alpha(1);

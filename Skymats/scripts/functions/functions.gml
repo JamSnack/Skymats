@@ -265,29 +265,57 @@ function get_upgrade_cost(upgrade_id)
 {
 	if (instance_exists(obj_player))
 	{
-		var upgrades = obj_player.upgrades_purchased;
+		var _up = obj_player.upgrades_purchased[upgrade_id];
 		
 		switch upgrade_id
 		{
-			case UPGRADE.grapple_range:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.grapple_travel:	{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.grapple_strength:  { return power(5, upgrades[upgrade_id]); } break;
-			
-			case UPGRADE.mine_strength:	    { return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.mine_speed:		{ return power(5, upgrades[upgrade_id]); } break;
-			
-			case UPGRADE.jetpack_fuel:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.jetpack_force:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.jetpack_cooldown:	{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.jetpack_regen_rate:{ return power(5, upgrades[upgrade_id]); } break;
-			
-			case UPGRADE.weapon_speed:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.weapon_damage:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.weapon_range:		{ return power(5, upgrades[upgrade_id]); } break;
-			case UPGRADE.weapon_knockback:  { return power(5, upgrades[upgrade_id]); } break;
+			case UPGRADE.grapple_range:		{ return power(5, _up); } break;
+			case UPGRADE.grapple_travel:	{ return power(5, _up); } break;
+			case UPGRADE.grapple_strength:  { return power(5, _up); } break;
+															  
+			case UPGRADE.mine_strength:	    { return power(5, _up); } break;
+			case UPGRADE.mine_speed:		{ return power(5, _up); } break;
+															  
+			case UPGRADE.jetpack_fuel:		{ return power(5, _up); } break;
+			case UPGRADE.jetpack_force:		{ return power(5, _up); } break;
+			case UPGRADE.jetpack_cooldown:	{ return power(5, _up); } break;
+			case UPGRADE.jetpack_regen_rate:{ return power(5, _up); } break;
+															  
+			case UPGRADE.weapon_speed:		{ return power(5, _up); } break;
+			case UPGRADE.weapon_damage:		{ return power(5, _up); } break;
+			case UPGRADE.weapon_range:		{ return power(5, _up); } break;
+			case UPGRADE.weapon_knockback:  { return power(5, _up); } break;
 			
 			default: { return 1337; } break;
 		}
 	}
 	else return noone;
+}
+
+function apply_upgrade(upgrade_id)
+{
+	if (instance_exists(obj_player))
+	{
+		var _up = obj_player.upgrades_purchased[upgrade_id];
+		
+		switch (upgrade_id)
+		{
+			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = _up } break;
+			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = _up } break;
+			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = _up } break;
+											 
+			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = _up; } break;
+			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = _up; } break;
+											 
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel        = _up; } break;
+			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = _up; } break;
+			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = _up; } break;
+			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = _up; } break;
+											  
+			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = _up; } break;
+			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = _up; } break;
+			case UPGRADE.weapon_range:		{ obj_player.stat_weapon_range      = _up; } break;
+			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = _up; } break;
+		}
+	}
 }

@@ -10,6 +10,8 @@ if (instance_exists(obj_player))
 	if (_g >= _cost)
 	{
 		obj_player.gold -= _cost;
+		
 		//TODO: apply stat boost
+		obj_player.upgrades_purchased[upgrade_id]++;
 	}
 }
