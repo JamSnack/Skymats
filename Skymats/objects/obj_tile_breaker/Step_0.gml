@@ -8,10 +8,15 @@ if time > 60*1
 	{
 		with _c 
 		{
-			if (other.drop_item)
-				event_user(0);
+			hp -= damage;
+			
+			if (hp <= 0)
+			{
+				if (other.drop_item)
+					event_user(0);
 				
-			instance_destroy();
+				instance_destroy();
+			}
 		}
 		
 		instance_destroy();

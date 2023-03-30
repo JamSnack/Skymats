@@ -146,13 +146,18 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 		{
 			with _tile
 			{
-				instance_destroy();
-				event_user(0);
+				hp -= other.stat_mine_level;
+				
+				if (hp <= 0)
+				{
+					instance_destroy();
+					event_user(0);
+				}
 			}
 		}
 		else if (global.multiplayer)
 		{
-			send_data({cmd: "request_tile_hit", x: mouse_x, y: mouse_y});	
+			send_data({cmd: "request_tile_hit", damage: stat_mine_level, x: mouse_x, y: mouse_y});	
 		}
 		
 		mine_cooldown = stat_mine_cooldown;

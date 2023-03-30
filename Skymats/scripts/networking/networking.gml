@@ -137,7 +137,7 @@ function handle_data(data)
 				
 					instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
-					instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {drop_item: true, connected_socket: async_load[? "id"]});
+					instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {damage: parsed_data.damage, drop_item: true, connected_socket: async_load[? "id"]});
 				}
 			}
 			break;
