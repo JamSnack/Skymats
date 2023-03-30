@@ -6,6 +6,7 @@ hmove = 0;
 max_walkspeed = 3;
 position_update_delay = 10;
 client_can_place_tile = true;
+gold = 0;
 
 //Grappling
 grapple_point_x = 0;

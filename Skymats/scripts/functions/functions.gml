@@ -127,6 +127,17 @@ function get_tile_object_from_item(item_id)
 	}
 }
 
+function get_item_value(item_id)
+{
+	switch item_id
+	{
+		case ITEM_ID.grass:  { return  1; } break;
+		case ITEM_ID.stone:  { return  2; } break;
+		case ITEM_ID.copper: { return  5; } break;
+		default:			 { return -1; } break;
+	}
+}
+
 function get_coordinate_on_world_grid(x)
 {
 	return floor(x/16)*16;
