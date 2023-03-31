@@ -1,15 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (global.multiplayer == false && keyboard_check_released(vk_numpad1))
+{
+	event_user(0);
+	//room_goto(Room1);
+}
 
 if (room == Room2)
 {
-	if (keyboard_check_released(vk_numpad1))
-	{
-		loading_world = true;
-		event_user(0);
-		room_goto(Room1);
-	}
-	else if (keyboard_check_released(vk_numpad2))
+
+	if (keyboard_check_released(vk_numpad2))
 	{
 		loading_world = true;
 		event_user(1);
@@ -23,7 +23,7 @@ else
 }
 
 //Enemy spawning
-if ((room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
+if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
 {	
 	var _p = irandom(instance_number(PLAYER)-1);
 	var player = instance_find(PLAYER, _p);
@@ -65,5 +65,9 @@ else if (loading_world && (room == Room1 || room == rm_small))
 	
 	//Spawn sound
 	audio_play_sound(snd_entered_empyrious, 10, false);
+	
+	//Spawn player
+	//TODO: load player data into networkingControl as a struct and then pass it into the object here:
+	instance_create_layer(obj_market.x, obj_market.y, "Instances", obj_player);
 }
 

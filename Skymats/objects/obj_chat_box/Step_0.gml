@@ -3,6 +3,10 @@
 x = clamp(x, 0, 1366-width);
 y = clamp(y, 0, 768-height);
 
+if (room != Room1)
+	visible = false;
+else visible = true;
+
 if (!visible)
 	exit;
 

@@ -18,3 +18,5 @@ island_generators = 32;
 load_timer = 30;
 
 chat_animation = 1;
+
+room_goto(rm_menu);

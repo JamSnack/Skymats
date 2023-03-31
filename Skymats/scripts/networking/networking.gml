@@ -61,7 +61,15 @@ function send_data(data_struct, specific_socket = -1)
 
 function handle_data(data)
 {	
-	var parsed_data = json_parse(data);
+	try
+	{
+		var parsed_data = json_parse(data);
+	}
+	catch (e)
+	{
+		show_debug_message(e);
+		return false;	
+	}
 	//show_debug_message("Handling data: "+string(data));
 	
 	if (parsed_data != -1)

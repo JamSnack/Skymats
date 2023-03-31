@@ -7,7 +7,7 @@
 #macro WORLD_BOUND_TOP 0
 #macro WORLD_BOUND_BOTTOM room_height
 
-#macro CHUNK_WIDTH 1586
+#macro CHUNK_WIDTH 1593
 #macro CHUNK_HEIGHT 768
 
 function approach(a, b, amt)
@@ -80,17 +80,17 @@ function sync_chunks()
 		instance_create_layer(x, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		instance_create_layer(x, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		instance_create_layer(x+CHUNK_WIDTH, y, "Instances", obj_client_request_chunk);
-		//instance_create_layer(x, y, "Instances", obj_client_request_chunk);
+		instance_create_layer(x, y, "Instances", obj_client_request_chunk);
 		
 		
-		//for (var _i = 0; _i < 3; _i++)
-			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y, "Instances", obj_client_request_chunk);
+		/*(for (var _i = 0; _i < 3; _i++)
+			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y, "Instances", obj_client_request_chunk);
 		
-		//for (var _i = 0; _i < 3; _i++)
-			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
+		for (var _i = 0; _i < 3; _i++)
+			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		
-		//for (var _i = 0; _i < 3; _i++)
-			//instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);	
+		for (var _i = 0; _i < 3; _i++)
+			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);	*/
 	}
 }
 
