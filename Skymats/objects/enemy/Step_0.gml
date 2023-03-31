@@ -8,7 +8,7 @@ if (global.is_host)
 	//multiplayer
 	if (current_time mod 2 == 0)
 	{
-		var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp};
+		var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp, object: object_index};
 		send_data(_s);
 	}
 }

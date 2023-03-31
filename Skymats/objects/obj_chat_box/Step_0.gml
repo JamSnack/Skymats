@@ -3,7 +3,7 @@
 x = clamp(x, 0, 1366-width);
 y = clamp(y, 0, 768-height);
 
-if (room != Room1)
+if (room == rm_menu)
 	visible = false;
 else visible = true;
 

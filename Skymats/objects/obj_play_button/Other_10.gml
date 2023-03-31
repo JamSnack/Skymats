@@ -4,4 +4,4 @@ event_inherited();
 
 global.is_host = true;
 networkingControl.loading_world = true;
-room_goto(Room1);
+room_goto(rm_small);

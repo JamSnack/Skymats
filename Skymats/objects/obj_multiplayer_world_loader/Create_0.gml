@@ -8,3 +8,6 @@ collision_list_size = 0;
 
 packet_string = "";
 packet_batch = buffer_create(128, buffer_grow, 1);
+
+instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
+delay = 4;

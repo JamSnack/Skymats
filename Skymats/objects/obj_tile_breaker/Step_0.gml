@@ -19,7 +19,8 @@ if time > 60*1
 			}
 		}
 		
-		instance_destroy();
+		if (global.is_host)
+			instance_destroy();
 	}
 	
 	time = 0;	

@@ -1,5 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (delay > 0)
+{
+	delay--;
+	exit;
+}
+
 if (!global.is_host || target_socket == -1)
 {
 	instance_destroy();
@@ -12,7 +18,7 @@ if (packet_string = "")
 	packet_string = "{\"cmd\": \"create_chunk\", \"x\": " + string(x) + ", \"y\":" + string(y) + ", \"tiles\": [";
 	
 	//Activate a chunk
-	instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
+	
 }
 //buffer_write(packet_batch, buffer_text, json_stringify({cmd: "create_chunk"}));
 
@@ -61,9 +67,9 @@ if (collision_list_size == 0)
 	buffer_delete(packet_batch);
 
 	//Deactivate tiles but run camera's reactivation event
-	instance_deactivate_object(TILE);
-	with (camera)
-		event_user(0);
+	//instance_deactivate_object(TILE);
+	//with (camera)
+		//event_user(0);
 		
 	//Kill early if single_chunk
 	if (single_chunk)

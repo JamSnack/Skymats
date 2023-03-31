@@ -5,7 +5,7 @@
 instance_activate_region(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT, true);
 
 //stuff
-var _a = (instant == true) ? tiles_size : 10
+var _a = tiles_size//(instant == true) ? tiles_size : 10
 repeat(_a)
 {
 	if (time < tiles_size)
@@ -23,9 +23,9 @@ repeat(_a)
 			else same_tile = true;
 		}
 	
+		//create new tile
 		if (!same_tile)
 			instance_create_layer(_t.x, _t.y, "Instances", get_tile_object_from_item(_t.item_id));
 	}
-	else
-		instance_destroy();
+	else instance_destroy();
 }

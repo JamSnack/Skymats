@@ -14,7 +14,6 @@
   ],
   "layers": [
     {"instances":[
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":4104.0,"y":6664.0,"resourceVersion":"1.0","name":"inst_7ED57D63_1","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"camera","path":"objects/camera/camera.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":440.0,"y":-40.0,"resourceVersion":"1.0","name":"inst_3EFAE6F6_1","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"inventoryControl","path":"objects/inventoryControl/inventoryControl.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":464.0,"y":-40.0,"resourceVersion":"1.0","name":"inst_6E2F55E9_1","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_bedrock","path":"objects/obj_bedrock/obj_bedrock.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":30.0,"scaleY":6.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":4088.0,"y":6792.0,"resourceVersion":"1.0","name":"inst_9592EE_1","tags":[],"resourceType":"GMRInstance",},
@@ -90,7 +89,6 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_7ED57D63_1","path":"rooms/rm_small/rm_small.yy",},
     {"name":"inst_3EFAE6F6_1","path":"rooms/rm_small/rm_small.yy",},
     {"name":"inst_6E2F55E9_1","path":"rooms/rm_small/rm_small.yy",},
     {"name":"inst_9592EE_1","path":"rooms/rm_small/rm_small.yy",},

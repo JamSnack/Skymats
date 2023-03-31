@@ -1,6 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
-//Request client id
+if (global.multiplayer == false && keyboard_check_released(vk_numpad1))
+{
+	event_user(0);
+	//room_goto(Room1);
+}
+
+//Send client id
 if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 	send_data({cmd: "request_client_id"});
 

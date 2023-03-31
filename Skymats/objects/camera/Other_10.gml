@@ -6,7 +6,8 @@ last_chunk_x = x;
 last_chunk_y = y;
 
 //Deactivate all tiles
-instance_deactivate_object(TILE);
+if (!instance_exists(obj_multiplayer_world_loader))
+	instance_deactivate_object(TILE);
 		
 //Reactivate tiles around the player
 var _boundary = boundary_size*2;

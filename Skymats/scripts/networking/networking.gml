@@ -198,7 +198,7 @@ function handle_data(data)
 				}
 					
 				if (create_new)
-					instance_create_layer(_x, _y, "Instances", ENEMY, {connected_id: _id})
+					instance_create_layer(_x, _y, "Instances", parsed_data.object, {connected_id: _id})
 			}
 			break;
 			
@@ -336,25 +336,8 @@ function handle_data(data)
 			
 			case "create_chunk":
 			{
-				//show_debug_message(parsed_data);
-				
-				//Erase all tiles currently in the chunk
-				/*while (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
-				{
-					with (collision_rectangle(parsed_data.x, parsed_data.y, parsed_data.x + CHUNK_WIDTH, parsed_data.y + CHUNK_HEIGHT, TILE, false, true))
-						instance_destroy();
-				}*/
-				
 				//Create new tiles
 				instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_chunk_loader, {tiles: parsed_data.tiles});
-				
-				/*var _tiles = parsed_data.tiles;
-				
-				for (var _i = 0; _i < array_length(_tiles); _i++)
-				{
-					var tile = _tiles[_i];
-					instance_create_layer(tile.x, tile.y, "Instances", get_tile_object_from_item(tile.item_id));
-				}*/
 			}
 			break;
 			
