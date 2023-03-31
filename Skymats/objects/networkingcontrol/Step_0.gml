@@ -47,7 +47,15 @@ if ((room == Room1 || room == rm_small) && global.is_host && instance_number(ENE
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 {
 	draw_enable_drawevent(false);
-	//show_debug_message(instance_number(obj_island_generator));
+	
+	load_timer++;
+	
+	if (load_timer >= 5)
+	{
+		load_timer = 0;
+		draw_enable_drawevent(true);
+	}
+	show_debug_message(instance_number(obj_island_generator));
 } 
 else if (loading_world && (room == Room1 || room == rm_small))
 {
@@ -58,3 +66,4 @@ else if (loading_world && (room == Room1 || room == rm_small))
 	//Spawn sound
 	audio_play_sound(snd_entered_empyrious, 10, false);
 }
+

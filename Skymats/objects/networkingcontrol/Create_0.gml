@@ -13,5 +13,8 @@ global.game_state = "PLAY";
 
 enemy_spawn_delay = 0;
 loading_world = false;
+island_generators = 32;
+
+load_timer = 30;
 
 chat_animation = 1;
