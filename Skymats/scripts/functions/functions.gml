@@ -117,12 +117,18 @@ function get_tile_object_from_item(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass:  { return obj_grass; } break;
-		case ITEM_ID.stone:  { return obj_stone; } break;
-		case ITEM_ID.copper: { return obj_copper;} break;
-		case ITEM_ID.silver: { return obj_silver;} break;
-		case ITEM_ID.gold:   { return obj_gold;  } break;
-		default:			 { return obj_bedrock;        } break;
+		case ITEM_ID.grass:    { return obj_grass;    } break;
+		case ITEM_ID.stone:    { return obj_stone;    } break;
+		case ITEM_ID.coal:     { return obj_coal;     } break;
+		case ITEM_ID.copper:   { return obj_copper;   } break;
+		case ITEM_ID.silver:   { return obj_silver;   } break;
+		case ITEM_ID.gold:     { return obj_gold;     } break;
+		case ITEM_ID.sapphire: { return obj_sapphire; } break;
+		case ITEM_ID.ruby:     { return obj_ruby;     } break;
+		case ITEM_ID.emerald:  { return obj_emerald;  } break;
+		case ITEM_ID.diamond:  { return obj_diamond;  } break;
+		
+		default:			 { return obj_bedrock; } break;
 	}
 }
 
@@ -132,9 +138,15 @@ function get_item_value(item_id)
 	{
 		case ITEM_ID.grass:		  { return  1; } break;
 		case ITEM_ID.stone:		  { return  1; } break;
+		case ITEM_ID.coal:        { return  2; } break;
 		case ITEM_ID.copper:	  { return  3; } break;
-		case ITEM_ID.silver:	  { return  4; } break;
+		case ITEM_ID.iron:	      { return  4; } break;
+		case ITEM_ID.silver:	  { return  5; } break;
 		case ITEM_ID.gold:		  { return  7; } break;
+		case ITEM_ID.sapphire:	  { return  10; } break;
+		case ITEM_ID.ruby:		  { return  14; } break;
+		case ITEM_ID.emerald:	  { return  21; } break;
+		case ITEM_ID.diamond:	  { return  27; } break;
 		case ITEM_ID.enemy_parts: { return  5; } break;
 		default:				  { return -1; } break;
 	}
@@ -241,9 +253,15 @@ enum ITEM_ID
 	grass,
 	stone,
 	
+	coal,
 	copper,
+	iron,
 	silver,
 	gold,
+	ruby,
+	sapphire,
+	emerald,
+	diamond,
 	last_ore,
 	
 	enemy_parts,
@@ -342,9 +360,15 @@ function init_player()
 }
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
-global.ore_distribution[ITEM_ID.copper] = { high: 7000, low: 8000 };
-global.ore_distribution[ITEM_ID.silver] = { high: 6000, low: 7200 };
-global.ore_distribution[ITEM_ID.gold] =   { high: 0, low: 6500 };
+global.ore_distribution[ITEM_ID.coal] =   { high: 7000, low: 8000 };
+global.ore_distribution[ITEM_ID.copper] = { high: 6500, low: 7500 };
+global.ore_distribution[ITEM_ID.silver] = { high: 6000, low: 7000 };
+global.ore_distribution[ITEM_ID.gold] =   { high: 5500, low: 6500 };
+global.ore_distribution[ITEM_ID.sapphire] =   { high: 4500, low: 5500 };
+global.ore_distribution[ITEM_ID.ruby] =   { high: 3500, low: 4500 };
+global.ore_distribution[ITEM_ID.emerald] =   { high: 2500, low: 3500 };
+global.ore_distribution[ITEM_ID.diamond] =   { high: 1500, low: 2500 };
+
 
 
 function choose_ore(y)
@@ -353,7 +377,7 @@ function choose_ore(y)
 	
 	for (var _i = ITEM_ID.last_ore-1; _i > ITEM_ID.stone; _i--)
 	{
-		if (y > _g[_i].high && y <= irandom_range(_g[_i].high, _g[_i].low))
+		if (y < _g[_i].low && y <= irandom_range(_g[_i].high, _g[_i].low))
 			return _i;	
 	}
 	

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_copper",
-    "path": "sprites/spr_copper/spr_copper.yy",
+    "name": "spr_coal",
+    "path": "sprites/spr_coal/spr_coal.yy",
   },
   "solid": false,
   "visible": true,
@@ -27,15 +27,15 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"ITEMID.copper","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"hp","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"ITEMID.coal","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hp","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Tiles",
     "path": "folders/Objects/Tiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_copper",
+  "name": "obj_coal",
   "tags": [],
   "resourceType": "GMObject",
 }
