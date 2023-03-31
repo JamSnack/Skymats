@@ -76,7 +76,7 @@ function sync_chunks()
 {
 	if (!global.is_host)
 	{
-		instance_create_layer(x, y, "Instances", obj_client_request_chunk);
+		/*instance_create_layer(x, y, "Instances", obj_client_request_chunk);
 		instance_create_layer(x, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		instance_create_layer(x, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		instance_create_layer(x+CHUNK_WIDTH, y, "Instances", obj_client_request_chunk);
