@@ -130,12 +130,13 @@ function get_item_value(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass:  { return  1; } break;
-		case ITEM_ID.stone:  { return  1; } break;
-		case ITEM_ID.copper: { return  3; } break;
-		case ITEM_ID.silver: { return  4; } break;
-		case ITEM_ID.gold:   { return  8; } break;
-		default:			 { return -1; } break;
+		case ITEM_ID.grass:		  { return  1; } break;
+		case ITEM_ID.stone:		  { return  1; } break;
+		case ITEM_ID.copper:	  { return  3; } break;
+		case ITEM_ID.silver:	  { return  4; } break;
+		case ITEM_ID.gold:		  { return  7; } break;
+		case ITEM_ID.enemy_parts: { return  5; } break;
+		default:				  { return -1; } break;
 	}
 }
 
@@ -243,8 +244,9 @@ enum ITEM_ID
 	copper,
 	silver,
 	gold,
+	last_ore,
 	
-	last_ore
+	enemy_parts,
 }
 
 
