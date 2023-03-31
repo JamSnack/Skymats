@@ -23,12 +23,17 @@ else
 }
 
 //Enemy spawning
-if ((room == Room1 || room == rm_small) && global.is_host)
-{
+if ((room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
+{	
+	var _p = irandom(instance_number(PLAYER)-1);
+	var player = instance_find(PLAYER, _p);
+	var _y = player.y;
+	var _x = player.x;
+	
 	if (enemy_spawn_delay <= 0)
 	{
 		enemy_spawn_delay = 60*60*irandom_range(1,2);
-		instance_create_layer(0, room_height-100, "Instances", obj_vector_weevil);
+		instance_create_layer(_x, _y-CHUNK_HEIGHT*2, "Instances", obj_vector_weevil);
 	}
 	else enemy_spawn_delay--;
 	
@@ -36,7 +41,7 @@ if ((room == Room1 || room == rm_small) && global.is_host)
 	var _r = irandom(99999);
 	
 	if (_r > 0 && _r < 80)
-		instance_create_layer(random(room_width), room_height-100, "Instances", obj_balloonimal);
+		instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), room_height-100, "Instances", obj_balloonimal);
 }
 
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
