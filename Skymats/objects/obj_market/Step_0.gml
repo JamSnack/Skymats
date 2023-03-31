@@ -7,6 +7,9 @@ if (instance_exists(obj_player))
 	
 	if (_p != noone)
 	{
+		if (global.inventory.held_value > 0)
+			obj_chat_box.add("[c_lime]" + string(global.inventory.held_value) + " wealth acquired.");
+		
 		//Accrue wealth
 		for (var _i = 0; _i < global.inventory.size; _i++)
 		{
@@ -14,11 +17,15 @@ if (instance_exists(obj_player))
 			
 			if (!_slot.isEmpty() && _slot.amount > 0)
 			{
+				var _gains=_slot.amount*get_item_value(_slot.item_id);
+				
 				//Create wealth
-				_p.gold += _slot.amount*get_item_value(_slot.item_id);
+				_p.gold += _gains;
+				
 				
 				//reset slot
 				global.inventory.deleteItemAtSlot(_i);
+				global.inventory.held_value = 0;
 			}
 		}
 		

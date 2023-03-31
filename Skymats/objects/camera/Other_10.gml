@@ -1,4 +1,7 @@
 /// @description Deactivate Tiles
+if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
+	exit;
+
 last_chunk_x = x;
 last_chunk_y = y;
 
@@ -8,3 +11,9 @@ instance_deactivate_object(TILE);
 //Reactivate tiles around the player
 var _boundary = boundary_size*2;
 instance_activate_region(last_chunk_x-_boundary, last_chunk_y-_boundary, _boundary*2, _boundary*2, true);
+
+with (ENEMY)
+{
+	var _boundary = 16*4;
+	instance_activate_region(x-_boundary, y-_boundary, _boundary, _boundary, true);
+}

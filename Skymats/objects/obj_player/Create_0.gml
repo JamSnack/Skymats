@@ -6,7 +6,7 @@ hmove = 0;
 max_walkspeed = 3;
 position_update_delay = 10;
 client_can_place_tile = true;
-gold = 99999;
+gold = 0;
 
 //Grappling
 grapple_point_x = 0;
@@ -49,3 +49,6 @@ init_player();
 
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);
+current_level = 0;
+
+obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");

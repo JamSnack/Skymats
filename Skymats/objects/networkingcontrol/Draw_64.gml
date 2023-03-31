@@ -4,7 +4,7 @@
 var _w = display_get_gui_width();
 var _h = display_get_gui_height();
 
-draw_text(600, 10, 
+draw_text(1100, 10, 
 	"Socket_list size: " + string(ds_list_size(global.socket_list)) + "\n" +
 	"Client ID: " + string(global.client_id) + "\n" +
 	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk))

@@ -38,4 +38,23 @@ if (inventory_open_animation > 0)
 			draw_text(_x + ((j*(_size + _offset)) - (column*(_size + _offset)))*inventory_open_evaluated, _y + column*(_offset), string(_item.amount));
 		}
 	}
+	
+	//Draw held value and level
+	draw_text_scribble(_x, _y - 20, "[c_white]Value of Stash: [c_lime]" + string(global.inventory.held_value));
+}
+
+//Draw compass
+draw_sprite_stretched(spr_compass, 0, 455, 0, 455, 16);
+draw_sprite(spr_ui_market, 0, 455+ 455/2, 0);
+
+if (instance_exists(obj_player))
+	draw_sprite(spr_ui_player1, 0, 455 + 455*(obj_player.x/room_width), 0);
+
+if (instance_exists(obj_player_dummy))
+{
+	for (var _i = 0; _i < instance_number(obj_player_dummy); _i++)
+	{
+		var _d = instance_find(obj_player_dummy, _i);
+		draw_sprite(spr_ui_player2, 0, 455 + 455*(_d.x/room_width), 0);
+	}
 }

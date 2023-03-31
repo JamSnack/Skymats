@@ -10,6 +10,8 @@ switch(t)
 		//Start sending world data
 		instance_create_layer(0, room_height, "Instances", obj_multiplayer_world_loader, {target_socket: _sock});
 		
+		obj_chat_box.add("Somebody connected!");
+		
 		show_debug_message("Played connected");
 	}
 	break;
@@ -17,6 +19,12 @@ switch(t)
 	case network_type_disconnect:
 	{
 		ds_list_delete(global.socket_list, ds_list_find_index(global.socket_list, async_load[? "socket"]));
+		
+		if (instance_exists(obj_player_dummy))
+			with (obj_player_dummy) 
+				if (connected_socket == async_load[? "socket"])
+					{ instance_destroy(); break; }
+			
 		show_debug_message("Played disconnected");
 	}
 	break;

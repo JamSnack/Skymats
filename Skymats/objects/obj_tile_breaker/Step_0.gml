@@ -8,7 +8,7 @@ if time > 60*1
 	{
 		with _c 
 		{
-			hp -= damage;
+			hp -= other.damage;
 			
 			if (hp <= 0)
 			{

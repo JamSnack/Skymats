@@ -12,3 +12,6 @@ global.multiplayer = false; //Whether or not we are now allowed to transmit pack
 global.game_state = "PLAY";
 
 enemy_spawn_delay = 0;
+loading_world = false;
+
+chat_animation = 1;

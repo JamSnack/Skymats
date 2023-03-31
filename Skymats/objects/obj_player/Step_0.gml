@@ -46,8 +46,9 @@ if (grappling)
 	grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
 	
 	//Keep hook on moving enemies
-	if (instance_exists(grappling_to) && grappling_to.object_index == ENEMY)
+	if (instance_exists(grappling_to) && object_get_parent(grappling_to.object_index) == ENEMY)
 	{
+		show_debug_message("Hooking a mob");
 		grapple_point_x = grappling_to.x;
 		grapple_point_y = grappling_to.y;
 	}
@@ -195,7 +196,7 @@ if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 		vspd = approach(vspd, 0, 0.175);
 	
 	jetpack_fuel -= 1;
-	show_debug_message(stat_jetpack_strength);
+	//show_debug_message(stat_jetpack_strength);
 	jetpack_regen_cooldown = stat_jetpack_cooldown;
 	motion_add_custom(90, stat_jetpack_strength);
 }
@@ -222,21 +223,24 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 	//Hit the nearby mob
 	if (_e != noone)
 	{
-		//Weapon dooldown
-		weapon_cooldown = stat_weapon_cooldown;
-		
-		//knockback direction
-		var dir_knock = point_direction(x, y, _e.x, _e.y);
-		
-		//Deal damage and apply knockback
-		if (global.is_host)
+		if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
 		{
-			hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
-		}
-		else send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
+			//Weapon dooldown
+			weapon_cooldown = stat_weapon_cooldown;
 		
-		//Hit effect
-		instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+			//knockback direction
+			var dir_knock = point_direction(x, y, _e.x, _e.y);
+		
+			//Deal damage and apply knockback
+			if (global.is_host)
+			{
+				hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
+			}
+			else send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
+		
+			//Hit effect
+			instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+		}
 	}
 }
 
@@ -244,8 +248,9 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 if (hp <= 0)
 {
 	hp = max_hp;
-	x = 1432;
-	y = 3392;
+	x = obj_market.x;
+	y = obj_market.y;
+	obj_chat_box.add("[c_red]Someone died!");
 }
 
 //Send coordinates

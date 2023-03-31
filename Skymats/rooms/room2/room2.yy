@@ -52,8 +52,9 @@
         {"properties":[
             {"propertyId":{"name":"upgrade_id","path":"objects/obj_upgrade_button/obj_upgrade_button.yy",},"objectId":{"name":"obj_upgrade_button","path":"objects/obj_upgrade_button/obj_upgrade_button.yy",},"value":"13","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
           ],"isDnd":false,"objectId":{"name":"obj_upgrade_button","path":"objects/obj_upgrade_button/obj_upgrade_button.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":46.375,"scaleY":1.7824075,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":966.0,"y":359.35187,"resourceVersion":"1.0","name":"inst_12CB15E9","tags":[],"resourceType":"GMRInstance",},
-      ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
-    {"depth":100,"visible":true,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":"_effect_windblown_particles","properties":[
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_chat_box","path":"objects/obj_chat_box/obj_chat_box.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":4.0,"y":524.0,"resourceVersion":"1.0","name":"inst_682A4DF8","tags":[],"resourceType":"GMRInstance",},
+      ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":4,"gridY":4,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
+    {"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":"_effect_windblown_particles","properties":[
         {"type":2,"name":"param_sprite","value":"_effect_windblown_particles_leaf_sprite",},
         {"type":0,"name":"param_num_particles","value":"66",},
         {"type":0,"name":"param_particle_spawn_time","value":"100",},
@@ -149,6 +150,7 @@
     {"name":"inst_3450F420","path":"rooms/Room2/Room2.yy",},
     {"name":"inst_2FBA473","path":"rooms/Room2/Room2.yy",},
     {"name":"inst_12CB15E9","path":"rooms/Room2/Room2.yy",},
+    {"name":"inst_682A4DF8","path":"rooms/Room2/Room2.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

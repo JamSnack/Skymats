@@ -7,3 +7,4 @@ collision_list = ds_list_create();
 collision_list_size = 0;
 
 packet_string = "";
+packet_batch = buffer_create(128, buffer_grow, 1);

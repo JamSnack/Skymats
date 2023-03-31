@@ -48,10 +48,9 @@ function calculate_collisions()
 			x += _h;
 		}
 	
-		hspd = 0;
+		hspd = -hspd*bounciness;
 	}
-
-	x += hspd;
+	else x += hspd;
 
 	//Vertcial Collision
 	if (collision_rectangle(bbox_left, bbox_top + vspd, bbox_right, bbox_bottom + vspd, OBSTA, false, true) != noone)
@@ -63,10 +62,8 @@ function calculate_collisions()
 			y += _v;
 		}
 	
-		vspd = 0;
-	}
-
-	y += vspd;	
+		vspd = -vspd*bounciness;
+	} else y += vspd;	
 }
 
 function clamp_speed(min_hspd, max_hspd, min_vspd, max_vspd)
@@ -134,9 +131,9 @@ function get_item_value(item_id)
 	switch item_id
 	{
 		case ITEM_ID.grass:  { return  1; } break;
-		case ITEM_ID.stone:  { return  2; } break;
-		case ITEM_ID.copper: { return  4; } break;
-		case ITEM_ID.silver: { return  5; } break;
+		case ITEM_ID.stone:  { return  1; } break;
+		case ITEM_ID.copper: { return  3; } break;
+		case ITEM_ID.silver: { return  4; } break;
 		case ITEM_ID.gold:   { return  8; } break;
 		default:			 { return -1; } break;
 	}
@@ -280,7 +277,7 @@ function get_upgrade_cost(upgrade_id)
 		var _up = obj_player.upgrades_purchased[upgrade_id];
 		
 		switch (upgrade_id)
-		{
+		{/*
 			case UPGRADE.grapple_range:		{ return power(5, _up); } break;
 			case UPGRADE.grapple_travel:	{ return power(5, _up); } break;
 			case UPGRADE.grapple_strength:  { return power(5, _up); } break;
@@ -297,8 +294,8 @@ function get_upgrade_cost(upgrade_id)
 			case UPGRADE.weapon_damage:		{ return power(5, _up); } break;
 			case UPGRADE.weapon_range:		{ return power(5, _up); } break;
 			case UPGRADE.weapon_knockback:  { return power(5, _up); } break;
-			
-			default: { return 1337; } break;
+			*/
+			default: { return 5 + 25*(_up*(_up-1)) + power(3, _up-1); } break;
 		}
 	}
 	else return noone;
@@ -316,7 +313,7 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = 6 + 2*_up; } break;
 			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = 0.25 + 0.05*_up; } break;
 											 
-			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = _up; } break;
+			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 4*_up; } break;
 											 
 			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*30; } break;
@@ -344,7 +341,7 @@ function init_player()
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
 global.ore_distribution[ITEM_ID.copper] = { high: 7000, low: 8000 };
-global.ore_distribution[ITEM_ID.silver] = { high: 6500, low: 7500 };
+global.ore_distribution[ITEM_ID.silver] = { high: 6000, low: 7200 };
 global.ore_distribution[ITEM_ID.gold] =   { high: 0, low: 6500 };
 
 
@@ -354,9 +351,9 @@ function choose_ore(y)
 	
 	for (var _i = ITEM_ID.last_ore-1; _i > ITEM_ID.stone; _i--)
 	{
-		if (y > _g[_i].high && y < _g[_i].low && y < irandom_range(_g[_i].high, _g[_i].low))
+		if (y > _g[_i].high && y <= irandom_range(_g[_i].high, _g[_i].low))
 			return _i;	
 	}
 	
-	return ITEM_ID.grass;
+	return ITEM_ID.stone;
 }

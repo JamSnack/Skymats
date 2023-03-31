@@ -8,11 +8,13 @@ if (!global.is_host || target_socket == -1)
 
 //Create a buffer to use later
 if (packet_string = "")
+{
 	packet_string = "{\"cmd\": \"create_chunk\", \"x\": " + string(x) + ", \"y\":" + string(y) + ", \"tiles\": [";
+	
+	//Activate a chunk
+	instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
+}
 //buffer_write(packet_batch, buffer_text, json_stringify({cmd: "create_chunk"}));
-
-//Activate a chunk
-instance_activate_region(x, y, x + boundary_width, y + boundary_height, true);
 
 //Figure out what's in it
 if (collision_list_size == 0)
@@ -25,7 +27,7 @@ else
 	//show_debug_message("Sending data... " + string(collision_list_size));
 	var _c = collision_list_size;
 	
-	repeat(_c)
+	repeat(min(_c, 10))
 	{
 		var _ti = collision_list[| --collision_list_size];
 	

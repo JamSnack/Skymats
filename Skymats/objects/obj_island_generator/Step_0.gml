@@ -17,22 +17,26 @@ else if (time > (width/3)*2)
 
 //create an island, column-by-column
 for (var i = 0; i < column_height; i++)
-{
-	//select tile type to place
-	var _obj = obj_grass;
+{	
+	var _c = collision_point(current_x, current_y + 16*i, TILE, false, true);
 	
-	if (irandom(2) + i > 4)
+	if (_c == noone)
 	{
-		_obj = obj_stone;	
-	}
 	
-	//place tile
-	instance_create_layer(current_x, current_y + 16*i, "Instances", _obj);
+		//select tile type to place
+		var _obj = obj_grass;
 	
-	if (cutoff_start == 0 && cutoff_end == 0 && irandom(60) == 3 && (current_y + 16*i) > 7 )
-	{
-		var chosen_ore = choose_ore(current_y);
-		instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
+		if (irandom(2) + i > 4)
+			_obj = obj_stone;
+	
+		//place tile
+		instance_create_layer(current_x, current_y + 16*i, "Instances", _obj);
+	
+		if (cutoff_start == 0 && cutoff_end == 0 && irandom(60) == 3 && (current_y + 16*i) > 7 )
+		{
+			var chosen_ore = choose_ore(current_y);
+			instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
+		}
 	}
 }
 

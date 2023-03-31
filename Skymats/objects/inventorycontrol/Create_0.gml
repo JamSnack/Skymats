@@ -6,6 +6,7 @@ global.inventory = {
 	contents    : array_create(40, 0),
 	size        : 10,
 	selected_slot : -1,
+	held_value: 0,
 	
 	deleteItemAtSlot : function(slot) {
 		delete contents[slot];
@@ -50,8 +51,9 @@ global.inventory = {
 		{
 			contents[_f].item_id = _item_id;
 			contents[_f].amount = _amount;
+			return true;
 			//obj_player.weight += _amount/10; //TODO: Replace this with an encumberance mechanic. Probably some add_weight() function that uses a player's capacity stat
-		}
+		} else return false;
 	},
 	
 	addItem : function(_name, _item_id, _amount) {
@@ -62,11 +64,13 @@ global.inventory = {
 			{
 				contents[i].amount += _amount;
 				//obj_player.weight += _amount/10;
+				held_value += get_item_value(_item_id)*_amount;
 				return i;
 			}
 		}
 		
-		createItem(_name, _item_id, _amount);
+		if (createItem(_name, _item_id, _amount))
+			held_value += get_item_value(_item_id)*_amount;
 	}
 	
 }

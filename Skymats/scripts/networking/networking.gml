@@ -124,7 +124,7 @@ function handle_data(data)
 				
 				instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
-				instance_create_layer(_x, _y, "Instances", obj_tile_breaker);
+				instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {damage: 999});
 			}
 			break;
 			
@@ -349,6 +349,8 @@ function handle_data(data)
 				}*/
 			}
 			break;
+			
+			case "chat": { obj_chat_box.add(parsed_data.text); } break;
 			
 			default: { show_debug_message("data received: " + parsed_data.cmd); }
 		}
