@@ -7,13 +7,13 @@ if (room == Room2)
 	{
 		loading_world = true;
 		event_user(0);
-		room_goto(rm_small);
+		room_goto(Room1);
 	}
 	else if (keyboard_check_released(vk_numpad2))
 	{
 		loading_world = true;
 		event_user(1);
-		room_goto(rm_small);
+		room_goto(Room1);
 	}
 }
 else
