@@ -365,8 +365,8 @@ global.ore_distribution[ITEM_ID.copper] =     { high: 6500, low: 7500 };
 global.ore_distribution[ITEM_ID.iron] =		  { high: 6000, low: 7000 };
 global.ore_distribution[ITEM_ID.silver] =     { high: 5000, low: 6500 };
 global.ore_distribution[ITEM_ID.gold] =       { high: 4500, low: 5500 };
-global.ore_distribution[ITEM_ID.sapphire] =   { high: 3500, low: 4500 };
-global.ore_distribution[ITEM_ID.ruby] =       { high: 2500, low: 3500 };
+global.ore_distribution[ITEM_ID.ruby] =   { high: 3500, low: 4500 };
+global.ore_distribution[ITEM_ID.sapphire] =       { high: 2500, low: 3500 };
 global.ore_distribution[ITEM_ID.emerald] =    { high: 1500, low: 2500 };
 global.ore_distribution[ITEM_ID.diamond] =    { high: 500, low: 1500 };
 
