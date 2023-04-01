@@ -7,8 +7,8 @@
 #macro WORLD_BOUND_TOP 0
 #macro WORLD_BOUND_BOTTOM room_height
 
-#macro CHUNK_WIDTH 1593
-#macro CHUNK_HEIGHT 768
+#macro CHUNK_WIDTH 683
+#macro CHUNK_HEIGHT 384
 
 function approach(a, b, amt)
 {

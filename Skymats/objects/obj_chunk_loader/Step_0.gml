@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 //Keep tiles active here
-instance_activate_region(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT, true);
+instance_activate_region(x, y, CHUNK_WIDTH, CHUNK_HEIGHT, true);
 
 //stuff
 var _a = tiles_size//(instant == true) ? tiles_size : 10

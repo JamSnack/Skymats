@@ -6,21 +6,28 @@ if time > 60*1
 	
 	if (_c != noone)
 	{
-		with _c 
-		{
-			hp -= other.damage;
-			
-			if (hp <= 0)
-			{
-				if (other.drop_item)
-					event_user(0);
-				
-				instance_destroy();
-			}
-		}
-		
 		if (global.is_host)
+		{
+			with _c 
+			{
+				hp -= other.damage;
+			
+				if (hp <= 0)
+				{
+					if (other.drop_item)
+						event_user(0);
+				
+					instance_destroy();
+				}
+			}
+			
 			instance_destroy();
+		}
+		else
+		{
+			with _c
+				instance_destroy();
+		}
 	}
 	
 	time = 0;	

@@ -3,15 +3,16 @@
 
 var _w = display_get_gui_width();
 var _h = display_get_gui_height();
-/*
+
 draw_text(1100, 10, 
 	"Socket_list size: " + string(ds_list_size(global.socket_list)) + "\n" +
 	"Client ID: " + string(global.client_id) + "\n" +
-	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk))
+	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk)) + "\n" +
+	"Tiles: " + string(instance_number(TILE))
 
 
 );
-*/
+
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 {
 	draw_set_alpha(0.5);

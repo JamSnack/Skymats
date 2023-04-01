@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-time = 60;
-lifetime = 60*2;
+//Activate new chunks
+//with camera
+//	event_user(0);
