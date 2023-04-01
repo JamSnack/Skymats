@@ -27,6 +27,7 @@ if (key_up && collision_rectangle(bbox_left, bbox_top+2, bbox_right, bbox_bottom
 {
 	//vspd = -2.5;
 	motion_add_custom(90, 2.5);
+	audio_play_standard(snd_jump, 9, false, true);
 }
 
 //Collision

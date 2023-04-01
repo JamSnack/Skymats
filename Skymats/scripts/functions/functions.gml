@@ -24,6 +24,15 @@ function sync_position()
 	y = lerp(y, target_y, 0.33);
 }
 
+function audio_play_standard(sound, priority, loops, overwrites=false)
+{
+	if (overwrites)
+		if (audio_is_playing(sound))
+			audio_stop_sound(sound);
+	
+	audio_play_sound(sound, priority, loops);
+}
+
 function hurt_enemy(inst, k_direction, k_amt, damage)
 {
 	if (instance_exists(inst))

@@ -172,7 +172,7 @@ function handle_data(data)
 				}
 					
 				if (create_new)
-					instance_create_layer(_x, _y, "Instances", obj_item, {connected_id: _id, image_index: _item_id, item_id: _item_id})	
+					instance_create_layer(_x, _y, "Instances", obj_item, {connected_id: _id, image_index: _item_id, item_id: _item_id, target_x: _x, target_y: _y})	
 			}
 			break;
 			

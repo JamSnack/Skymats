@@ -19,7 +19,6 @@ if (global.is_host)
 		//Collect
 		if (_dist < 4)
 		{
-			//TODO: add item to inventory based on whether or not dummy collected it
 			if (_p.object_index == obj_player)
 			{		
 				global.inventory.addItem("", item_id, 1);
@@ -43,4 +42,11 @@ if (global.is_host)
 else
 {
 	sync_position();
+	
+	if (x == xprevious && y == yprevious)
+		lifetime--;
+	else lifetime = 30;
+	
+	if lifetime <= 0
+		instance_destroy();
 }
