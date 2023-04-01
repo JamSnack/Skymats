@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+randomize();
 
 //networking
 global.socket_list = ds_list_create();
@@ -16,7 +17,5 @@ loading_world = false;
 island_generators = 32;
 
 load_timer = 30;
-
-chat_animation = 1;
 
 room_goto(rm_menu);
