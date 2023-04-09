@@ -26,9 +26,6 @@ else
 		instance_destroy();
 }
 
-//Clamp speed
-clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);
-
 //Check for damage outside of global.is_host condition
 var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
 	

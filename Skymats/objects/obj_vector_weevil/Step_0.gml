@@ -11,6 +11,9 @@ if (global.is_host)
 	//Check for death
 	if (hp <= 0)
 		instance_destroy();
+	
+	//Speed clamp
+	clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);
 }
 
 event_inherited();

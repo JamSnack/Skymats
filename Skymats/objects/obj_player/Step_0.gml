@@ -123,7 +123,7 @@ grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
 
 //Control angle
 if (grapple_is_launching || grappling)
-	draw_angle = lerp(draw_angle, grapple_direction-90, 0.25);
+	draw_angle = lerp(draw_angle, point_direction(x, y, grapple_point_x, grapple_point_y)-90, 0.25);
 else if (vspd > 2)
 	draw_angle = lerp(draw_angle, point_direction(x, y, x+hspd, y+vspd)-90, 0.1);
 else
@@ -154,6 +154,7 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 	{
 		if (global.is_host)
 		{
+			//Hurt the tile and destroy it with server authority
 			with _tile
 			{
 				hp -= other.stat_mine_level;
@@ -167,6 +168,10 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 		}
 		else if (global.multiplayer)
 		{
+			//Hurt the tile for visual purposes
+			with _tile
+				hp -= other.stat_mine_level;
+				
 			send_data({cmd: "request_tile_hit", damage: stat_mine_level, x: mouse_x, y: mouse_y});	
 		}
 		
@@ -274,3 +279,34 @@ else if position_update_delay > 0
 	
 //clamp speeds
 clamp_speed(-32, 32, -32, 32);
+
+//Sprite control
+if (grapple_is_launching)
+{
+	sprite_index = spr_player_hook;
+	image_index = lerp(image_index, 5, 0.1);
+}
+else if (grappling)
+{
+	sprite_index = spr_player_hook;
+	image_index = 5;
+}
+else if (on_ground && hspd != 0)
+{
+	sprite_index = spr_player_run;
+	image_speed = hspd/2;
+}
+else if (!on_ground)
+{
+	if (vspd < 0)
+	{
+		sprite_index = spr_player_jump;
+		image_index = lerp(image_index, 5, 0.1);
+	}
+	else
+	{
+		sprite_index = spr_player_fall;
+		image_speed = vspd/2;
+	}
+}
+else sprite_index = spr_player_idle;

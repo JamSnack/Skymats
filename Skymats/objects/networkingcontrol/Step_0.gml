@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (global.multiplayer == false && keyboard_check_released(vk_numpad1))
+if (global.multiplayer == false && keyboard_check_released(vk_f1))
 {
 	event_user(0);
 	//room_goto(Room1);

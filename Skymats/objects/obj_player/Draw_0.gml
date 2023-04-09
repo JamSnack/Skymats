@@ -1,5 +1,4 @@
 /// @description Insert description here
-draw_sprite_ext(spr_player, 0, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
 
 //Sword
 //draw_sprite_ext(spr_sword, 0, x, y, 1, 1, sword_angle, c_white, 1);
@@ -27,6 +26,7 @@ if (weapon_cooldown > 0)
 }
 
 //Tile placement
+/*
 var _x = get_coordinate_on_world_grid(mouse_x+8);
 var _y = get_coordinate_on_world_grid(mouse_y+8);
 
@@ -36,3 +36,7 @@ if (global.inventory.selected_slot != -1 && distance_to_point(_x, _y) < 16*5 && 
 }
 else if (global.inventory.selected_slot != -1)
 	draw_sprite(spr_place_no_item, current_time/100, _x, _y);
+*/
+	
+//Draw player
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
