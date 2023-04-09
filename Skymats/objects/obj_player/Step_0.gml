@@ -121,6 +121,14 @@ if (grapple_launch_length > stat_grapple_range)
 
 grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
 
+//Control angle
+if (grapple_is_launching || grappling)
+	draw_angle = lerp(draw_angle, grapple_direction-90, 0.25);
+else if (vspd > 2)
+	draw_angle = lerp(draw_angle, point_direction(x, y, x+hspd, y+vspd)-90, 0.1);
+else
+	draw_angle = lerp(draw_angle, 0, 0.2);
+	
 
 //Stay in-bounds
 if (x > WORLD_BOUND_RIGHT)

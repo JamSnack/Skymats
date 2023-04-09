@@ -1,5 +1,5 @@
 /// @description Insert description here
-draw_self();
+draw_sprite_ext(spr_player, 0, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
 
 //Sword
 //draw_sprite_ext(spr_sword, 0, x, y, 1, 1, sword_angle, c_white, 1);

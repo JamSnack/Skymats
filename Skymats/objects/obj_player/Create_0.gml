@@ -18,6 +18,7 @@ grapple_is_launching = false;
 grapple_launch_length = 0;
 false_angle = image_angle;
 grapple_direction = 0;
+draw_angle = 0;
 
 //Mine
 mine_cooldown = 0;

@@ -74,6 +74,7 @@
     {"id":{"name":"obj_chunk_loader","path":"objects/obj_chunk_loader/obj_chunk_loader.yy",},"order":2,},
     {"id":{"name":"spr_ui_black_background","path":"sprites/spr_ui_black_background/spr_ui_black_background.yy",},"order":5,},
     {"id":{"name":"__scribble_system","path":"scripts/__scribble_system/__scribble_system.yy",},"order":10,},
+    {"id":{"name":"spr_break_tile","path":"sprites/spr_break_tile/spr_break_tile.yy",},"order":9,},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},"order":0,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":1,},
     {"id":{"name":"string_height_scribble","path":"scripts/string_height_scribble/string_height_scribble.yy",},"order":2,},
