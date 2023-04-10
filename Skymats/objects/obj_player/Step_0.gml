@@ -106,7 +106,7 @@ if (grapple_is_launching)
 	else
 	{
 		grapple_point_x += lengthdir_x(grapple_speed, grapple_direction);
-		grapple_point_y += lengthdir_y(grapple_speed, grapple_direction);		
+		grapple_point_y += lengthdir_y(grapple_speed, grapple_direction);	
 	}
 }
 else if (!grappling)

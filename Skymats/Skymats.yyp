@@ -57,7 +57,7 @@
     {"id":{"name":"hitbox_none","path":"sprites/hitbox_none/hitbox_none.yy",},"order":6,},
     {"id":{"name":"spr_items","path":"sprites/spr_items/spr_items.yy",},"order":2,},
     {"id":{"name":"obj_tile_breaker","path":"objects/obj_tile_breaker/obj_tile_breaker.yy",},"order":17,},
-    {"id":{"name":"inventoryControl","path":"objects/inventoryControl/inventoryControl.yy",},"order":3,},
+    {"id":{"name":"clientControl","path":"objects/clientControl/clientControl.yy",},"order":3,},
     {"id":{"name":"__scribble_get_macros_map","path":"scripts/__scribble_get_macros_map/__scribble_get_macros_map.yy",},"order":13,},
     {"id":{"name":"__scribble_class_typist","path":"scripts/__scribble_class_typist/__scribble_class_typist.yy",},"order":6,},
     {"id":{"name":"string_height_scribble_ext","path":"scripts/string_height_scribble_ext/string_height_scribble_ext.yy",},"order":3,},
