@@ -1,5 +1,5 @@
 /// @description
-depth = 999;
+depth = 99;
 
 //Init inventory
 //Fill inventory with emptiness

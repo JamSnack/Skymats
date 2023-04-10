@@ -393,3 +393,65 @@ function choose_ore(y)
 	
 	return ITEM_ID.stone;
 }
+
+
+function get_background_colors(height)
+{
+	//Color 1 is higher than Color 2.
+	//As the player falls, Color 1 will approach Color 2.
+	//As the player rises, Color 2 will approach Color 1.
+	if (height <= 8000 && height > 7000)
+		return [[86/255, 135/255, 1.0, 1.0], [86/255, 135/255, 1.0, 1.0]]; //Void to Tier 1
+	else if (height <= 7000 && height > 6000)
+		return [[89/255, 113/255, 249/255, 1.0], [86/255, 135/255, 1.0, 1.0]]; //Tier 1 to Tier 1
+	else if (height <= 6000 && height > 5000)
+		return [[255/255, 248/255, 127/255, 1.0], [89/255, 113/255, 249/255, 1.0]]; //Tier 1 to Tier 2
+	else if (height <= 5000 && height > 4000)
+		return [[225/255, 124/255, 10/255, 1.0], [255/255, 248/255, 127/255, 1.0]]; //Tier 2 to Tier 2.1
+	else if (height <= 4000 && height > 3000)
+		return [[168/255, 0, 56/255, 1.0],[225/255, 124/255, 10/255, 1.0]]; //Tier 2.1 to Tier 2.2
+	else if (height <= 3000 && height > 2000)
+		return [[225/255, 124/255, 10/255, 1.0], [0.0, 1/255, 20/255, 1.0]]; //Tier 2.2 to Space
+	else if (height <= 2000 && height > 1000)
+		return [[0.0, 1/255, 20/255, 1.0],[0.0, 0, 0, 1.0]]; //Space to Deep Space
+	else if (height <= 1000 && height > 0)
+		return [[0.0, 0, 0, 1.0],[0.75, 0.75, 0.75, 1.0]]; //Deep Space to Sky
+	
+	//Default colors
+	return [[86/255, 135/255, 1.0, 1.0],[0.0, 0.0, 0.1, 1.0]]; //Void
+}
+
+function draw_shadow(sprite_index, image_index, x_offset, y_offset, image_xscale, image_yscale, image_angle, color, image_alpha)
+{
+	draw_sprite_ext(sprite_index, image_index, x + x_offset, y + y_offset, image_xscale, image_yscale, image_angle, color, image_alpha);
+}
+
+function create_shadow()
+{
+	var shadow = layer_sprite_create("Shadows", x+2, y+2, sprite_index);
+	layer_sprite_alpha(shadow, 0.5);
+	layer_sprite_blend(shadow, c_black);
+	layer_sprite_index(shadow, image_index);
+	
+	return shadow;
+}
+
+function destroy_shadow(shadow)
+{
+	if (layer_sprite_exists("Shadows", shadow))
+		layer_sprite_destroy(shadow);
+}
+
+function update_shadow(shadow)
+{
+	if (layer_sprite_exists("Shadows", shadow))
+	{
+		layer_sprite_x(shadow, x+2); //assuming offset of 2 for now
+		layer_sprite_y(shadow, y+2);
+		layer_sprite_index(shadow, image_index);
+		layer_sprite_change(shadow, sprite_index);
+		layer_sprite_angle(shadow, image_angle);
+		layer_sprite_xscale(shadow, image_xscale);
+		layer_sprite_yscale(shadow, image_yscale);
+	}
+}

@@ -37,6 +37,6 @@ if (global.inventory.selected_slot != -1 && distance_to_point(_x, _y) < 16*5 && 
 else if (global.inventory.selected_slot != -1)
 	draw_sprite(spr_place_no_item, current_time/100, _x, _y);
 */
-	
+
 //Draw player
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);

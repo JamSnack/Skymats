@@ -140,7 +140,7 @@ if (x < WORLD_BOUND_LEFT)
 if (y < WORLD_BOUND_TOP)
 	motion_add_custom(270, 1);
 	
-if (y > WORLD_BOUND_BOTTOM)
+if (y > WORLD_BOUND_BOTTOM+500)
 	motion_add_custom(90, 1);
 	
 //Tile mininig
@@ -310,3 +310,6 @@ else if (!on_ground)
 	}
 }
 else sprite_index = spr_player_idle;
+
+update_shadow(shadow);
+layer_sprite_angle(shadow, draw_angle); //special for player

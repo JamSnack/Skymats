@@ -123,6 +123,7 @@
     {"id":{"name":"scribble_anim_cycle","path":"scripts/scribble_anim_cycle/scribble_anim_cycle.yy",},"order":1,},
     {"id":{"name":"spr_place_no_item","path":"sprites/spr_place_no_item/spr_place_no_item.yy",},"order":4,},
     {"id":{"name":"__scribble_get_external_sound_map","path":"scripts/__scribble_get_external_sound_map/__scribble_get_external_sound_map.yy",},"order":7,},
+    {"id":{"name":"spr_clouds","path":"sprites/spr_clouds/spr_clouds.yy",},"order":1,},
     {"id":{"name":"spr_player_hook","path":"sprites/spr_player_hook/spr_player_hook.yy",},"order":29,},
     {"id":{"name":"scribble_external_sound_exists","path":"scripts/scribble_external_sound_exists/scribble_external_sound_exists.yy",},"order":2,},
     {"id":{"name":"__scribble_get_buffer_b","path":"scripts/__scribble_get_buffer_b/__scribble_get_buffer_b.yy",},"order":3,},
@@ -145,6 +146,7 @@
     {"id":{"name":"obj_ruby","path":"objects/obj_ruby/obj_ruby.yy",},"order":10,},
     {"id":{"name":"scribble_anim_shake","path":"scripts/scribble_anim_shake/scribble_anim_shake.yy",},"order":6,},
     {"id":{"name":"scribble_anim_wave","path":"scripts/scribble_anim_wave/scribble_anim_wave.yy",},"order":7,},
+    {"id":{"name":"spr_atmosphere","path":"sprites/spr_atmosphere/spr_atmosphere.yy",},"order":0,},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},"order":3,},
     {"id":{"name":"draw_text_scribble_ext","path":"scripts/draw_text_scribble_ext/draw_text_scribble_ext.yy",},"order":1,},
     {"id":{"name":"scribble_markdown_set_styles","path":"scripts/scribble_markdown_set_styles/scribble_markdown_set_styles.yy",},"order":7,},
@@ -253,6 +255,7 @@
     {"folderPath":"folders/Objects/Enemies.yy","order":21,"resourceVersion":"1.0","name":"Enemies","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Ui.yy","order":22,"resourceVersion":"1.0","name":"Ui","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Buttons.yy","order":25,"resourceVersion":"1.0","name":"Buttons","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sprites/Background.yy","order":31,"resourceVersion":"1.0","name":"Background","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

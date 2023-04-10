@@ -49,3 +49,5 @@ if (global.is_host == true && tile_culling_delay <= 0)
 	tile_culling_delay = 0;
 } else if tile_culling_delay > 0
 	tile_culling_delay--;
+	
+event_inherited();
