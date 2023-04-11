@@ -4,7 +4,7 @@
     "path": "sprites/spr_gold/spr_gold.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,

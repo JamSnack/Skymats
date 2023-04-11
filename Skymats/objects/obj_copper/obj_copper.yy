@@ -4,7 +4,7 @@
     "path": "sprites/spr_copper/spr_copper.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,

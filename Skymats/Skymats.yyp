@@ -50,6 +50,7 @@
     {"id":{"name":"__scribble_get_effects_map","path":"scripts/__scribble_get_effects_map/__scribble_get_effects_map.yy",},"order":5,},
     {"id":{"name":"__scribble_gen_10_set_padding_flags","path":"scripts/__scribble_gen_10_set_padding_flags/__scribble_gen_10_set_padding_flags.yy",},"order":1,},
     {"id":{"name":"obj_balloonimal","path":"objects/obj_balloonimal/obj_balloonimal.yy",},"order":2,},
+    {"id":{"name":"tileRenderer","path":"objects/tileRenderer/tileRenderer.yy",},"order":13,},
     {"id":{"name":"__scribble_get_cache_state","path":"scripts/__scribble_get_cache_state/__scribble_get_cache_state.yy",},"order":4,},
     {"id":{"name":"OBSTA","path":"objects/OBSTA/OBSTA.yy",},"order":2,},
     {"id":{"name":"spr_compass","path":"sprites/spr_compass/spr_compass.yy",},"order":6,},

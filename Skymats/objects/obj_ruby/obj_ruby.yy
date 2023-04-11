@@ -4,7 +4,7 @@
     "path": "sprites/spr_ruby/spr_ruby.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,

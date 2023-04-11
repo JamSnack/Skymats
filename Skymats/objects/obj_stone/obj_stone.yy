@@ -4,7 +4,7 @@
     "path": "sprites/spr_stone/spr_stone.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
