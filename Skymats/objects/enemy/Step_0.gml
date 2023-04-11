@@ -41,6 +41,7 @@ if (_c != noone)
 
 //Personal tile culling
 //This should happen because we just deactivated all tiles and we need to make sure enemies don't clip into things
+/*
 if (global.is_host == true && tile_culling_delay <= 0)
 {
 	var _boundary = 16*2;
@@ -49,5 +50,5 @@ if (global.is_host == true && tile_culling_delay <= 0)
 	tile_culling_delay = 0;
 } else if tile_culling_delay > 0
 	tile_culling_delay--;
-	
+*/
 event_inherited();
