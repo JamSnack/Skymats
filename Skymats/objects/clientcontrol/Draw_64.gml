@@ -12,7 +12,7 @@ if (inventory_open_animation > 0)
 	var _offset = 5;
 	var row_size = 10;
 
-	draw_set_color(c_white);
+	//draw_set_color(c_white);
 
 	for (var j = 0; j < global.inventory.size; j++)
 	{
@@ -26,8 +26,9 @@ if (inventory_open_animation > 0)
 		draw_rectangle_color( _x1, _y1, _x2, _y2, c_gray, c_gray, c_gray, c_gray, false);
 						 
 		//Selected slot
+		/*
 		if (global.inventory.selected_slot == j)
-			draw_sprite(spr_ui_selected_slot, current_time/100, _x1, _y1);
+			draw_sprite(spr_ui_selected_slot, current_time/100, _x1, _y1);*/
 				
 		//inventory items
 		var _item = global.inventory.contents[j];
@@ -58,3 +59,8 @@ if (instance_exists(obj_player_dummy))
 		draw_sprite(spr_ui_player2, 0, 455 + 455*(_d.x/room_width), 0);
 	}
 }
+
+//- height
+draw_set_halign(fa_center);
+draw_text(455 + 455/2, 30, "Height: " + string(room_height-round(camera.y)));
+draw_set_halign(fa_left);
