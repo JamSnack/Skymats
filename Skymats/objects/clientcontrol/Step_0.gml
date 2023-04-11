@@ -1,12 +1,22 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//inventory_open_animation = approach(inventory_open_animation, inventory_open, 0.05);
+frame++;
+//TODO: Add frameskip setting
+if (frame mod 10) == 0
+	draw_enable_drawevent(false);
+else draw_enable_drawevent(true);
 
+if (frame > 1000)
+	frame = 0;
+
+//inventory_open_animation = approach(inventory_open_animation, inventory_open, 0.05);
+/*
 if (keyboard_check_released(vk_escape))
 	inventory_open = !inventory_open;
 	
 //Hotbar
+
 //- select nothing
 if (keyboard_check_released(vk_lshift) || keyboard_check_released(vk_rshift))
 	global.inventory.selected_slot = -1;
@@ -32,3 +42,4 @@ else if (keyboard_check_released(ord("8")))
 	global.inventory.selected_slot = 7;
 else if (keyboard_check_released(ord("9")))
 	global.inventory.selected_slot = 8;
+*/
