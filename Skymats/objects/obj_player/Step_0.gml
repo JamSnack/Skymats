@@ -10,7 +10,10 @@ key_up    =  keyboard_check(ord("W"));
 key_right =  keyboard_check(ord("D"));
 
 hmove = (key_right - key_left);
-var on_ground = (collision_point(x, bbox_bottom+1, OBSTA, false, true) != noone);
+var on_ground = false;
+
+if (vspd >= 0)
+	on_ground = (collision_point(x, bbox_bottom+1, OBSTA, false, true) != noone);
 //var vmove = (key_down  -   key_up);
 
 //Increase speed based on movement
@@ -158,6 +161,9 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 			with _tile
 			{
 				hp -= other.stat_mine_level;
+				
+				draw_damage = true;
+				damage = (hp/max_hp)*7;
 				
 				if (hp <= 0)
 				{
