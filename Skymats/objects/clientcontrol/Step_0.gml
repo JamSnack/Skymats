@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 frame++;
-//TODO: Add frameskip setting
+//TODO: Add frameskip subtlety setting
 if (frame mod 10) == 0
 	draw_enable_drawevent(false);
 else draw_enable_drawevent(true);
