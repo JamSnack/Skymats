@@ -9,9 +9,11 @@ if (instance_exists(follow_this))
 
 //update camera
 if (lerped_zoom != zoom)
+{
 	lerped_zoom = lerp(lerped_zoom, zoom, 0.1);
+	camera_set_view_size(local_camera,  view_wport[0]/lerped_zoom, view_hport[0]/lerped_zoom);
+}
 	
-camera_set_view_size(local_camera,  view_wport[0]/lerped_zoom, view_hport[0]/lerped_zoom);
 camera_set_view_pos(local_camera, x - 1366/(2*lerped_zoom), y - 768/(2*lerped_zoom));
 
 /*

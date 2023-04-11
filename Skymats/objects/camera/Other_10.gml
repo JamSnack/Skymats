@@ -12,9 +12,3 @@ if (!instance_exists(obj_multiplayer_world_loader))
 //Reactivate tiles around the player
 var _boundary = boundary_size*2;
 instance_activate_region(last_chunk_x-_boundary, last_chunk_y-_boundary, _boundary*2, _boundary*2, true);
-
-with (ENEMY)
-{
-	var _boundary = 16*4;
-	instance_activate_region(x-_boundary, y-_boundary, _boundary, _boundary, true);
-}
