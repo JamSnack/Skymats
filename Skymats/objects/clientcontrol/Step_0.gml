@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+/*
 frame++;
 //TODO: Add frameskip subtlety setting
 if (frame mod 10) == 0

@@ -45,7 +45,7 @@ if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 	}
 	show_debug_message(instance_number(obj_island_generator));
 } 
-else if (loading_world && (room == Room1 || room == rm_small))
+else if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 {
 	loading_world = false;
 	with camera event_user(0);

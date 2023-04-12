@@ -45,4 +45,7 @@ time++;
 
 //The island is complete
 if (time > width)
+{
 	instance_destroy();
+	instance_deactivate_object(obj_grass);
+}
