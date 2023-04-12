@@ -1,7 +1,13 @@
+if (global.world_seed == -1)
+	exit;
+
 var column_height = height;
 y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2);
 var current_y = y;
 var current_x = x + 16*time;
+
+//Ensure we remain on the world seed.
+random_set_seed(global.world_seed + current_x + current_y);
 
 //Taper ends
 if (time < width/2 && cutoff_start > 0)

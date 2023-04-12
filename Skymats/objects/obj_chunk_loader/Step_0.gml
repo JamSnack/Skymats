@@ -1,9 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//Keep tiles active here
-instance_activate_region(x, y, CHUNK_WIDTH, CHUNK_HEIGHT, true);
-
 //stuff
 var _a = tiles_size//(instant == true) ? tiles_size : 10
 repeat(_a)

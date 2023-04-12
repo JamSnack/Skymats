@@ -93,6 +93,12 @@ function handle_data(data)
 			}
 			break;
 			
+			case "request_world_seed": { send_data({ cmd: "give_world_seed", seed: global.world_seed}); }
+			break;
+			
+			case "give_world_seed": { if (global.world_seed == -1) global.world_seed = parsed_data.seed; } 
+			break;
+			
 			case "player_pos":
 			{
 				var _id = parsed_data.id;

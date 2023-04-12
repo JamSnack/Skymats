@@ -5,5 +5,5 @@ time = 0;
 cutoff_start = floor(width/choose(4,5,6));
 cutoff_end = 0;
 
-if (!global.is_host)
-	instance_destroy();
+//if (!global.is_host)
+//	instance_destroy();

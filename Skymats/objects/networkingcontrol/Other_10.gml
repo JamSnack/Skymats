@@ -1,6 +1,7 @@
 /// @description Host Server
 global.is_host = true;
 global.client_id = 0;
+global.world_seed = random_get_seed();
 
 var port = 6510;
 server = network_create_server(network_socket_tcp, port, 32);

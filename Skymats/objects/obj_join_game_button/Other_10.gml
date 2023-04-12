@@ -4,4 +4,4 @@ event_inherited();
 
 connect_to_server("127.0.0.1", 6510);
 networkingControl.loading_world = true;
-room_goto(Room1);
+room_goto(rm_small);

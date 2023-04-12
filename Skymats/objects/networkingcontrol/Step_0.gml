@@ -9,6 +9,10 @@ if (global.multiplayer == false && keyboard_check_released(vk_f1))
 //Send client id
 if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 	send_data({cmd: "request_client_id"});
+	
+//Send client id
+if (!global.is_host && global.world_seed = -1 && global.multiplayer && current_time mod 10 == 0)
+	send_data({cmd: "request_world_seed"});
 
 //Enemy spawning
 if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
