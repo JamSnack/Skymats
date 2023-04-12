@@ -13,7 +13,7 @@ hmove = (key_right - key_left);
 var on_ground = false;
 
 if (vspd >= 0)
-	on_ground = position_meeting(x, bbox_bottom+1, OBSTA);
+	on_ground = position_meeting(bbox_left, bbox_bottom+1, OBSTA) || position_meeting(bbox_right, bbox_bottom+1, OBSTA);
 //var vmove = (key_down  -   key_up);
 
 //Increase speed based on movement
