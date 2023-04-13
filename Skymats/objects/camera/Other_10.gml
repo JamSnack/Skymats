@@ -16,6 +16,9 @@ instance_activate_region(last_chunk_x-_boundary, last_chunk_y-_boundary, _bounda
 //Keep enemies outside of newely-activated tiles
 with (ENEMY)
 {
+	if (object_index == obj_greed_collector)
+		continue;
+		
 	if (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, TILE, false, true) != noone)
 	{
 		while (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, TILE, false, true) != noone)

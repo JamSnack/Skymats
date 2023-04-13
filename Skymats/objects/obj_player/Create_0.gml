@@ -98,3 +98,5 @@ obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 //Sync chunks
 if (!global.is_host)
 	sync_chunks();
+	
+instance_create_layer(x, y, "Instances", efct_greed);
