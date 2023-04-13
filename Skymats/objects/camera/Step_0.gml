@@ -28,6 +28,6 @@ if (!instance_exists(obj_multiplayer_world_loader) && point_distance(x, y, last_
 {
 	event_user(0);
 	
-	if (!global.is_host)
-		sync_chunks();
+	//if (!global.is_host)
+	//	sync_chunks();
 }

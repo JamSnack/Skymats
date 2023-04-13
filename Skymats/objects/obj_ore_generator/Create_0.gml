@@ -3,6 +3,3 @@
 time = 0;
 prev_x = x;
 prev_y = y;
-
-if (!global.is_host)
-	instance_destroy();

@@ -93,10 +93,35 @@ function handle_data(data)
 			}
 			break;
 			
+			case "desync_detected":
+			{
+				
+				if (!global.is_host)
+				{
+					obj_chat_box.add("Loading new chunk");
+					var _x = parsed_data.x;
+					var _y = parsed_data.y;
+					
+					instance_create_layer(_x, _y, "Instances", obj_client_request_chunk);
+					
+					//Erase old chunk
+					while (collision_rectangle(_x, _y, _x+CHUNK_WIDTH, _y+CHUNK_HEIGHT, TILE, false, true))
+					{
+						with collision_rectangle(_x, _y, _x+CHUNK_WIDTH, _y+CHUNK_HEIGHT, TILE, false, true)
+							instance_destroy();
+					}
+				}
+			}
+			break;
+			
 			case "request_world_seed": { send_data({ cmd: "give_world_seed", seed: global.world_seed}); }
 			break;
 			
-			case "give_world_seed": { if (global.world_seed == -1) global.world_seed = parsed_data.seed; } 
+			case "give_world_seed": { 
+				if (global.world_seed == -1) global.world_seed = parsed_data.seed;
+				show_debug_message("Seed is:");
+				show_debug_message(parsed_data.seed);
+				} 
 			break;
 			
 			case "player_pos":

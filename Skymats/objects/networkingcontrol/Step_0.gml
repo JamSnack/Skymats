@@ -10,9 +10,12 @@ if (global.multiplayer == false && keyboard_check_released(vk_f1))
 if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 	send_data({cmd: "request_client_id"});
 	
-//Send client id
+//Send world seed
 if (!global.is_host && global.world_seed = -1 && global.multiplayer && current_time mod 10 == 0)
+{
 	send_data({cmd: "request_world_seed"});
+	show_debug_message("requesting seed");
+}
 
 //Enemy spawning
 if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
@@ -47,7 +50,7 @@ if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 		load_timer = 0;
 		draw_enable_drawevent(true);
 	}
-	show_debug_message(instance_number(obj_island_generator));
+	//show_debug_message(instance_number(obj_island_generator));
 } 
 else if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 {

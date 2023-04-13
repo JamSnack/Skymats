@@ -4,6 +4,7 @@ time++;
 
 if (!global.is_host)
 {
+	//Don't request chunks we are suddenly far away from
 	if (instance_exists(obj_player) && distance_to_object(obj_player) > CHUNK_WIDTH*2)
 		instance_destroy();
 
