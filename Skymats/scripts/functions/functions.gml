@@ -159,7 +159,7 @@ function get_item_value(item_id)
 		case ITEM_ID.emerald:	   { return  21; } break;
 		case ITEM_ID.diamond:	   { return  27; } break;
 		case ITEM_ID.enemy_parts:  { return  5; } break;
-		case ITEM_ID.pot_of_greed: { return  100; } break;
+		case ITEM_ID.pot_of_greed: { return  250; } break;
 		default:				   { return -1; } break;
 	}
 }

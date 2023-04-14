@@ -31,6 +31,17 @@ if (instance_exists(obj_player))
 				}
 			}
 			
+			//Pot of Greed curse
+			if (instance_exists(obj_greed_collector))
+			{
+				with (obj_greed_collector)
+					if (target == _p)
+					{
+						instance_destroy();
+						obj_chat_box.add("[c_purple]The Greed Collector has been dispelled!");
+					}
+			}
+			
 			//Save game
 			with (_p)
 			{
