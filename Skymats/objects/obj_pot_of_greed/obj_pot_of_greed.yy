@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_stone",
-    "path": "sprites/spr_stone/spr_stone.yy",
+    "name": "spr_greed_pot",
+    "path": "sprites/spr_greed_pot/spr_greed_pot.yy",
   },
   "solid": false,
   "visible": false,
@@ -24,18 +24,20 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"hp","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"1 + floor(y/1000)","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"ITEM_ID.pot_of_greed","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hp","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"20","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Tiles",
     "path": "folders/Objects/Tiles.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stone",
+  "name": "obj_pot_of_greed",
   "tags": [],
   "resourceType": "GMObject",
 }

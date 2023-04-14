@@ -6,7 +6,6 @@ if (global.game_state == "LOAD")
 
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
-//key_down  =  keyboard_check(ord("S"));
 key_right =  keyboard_check(ord("D"));
 
 hmove = (key_right - key_left);
@@ -151,7 +150,7 @@ var _selected_slot = global.inventory.selected_slot;
 
 if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_check_button(mb_left))
 {
-	_tile = collision_point(mouse_x, mouse_y, OBSTA, false, true)
+	_tile = collision_point(mouse_x, mouse_y, TILE, false, true)
 	
 	if (_tile != noone && _tile.tile_level <= stat_mine_level)
 	{
@@ -265,12 +264,22 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 }
 
 //Death
-if (hp <= 0)
+if (hp <= 0 && !dead)
 {
-	hp = max_hp;
+	dead = true;
 	x = obj_market.x;
 	y = obj_market.y;
+	hspd = 0;
+	vspd = 0;
 	obj_chat_box.add("[c_red]Someone died!");
+}
+else if (dead && respawn_delay > 0)
+	respawn_delay--;
+else if (dead)
+{
+	hp = max_hp;
+	dead = false;
+	respawn_delay = 60;
 }
 
 //Send coordinates

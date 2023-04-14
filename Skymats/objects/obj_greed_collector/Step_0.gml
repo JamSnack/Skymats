@@ -1,10 +1,16 @@
 if (global.is_host)
 {
 	//Simple player-tracking Ai
-	var _p = instance_nearest(x, y, PLAYER);
+	var _p = target;
 	
-	if (_p != noone)
-		motion_add_custom(point_direction(x, y, _p.x, _p.y), 0.2);
+	if (_p != -1 && instance_exists(target))
+	{
+		motion_add_custom(point_direction(x, y, _p.x, _p.y), 0.5);
+		
+		if (target.hp <= 0)
+			instance_destroy();
+	}
+	else instance_destroy();
 		
 	x += hspd;
 	y += vspd;

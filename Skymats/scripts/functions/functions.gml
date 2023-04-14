@@ -147,19 +147,20 @@ function get_item_value(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass:		  { return  1; } break;
-		case ITEM_ID.stone:		  { return  1; } break;
-		case ITEM_ID.coal:        { return  2; } break;
-		case ITEM_ID.copper:	  { return  3; } break;
-		case ITEM_ID.iron:	      { return  4; } break;
-		case ITEM_ID.silver:	  { return  5; } break;
-		case ITEM_ID.gold:		  { return  7; } break;
-		case ITEM_ID.sapphire:	  { return  10; } break;
-		case ITEM_ID.ruby:		  { return  14; } break;
-		case ITEM_ID.emerald:	  { return  21; } break;
-		case ITEM_ID.diamond:	  { return  27; } break;
-		case ITEM_ID.enemy_parts: { return  5; } break;
-		default:				  { return -1; } break;
+		case ITEM_ID.grass:		   { return  1; } break;
+		case ITEM_ID.stone:		   { return  1; } break;
+		case ITEM_ID.coal:         { return  2; } break;
+		case ITEM_ID.copper:	   { return  3; } break;
+		case ITEM_ID.iron:	       { return  4; } break;
+		case ITEM_ID.silver:	   { return  5; } break;
+		case ITEM_ID.gold:		   { return  7; } break;
+		case ITEM_ID.sapphire:	   { return  10; } break;
+		case ITEM_ID.ruby:		   { return  14; } break;
+		case ITEM_ID.emerald:	   { return  21; } break;
+		case ITEM_ID.diamond:	   { return  27; } break;
+		case ITEM_ID.enemy_parts:  { return  5; } break;
+		case ITEM_ID.pot_of_greed: { return  100; } break;
+		default:				   { return -1; } break;
 	}
 }
 
@@ -276,6 +277,7 @@ enum ITEM_ID
 	last_ore,
 	
 	enemy_parts,
+	pot_of_greed,
 }
 
 

@@ -13,6 +13,8 @@ if (!instance_exists(obj_multiplayer_world_loader))
 var _boundary = boundary_size*2;
 instance_activate_region(last_chunk_x-_boundary, last_chunk_y-_boundary, _boundary*2, _boundary*2, true);
 
+//instance_activate_object(obj_pot_of_greed);
+
 //Keep enemies outside of newely-activated tiles
 with (ENEMY)
 {

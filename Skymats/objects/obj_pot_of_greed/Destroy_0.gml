@@ -5,6 +5,7 @@
 // Inherit the parent event
 event_inherited();
 
-if (global.is_host)
-	instance_create_layer(x, y, "Instances", obj_item, {item_id: ITEM_ID.enemy_parts});
-	
+var _p = instance_nearest(x, y, PLAYER);
+
+if (_p != noone)
+	instance_create_layer(x, y, "Instances", efct_greed, {target: _p.id});

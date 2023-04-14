@@ -9,7 +9,7 @@ else
 
 draw_set_color(c_red);
 draw_set_halign(fa_center);
-draw_text_scribble(x, y + 200, "[scale, 3]You're in danger");
+draw_text_scribble(x, y + 50, "[scale, 3]You're in danger");
 draw_set_halign(fa_left);
 draw_set_alpha(1);
 draw_set_color(c_white);
