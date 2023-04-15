@@ -114,14 +114,29 @@ function handle_data(data)
 			}
 			break;
 			
-			case "request_world_seed": { send_data({ cmd: "give_world_seed", seed: global.world_seed}); }
+			//case "request_world_seed": { send_data({ cmd: "give_world_seed", seed: global.world_seed}); }
+			case "request_world_seed": { send_data({ cmd: "give_world_list", list: global.tiles_list.to_string(), size: global.tiles_list.tiles_list_size}); }
 			break;
 			
-			case "give_world_seed": { 
+			/*case "give_world_seed": { 
 				if (global.world_seed == -1) global.world_seed = parsed_data.seed;
 				show_debug_message("Seed is:");
 				show_debug_message(parsed_data.seed);
 				} 
+			break;*/
+			
+			case "give_world_list": 
+			{ 
+				global.world_seed = noone;
+				//ds_list_clear(global.tiles_list);
+				var tiles = json_parse(parsed_data.list);
+				
+				for (var _i = 0; _i < parsed_data.size; _i++)
+				{
+					var _t = tiles.list[_i];
+					instance_create_layer(_t[2], _t[3], "Instances", get_tile_object_from_item(_t[1]));
+				}
+			} 
 			break;
 			
 			case "player_pos":
@@ -152,6 +167,30 @@ function handle_data(data)
 					
 					if (create_new)
 						instance_create_layer(_x, _y, "Instances", obj_player_dummy, {connected_id: _id, connected_socket: async_load[? "id"]})	
+				}
+			}
+			break;
+			
+			case "player_stats":
+			{
+				var _id = parsed_data.id;
+				
+				if ( _id != global.client_id && _id != -1)
+				{
+					with (obj_player_dummy)
+					{
+						if (_id == connected_id)
+						{
+							hp = parsed_data.hp;
+							max_hp = parsed_data.max_hp;
+							
+							//Bounce this data to other clients
+							if (global.is_host)
+								send_data(parsed_data);
+								
+							break;
+						}
+					}
 				}
 			}
 			break;

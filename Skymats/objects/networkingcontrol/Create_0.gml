@@ -19,5 +19,6 @@ loading_world = false;
 island_generators = 32;
 
 load_timer = 30;
+world_seed_request_delay = 0;
 
 room_goto(rm_menu);

@@ -1,9 +1,10 @@
+//Check for death
+if (hp <= 0)
+	instance_destroy();
+
 //host stuff
 if (global.is_host)
 {
-	//Check for death
-	if (hp <= 0)
-		instance_destroy();
 	
 	//multiplayer
 	if (current_time mod 2 == 0)

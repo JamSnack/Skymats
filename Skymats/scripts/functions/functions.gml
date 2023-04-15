@@ -128,16 +128,17 @@ function get_tile_object_from_item(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass:    { return obj_grass;    } break;
-		case ITEM_ID.stone:    { return obj_stone;    } break;
-		case ITEM_ID.coal:     { return obj_coal;     } break;
-		case ITEM_ID.copper:   { return obj_copper;   } break;
-		case ITEM_ID.silver:   { return obj_silver;   } break;
-		case ITEM_ID.gold:     { return obj_gold;     } break;
-		case ITEM_ID.sapphire: { return obj_sapphire; } break;
-		case ITEM_ID.ruby:     { return obj_ruby;     } break;
-		case ITEM_ID.emerald:  { return obj_emerald;  } break;
-		case ITEM_ID.diamond:  { return obj_diamond;  } break;
+		case ITEM_ID.grass:        { return obj_grass;    } break;
+		case ITEM_ID.stone:        { return obj_stone;    } break;
+		case ITEM_ID.coal:         { return obj_coal;     } break;
+		case ITEM_ID.copper:       { return obj_copper;   } break;
+		case ITEM_ID.silver:       { return obj_silver;   } break;
+		case ITEM_ID.gold:         { return obj_gold;     } break;
+		case ITEM_ID.sapphire:     { return obj_sapphire; } break;
+		case ITEM_ID.ruby:         { return obj_ruby;     } break;
+		case ITEM_ID.emerald:      { return obj_emerald;  } break;
+		case ITEM_ID.diamond:      { return obj_diamond;  } break;
+		case ITEM_ID.pot_of_greed: { return obj_pot_of_greed; } break;
 		
 		default:			 { return obj_bedrock; } break;
 	}

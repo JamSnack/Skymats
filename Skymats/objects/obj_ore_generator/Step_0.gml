@@ -13,7 +13,10 @@ if (instance_exists(obj_stone))
 	if (_inst != noone)
 	{
 		with (_inst)
-			instance_change(other.ore_to_generate, true);
+		{
+			instance_create_layer(x, y, "Instances", other.ore_to_generate);
+			instance_destroy();
+		}
 			
 		prev_x = _inst.x;
 		prev_y = _inst.y;

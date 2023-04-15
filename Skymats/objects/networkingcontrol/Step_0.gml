@@ -11,11 +11,12 @@ if (!global.is_host && global.client_id == -1 && global.multiplayer && current_t
 	send_data({cmd: "request_client_id"});
 	
 //Send world seed
-if (!global.is_host && global.world_seed = -1 && global.multiplayer && current_time mod 10 == 0)
+if (!global.is_host && global.world_seed == -1 && global.multiplayer && world_seed_request_delay < 0)
 {
 	send_data({cmd: "request_world_seed"});
 	show_debug_message("requesting seed");
-}
+	world_seed_request_delay = 60*5;
+} else if (world_seed_request_delay >= 0) world_seed_request_delay--;
 
 //Enemy spawning
 if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global.is_host && instance_number(ENEMY) < 15)
