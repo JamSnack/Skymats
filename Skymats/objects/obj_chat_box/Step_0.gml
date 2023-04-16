@@ -64,3 +64,12 @@ if (char_append_delay > 0)
 	
 if (chat_alpha > 0.1)
 	chat_alpha -= 0.02;
+	
+//- message offset
+chat_message_offset = clamp(chat_message_offset, -4, min(300, string_height(chat_message_offset)+64));
+chat_message_offset_draw = lerp(chat_message_offset_draw, chat_message_offset, 0.3);
+
+if (mouse_wheel_down())
+	chat_message_offset -= 10;
+else if (mouse_wheel_up())
+	chat_message_offset += 10;

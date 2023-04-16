@@ -13,7 +13,7 @@ if (!surface_exists(chat_surface))
 surface_set_target(chat_surface);
 draw_clear_alpha(c_white, 0);
 
-draw_text_scribble_ext(4, 4, chat_string, width - 4);
+draw_text_scribble_ext(4, 4 - chat_message_offset_draw, chat_string, width - 4);
 
 surface_reset_target();
 

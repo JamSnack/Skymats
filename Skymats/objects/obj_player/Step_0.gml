@@ -21,7 +21,7 @@ if (on_ground != noone)
 else
 	hspd = approach(hspd, hmove*max_walkspeed, 0.1);
 	
-if !(on_ground != noone && on_ground.object_index == obj_platform)
+if !(on_ground != noone && on_ground.object_index == obj_platform) && collision_line(bbox_right+1, bbox_top, bbox_right+1, bbox_bottom, obj_platform, false, true) == noone
 	x += SCROLL_SPEED;
 
 //Gravity

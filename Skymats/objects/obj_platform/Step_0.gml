@@ -27,11 +27,17 @@ if (collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right, bbox_top, OBSTA,
 		if (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true) != noone)
 		{
 			obj_player.y = bbox_top-9;
-			obj_player.vspd = 0;
+			
+			if (!obj_player.grappling)
+				obj_player.vspd = 0;
 		}
 	}
 }
-else obstruction = true;
+else 
+{
+	obstruction = true;
+	y = floor(y);
+}
 
 
 //move everything
