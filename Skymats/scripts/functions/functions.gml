@@ -404,6 +404,7 @@ function choose_ore(y)
 
 function get_background_colors(height)
 {
+	show_debug_message(height);
 	//Color 1 is higher than Color 2.
 	//As the player falls, Color 1 will approach Color 2.
 	//As the player rises, Color 2 will approach Color 1.

@@ -25,10 +25,10 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					_p.gold += _gains;
 			
 					//Add fuel to the platform
-					obj_platform.fuel += _slot.amount;
+					obj_platform.fuel += _gains;
 					
-					if (obj_platform.fuel > obj_platform.max_fuel)
-						obj_platform.fuel = obj_platform.max_fuel;
+					//if (obj_platform.fuel > obj_platform.max_fuel)
+						//obj_platform.fuel = obj_platform.max_fuel;
 				
 					//reset slot
 					global.inventory.deleteItemAtSlot(_i);

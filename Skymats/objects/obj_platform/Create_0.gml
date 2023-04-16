@@ -5,3 +5,5 @@ target_y = y;
 
 obstruction = false;
 powered = true;
+
+spawn_high_island_delay = 0;
