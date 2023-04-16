@@ -4,7 +4,7 @@ depth = 99;
 //Init inventory
 //Fill inventory with emptiness
 global.inventory = {
-	contents    : array_create(40, 0),
+	contents    : array_create(10, 0),
 	size        : 10,
 	selected_slot : -1,
 	held_value: 0,
