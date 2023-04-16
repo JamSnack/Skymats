@@ -1,14 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-var _w = display_get_gui_width();
-var _h = display_get_gui_height();
+//var _w = display_get_gui_width();
+//var _h = display_get_gui_height();
 
 draw_text(1100, 10, 
 	"Socket_list size: " + string(ds_list_size(global.socket_list)) + "\n" +
 	"Client ID: " + string(global.client_id) + "\n" +
 	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk)) + "\n" +
-	"Tiles: " + string(instance_number(TILE))
+	"Tiles: " + string(instance_number(TILE)) + "\n" +
+	"Lag: " + string(global.lag)
 
 
 );

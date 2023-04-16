@@ -54,3 +54,9 @@ if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 	instance_create_layer(obj_market.x, obj_market.y, "Instances", obj_player);
 }
 
+//multiplayer
+if (global.multiplayer)
+{
+	global.current_tick++;
+}
+

@@ -15,7 +15,7 @@ if (!global.is_host || target_socket == -1)
 //Create a buffer to use later
 if (packet_string = "")
 {
-	packet_string = "{\"cmd\": \"create_chunk\", \"x\": " + string(x) + ", \"y\":" + string(y) + ", \"tiles\": [";
+	packet_string = "{\"cmd\": \"create_chunk\", \"x\": " + string(x) + ", \"y\":" + string(y) + ", \"tick\": " + string(global.current_tick) + ", \"tiles\": [";
 	
 	//Activate a chunk
 	

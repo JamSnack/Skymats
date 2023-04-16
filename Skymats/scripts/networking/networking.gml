@@ -24,6 +24,7 @@ function connect_to_server(ip, port)
 
 function send_data(data_struct, specific_socket = -1)
 {
+	data_struct.tick = global.current_tick;
 	var json_map = json_stringify(data_struct);
 	var buff = buffer_create(128, buffer_grow, 1);
 	
@@ -71,6 +72,10 @@ function handle_data(data)
 		return false;	
 	}
 	//show_debug_message("Handling data: "+string(data));
+	if (!global.is_host)
+	{
+		global.lag = global.current_tick - parsed_data.tick;
+	}
 	
 	if (parsed_data != -1)
 	{
@@ -87,7 +92,7 @@ function handle_data(data)
 					{
 						target_y = parsed_data.target;
 						powered = parsed_data.powered;
-						obstructed = parsed_data.obstructed;
+						obstruction = parsed_data.obstructed;
 						fuel = parsed_data.fuel
 						max_fuel = parsed_data.max_fuel;
 					}
@@ -109,7 +114,10 @@ function handle_data(data)
 			case "give_client_id":
 			{
 				if (global.client_id == -1)
+				{
 					global.client_id = parsed_data.client_id;
+					global.current_tick = parsed_data.tick;
+				}
 			}
 			break;
 			
@@ -165,7 +173,7 @@ function handle_data(data)
 				
 				if ( _id != global.client_id && _id != -1)
 				{
-					var _x = parsed_data.x;
+					var _x = parsed_data.x + global.lag*SCROLL_SPEED;
 					var _y = parsed_data.y;
 					var create_new = true;
 				
@@ -217,7 +225,7 @@ function handle_data(data)
 			
 			case "destroy_tile":
 			{
-				var _x = parsed_data.x;
+				var _x = parsed_data.x + global.lag*SCROLL_SPEED;
 				var _y = parsed_data.y;
 				
 				instance_activate_region(_x-1, _y-1, 2, 2, true);
@@ -438,6 +446,9 @@ function handle_data(data)
 					
 					with (obj_client_request_chunk)
 						instance_destroy();
+						
+					//Reset scroll_lag
+					global.current_tick = parsed_data.tick;
 				}
 			}
 			break;
