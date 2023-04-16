@@ -133,6 +133,7 @@ function get_tile_object_from_item(item_id)
 		case ITEM_ID.grass:        { return obj_grass;    } break;
 		case ITEM_ID.stone:        { return obj_stone;    } break;
 		case ITEM_ID.coal:         { return obj_coal;     } break;
+		case ITEM_ID.iron:         { return obj_iron;     } break;
 		case ITEM_ID.copper:       { return obj_copper;   } break;
 		case ITEM_ID.silver:       { return obj_silver;   } break;
 		case ITEM_ID.gold:         { return obj_gold;     } break;
@@ -376,8 +377,8 @@ function init_player()
 }
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
-global.ore_distribution[ITEM_ID.coal] =       { high: -1500, low: 0    };
-global.ore_distribution[ITEM_ID.copper] =     { high: -2500, low: -500  };
+global.ore_distribution[ITEM_ID.coal] =       { high: -1500, low: 500    };
+global.ore_distribution[ITEM_ID.copper] =     { high: -2500, low: 0  };
 global.ore_distribution[ITEM_ID.iron] =		  { high: -3000, low: -1000 };
 global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -1250 };
 global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
@@ -387,10 +388,12 @@ global.ore_distribution[ITEM_ID.emerald] =    { high: -9000, low: -4000 };
 global.ore_distribution[ITEM_ID.diamond] =    { high: -10000, low: -5000 };
 
 
-
 function choose_ore(y)
 {
 	var _g = global.ore_distribution;
+	
+	show_debug_message("y is: ");
+	show_debug_message(y);
 	
 	for (var _i = ITEM_ID.last_ore-1; _i > ITEM_ID.stone; _i--)
 	{
@@ -398,7 +401,7 @@ function choose_ore(y)
 			return _i;	
 	}
 	
-	return ITEM_ID.none;
+	return ITEM_ID.stone;
 }
 
 
