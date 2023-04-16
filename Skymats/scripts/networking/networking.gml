@@ -76,6 +76,26 @@ function handle_data(data)
 	{
 		switch parsed_data.cmd
 		{	
+			
+			case "sync_platform":
+			{
+				global.platform_height = parsed_data.height;
+				
+				if (instance_exists(obj_platform))
+				{
+					with (obj_platform)
+					{
+						target_y = parsed_data.target;
+						powered = parsed_data.powered;
+						obstructed = parsed_data.obstructed;
+						fuel = parsed_data.fuel
+						max_fuel = parsed_data.max_fuel;
+					}
+				
+				}
+			}
+			break;
+			
 			case "request_client_id":
 			{
 				if (global.is_host)

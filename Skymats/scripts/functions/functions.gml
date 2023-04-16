@@ -332,7 +332,7 @@ function get_upgrade_cost(upgrade_id)
 			case UPGRADE.weapon_range:		{ return power(5, _up); } break;
 			case UPGRADE.weapon_knockback:  { return power(5, _up); } break;
 			*/
-			default: { return 5 + 25*(_up*(_up-1)) + power(3, _up-1); } break;
+			default: { return 5 + 25*(_up*(_up-1)) + power(2, _up-1); } break;
 		}
 	}
 	else return noone;
@@ -377,9 +377,9 @@ function init_player()
 }
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
-global.ore_distribution[ITEM_ID.coal] =       { high: -1500, low: 500    };
-global.ore_distribution[ITEM_ID.copper] =     { high: -2500, low: 0  };
-global.ore_distribution[ITEM_ID.iron] =		  { high: -3000, low: -1000 };
+global.ore_distribution[ITEM_ID.coal] =       { high: -1000, low: 500    };
+global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 250  };
+global.ore_distribution[ITEM_ID.iron] =		  { high: -2500, low: 0 };
 global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -1250 };
 global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
 global.ore_distribution[ITEM_ID.ruby] =		  { high: -7500, low: -2500 };

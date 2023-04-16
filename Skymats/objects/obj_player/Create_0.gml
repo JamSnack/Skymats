@@ -86,6 +86,9 @@ if (file_exists("test.data"))
 		//Purchase
 		upgrades_purchased = _data.upgrades_purchased;
 		gold = _data.gold;
+		
+		//Platform
+		global.platform_height = _data.platform_height;
 	}
 	catch (e)
 	{

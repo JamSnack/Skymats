@@ -2,7 +2,7 @@
 //	exit;
 
 var column_height = height;
-y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2);
+y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2)*variance_factor;
 var current_y = y;
 var current_x = x + 16*time;
 
@@ -38,7 +38,7 @@ for (var i = 0; i < column_height; i++)
 		//place tile
 		instance_create_layer(current_x, current_y + 16*i, "Instances", _obj);
 	
-		if (cutoff_start == 0 && cutoff_end == 0 && irandom(55) == 3 )
+		if (cutoff_start == 0 && cutoff_end == 0 && irandom(50) == 3 )
 		{
 			var chosen_ore = choose_ore(current_y);
 			instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
@@ -55,5 +55,8 @@ x += SCROLL_SPEED;
 //The island is complete
 if (time > width)
 {
+	//Guaranteed ore spawn
+	var chosen_ore = choose_ore(current_y);
+	instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
 	instance_destroy();
 }

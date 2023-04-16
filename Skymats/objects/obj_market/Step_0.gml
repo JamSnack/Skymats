@@ -69,7 +69,9 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					stat_weapon_range: stat_weapon_range,
 					
 					upgrades_purchased: upgrades_purchased,
-					gold: gold
+					gold: gold,
+					
+					platform_height: global.platform_height
 				}
 				
 				var json = json_stringify(save_struct);

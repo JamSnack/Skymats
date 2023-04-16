@@ -1,9 +1,11 @@
 /// @description
 fuel = 0;
-max_fuel = 9999999;
+max_fuel = 250;
 target_y = y;
 
 obstruction = false;
 powered = true;
+power_delay = 0;
+power_button = false;
 
 spawn_high_island_delay = 0;

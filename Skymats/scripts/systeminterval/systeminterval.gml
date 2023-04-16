@@ -38,25 +38,18 @@ function process_system_interval()
 		case 0: { sync_player_stats(); } break;
 		case 1: { cull_tiles();        } break;
 		case 2: { create_new_islands(); } break;
+		case 3: { sync_platform(); } break;
 	}
 	
 	current_interval++;
 	if (current_interval > SYSTEM_INTERVAL) current_interval = 0;
 }
 
-function check_for_desync()
+function sync_platform()
 {
-	if (global.is_host)
+	if (global.is_host && instance_exists(obj_platform))
 	{
-		static current_position = 0;
-	
-		var _t = global.tiles_list.tiles[| current_position++];
-		
-		//TODO: Send this tile to the clients for comparison.
-		//send_data();
-	
-		if (current_position > global.tiles_list.tiles_list_size)
-			current_position = 0;
+		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel});
 	}
 }
 
@@ -88,8 +81,8 @@ function create_new_islands()
 	
 		if (_tiles < 1200 && interval_delay <= 0)
 		{
-			interval_delay = 80 + irandom(80);
-			instance_create_layer(-200, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
+			interval_delay = 120 + irandom(20);
+			instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
 		}
 		else if (interval_delay > 0) 
 		{
