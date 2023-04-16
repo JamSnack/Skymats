@@ -12,7 +12,7 @@ draw_text(1100, 10,
 
 
 );
-
+/*
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 {
 	draw_set_alpha(0.5);

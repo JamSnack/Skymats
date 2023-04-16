@@ -1,8 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-if (!instance_exists(obj_island_generator) || !instance_exists(obj_ore_generator))
-	process_system_interval();
+process_system_interval();
 /*
 frame++;
 //TODO: Add frameskip subtlety setting

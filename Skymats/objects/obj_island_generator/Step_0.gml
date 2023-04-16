@@ -1,5 +1,5 @@
-if (global.world_seed == -1)
-	exit;
+//if (global.world_seed == -1)
+//	exit;
 
 var column_height = height;
 y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2);
@@ -48,6 +48,9 @@ for (var i = 0; i < column_height; i++)
 
 //increase time
 time++;
+
+//Move
+x += SCROLL_SPEED;
 
 //The island is complete
 if (time > width)

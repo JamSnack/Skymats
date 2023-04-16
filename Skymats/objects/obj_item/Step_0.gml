@@ -13,7 +13,8 @@ if (global.is_host)
 		//Attract
 		if (_dist < 64 || speed != 0)
 		{
-			motion_add(point_direction(x, y, _p.x, _p.y), 0.5);
+			x = lerp(x, _p.x, 0.3);
+			y = lerp(y, _p.y, 0.3);
 		}
 	
 		//Collect
@@ -34,7 +35,7 @@ if (global.is_host)
 	}
 
 
-	calculate_collisions();
+	//calculate_collisions();
 
 	//item pos
 	send_data({cmd: "item_pos", x: x, y: y, connected_id: connected_id, item_id: item_id});

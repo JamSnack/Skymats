@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (instance_exists(obj_player))
+if (instance_exists(obj_player) && instance_exists(obj_platform))
 {
 	var _p = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
 	
@@ -23,7 +23,12 @@ if (instance_exists(obj_player))
 				
 					//Create wealth
 					_p.gold += _gains;
-				
+			
+					//Add fuel to the platform
+					obj_platform.fuel += _slot.amount;
+					
+					if (obj_platform.fuel > obj_platform.max_fuel)
+						obj_platform.fuel = obj_platform.max_fuel;
 				
 					//reset slot
 					global.inventory.deleteItemAtSlot(_i);

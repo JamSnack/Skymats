@@ -6,4 +6,4 @@ if (global.is_host)
 	send_data({cmd: "destroy_tile", x: x, y: y});
 }
 
-global.tiles_list.remove(list_position);
+global.tiles_list.remove(id);

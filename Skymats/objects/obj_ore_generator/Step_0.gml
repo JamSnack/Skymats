@@ -1,5 +1,5 @@
-if (instance_exists(obj_island_generator))
-	exit;
+//if (instance_exists(obj_island_generator))
+//	exit;
 
 if (instance_exists(obj_stone))
 {

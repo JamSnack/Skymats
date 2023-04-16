@@ -27,6 +27,8 @@ if time > 60*1
 		{
 			with _c
 				instance_destroy();
+				
+			instance_destroy();
 		}
 	}
 	

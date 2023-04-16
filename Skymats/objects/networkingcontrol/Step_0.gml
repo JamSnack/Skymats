@@ -40,20 +40,7 @@ if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global
 		instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), room_height-100, "Instances", obj_balloonimal);
 }
 
-if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
-{
-	draw_enable_drawevent(false);
-	
-	load_timer++;
-	
-	if (load_timer >= 5)
-	{
-		load_timer = 0;
-		draw_enable_drawevent(true);
-	}
-	//show_debug_message(instance_number(obj_island_generator));
-} 
-else if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
+if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 {
 	loading_world = false;
 	with camera event_user(0);

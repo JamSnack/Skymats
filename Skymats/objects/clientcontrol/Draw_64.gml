@@ -60,6 +60,15 @@ if (instance_exists(obj_player_dummy))
 	}
 }
 
+if (instance_exists(obj_island_marker))
+{
+	for (var _i = 0; _i < instance_number(obj_island_marker); _i++)
+	{
+		var _d = instance_find(obj_island_marker, _i);
+		draw_sprite(spr_ui_island, 0, 455 + 455*(_d.x/room_width), 0);
+	}
+}
+
 //- height
 draw_set_halign(fa_center);
 draw_text(455 + 455/2, 30, "Height: " + string(room_height-round(camera.y)));

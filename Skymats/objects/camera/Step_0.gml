@@ -26,7 +26,7 @@ if (sync_delay < 0 && !global.is_host)
 //Tile culling
 if (!instance_exists(obj_multiplayer_world_loader) && point_distance(x, y, last_chunk_x, last_chunk_y) >= boundary_size)
 {
-	event_user(0);
+	//event_user(0);
 	
 	//if (!global.is_host)
 	//	sync_chunks();

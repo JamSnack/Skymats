@@ -4,11 +4,13 @@
 #macro GRAVITY 0.1
 #macro WORLD_BOUND_LEFT 0
 #macro WORLD_BOUND_RIGHT room_width
-#macro WORLD_BOUND_TOP 0
-#macro WORLD_BOUND_BOTTOM room_height
+#macro WORLD_BOUND_TOP global.platform_height
+#macro WORLD_BOUND_BOTTOM room_height - global.platform_height
 
 #macro CHUNK_WIDTH 683
 #macro CHUNK_HEIGHT 384
+
+#macro SCROLL_SPEED 0.1
 
 function approach(a, b, amt)
 {

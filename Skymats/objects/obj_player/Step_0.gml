@@ -9,17 +9,20 @@ key_up    =  keyboard_check(ord("W"));
 key_right =  keyboard_check(ord("D"));
 
 hmove = (key_right - key_left);
-var on_ground = false;
+var on_ground = noone;
 
 if (vspd >= 0)
-	on_ground = position_meeting(bbox_left, bbox_bottom+1, OBSTA) || position_meeting(bbox_right, bbox_bottom+1, OBSTA);
+	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true);
 //var vmove = (key_down  -   key_up);
 
 //Increase speed based on movement
-if (on_ground)
+if (on_ground != noone)
 	hspd = approach(hspd, hmove*max_walkspeed, 0.25);
 else
 	hspd = approach(hspd, hmove*max_walkspeed, 0.1);
+	
+if !(on_ground != noone && on_ground.object_index == obj_platform)
+	x += SCROLL_SPEED;
 
 //Gravity
 vspd += GRAVITY*weight;
@@ -219,9 +222,9 @@ if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 	jetpack_regen_cooldown = stat_jetpack_cooldown;
 	motion_add_custom(90, stat_jetpack_strength);
 }
-else if (!on_ground && jetpack_init_delay > 0)
+else if (on_ground == noone && jetpack_init_delay > 0)
 	jetpack_init_delay--;
-else if (on_ground)
+else if (on_ground != noone)
 	jetpack_init_delay = jetpack_set_init_delay;
 
 if (jetpack_regen_cooldown > 0)
@@ -306,12 +309,12 @@ else if (grappling)
 	sprite_index = spr_player_hook;
 	image_index = 5;
 }
-else if (on_ground && hspd != 0)
+else if (on_ground != noone && hspd != 0)
 {
 	sprite_index = spr_player_run;
 	image_speed = hspd/2;
 }
-else if (!on_ground)
+else if (on_ground == noone)
 {
 	if (vspd < 0)
 	{

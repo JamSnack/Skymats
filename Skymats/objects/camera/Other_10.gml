@@ -1,7 +1,4 @@
 /// @description Deactivate Tiles
-if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
-	exit;
-
 last_chunk_x = x;
 last_chunk_y = y;
 
