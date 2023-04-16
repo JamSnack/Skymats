@@ -119,6 +119,17 @@ else if (!grappling)
 	grapple_point_x = x;
 	grapple_point_y = y;
 }
+else if (grappling)
+{
+	if (instance_exists(grappling_to))
+	{
+		if (grappling_to.object_index == obj_platform)
+		{
+			if (obj_platform.powered && obj_platform.fuel > 2)
+				grapple_point_y = obj_platform.y;
+		} else grapple_point_x += SCROLL_SPEED;
+	}
+}
 
 if (grapple_launch_length > stat_grapple_range)
 	grapple_is_launching = false;

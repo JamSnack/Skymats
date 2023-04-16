@@ -20,6 +20,7 @@ false_angle = image_angle;
 grapple_direction = 0;
 draw_angle = 0;
 mask_index = spr_player;
+grappling_to = noone;
 
 //Mine
 mine_cooldown = 0;
