@@ -145,7 +145,7 @@ if (x < WORLD_BOUND_LEFT)
 if (y < WORLD_BOUND_TOP)
 	motion_add_custom(270, 1);
 	
-if (y > WORLD_BOUND_BOTTOM+500)
+if (y > WORLD_BOUND_BOTTOM)
 	motion_add_custom(90, 1);
 	
 //Tile mininig

@@ -73,7 +73,7 @@ function cull_tiles()
 {
 	with (TILE)
 	{
-		if (x-8 > room_width)
+		if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+300)
 			instance_destroy();
 	}
 }
@@ -83,11 +83,21 @@ function create_new_islands()
 	if (global.is_host)
 	{
 		static interval_delay = 0;
+		
+		var _tiles = instance_number(TILE);
 	
-		if (instance_number(TILE) < 1200 && interval_delay <= 0)
+		if (_tiles < 1200 && interval_delay <= 0)
 		{
 			interval_delay = 80 + irandom(80);
-			instance_create_layer(-100, irandom(room_height-500) + global.platform_height, "Instances", obj_island_generator);
-		} else if (interval_delay > 0) interval_delay--;
+			instance_create_layer(-200, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
+		}
+		else if (interval_delay > 0) 
+		{
+			if (_tiles < 100)
+				interval_delay = 0;
+			else if (_tiles < 600)
+				interval_delay -= 2;
+			else interval_delay--;
+		}
 	}
 }

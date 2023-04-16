@@ -56,5 +56,4 @@ x += SCROLL_SPEED;
 if (time > width)
 {
 	instance_destroy();
-	instance_deactivate_object(obj_grass);
 }

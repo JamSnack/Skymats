@@ -8,4 +8,4 @@ cutoff_end = 0;
 if (!global.is_host)
 	instance_destroy();
 else
-	instance_create_layer(x, y, "Instances", obj_island_marker);
+	instance_create_layer(x + ((width-1)/2) * 16, y, "Instances", obj_island_marker);

@@ -5,7 +5,7 @@
 #macro WORLD_BOUND_LEFT 0
 #macro WORLD_BOUND_RIGHT room_width
 #macro WORLD_BOUND_TOP global.platform_height
-#macro WORLD_BOUND_BOTTOM room_height - global.platform_height
+#macro WORLD_BOUND_BOTTOM room_height + global.platform_height
 
 #macro CHUNK_WIDTH 683
 #macro CHUNK_HEIGHT 384
@@ -376,15 +376,15 @@ function init_player()
 }
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
-global.ore_distribution[ITEM_ID.coal] =       { high: 7000, low: 8000 };
-global.ore_distribution[ITEM_ID.copper] =     { high: 6500, low: 7500 };
-global.ore_distribution[ITEM_ID.iron] =		  { high: 6000, low: 7000 };
-global.ore_distribution[ITEM_ID.silver] =     { high: 5000, low: 6500 };
-global.ore_distribution[ITEM_ID.gold] =       { high: 4500, low: 5500 };
-global.ore_distribution[ITEM_ID.ruby] =   { high: 3500, low: 4500 };
-global.ore_distribution[ITEM_ID.sapphire] =       { high: 2500, low: 3500 };
-global.ore_distribution[ITEM_ID.emerald] =    { high: 1500, low: 2500 };
-global.ore_distribution[ITEM_ID.diamond] =    { high: 500, low: 1500 };
+global.ore_distribution[ITEM_ID.coal] =       { high: -1500, low: 0    };
+global.ore_distribution[ITEM_ID.copper] =     { high: -2500, low: -500  };
+global.ore_distribution[ITEM_ID.iron] =		  { high: -3000, low: -1000 };
+global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -1250 };
+global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
+global.ore_distribution[ITEM_ID.ruby] =		  { high: -7500, low: -2500 };
+global.ore_distribution[ITEM_ID.sapphire] =   { high: -8500, low: -3500 };
+global.ore_distribution[ITEM_ID.emerald] =    { high: -9000, low: -4000 };
+global.ore_distribution[ITEM_ID.diamond] =    { high: -10000, low: -5000 };
 
 
 
@@ -398,7 +398,7 @@ function choose_ore(y)
 			return _i;	
 	}
 	
-	return ITEM_ID.stone;
+	return ITEM_ID.none;
 }
 
 
