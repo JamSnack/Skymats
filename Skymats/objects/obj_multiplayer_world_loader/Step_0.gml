@@ -25,7 +25,7 @@ if (packet_string = "")
 //Figure out what's in it
 if (collision_list_size == 0)
 {
-	collision_list_size = collision_rectangle_list(x, y, x + boundary_width, y + boundary_height, TILE, false, true, collision_list, false);
+	collision_list_size = collision_rectangle_list(x - 500, y - 500, x + boundary_width + 500, y + boundary_height + 500, TILE, false, true, collision_list, false);
 }
 else
 {

@@ -24,10 +24,22 @@ if (sync_delay < 0 && !global.is_host)
 }else sync_delay--;
 */
 //Tile culling
+if (keyboard_check_released(vk_rshift) && global.is_host == false)
+{
+	with (TILE)
+		instance_destroy();
+		
+	//instance_create_layer(0, 0, "Instances", obj_client_request_chunk);
+	sync_chunks();
+}
+/*
 if (!instance_exists(obj_multiplayer_world_loader) && point_distance(x, y, last_chunk_x, last_chunk_y) >= boundary_size)
 {
 	//event_user(0);
 	
 	//if (!global.is_host)
-	//	sync_chunks();
+		//sync_chunks();
+		
+	//last_chunk_x = x;
+	//last_chunk_y = y;
 }

@@ -402,32 +402,43 @@ function handle_data(data)
 				if (global.is_host)
 				{
 					show_debug_message("Chunk requested");
-					var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
+					//var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
 					
 					//If the world loader requested doesn't exist or one does exist but it is far away:
-					if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
-					{
-						show_debug_message(parsed_data.x);
-						show_debug_message(parsed_data.y);
-						instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
-					}
+					//if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
+					//{
+					show_debug_message(parsed_data.x);
+					show_debug_message(parsed_data.y);
+					//instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
+					instance_create_layer(0, WORLD_BOUND_TOP, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
+					//}
 				}
 			}
 			break;
 			
 			case "chunk_sent":
 			{
-				var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_client_request_chunk);
+				//var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_client_request_chunk);
 				
-				if (_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) <= 1)
-					with _r instance_destroy();
+				//if (_r != noone && point_distance(0, 0, _r.x, _r.y) <= 1)
+				//	with _r instance_destroy();
+				
+				//with (obj_client_request_chunk) instance_destroy();
 			}
 			break;
 			
 			case "create_chunk":
 			{
+				
 				//Create new tiles
-				instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_chunk_loader, {tiles: parsed_data.tiles});
+				if (instance_exists(obj_client_request_chunk))
+				{
+					obj_chat_box.add("Making chunk");
+					instance_create_layer(obj_client_request_chunk.x, WORLD_BOUND_TOP, "Instances", obj_chunk_loader, {tiles: parsed_data.tiles});
+					
+					with (obj_client_request_chunk)
+						instance_destroy();
+				}
 			}
 			break;
 			

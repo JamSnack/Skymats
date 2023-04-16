@@ -48,6 +48,15 @@ if (inventory_open_animation > 0)
 draw_sprite_stretched(spr_compass, 0, 455, 0, 455, 16);
 draw_sprite(spr_ui_market, 0, 455+ 455/2, 0);
 
+if (instance_exists(obj_island_marker))
+{
+	for (var _i = 0; _i < instance_number(obj_island_marker); _i++)
+	{
+		var _d = instance_find(obj_island_marker, _i);
+		draw_sprite(spr_ui_island, 0, 455 + 455*(_d.x/room_width), 0);
+	}
+}
+
 if (instance_exists(obj_player))
 	draw_sprite(spr_ui_player1, 0, 455 + 455*(obj_player.x/room_width), 0);
 
@@ -57,15 +66,6 @@ if (instance_exists(obj_player_dummy))
 	{
 		var _d = instance_find(obj_player_dummy, _i);
 		draw_sprite(spr_ui_player2, 0, 455 + 455*(_d.x/room_width), 0);
-	}
-}
-
-if (instance_exists(obj_island_marker))
-{
-	for (var _i = 0; _i < instance_number(obj_island_marker); _i++)
-	{
-		var _d = instance_find(obj_island_marker, _i);
-		draw_sprite(spr_ui_island, 0, 455 + 455*(_d.x/room_width), 0);
 	}
 }
 

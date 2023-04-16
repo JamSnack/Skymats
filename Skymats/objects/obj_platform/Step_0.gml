@@ -8,7 +8,6 @@ if (global.is_host && collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right
 	{
 		global.platform_height -= 1;
 		fuel -= 1;
-		target_y -= 1;
 		
 		if (spawn_high_island_delay < 0 && (fuel > 400))
 		{
@@ -41,11 +40,18 @@ if (y != target_y)
 	}
 }
 
+
+if (target_y != global.platform_height+938)
+	target_y = global.platform_height+938;
+
 //Powered
 if (global.is_host && powered && power_delay > 0)
 	power_delay--;
 else if (!powered) power_delay = 60;
 
 //move everything
-with (TILE)
-	x += SCROLL_SPEED;
+if (!instance_exists(obj_multiplayer_world_loader))
+{
+	with (TILE)
+		x += SCROLL_SPEED;
+}
