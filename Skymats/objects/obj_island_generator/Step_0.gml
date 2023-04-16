@@ -49,9 +49,6 @@ for (var i = 0; i < column_height; i++)
 //increase time
 time++;
 
-//Move
-x += SCROLL_SPEED;
-
 //The island is complete
 if (time > width)
 {

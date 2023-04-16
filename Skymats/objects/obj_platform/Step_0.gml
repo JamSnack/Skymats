@@ -50,7 +50,7 @@ if (global.is_host && powered && power_delay > 0)
 else if (!powered) power_delay = 60;
 
 //move everything
-if (!instance_exists(obj_multiplayer_world_loader))
+if (SCROLL_CONDITIONS)
 {
 	with (TILE)
 		x += SCROLL_SPEED;

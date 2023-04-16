@@ -19,4 +19,4 @@ if (time <= 0)
 }
 
 //Move along
-x += SCROLL_SPEED;
+//x += SCROLL_SPEED;
