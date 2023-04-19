@@ -100,8 +100,8 @@ if (file_exists("test.data"))
 obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 
 //Sync chunks
-if (!global.is_host && global.multiplayer)
-	sync_chunks();
+//if (!global.is_host && global.multiplayer)
+	//sync_chunks();
 
 dead = false;
 respawn_delay = 60;

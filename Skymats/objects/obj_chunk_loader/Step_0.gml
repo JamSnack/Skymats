@@ -31,4 +31,4 @@ repeat(_a)
 	
 }
 
-x += SCROLL_SPEED;
+//x += SCROLL_SPEED;

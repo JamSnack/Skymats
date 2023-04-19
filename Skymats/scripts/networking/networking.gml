@@ -155,7 +155,7 @@ function handle_data(data)
 			
 			case "give_world_list": 
 			{ 
-				global.world_seed = noone;
+				/*global.world_seed = noone;
 				//ds_list_clear(global.tiles_list);
 				var tiles = json_parse(parsed_data.list);
 				
@@ -163,7 +163,7 @@ function handle_data(data)
 				{
 					var _t = tiles.list[_i];
 					instance_create_layer(_t[2], _t[3], "Instances", get_tile_object_from_item(_t[1]));
-				}
+				}*/
 			} 
 			break;
 			
@@ -173,7 +173,7 @@ function handle_data(data)
 				
 				if ( _id != global.client_id && _id != -1)
 				{
-					var _x = parsed_data.x + global.lag*SCROLL_SPEED;
+					var _x = parsed_data.x;
 					var _y = parsed_data.y;
 					var create_new = true;
 				
@@ -187,7 +187,12 @@ function handle_data(data)
 							
 							//Bounce this data to other clients
 							if (global.is_host)
+							{
+								//TODO: Clients should send a "lag" parameter that details by how much they are offset from the host.
+								//target_x += (parsed_data.tick)*SCROLL_SPEED;
 								send_data(parsed_data);
+							}
+							else target_x += global.lag*SCROLL_SPEED;
 								
 							break;
 						}

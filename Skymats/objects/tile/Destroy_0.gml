@@ -7,3 +7,8 @@ if (global.is_host)
 }
 
 global.tiles_list.remove(id);
+
+if (instance_exists(owner) && ds_exists(owner.chunk_grid, ds_type_grid) && grid_pos != noone)
+{
+	owner.chunk_grid[# grid_pos.x, grid_pos.y] = 0;
+}

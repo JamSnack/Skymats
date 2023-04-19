@@ -9,7 +9,7 @@ draw_text(1100, 10,
 	"Client ID: " + string(global.client_id) + "\n" +
 	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk)) + "\n" +
 	"Tiles: " + string(instance_number(TILE)) + "\n" +
-	"Lag: " + string(global.lag)
+	"Scroll Lag: " + string(global.lag)
 
 
 );

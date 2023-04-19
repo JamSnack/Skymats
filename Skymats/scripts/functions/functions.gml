@@ -11,7 +11,7 @@
 #macro CHUNK_HEIGHT 384
 
 #macro SCROLL_SPEED 0.1
-#macro SCROLL_CONDITIONS true//(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
+#macro SCROLL_CONDITIONS (!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function approach(a, b, amt)
 {
