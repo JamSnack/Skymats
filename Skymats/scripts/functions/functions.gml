@@ -11,7 +11,8 @@
 #macro CHUNK_HEIGHT 384
 
 #macro SCROLL_SPEED 0.1
-#macro SCROLL_CONDITIONS (!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
+#macro SCROLL_CONDITIONS true
+//(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function approach(a, b, amt)
 {
@@ -88,7 +89,8 @@ function sync_chunks()
 {
 	if (!global.is_host)
 	{
-		instance_create_layer(WORLD_BOUND_LEFT, WORLD_BOUND_TOP, "Instances", obj_client_request_chunk);
+		send_data({cmd: "request_init_island_markers"});
+		//instance_create_layer(WORLD_BOUND_LEFT, WORLD_BOUND_TOP, "Instances", obj_client_request_chunk);
 		/*
 		instance_create_layer(x, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
 		instance_create_layer(x, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);

@@ -10,6 +10,7 @@ else
 {
 	marker_object = instance_create_layer(x, y, "Instances", obj_island_marker);
 }
+
 time = 0;
 cutoff_start = floor(width/choose(4,5,6));
 cutoff_end = 0;

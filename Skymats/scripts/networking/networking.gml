@@ -426,21 +426,48 @@ function handle_data(data)
 			}
 			break;
 			
-			case "request_chunk":
+			case "request_init_island_markers":
 			{
 				if (global.is_host)
 				{
-					show_debug_message("Chunk requested");
+					show_debug_message("Islands requested");
 					//var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
 					
 					//If the world loader requested doesn't exist or one does exist but it is far away:
 					//if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
 					//{
-					show_debug_message(parsed_data.x);
-					show_debug_message(parsed_data.y);
+					//show_debug_message(parsed_data.x);
+					//show_debug_message(parsed_data.y);
 					//instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
 					//instance_create_layer(0, WORLD_BOUND_TOP, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
 					//}
+					
+					//Run mutliplayer init events inside island markers
+					with (obj_island_marker)
+						event_user(0);
+				}
+			}
+			break;
+			
+			case "init_island_marker":
+			{
+				//Load the chunk string
+				var _str = parsed_data.chunk_string
+				show_debug_message(_str);
+				
+				//Create new island marker
+				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker);
+				
+				if (_str != "")
+				{
+					var _g = ds_grid_create(17, 17);
+					ds_grid_read(_g, _str);
+					
+					with (_i)
+					{
+						chunk_grid = _g;
+						event_user(1); //Generate tiles
+					}
 				}
 			}
 			break;

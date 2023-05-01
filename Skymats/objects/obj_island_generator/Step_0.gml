@@ -57,7 +57,7 @@ if (time > width)
 	//var chosen_ore = choose_ore(current_y);
 	//instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
 	instance_destroy();
-	
+
 	marker_object.chunk_grid = chunk_grid; //Hand off ownership of the grid
 	chunk_grid = -1;
 	//show_debug_message("Chunk grid is:");
