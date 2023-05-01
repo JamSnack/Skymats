@@ -3,12 +3,12 @@
 
 if (global.is_host)
 {
-	send_data({cmd: "destroy_tile", x: x, y: y});
+	send_data({cmd: "destroy_tile", x: grid_pos.x, y: grid_pos.y, owner_id: owner.connected_id});
 }
 
-global.tiles_list.remove(id);
+//global.tiles_list.remove(id);
 
-if (instance_exists(owner) && ds_exists(owner.chunk_grid, ds_type_grid) && grid_pos != noone)
+if (instance_exists(owner) && ds_exists(owner.chunk_grid_type, ds_type_grid) && grid_pos != noone)
 {
-	owner.chunk_grid[# grid_pos.x, grid_pos.y] = 0;
+	owner.chunk_grid_type[# grid_pos.x, grid_pos.y] = 0;
 }

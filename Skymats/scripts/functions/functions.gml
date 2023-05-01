@@ -88,26 +88,7 @@ function clamp_speed(min_hspd, max_hspd, min_vspd, max_vspd)
 function sync_chunks()
 {
 	if (!global.is_host)
-	{
 		send_data({cmd: "request_init_island_markers"});
-		//instance_create_layer(WORLD_BOUND_LEFT, WORLD_BOUND_TOP, "Instances", obj_client_request_chunk);
-		/*
-		instance_create_layer(x, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
-		instance_create_layer(x, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
-		instance_create_layer(x+CHUNK_WIDTH, y, "Instances", obj_client_request_chunk);
-		instance_create_layer(x, y, "Instances", obj_client_request_chunk);
-		
-		
-		for (var _i = 0; _i < 3; _i++)
-			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y, "Instances", obj_client_request_chunk);
-		
-		for (var _i = 0; _i < 3; _i++)
-			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y-CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
-		
-		for (var _i = 0; _i < 3; _i++)
-			instance_create_layer(x-CHUNK_WIDTH + CHUNK_WIDTH*_i, y+CHUNK_HEIGHT, "Instances", obj_client_request_chunk);
-			*/
-	}
 }
 
 function get_item_name(item_id)

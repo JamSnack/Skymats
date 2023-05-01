@@ -241,16 +241,26 @@ function handle_data(data)
 				
 				//var marker_id = parsed_data.marker_id;
 				
-				if (global.is_host)
+				var _id = parsed_data.owner_id;
+				
+				if (!global.is_host)
 				{
 					with (obj_island_marker)
 					{
-
+						if (connected_id == _id)
+						{
+							var _tile = chunk_grid_instance[# parsed_data.x, parsed_data.y];
+							if (_tile != 0)
+							{
+								if (instance_exists(_tile))
+								{
+									with (_tile) instance_destroy();
+									chunk_grid_type[# parsed_data.x, parsed_data.y] = 0;
+								}
+							}
+							break;
+						}
 					}
-				}
-				else
-				{
-					
 				}
 			}
 			break;
@@ -456,7 +466,7 @@ function handle_data(data)
 				show_debug_message(_str);
 				
 				//Create new island marker
-				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker);
+				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker, {connected_id: parsed_data.connected_id});
 				
 				if (_str != "")
 				{
@@ -465,7 +475,8 @@ function handle_data(data)
 					
 					with (_i)
 					{
-						chunk_grid = _g;
+						//show_debug_message(_g);
+						chunk_grid_type = _g;
 						event_user(1); //Generate tiles
 					}
 				}

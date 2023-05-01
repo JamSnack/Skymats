@@ -36,8 +36,9 @@ for (var i = 0; i < column_height; i++)
 			_obj = obj_stone;
 	
 		//place tile
-		instance_create_layer(current_x, current_y + 16*i, "Instances", _obj, {owner: marker_object.id, grid_pos: {x: time, y: i}});
-		ds_grid_add(chunk_grid, time, i, _obj.item_id);
+		var _id = instance_create_layer(current_x, current_y + 16*i, "Instances", _obj, {owner: marker_object.id, grid_pos: {x: time, y: i}});
+		ds_grid_add(chunk_grid_type, time, i, _obj.item_id);
+		ds_grid_add(chunk_grid_instance, time, i, _id);
 	
 		//if (cutoff_start == 0 && cutoff_end == 0 && irandom(50) == 3 )
 		//{
@@ -58,9 +59,11 @@ if (time > width)
 	//instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
 	instance_destroy();
 
-	marker_object.chunk_grid = chunk_grid; //Hand off ownership of the grid
-	chunk_grid = -1;
-	//show_debug_message("Chunk grid is:");
+	//Hand off ownership of the grids
+	marker_object.chunk_grid_type = chunk_grid_type;
+	marker_object.chunk_grid_instance = chunk_grid_instance;
+	chunk_grid_type = -1;
+	chunk_grid_instance = -1;
 	
 	//for (var i = 0; i < width; i++)
 	//{

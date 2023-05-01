@@ -18,4 +18,5 @@ cutoff_end = 0;
 
 	
 //Island grid
-chunk_grid = ds_grid_create(width+1, height+1);
+chunk_grid_type = ds_grid_create(width+1, height+1);
+chunk_grid_instance = ds_grid_create(width+1, height+1);

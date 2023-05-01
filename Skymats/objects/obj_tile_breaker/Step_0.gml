@@ -40,8 +40,8 @@ lifetime--;
 
 if (lifetime < 0)
 {
-	if (global.is_host)
-		send_data({cmd: "destroy_tile", x: x, y: y}, connected_socket);
+	//if (global.is_host)
+		//send_data({cmd: "destroy_tile", x: x, y: y}, connected_socket);
 		
 	instance_destroy();
 }
