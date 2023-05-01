@@ -2,7 +2,7 @@
 //	exit;
 
 var column_height = height;
-y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2)*variance_factor;
+//y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2)*variance_factor;
 var current_y = y;
 var current_x = x + 16*time;
 

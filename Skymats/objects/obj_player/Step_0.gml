@@ -200,6 +200,7 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 else if (mine_cooldown > 0) mine_cooldown--;
 
 //Tile placement
+/*
 if (client_can_place_tile && global.inventory.selected_slot != -1)
 {
 	var tile_selected = global.inventory.contents[_selected_slot];
@@ -220,7 +221,7 @@ if (client_can_place_tile && global.inventory.selected_slot != -1)
 			client_can_place_tile = false;
 		}
 	}
-}
+}*/
 
 //Jetpack
 if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)

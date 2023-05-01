@@ -230,12 +230,28 @@ function handle_data(data)
 			
 			case "destroy_tile":
 			{
+				/*
 				var _x = parsed_data.x + global.lag*SCROLL_SPEED;
 				var _y = parsed_data.y;
 				
 				instance_activate_region(_x-1, _y-1, 2, 2, true);
 				
 				instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {damage: 999});
+				*/
+				
+				//var marker_id = parsed_data.marker_id;
+				
+				if (global.is_host)
+				{
+					with (obj_island_marker)
+					{
+
+					}
+				}
+				else
+				{
+					
+				}
 			}
 			break;
 			
@@ -423,7 +439,7 @@ function handle_data(data)
 					show_debug_message(parsed_data.x);
 					show_debug_message(parsed_data.y);
 					//instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
-					instance_create_layer(0, WORLD_BOUND_TOP, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
+					//instance_create_layer(0, WORLD_BOUND_TOP, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
 					//}
 				}
 			}
