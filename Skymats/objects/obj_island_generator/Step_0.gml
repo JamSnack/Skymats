@@ -2,7 +2,11 @@
 //	exit;
 
 var column_height = height;
-//y += 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2)*variance_factor;
+var offset = 16 * choose(0, 0, 0, 0, 0, 1, 1, -1, -1, 2, -2)*variance_factor;
+y += offset;
+
+chunk_array_heights[time] = offset;
+
 var current_y = y;
 var current_x = x + 16*time;
 
@@ -24,6 +28,13 @@ else if (time > (width/3)*2)
 //create an island, column-by-column
 for (var i = 0; i < column_height; i++)
 {	
+	//If the player is move up incredibly fast, the island which is being generated can be destroyed (its marker along with it), but this object may still assume the marker exists.
+	if (!instance_exists(marker_object))
+	{
+		instance_destroy();
+		break;
+	}
+	
 	var _c = collision_point(current_x, current_y + 16*i, TILE, false, true);
 	
 	if (_c == noone)
@@ -62,8 +73,10 @@ if (time > width)
 	//Hand off ownership of the grids
 	marker_object.chunk_grid_type = chunk_grid_type;
 	marker_object.chunk_grid_instance = chunk_grid_instance;
+	marker_object.chunk_array_heights = chunk_array_heights;
 	chunk_grid_type = -1;
 	chunk_grid_instance = -1;
+	chunk_array_heights = -1;
 	
 	//for (var i = 0; i < width; i++)
 	//{

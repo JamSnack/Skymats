@@ -1,26 +1,29 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (global.is_host && collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right, bbox_top, OBSTA, false, true) == noone)
+if (global.is_host)
 {
-	obstruction = false;
-	if (fuel > 1 && powered && power_delay <= 0)
+	if (collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right, bbox_top, OBSTA, false, true) == noone)
 	{
-		global.platform_height -= 1;
-		fuel -= 1;
-		
-		if (spawn_high_island_delay < 0 && (fuel > 400))
+		obstruction = false;
+		if (fuel > 1 && powered && power_delay <= 0)
 		{
-			instance_create_layer(bbox_left + irandom_range(-250, 250), WORLD_BOUND_TOP - 300, "Instances", obj_island_generator);
-			spawn_high_island_delay = 60*15;
+			global.platform_height -= 1;
+			fuel -= 1;
+		
+			if (spawn_high_island_delay < 0 && (fuel > 400))
+			{
+				instance_create_layer(bbox_left + irandom_range(-250, 250), WORLD_BOUND_TOP - 300, "Instances", obj_island_generator);
+				spawn_high_island_delay = 60*15;
+			}
+			else spawn_high_island_delay--;
 		}
-		else spawn_high_island_delay--;
 	}
-}
-else 
-{
-	obstruction = true;
-	y = floor(y);
+	else
+	{
+		obstruction = true;
+		y = floor(y);
+	}
 }
 
 //Collision and movement stuff
@@ -31,7 +34,7 @@ if (y != target_y)
 	obj_market.y = bbox_top-74;
 	obj_power_button.y = bbox_top-2;
 	
-	if (collision_rectangle(bbox_left, bbox_top-1, bbox_right, bbox_bottom, obj_player, false, true) != noone)
+	if (collision_rectangle(bbox_left, ceil(bbox_top)-1, bbox_right, bbox_bottom, obj_player, false, true) != noone)
 	{
 		obj_player.y = bbox_top-9;
 			

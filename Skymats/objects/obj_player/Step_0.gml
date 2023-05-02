@@ -54,7 +54,7 @@ if (grappling)
 	//Keep hook on moving enemies
 	if (instance_exists(grappling_to) && object_get_parent(grappling_to.object_index) == ENEMY)
 	{
-		show_debug_message("Hooking a mob");
+		//show_debug_message("Hooking a mob");
 		grapple_point_x = grappling_to.x;
 		grapple_point_y = grappling_to.y;
 	}
@@ -173,25 +173,24 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 			//Hurt the tile and destroy it with server authority
 			with _tile
 			{
-				hp -= other.stat_mine_level;
+				hurt_tile(other.stat_mine_level);
 				
 				draw_damage = true;
 				damage = (hp/max_hp)*7;
 				
 				if (hp <= 0)
-				{
-					instance_destroy();
 					event_user(0);
-				}
 			}
 		}
-		else if (global.multiplayer)
+		else if (global.multiplayer && instance_exists(_tile.owner))
 		{
 			//Hurt the tile for visual purposes
 			with _tile
-				hp -= other.stat_mine_level;
+			{
+				hurt_tile(other.stat_mine_level);
 				
-			send_data({cmd: "request_tile_hit", damage: stat_mine_level, x: mouse_x - global.lag*SCROLL_SPEED, y: mouse_y});	
+				send_data({cmd: "request_tile_hit", damage: other.stat_mine_level, owner_id: owner.connected_id, x: grid_pos.x, y: grid_pos.y});
+			}
 		}
 		
 		mine_cooldown = stat_mine_cooldown;

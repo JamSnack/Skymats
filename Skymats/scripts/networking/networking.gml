@@ -230,17 +230,6 @@ function handle_data(data)
 			
 			case "destroy_tile":
 			{
-				/*
-				var _x = parsed_data.x + global.lag*SCROLL_SPEED;
-				var _y = parsed_data.y;
-				
-				instance_activate_region(_x-1, _y-1, 2, 2, true);
-				
-				instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {damage: 999});
-				*/
-				
-				//var marker_id = parsed_data.marker_id;
-				
 				var _id = parsed_data.owner_id;
 				
 				if (!global.is_host)
@@ -265,16 +254,62 @@ function handle_data(data)
 			}
 			break;
 			
+			case "update_tile_hp":
+			{
+				var _id = parsed_data.owner_id;
+				
+				if (!global.is_host)
+				{
+					with (obj_island_marker)
+					{
+						if (connected_id == _id)
+						{
+							var _tile = chunk_grid_instance[# parsed_data.x, parsed_data.y];
+							if (_tile != 0)
+							{
+								if (instance_exists(_tile))
+								{
+									with (_tile)
+									{
+										hp = parsed_data.hp;
+										
+										draw_damage = true;
+										damage = (hp/max_hp)*7;
+									}
+								}
+							}
+							break;
+						}
+					}
+				}
+			}
+			break;
+			
 			case "request_tile_hit":
 			{
 				if (global.is_host)
 				{
-					var _x = parsed_data.x;
-					var _y = parsed_data.y;
-				
-					instance_activate_region(_x-1, _y-1, 2, 2, true);
-				
-					instance_create_layer(_x, _y, "Instances", obj_tile_breaker, {damage: parsed_data.damage, drop_item: true, connected_socket: async_load[? "id"]});
+					var _id = parsed_data.owner_id;
+					
+					with (obj_island_marker)
+					{
+						if (connected_id == _id)
+						{
+							var _tile = chunk_grid_instance[# parsed_data.x, parsed_data.y];
+							
+							if (instance_exists(_tile))
+							{
+								with (_tile)
+								{
+									hurt_tile(parsed_data.damage);
+			
+									if (hp <= 0)
+										event_user(0);
+								}
+							}
+							break;
+						}
+					}
 				}
 			}
 			break;
@@ -466,7 +501,7 @@ function handle_data(data)
 				show_debug_message(_str);
 				
 				//Create new island marker
-				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker, {connected_id: parsed_data.connected_id});
+				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker, {connected_id: parsed_data.connected_id, chunk_array_heights: parsed_data.heights});
 				
 				if (_str != "")
 				{

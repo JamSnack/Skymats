@@ -28,6 +28,22 @@ function sync_position()
 	y = lerp(y, target_y, 0.33);
 }
 
+function hurt_tile(_damage)
+{
+	hp -= _damage;
+	
+	draw_damage = true;
+	damage = (hp/max_hp)*7;
+	
+	if (hp <= 0)
+		instance_destroy();
+	
+	if (global.multiplayer && global.is_host && instance_exists(owner))
+	{
+		send_data({cmd: "update_tile_hp", owner_id: owner.connected_id, x: grid_pos.x, y: grid_pos.y, hp: hp});
+	}
+}
+
 function audio_play_standard(sound, priority, loops, overwrites=false)
 {
 	if (overwrites)

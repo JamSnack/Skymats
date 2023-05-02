@@ -19,4 +19,5 @@ cutoff_end = 0;
 	
 //Island grid
 chunk_grid_type = ds_grid_create(width+1, height+1);
+chunk_array_heights = array_create(width+1, 0);
 chunk_grid_instance = ds_grid_create(width+1, height+1);

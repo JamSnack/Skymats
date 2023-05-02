@@ -10,8 +10,6 @@ draw_text(1100, 10,
 	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk)) + "\n" +
 	"Tiles: " + string(instance_number(TILE)) + "\n" +
 	"Scroll Lag: " + string(global.lag)
-
-
 );
 /*
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
