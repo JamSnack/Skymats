@@ -37,7 +37,7 @@ stat_mine_level = 1; //Determines which blocks can be destroyed and not
 stat_mine_cooldown = 45; //Determines how much time must pass before the pickaxe can be swung again
 
 //- jetpack
-stat_jetpack_fuel = 50; //How many frames can pass before the jetpack runs out of fuel. +30
+stat_jetpack_fuel = 70; //How many frames can pass before the jetpack runs out of fuel. +30
 stat_jetpack_strength = 0.15; //How fast the jetpack boosts you + 0.025
 stat_jetpack_cooldown = 90; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
 stat_jetpack_regen_rate = 0.2; //How much jetpack fuel regenerates each frame. +0.05

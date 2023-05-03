@@ -14,6 +14,11 @@
 #macro SCROLL_CONDITIONS true
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
+function create_floating_text(x, y, text, color)
+{
+	instance_create_layer(x, y, "Instances", efct_floating_text, {text: text, color: color});
+}
+
 function approach(a, b, amt)
 {
 	if (a < b)
@@ -31,6 +36,8 @@ function sync_position()
 function hurt_tile(_damage)
 {
 	hp -= _damage;
+	
+	create_floating_text(mouse_x, mouse_y, _damage, c_red);
 	
 	draw_damage = true;
 	damage = (hp/max_hp)*7;
@@ -61,6 +68,8 @@ function hurt_enemy(inst, k_direction, k_amt, damage)
 		{
 			motion_add_custom(k_direction, max(k_amt-weight, 0));
 			hp -= damage;
+			
+			create_floating_text(x, y, damage, c_red);
 			
 			if (hp <= 0)
 				instance_destroy();
@@ -371,7 +380,7 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 4*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*30; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 70 + _up*30; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.15 + _up*0.025; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
