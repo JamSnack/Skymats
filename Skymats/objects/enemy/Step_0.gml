@@ -1,19 +1,5 @@
-//Check for death
-if (hp <= 0)
-	instance_destroy();
-
 //host stuff
-if (global.is_host)
-{
-	
-	//multiplayer
-	if (current_time mod 2 == 0)
-	{
-		var _s = {cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp, object: object_index};
-		send_data(_s);
-	}
-}
-else
+if (!global.is_host)
 { 
 	sync_position();
 	
@@ -21,7 +7,7 @@ else
 	if (x == xprevious && y == yprevious)
 		kill_timer--;
 	else
-		kill_timer = 60*5;
+		kill_timer = 60*2;
 		
 	if (kill_timer <= 0)
 		instance_destroy();

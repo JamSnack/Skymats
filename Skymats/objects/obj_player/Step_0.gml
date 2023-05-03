@@ -198,30 +198,6 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 }
 else if (mine_cooldown > 0) mine_cooldown--;
 
-//Tile placement
-/*
-if (client_can_place_tile && global.inventory.selected_slot != -1)
-{
-	var tile_selected = global.inventory.contents[_selected_slot];
-	var object_selected = get_tile_object_from_item(tile_selected.item_id);
-	var _x = get_coordinate_on_world_grid(mouse_x+8);
-	var _y = get_coordinate_on_world_grid(mouse_y+8);
-	
-	if (point_distance(x, y, _x, _y) < 16*5 && tile_selected.amount > 0 &&  object_selected != -1 && mouse_check_button(mb_left) && collision_point(_x, _y, OBSTA, false, true) == noone)
-	{
-		if (global.is_host)
-		{
-			instance_create_layer(_x, _y, "Instances", object_selected);
-			global.inventory.subtractItemAtSlot(_selected_slot, 1);
-		}
-		else
-		{
-			send_data({cmd: "request_create_tile", x: _x, y: _y, item_id: tile_selected.item_id});
-			client_can_place_tile = false;
-		}
-	}
-}*/
-
 //Jetpack
 if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 {
@@ -265,11 +241,10 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 			var dir_knock = point_direction(x, y, _e.x, _e.y);
 		
 			//Deal damage and apply knockback
-			if (global.is_host)
-			{
-				hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
-			}
-			else send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
+			hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
+			
+			if (!global.is_host && global.multiplayer)
+				send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
 		
 			//Hit effect
 			instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});

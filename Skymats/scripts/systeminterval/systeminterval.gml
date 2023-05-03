@@ -39,6 +39,9 @@ function process_system_interval()
 		case 1: { cull_tiles();        } break;
 		case 2: { create_new_islands(); } break;
 		case 3: { sync_platform(); } break;
+		case 7: { sync_mobs(); } break;
+		case 15: { sync_mobs(); } break;
+		case 16: { sync_platform(); } break;
 	}
 	
 	current_interval++;
@@ -81,8 +84,8 @@ function create_new_islands()
 	
 		if (_tiles < 1200 && interval_delay <= 0)
 		{
-			interval_delay = (SYSTEM_INTERVAL)*12;
-			var _is = instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
+			interval_delay = (SYSTEM_INTERVAL)*(13 + irandom(7));
+			instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
 		}
 		else if (interval_delay > 0) 
 		{
@@ -94,5 +97,14 @@ function create_new_islands()
 				interval_delay -= 2;
 			else interval_delay--;
 		}
+	}
+}
+
+function sync_mobs()
+{
+	if (global.is_host)
+	{
+		with (ENEMY)
+			send_data({cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp, object: object_index});
 	}
 }

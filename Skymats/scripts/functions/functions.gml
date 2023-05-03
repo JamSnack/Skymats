@@ -60,7 +60,10 @@ function hurt_enemy(inst, k_direction, k_amt, damage)
 		with (inst)
 		{
 			motion_add_custom(k_direction, max(k_amt-weight, 0));
-			hp -= damage;	
+			hp -= damage;
+			
+			if (hp <= 0)
+				instance_destroy();
 		}
 	}
 }
