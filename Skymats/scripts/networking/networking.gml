@@ -101,6 +101,13 @@ function handle_data(data)
 			}
 			break;
 			
+			case "request_fuel_added":
+			{
+				if (instance_exists(obj_platform))
+					obj_platform.fuel += parsed_data.amt;
+			}
+			break;
+			
 			case "request_client_id":
 			{
 				if (global.is_host)

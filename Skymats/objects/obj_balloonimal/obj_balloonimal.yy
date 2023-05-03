@@ -36,8 +36,8 @@
   ],
   "overriddenProperties": [
     {"propertyId":{"name":"weight","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"0","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"max_hspeed","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"max_vspeed","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"max_hspeed","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"max_vspeed","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"bounciness","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"4","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {

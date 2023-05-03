@@ -35,28 +35,16 @@ for (var i = 0; i < column_height; i++)
 		break;
 	}
 	
-	var _c = collision_point(current_x, current_y + 16*i, TILE, false, true);
+	//select tile type to place
+	var _obj = obj_grass;
 	
-	if (_c == noone)
-	{
+	if (irandom(2) + i > 4)
+		_obj = obj_stone;
 	
-		//select tile type to place
-		var _obj = obj_grass;
-	
-		if (irandom(2) + i > 4)
-			_obj = obj_stone;
-	
-		//place tile
-		var _id = instance_create_layer(current_x, current_y + 16*i, "Instances", _obj, {owner: marker_object.id, grid_pos: {x: time, y: i}});
-		ds_grid_add(chunk_grid_type, time, i, _obj.item_id);
-		ds_grid_add(chunk_grid_instance, time, i, _id);
-	
-		//if (cutoff_start == 0 && cutoff_end == 0 && irandom(50) == 3 )
-		//{
-			//var chosen_ore = choose_ore(current_y);
-			//instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
-		//}
-	}
+	//place tile
+	var _id = instance_create_layer(current_x, current_y + 16*i, "Instances", _obj, {owner: marker_object.id, grid_pos: {x: time, y: i}});
+	ds_grid_add(chunk_grid_type, time, i, _obj.item_id);
+	ds_grid_add(chunk_grid_instance, time, i, _id);
 }
 
 //increase time
@@ -65,9 +53,45 @@ time++;
 //The island is complete
 if (time > width)
 {
+	var veins = 2 + irandom(3);
+
 	//Guaranteed ore spawn
-	//var chosen_ore = choose_ore(current_y);
-	//instance_create_layer(current_x, current_y + 16*i, "Instances", obj_ore_generator, {ore_to_generate: get_tile_object_from_item(chosen_ore)});
+	repeat(veins)
+	{
+		var chosen_ore = choose_ore(current_y);
+		var prev_x = x + 16*irandom(width-1);
+		var prev_y = y + 16*4 + 16*irandom(height-4);
+		var ore_amount = 3 + irandom(3);
+			
+		repeat(ore_amount)
+		{
+			if (instance_exists(obj_stone))
+			{
+				//Look to infect, if none, go to nearest stone
+				var _inst = tile_is_adjacent(prev_x, prev_y, obj_stone);
+	
+				if (_inst == noone)
+					_inst = instance_nearest(prev_x, prev_y, obj_stone);
+	
+				//If we have an instance, infect the stone
+				if (_inst != noone)
+				{
+					with (_inst)
+					{
+						var _ore = instance_create_layer(x, y, "Instances", get_tile_object_from_item(chosen_ore), {owner: owner, grid_pos: {x: grid_pos.x, y: grid_pos.y}});
+						other.chunk_grid_type[# grid_pos.x, grid_pos.y] = chosen_ore;
+						other.chunk_grid_instance[# grid_pos.x, grid_pos.y] = _ore;
+						instance_destroy();
+					}
+			
+					prev_x = _inst.x;
+					prev_y = _inst.y;
+				}
+			}
+		}
+	}
+
+	//Destroy generator
 	instance_destroy();
 
 	//Hand off ownership of the grids
@@ -77,6 +101,9 @@ if (time > width)
 	chunk_grid_type = -1;
 	chunk_grid_instance = -1;
 	chunk_array_heights = -1;
+	
+	//send new island to clients
+	with (marker_object) event_user(0);
 	
 	//for (var i = 0; i < width; i++)
 	//{

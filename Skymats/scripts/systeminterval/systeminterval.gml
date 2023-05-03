@@ -81,14 +81,16 @@ function create_new_islands()
 	
 		if (_tiles < 1200 && interval_delay <= 0)
 		{
-			interval_delay = 120 + irandom(20);
-			instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
+			interval_delay = (SYSTEM_INTERVAL)*12;
+			var _is = instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
 		}
 		else if (interval_delay > 0) 
 		{
 			if (_tiles < 100)
 				interval_delay = 0;
-			else if (_tiles < 600)
+			else if (_tiles < 300)
+				interval_delay -= 3;
+			else if (_tiles < 650)
 				interval_delay -= 2;
 			else interval_delay--;
 		}

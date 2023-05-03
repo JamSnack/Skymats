@@ -168,9 +168,24 @@ function get_item_value(item_id)
 	}
 }
 
-function get_coordinate_on_world_grid(x)
+function get_fuel_value(item_id)
 {
-	return floor(x/16)*16;
+	switch item_id
+	{
+		case ITEM_ID.grass:		   { return  5; } break;
+		case ITEM_ID.coal:         
+		case ITEM_ID.copper:	   
+		case ITEM_ID.iron:	       
+		case ITEM_ID.silver:	   
+		case ITEM_ID.gold:		   { return  30; } break;
+		case ITEM_ID.sapphire:	   
+		case ITEM_ID.ruby:		   
+		case ITEM_ID.emerald:	   
+		case ITEM_ID.diamond:	   { return  45; } break;
+		case ITEM_ID.enemy_parts:  { return  60; } break;
+		case ITEM_ID.pot_of_greed: { return  150; } break;
+		default:				   { return 10; } break;
+	}
 }
 
 function item(_name = "", _item_id = 0, _amount = 0) constructor
@@ -377,10 +392,10 @@ function init_player()
 }
 
 global.ore_distribution = array_create(ITEM_ID.last_ore);
-global.ore_distribution[ITEM_ID.coal] =       { high: -1000, low: 500    };
-global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 250  };
-global.ore_distribution[ITEM_ID.iron] =		  { high: -2500, low: 0 };
-global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -1250 };
+global.ore_distribution[ITEM_ID.coal] =       { high: 2000, low: 3000    };
+global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 1000  };
+global.ore_distribution[ITEM_ID.iron] =		  { high: -3500, low: 500 };
+global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -500 };
 global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
 global.ore_distribution[ITEM_ID.ruby] =		  { high: -7500, low: -2500 };
 global.ore_distribution[ITEM_ID.sapphire] =   { high: -8500, low: -3500 };
@@ -401,7 +416,7 @@ function choose_ore(y)
 			return _i;	
 	}
 	
-	return ITEM_ID.stone;
+	return ITEM_ID.diamond;
 }
 
 
