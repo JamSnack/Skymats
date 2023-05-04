@@ -35,7 +35,6 @@ if (instance_exists(obj_player) && (room == Room1 || room == rm_small) && global
 if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 {
 	loading_world = false;
-	with camera event_user(0);
 	draw_enable_drawevent(true);
 	
 	//Spawn sound

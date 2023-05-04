@@ -93,9 +93,11 @@ for (var i = 0; i < global.inventory.size; i++)
 
 //Animation
 inventory_open_animation = 1;
-inventory_open = true;
 
 inventory_open_animcurve_channel = animcurve_get_channel(curve, 0);
 
 //Frame skip
 frame = 0;
+
+//Init game
+init_game();

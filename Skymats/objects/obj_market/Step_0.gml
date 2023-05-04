@@ -59,40 +59,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 				send_data({ cmd: "request_fuel_added", amt: client_fuel});
 			
 			//Save game
-			with (_p)
-			{
-				var save_struct = {
-					stat_grapple_force: stat_grapple_force,
-					stat_grapple_range: stat_grapple_range,
-					stat_grapple_speed: stat_grapple_speed,
-					
-					stat_jetpack_cooldown: stat_jetpack_cooldown,
-					stat_jetpack_fuel: stat_jetpack_fuel,
-					stat_jetpack_regen_rate: stat_jetpack_regen_rate,
-					stat_jetpack_strength: stat_jetpack_strength,
-					
-					stat_mine_cooldown: stat_mine_cooldown,
-					stat_mine_level: stat_mine_level,
-					
-					stat_weapon_cooldown: stat_weapon_cooldown,
-					stat_weapon_damage: stat_weapon_damage,
-					stat_weapon_knockback: stat_weapon_knockback,
-					stat_weapon_range: stat_weapon_range,
-					
-					upgrades_purchased: upgrades_purchased,
-					gold: gold,
-					
-					platform_height: global.platform_height
-				}
-				
-				var json = json_stringify(save_struct);
-				var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
-				buffer_write(_buff, buffer_string, json);
-				buffer_save(_buff, "test.data");
-	
-				//cleanup
-				buffer_delete(_buff);
-			}
+			save_game();
 		}
 		//Market stuff
 		display_market_animation = lerp(display_market_animation, 1, 0.1);

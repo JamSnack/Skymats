@@ -54,48 +54,8 @@ init_player();
 upgrades_purchased = array_create(UPGRADE.last, 1);
 username = "";
 
-//Load-game
-if (file_exists("test.data"))
-{
-	var _buff = buffer_load("test.data");	
-	var _string = buffer_read(_buff, buffer_string);
-	var _data = json_parse(_string);
-	
-	try
-	{
-		stat_grapple_force = _data.stat_grapple_force; //How much force is applied to the player +0.5
-		stat_grapple_speed = _data.stat_grapple_speed; //How fast the hook travels +2
-		stat_grapple_range = _data.stat_grapple_range; //How far the hook can go (600 is about the edge of the screen) +20
-
-		//- mining tool
-		stat_mine_level = _data.stat_mine_level; //Determines which blocks can be destroyed and not
-		stat_mine_cooldown = _data.stat_mine_cooldown; //Determines how much time must pass before the pickaxe can be swung again
-
-		//- jetpack
-		stat_jetpack_fuel = _data.stat_jetpack_fuel; //How many frames can pass before the jetpack runs out of fuel. +30
-		stat_jetpack_strength = _data.stat_jetpack_strength; //How fast the jetpack boosts you + 0.025
-		stat_jetpack_cooldown = _data.stat_jetpack_cooldown; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
-		stat_jetpack_regen_rate = _data.stat_jetpack_regen_rate; //How much jetpack fuel regenerates each frame. +0.05
-
-		//- weapon
-		stat_weapon_cooldown = _data.stat_weapon_cooldown; //How many frames it takes to prepare the auto-attack
-		stat_weapon_damage = _data.stat_weapon_damage;
-		stat_weapon_knockback = _data.stat_weapon_knockback;
-		stat_weapon_range = _data.stat_weapon_range;
-	
-		//Purchase
-		upgrades_purchased = _data.upgrades_purchased;
-		gold = _data.gold;
-		
-		//Platform
-		global.platform_height = _data.platform_height;
-	}
-	catch (e)
-	{
-		show_debug_message("Error loading file");
-		show_debug_message(e);
-	}
-}
+//Load game
+load_game("test.data");
 
 obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 

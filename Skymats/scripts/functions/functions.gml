@@ -11,7 +11,7 @@
 #macro CHUNK_HEIGHT 384
 
 #macro SCROLL_SPEED 0.1
-#macro SCROLL_CONDITIONS true
+#macro SCROLL_CONDITIONS global.tutorial_complete
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function create_floating_text(x, y, text, color)
@@ -492,4 +492,98 @@ function update_shadow(shadow)
 		layer_sprite_xscale(shadow, image_xscale);
 		layer_sprite_yscale(shadow, image_yscale);
 	}
+}
+
+function save_game()
+{
+	if (instance_exists(obj_player))
+	{
+		with (obj_player)
+		{
+			var save_struct = {
+				stat_grapple_force: stat_grapple_force,
+				stat_grapple_range: stat_grapple_range,
+				stat_grapple_speed: stat_grapple_speed,
+					
+				stat_jetpack_cooldown: stat_jetpack_cooldown,
+				stat_jetpack_fuel: stat_jetpack_fuel,
+				stat_jetpack_regen_rate: stat_jetpack_regen_rate,
+				stat_jetpack_strength: stat_jetpack_strength,
+					
+				stat_mine_cooldown: stat_mine_cooldown,
+				stat_mine_level: stat_mine_level,
+					
+				stat_weapon_cooldown: stat_weapon_cooldown,
+				stat_weapon_damage: stat_weapon_damage,
+				stat_weapon_knockback: stat_weapon_knockback,
+				stat_weapon_range: stat_weapon_range,
+					
+				upgrades_purchased: upgrades_purchased,
+				gold: gold,
+					
+				platform_height: global.platform_height,
+				tutorial_complete: global.tutorial_complete
+			}
+				
+			var json = json_stringify(save_struct);
+			var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
+			buffer_write(_buff, buffer_string, json);
+			buffer_save(_buff, "test.data");
+	
+			//cleanup
+			buffer_delete(_buff);
+		}
+	}
+}
+
+function load_game(file)
+{
+	if (file_exists(file))
+	{
+		var _buff = buffer_load(file);	
+		var _string = buffer_read(_buff, buffer_string);
+		var _data = json_parse(_string);
+	
+		try
+		{
+			stat_grapple_force = _data.stat_grapple_force; //How much force is applied to the player +0.5
+			stat_grapple_speed = _data.stat_grapple_speed; //How fast the hook travels +2
+			stat_grapple_range = _data.stat_grapple_range; //How far the hook can go (600 is about the edge of the screen) +20
+
+			//- mining tool
+			stat_mine_level = _data.stat_mine_level; //Determines which blocks can be destroyed and not
+			stat_mine_cooldown = _data.stat_mine_cooldown; //Determines how much time must pass before the pickaxe can be swung again
+
+			//- jetpack
+			stat_jetpack_fuel = _data.stat_jetpack_fuel; //How many frames can pass before the jetpack runs out of fuel. +30
+			stat_jetpack_strength = _data.stat_jetpack_strength; //How fast the jetpack boosts you + 0.025
+			stat_jetpack_cooldown = _data.stat_jetpack_cooldown; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
+			stat_jetpack_regen_rate = _data.stat_jetpack_regen_rate; //How much jetpack fuel regenerates each frame. +0.05
+
+			//- weapon
+			stat_weapon_cooldown = _data.stat_weapon_cooldown; //How many frames it takes to prepare the auto-attack
+			stat_weapon_damage = _data.stat_weapon_damage;
+			stat_weapon_knockback = _data.stat_weapon_knockback;
+			stat_weapon_range = _data.stat_weapon_range;
+	
+			//Purchase
+			upgrades_purchased = _data.upgrades_purchased;
+			gold = _data.gold;
+		
+			//Platform
+			global.platform_height = _data.platform_height;
+			global.tutorial_complete = _data.tutorial_complete;
+		}
+		catch (e)
+		{
+			show_debug_message("Error loading file");
+			show_debug_message(e);
+		}
+	}
+}
+
+function init_game()
+{
+	global.platform_height = 0;
+	global.tutorial_complete = false;
 }

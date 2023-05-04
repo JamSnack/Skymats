@@ -9,7 +9,7 @@ if (collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right, bbox_top, OBSTA,
 		global.platform_height -= 1;
 		fuel -= 1;
 		
-		if (spawn_high_island_delay < 0 && (fuel > 400))
+		if (global.tutorial_complete && spawn_high_island_delay < 0 && (fuel > 400))
 		{
 			instance_create_layer(bbox_left + irandom_range(-250, 250), WORLD_BOUND_TOP - 300, "Instances", obj_island_generator);
 			spawn_high_island_delay = 60*15;
@@ -19,8 +19,11 @@ if (collision_rectangle(bbox_left, bbox_top - 16*2, bbox_right, bbox_top, OBSTA,
 }
 else
 {
-	obstruction = true;
-	//y = floor(y);
+	if (obstruction = false)
+	{
+		obstruction = true;
+		y = round(y);
+	}
 }
 
 
@@ -32,9 +35,15 @@ if (y != target_y)
 	obj_market.y = bbox_top-74;
 	obj_power_button.y = bbox_top-2;
 	
+	if (point_distance(0, y, 0, target_y) < 1)
+		y = target_y;
+}
+
+if (y != yprevious)
+{
 	if (collision_rectangle(bbox_left, ceil(bbox_top)-1, bbox_right, bbox_bottom, obj_player, false, true) != noone)
 	{
-		obj_player.y = bbox_top-9;
+		obj_player.y = ceil(bbox_top)-9;
 			
 		if (!obj_player.grappling)
 			obj_player.vspd = 0;

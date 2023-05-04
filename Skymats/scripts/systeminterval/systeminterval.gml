@@ -1,33 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-global.platform_height = 0;
-
 #macro SYSTEM_INTERVAL 16
-
-global.tiles_list = {
-	tiles : ds_list_create(),
-	tiles_list_size : 0,
-	add : function(id, item_id, x, y)
-	{
-		ds_list_add(tiles, [id, item_id, x, y]);
-		tiles_list_size += 1;
-	},
-	remove : function(position)
-	{
-		ds_list_delete(tiles, position);
-		tiles_list_size -= 1;
-	},
-	to_string : function()
-	{
-		//returns a json string of the contents of tiles
-		var str = "{ \"list\": ["
-		for (var i=0; i<tiles_list_size; i++)
-			str += string(tiles[| i]) + ",";
-			
-		str += "]}";
-		return str;
-	}
-};
 
 function process_system_interval()
 {
@@ -67,16 +40,19 @@ function sync_player_stats()
 
 function cull_tiles()
 {
-	with (TILE)
+	if (global.tutorial_complete)
 	{
-		if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+300)
-			instance_destroy();
+		with (TILE)
+		{
+			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+300)
+				instance_destroy();
+		}
 	}
 }
 
 function create_new_islands()
 {
-	if (global.is_host)
+	if (global.is_host && global.tutorial_complete)
 	{
 		static interval_delay = 0;
 		

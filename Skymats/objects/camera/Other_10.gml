@@ -1,4 +1,5 @@
 /// @description Deactivate Tiles
+
 last_chunk_x = x;
 last_chunk_y = y;
 
