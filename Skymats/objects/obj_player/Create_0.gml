@@ -65,3 +65,9 @@ obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 
 dead = false;
 respawn_delay = 60;
+
+if (global.tutorial_complete == false)
+{
+	x = 30;
+	y = 120;
+}

@@ -207,6 +207,7 @@
     {"id":{"name":"scribble_external_sound_add","path":"scripts/scribble_external_sound_add/scribble_external_sound_add.yy",},"order":1,},
     {"id":{"name":"scribble_super_clear","path":"scripts/scribble_super_clear/scribble_super_clear.yy",},"order":0,},
     {"id":{"name":"scribble_rgb_to_bgr","path":"scripts/scribble_rgb_to_bgr/scribble_rgb_to_bgr.yy",},"order":10,},
+    {"id":{"name":"obj_tutorial_completer","path":"objects/obj_tutorial_completer/obj_tutorial_completer.yy",},"order":30,},
     {"id":{"name":"obj_copper","path":"objects/obj_copper/obj_copper.yy",},"order":4,},
     {"id":{"name":"spr_player_fall","path":"sprites/spr_player_fall/spr_player_fall.yy",},"order":28,},
     {"id":{"name":"scribble_super_create","path":"scripts/scribble_super_create/scribble_super_create.yy",},"order":1,},

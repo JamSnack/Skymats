@@ -12,6 +12,7 @@ function process_system_interval()
 		case 1: { cull_tiles();        } break;
 		case 2: { create_new_islands(); } break;
 		case 3: { sync_platform(); } break;
+		case 5: { spawn_mobs(); } break;
 		case 7: { sync_mobs(); } break;
 		case 15: { sync_mobs(); } break;
 		case 16: { sync_platform(); } break;
@@ -83,4 +84,31 @@ function sync_mobs()
 		with (ENEMY)
 			send_data({cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp, object: object_index});
 	}
+}
+
+function spawn_mobs()
+{
+	static enemy_spawn_delay = 400;
+	
+	//Enemy spawning
+	if (global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < 15)
+	{	
+		var _p = irandom(instance_number(PLAYER)-1);
+		var player = instance_find(PLAYER, _p);
+		var _y = player.y;
+		var _x = player.x;
+	
+		if (enemy_spawn_delay <= 0)
+		{
+			enemy_spawn_delay = 60*60*irandom_range(1,2);
+			instance_create_layer(_x, _y-CHUNK_HEIGHT*2, "Instances", obj_vector_weevil);
+		}
+		else enemy_spawn_delay--;
+	
+		//Other
+		var _r = irandom(99999);
+	
+		if (_r > 0 && _r < 80)
+			instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), room_height-100, "Instances", obj_balloonimal);
+	}	
 }

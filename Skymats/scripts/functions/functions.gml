@@ -571,8 +571,11 @@ function load_game(file)
 			gold = _data.gold;
 		
 			//Platform
-			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
+			
+			if (global.tutorial_complete)
+				global.platform_height = _data.platform_height;
+			
 		}
 		catch (e)
 		{
