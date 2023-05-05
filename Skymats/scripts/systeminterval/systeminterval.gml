@@ -88,7 +88,7 @@ function sync_mobs()
 
 function spawn_mobs()
 {
-	static enemy_spawn_delay = 400;
+	static enemy_spawn_delay = 1;
 	
 	//Enemy spawning
 	if (global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < 15)
@@ -106,7 +106,7 @@ function spawn_mobs()
 		else enemy_spawn_delay--;
 	
 		//Other
-		var _r = irandom(99999);
+		var _r = irandom(80);
 	
 		if (_r > 0 && _r < 80)
 			instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), room_height-100, "Instances", obj_balloonimal);

@@ -10,6 +10,7 @@ global.inventory = {
 	held_value: 0,
 	
 	deleteItemAtSlot : function(slot) {
+		held_value -= get_item_value(contents[slot])*contents[slot].amount;
 		delete contents[slot];
 		contents[slot] = new item();
 	},
@@ -72,6 +73,12 @@ global.inventory = {
 		
 		if (createItem(_name, _item_id, _amount))
 			held_value += get_item_value(_item_id)*_amount;
+	},
+	clear : function() {
+		for (var i = 0; i < size; i++)
+			deleteItemAtSlot(i);
+		
+		held_value = 0;
 	}
 	
 }

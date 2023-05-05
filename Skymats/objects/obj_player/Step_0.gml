@@ -257,6 +257,9 @@ if (hp <= 0 && !dead)
 	hspd = 0;
 	vspd = 0;
 	obj_chat_box.add("[c_red]Someone died!");
+	
+	//Empty inventory
+	global.inventory.clear();
 }
 else if (dead && respawn_delay > 0)
 	respawn_delay--;
