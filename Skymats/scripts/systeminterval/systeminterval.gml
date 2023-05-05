@@ -98,7 +98,7 @@ function spawn_mobs()
 		var _y = player.y;
 		var _x = player.x;
 	
-		if (enemy_spawn_delay <= 0)
+		if (enemy_spawn_delay <= 0 && global.platform_height < -3000)
 		{
 			enemy_spawn_delay = 60*60*irandom_range(1,2);
 			instance_create_layer(_x, _y-CHUNK_HEIGHT*2, "Instances", obj_vector_weevil);
