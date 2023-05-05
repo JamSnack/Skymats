@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 depth = -1;
+mask_index = spr_player_idle;
+
 
 hmove = 0;
 max_walkspeed = 3;
@@ -66,8 +68,12 @@ obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 dead = false;
 respawn_delay = 60;
 
-if (global.tutorial_complete == false)
+if (global.tutorial_complete != true)
 {
 	x = 30;
 	y = 120;
-}
+	
+	global.platform_height = 0;
+	global.can_grapple = false;
+	global.can_jetpack = false;
+} else y = global.platform_height;

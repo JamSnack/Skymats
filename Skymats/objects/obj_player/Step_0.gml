@@ -1,9 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-if (global.game_state == "LOAD")
-	exit;
-
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
 key_right =  keyboard_check(ord("D"));
@@ -65,7 +61,7 @@ if (grappling)
 	}
 }
 
-if (mouse_check_button(mb_right))
+if (mouse_check_button(mb_right) && global.can_grapple)
 {
 	if (!grapple_is_launching && !grappling && grapple_launch_length <= 4)
 	{
@@ -127,7 +123,7 @@ else if (grappling)
 		{
 			if (obj_platform.powered && obj_platform.fuel > 2 && !obj_platform.obstruction)
 				grapple_point_y = obj_platform.y;
-		} else grapple_point_x += SCROLL_SPEED;
+		} else if (SCROLL_CONDITIONS) grapple_point_x += SCROLL_SPEED;
 	}
 }
 
@@ -199,7 +195,7 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 else if (mine_cooldown > 0) mine_cooldown--;
 
 //Jetpack
-if (key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
+if (global.can_jetpack && key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 {
 	if (vspd > 0)
 		vspd = approach(vspd, 0, 0.175);

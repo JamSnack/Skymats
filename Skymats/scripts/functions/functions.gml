@@ -1,4 +1,4 @@
-// Script assets have changed for v2.3.0 see
+  // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 #macro GRAVITY 0.1
@@ -12,6 +12,9 @@
 
 #macro SCROLL_SPEED 0.1
 #macro SCROLL_CONDITIONS global.tutorial_complete
+
+global.can_grapple = true;
+global.can_jetpack = true;
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function create_floating_text(x, y, text, color)
@@ -96,7 +99,7 @@ function calculate_collisions()
 	//Vertcial Collision
 	if (collision_rectangle(bbox_left, bbox_top + vspd, bbox_right, bbox_bottom + vspd, OBSTA, false, true) != noone)
 	{
-		var _v = (vspd > 0) ? min(sign(vspd), vspd) : max(sign(vspd), vspd);
+		var _v = (vspd > 0) ? min(1, vspd) : max(-1, vspd);
 	
 		while (collision_rectangle(bbox_left, bbox_top + _v, bbox_right, bbox_bottom + _v, OBSTA, false, true) == noone)
 		{
@@ -571,11 +574,8 @@ function load_game(file)
 			gold = _data.gold;
 		
 			//Platform
+			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
-			
-			if (global.tutorial_complete)
-				global.platform_height = _data.platform_height;
-			
 		}
 		catch (e)
 		{

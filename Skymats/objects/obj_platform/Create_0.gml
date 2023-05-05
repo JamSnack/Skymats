@@ -4,7 +4,7 @@ max_fuel = 250;
 target_y = y;
 
 obstruction = false;
-powered = true;
+powered = false;
 power_delay = 0;
 power_button = false;
 
