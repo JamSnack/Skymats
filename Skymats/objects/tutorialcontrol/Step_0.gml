@@ -30,7 +30,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		case 3:
 		{
 			x = 2513.44;
-			y = 122;
+			y = 136;
 			global.can_grapple = true;
 		}
 		break;

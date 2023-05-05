@@ -105,7 +105,7 @@ function calculate_collisions()
 		{
 			y += _v;
 		}
-	
+		
 		vspd = -vspd*bounciness;
 	} else y += vspd;	
 }
