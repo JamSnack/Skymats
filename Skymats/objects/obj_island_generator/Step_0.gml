@@ -10,9 +10,6 @@ chunk_array_heights[time] = offset;
 var current_y = y;
 var current_x = x + 16*time;
 
-//Ensure we remain on the world seed.
-random_set_seed(global.world_seed + current_x + current_y);
-
 //Taper ends
 if (time < width/2 && cutoff_start > 0)
 {

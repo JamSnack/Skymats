@@ -149,8 +149,8 @@ if (x > WORLD_BOUND_RIGHT)
 if (x < WORLD_BOUND_LEFT)
 	motion_add_custom(0, 1);
 	
-if (y < WORLD_BOUND_TOP && vspd < 0)
-	motion_add_custom(270, 0.5);
+if (y < WORLD_BOUND_TOP)
+	motion_add_custom(270, 1);
 	
 if (y > WORLD_BOUND_BOTTOM)
 	motion_add_custom(90, 1);

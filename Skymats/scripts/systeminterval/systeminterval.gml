@@ -59,20 +59,21 @@ function create_new_islands()
 		
 		var _tiles = instance_number(TILE);
 	
-		if (_tiles < 1200 && interval_delay <= 0)
+		if (_tiles < 1400 && interval_delay <= 0)
 		{
-			interval_delay = (SYSTEM_INTERVAL)*(13 + irandom(7));
-			instance_create_layer(-250, irandom_range(-200, room_height-200) + global.platform_height, "Instances", obj_island_generator);
+			interval_delay = (SYSTEM_INTERVAL)*(12);
+			instance_create_layer(-270, global.platform_height + 100 + irandom(1000), "Instances", obj_island_generator);
 		}
 		else if (interval_delay > 0) 
 		{
-			if (_tiles < 100)
+			/*if (_tiles < 100)
 				interval_delay = 0;
 			else if (_tiles < 300)
 				interval_delay -= 3;
 			else if (_tiles < 650)
 				interval_delay -= 2;
-			else interval_delay--;
+			else*/
+			interval_delay--;
 		}
 	}
 }
@@ -101,14 +102,17 @@ function spawn_mobs()
 		if (enemy_spawn_delay <= 0 && global.platform_height < -3000)
 		{
 			enemy_spawn_delay = 60*60*irandom_range(1,2);
-			instance_create_layer(_x, _y-CHUNK_HEIGHT*2, "Instances", obj_vector_weevil);
+			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
 		else enemy_spawn_delay--;
 	
 		//Other
-		var _r = irandom(80);
+		var _r = irandom(99999);
 	
 		if (_r > 0 && _r < 80)
-			instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), room_height-100, "Instances", obj_balloonimal);
+		{
+			repeat (_r mod 8)
+				instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), WORLD_BOUND_BOTTOM+60, "Instances", obj_balloonimal);
+		}
 	}	
 }
