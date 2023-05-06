@@ -9,9 +9,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 	{
 		if (global.inventory.held_value > 0)
 		{
-			//Notify player
-			obj_chat_box.add("[c_lime]" + string(global.inventory.held_value) + " wealth acquired.");
-		
+
 			//Prepare fuel to be sent to host if multiplayer and client
 			var client_fuel = 0;
 			
@@ -26,6 +24,9 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 				
 					//Create wealth
 					_p.gold += _gains;
+					
+					//item effect
+					create_depot(_p.x, _p.y, _slot.item_id);
 			
 					//Add fuel to the platform
 					var fuel_amt = _slot.amount*get_fuel_value(_slot.item_id);
@@ -44,6 +45,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 			}
 			
 			//Pot of Greed curse
+			/*
 			if (instance_exists(obj_greed_collector))
 			{
 				with (obj_greed_collector)
@@ -53,7 +55,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 						obj_chat_box.add("[c_purple]The Greed Collector has been dispelled!");
 					}
 			}
-			
+			*/
 			//Send client fuel
 			if (!global.is_host && global.multiplayer)
 				send_data({ cmd: "request_fuel_added", amt: client_fuel});
@@ -61,6 +63,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 			//Save game
 			save_game();
 		}
+		
 		//Market stuff
 		display_market_animation = lerp(display_market_animation, 1, 0.1);
 	} 

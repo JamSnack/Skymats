@@ -4,7 +4,7 @@
     "path": "sprites/spr_ui_island/spr_ui_island.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,

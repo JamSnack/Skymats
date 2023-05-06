@@ -22,6 +22,11 @@ function create_floating_text(x, y, text, color)
 	instance_create_layer(x, y, "Instances", efct_floating_text, {text: text, color: color});
 }
 
+function create_depot(x, y, item_id)
+{
+	instance_create_layer(x, y, "Instances", efct_depot, {image_index: item_id});
+}
+
 function approach(a, b, amt)
 {
 	if (a < b)
