@@ -8,7 +8,7 @@ if (!global.is_host)
 }
 else
 {
-	marker_object = instance_create_layer(x, y, "Instances", obj_island_marker);
+	marker_object = instance_create_layer(x + 5*16, y - 16*4, "Instances", obj_island_marker);
 }
 
 time = 0;

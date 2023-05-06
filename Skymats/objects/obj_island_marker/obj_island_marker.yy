@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_ui_island",
+    "path": "sprites/spr_ui_island/spr_ui_island.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

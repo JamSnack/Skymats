@@ -10,7 +10,7 @@
 #macro CHUNK_WIDTH 683
 #macro CHUNK_HEIGHT 384
 
-#macro SCROLL_SPEED 0.1
+#macro SCROLL_SPEED 0.2
 #macro SCROLL_CONDITIONS global.tutorial_complete
 
 global.can_grapple = true;
