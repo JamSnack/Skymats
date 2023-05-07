@@ -25,6 +25,9 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					//Create wealth
 					_p.gold += _gains;
 					
+					//Store resources
+					global.stored_resources[_slot.item_id] += _slot.amount;
+					
 					//item effect
 					create_depot(_p.x, _p.y, _slot.item_id);
 			
@@ -65,8 +68,29 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 		}
 		
 		//Market stuff
-		display_market_animation = lerp(display_market_animation, 1, 0.1);
+		//display_market_animation = lerp(display_market_animation, 1, 0.1);
 	} 
 	else display_market_animation = lerp(display_market_animation, 0, 0.1);
 }
-else display_market_animation = lerp(display_market_animation, 0, 0.1);
+else 
+{
+	//Close everything
+	display_market_animation = lerp(display_market_animation, 0, 0.1);
+	
+	if (instance_exists(obj_ui_fuel_menu))
+		with (obj_ui_fuel_menu) instance_destroy();
+	
+}
+
+
+if (point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom))
+{
+	if (mouse_check_button_released(mb_left))
+	{
+		if (!instance_exists(obj_ui_fuel_menu))
+		{
+			var _w = instance_create_layer(455, -600, "Instances", obj_ui_fuel_menu);
+			_w.widgets.add(instance_create_layer(0, 0, "Instances", obj_ui_stored_resource_grid));
+		}
+	}
+}

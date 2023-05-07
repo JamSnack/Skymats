@@ -15,6 +15,7 @@
 
 global.can_grapple = true;
 global.can_jetpack = true;
+global.stored_resources = array_create(ITEM_ID.enemy_parts, 0);
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function create_floating_text(x, y, text, color)
@@ -313,9 +314,8 @@ enum ITEM_ID
 	sapphire,
 	emerald,
 	diamond,
-	last_ore,
 	
-	enemy_parts,
+	enemy_parts, //Used as last_ore in code
 	pot_of_greed,
 }
 
@@ -411,7 +411,7 @@ function init_player()
 	jetpack_init_delay = jetpack_set_init_delay; //How long it takes for the jetpack to be usable after leaving the ground
 }
 
-global.ore_distribution = array_create(ITEM_ID.last_ore);
+global.ore_distribution = array_create(ITEM_ID.enemy_parts);
 global.ore_distribution[ITEM_ID.coal] =       { high: 2000, low: 3000    };
 global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 1000  };
 global.ore_distribution[ITEM_ID.iron] =		  { high: -3500, low: 500 };
@@ -430,7 +430,7 @@ function choose_ore(y)
 	show_debug_message("y is: ");
 	show_debug_message(y);
 	
-	for (var _i = ITEM_ID.last_ore-1; _i > ITEM_ID.stone; _i--)
+	for (var _i = ITEM_ID.enemy_parts-1; _i > ITEM_ID.stone; _i--)
 	{
 		if (y < _g[_i].low && y <= irandom_range(_g[_i].high, _g[_i].low))
 			return _i;	
