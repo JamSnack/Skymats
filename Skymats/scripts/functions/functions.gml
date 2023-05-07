@@ -336,6 +336,25 @@ enum ITEM_ID
 	emerald,
 	diamond,
 	
+	amethyst,
+	tin,
+	aluminum,
+	nickel,
+	beryllium,
+	buried_stars,
+	cobalt,
+	garnet,
+	ground_lemons,
+	hematite,
+	lapis,
+	moon_cheese,
+	obsidian,
+	topaz,
+	typhoonium,
+	void_glass,
+	zinc,
+	
+	
 	enemy_parts, //Used as last_ore in code
 	pot_of_greed,
 }

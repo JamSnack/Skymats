@@ -75,7 +75,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 		}
 		
 		//Market stuff
-		//display_market_animation = lerp(display_market_animation, 1, 0.1);
+		display_market_animation = lerp(display_market_animation, 1, 0.1);
 	} 
 	else 
 	{
