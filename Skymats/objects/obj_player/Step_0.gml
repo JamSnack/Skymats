@@ -316,3 +316,15 @@ else sprite_index = spr_player_idle;
 
 update_shadow(shadow);
 layer_sprite_angle(shadow, draw_angle); //special for player
+
+//Can hurt
+if (!can_hurt)
+{
+	can_hurt_delay--;
+	
+	if (can_hurt_delay <= 0)
+	{
+		can_hurt = true;
+		can_hurt_delay = 10;
+	}
+}

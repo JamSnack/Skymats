@@ -3,11 +3,18 @@
 
 function draw_widget()
 {
-	var _amt=0;
 	for (var _i = 1; _i < ITEM_ID.enemy_parts; _i++)
 	{
-		draw_sprite(spr_items, _i, 5, _i*32);
-		_amt++;
+		if (global.stored_resources_unlocked[_i])
+		{
+			draw_sprite(spr_items, _i, 5, _i*32);
+			draw_text(48, 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
+		}
+		else
+		{
+			draw_sprite(spr_items, 0, 5, _i*32);
+			draw_text(48, 2 + _i*32, "???????????");
+		}
 	}
 }
 

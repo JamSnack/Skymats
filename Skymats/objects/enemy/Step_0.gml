@@ -14,15 +14,18 @@ if (!global.is_host)
 }
 
 //Check for damage outside of global.is_host condition
-var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
-	
-if (_c != noone)
+if (instance_exists(obj_player) && obj_player.can_hurt)
 {
-	with _c
+	var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
+	
+	if (_c != noone)
 	{
-		motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
-		hp -= other.damage;
+		with _c
+		{
+			motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
+			hp -= other.damage;
+			can_hurt = false;
+		}
 	}
 }
-
 event_inherited();

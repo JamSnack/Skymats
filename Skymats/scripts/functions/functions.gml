@@ -15,8 +15,14 @@
 
 global.can_grapple = true;
 global.can_jetpack = true;
-global.stored_resources = array_create(ITEM_ID.enemy_parts, 0);
+global.stored_resources = array_create(ITEM_ID.enemy_parts+1, 0);
+global.stored_resources_unlocked = array_create(ITEM_ID.enemy_parts+1, 0);
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
+
+function create_notification(text)
+{
+	instance_create_layer(0, 0, "Instances", efct_notification, {text: text});
+}
 
 function create_floating_text(x, y, text, color)
 {
@@ -130,7 +136,22 @@ function sync_chunks()
 
 function get_item_name(item_id)
 {
-	
+	switch (item_id)
+	{
+		case ITEM_ID.grass:        { return "Grass";		} break;
+		case ITEM_ID.stone:        { return "Stone";		} break;
+		case ITEM_ID.coal:         { return "Coal";			} break;
+		case ITEM_ID.iron:         { return "Iron";			} break;
+		case ITEM_ID.copper:       { return "Copper";		} break;
+		case ITEM_ID.silver:       { return "Silver";		} break;
+		case ITEM_ID.gold:         { return "Gold";			} break;
+		case ITEM_ID.sapphire:     { return "Sapphire";		} break;
+		case ITEM_ID.ruby:         { return "Ruby";			} break;
+		case ITEM_ID.emerald:      { return "Emerald";		} break;
+		case ITEM_ID.diamond:      { return "Diamond";		} break;
+		case ITEM_ID.pot_of_greed: { return "Pot of Greed"; } break;
+		case ITEM_ID.enemy_parts:  { return "Enemy Parts";  } break;
+	}
 }
 
 function motion_add_custom(_direction, _speed)

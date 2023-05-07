@@ -28,6 +28,13 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					//Store resources
 					global.stored_resources[_slot.item_id] += _slot.amount;
 					
+					if (global.stored_resources_unlocked[_slot.item_id] == 0)
+					{
+						global.stored_resources_unlocked[_slot.item_id] = 1;
+						create_notification( "[wave][scale, 1.5]" + get_item_name(_slot.item_id) + " [spr_items, "+ string(_slot.item_id) + "] Discovered!");
+					}
+					
+					
 					//item effect
 					create_depot(_p.x, _p.y, _slot.item_id);
 			
@@ -70,18 +77,20 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 		//Market stuff
 		//display_market_animation = lerp(display_market_animation, 1, 0.1);
 	} 
-	else display_market_animation = lerp(display_market_animation, 0, 0.1);
-}
-else 
-{
-	//Close everything
-	display_market_animation = lerp(display_market_animation, 0, 0.1);
+	else 
+	{
+		//Close everything
+		display_market_animation = lerp(display_market_animation, 0, 0.1);
 	
-	if (instance_exists(obj_ui_fuel_menu))
-		with (obj_ui_fuel_menu) instance_destroy();
-	
+		if (instance_exists(obj_ui_fuel_menu))
+		{
+			with (obj_ui_fuel_menu)
+			{
+				instance_destroy();
+			}
+		}
+	}
 }
-
 
 if (point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom))
 {
