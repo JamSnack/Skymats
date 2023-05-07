@@ -134,26 +134,6 @@ function sync_chunks()
 		send_data({cmd: "request_init_island_markers"});
 }
 
-function get_item_name(item_id)
-{
-	switch (item_id)
-	{
-		case ITEM_ID.grass:        { return "Grass";		} break;
-		case ITEM_ID.stone:        { return "Stone";		} break;
-		case ITEM_ID.coal:         { return "Coal";			} break;
-		case ITEM_ID.iron:         { return "Iron";			} break;
-		case ITEM_ID.copper:       { return "Copper";		} break;
-		case ITEM_ID.silver:       { return "Silver";		} break;
-		case ITEM_ID.gold:         { return "Gold";			} break;
-		case ITEM_ID.sapphire:     { return "Sapphire";		} break;
-		case ITEM_ID.ruby:         { return "Ruby";			} break;
-		case ITEM_ID.emerald:      { return "Emerald";		} break;
-		case ITEM_ID.diamond:      { return "Diamond";		} break;
-		case ITEM_ID.pot_of_greed: { return "Pot of Greed"; } break;
-		case ITEM_ID.enemy_parts:  { return "Enemy Parts";  } break;
-	}
-}
-
 function motion_add_custom(_direction, _speed)
 {
 	//init vector for use in proceeding speed calculations
@@ -166,90 +146,6 @@ function motion_add_custom(_direction, _speed)
 	
 	//reset
 	speed = 0;
-}
-
-function get_tile_object_from_item(item_id)
-{
-	switch item_id
-	{
-		case ITEM_ID.grass:        { return obj_grass;    } break;
-		case ITEM_ID.stone:        { return obj_stone;    } break;
-		case ITEM_ID.coal:         { return obj_coal;     } break;
-		case ITEM_ID.iron:         { return obj_iron;     } break;
-		case ITEM_ID.copper:       { return obj_copper;   } break;
-		case ITEM_ID.silver:       { return obj_silver;   } break;
-		case ITEM_ID.gold:         { return obj_gold;     } break;
-		case ITEM_ID.sapphire:     { return obj_sapphire; } break;
-		case ITEM_ID.ruby:         { return obj_ruby;     } break;
-		case ITEM_ID.emerald:      { return obj_emerald;  } break;
-		case ITEM_ID.diamond:      { return obj_diamond;  } break;
-		case ITEM_ID.pot_of_greed: { return obj_pot_of_greed; } break;
-		
-		default:			 { return obj_bedrock; } break;
-	}
-}
-
-function get_item_value(item_id)
-{
-	switch item_id
-	{
-		case ITEM_ID.grass:		   { return  1; } break;
-		case ITEM_ID.stone:		   { return  1; } break;
-		case ITEM_ID.coal:         { return  2; } break;
-		case ITEM_ID.copper:	   { return  3; } break;
-		case ITEM_ID.iron:	       { return  4; } break;
-		case ITEM_ID.silver:	   { return  5; } break;
-		case ITEM_ID.gold:		   { return  7; } break;
-		case ITEM_ID.sapphire:	   { return  10; } break;
-		case ITEM_ID.ruby:		   { return  14; } break;
-		case ITEM_ID.emerald:	   { return  21; } break;
-		case ITEM_ID.diamond:	   { return  27; } break;
-		case ITEM_ID.enemy_parts:  { return  5; } break;
-		case ITEM_ID.pot_of_greed: { return  250; } break;
-		default:				   { return -1; } break;
-	}
-}
-
-function get_fuel_value(item_id)
-{
-	switch item_id
-	{
-		case ITEM_ID.grass:		   { return  5; } break;
-		case ITEM_ID.coal:         
-		case ITEM_ID.copper:	   
-		case ITEM_ID.iron:	       
-		case ITEM_ID.silver:	   
-		case ITEM_ID.gold:		   { return  30; } break;
-		case ITEM_ID.sapphire:	   
-		case ITEM_ID.ruby:		   
-		case ITEM_ID.emerald:	   
-		case ITEM_ID.diamond:	   { return  45; } break;
-		case ITEM_ID.enemy_parts:  { return  60; } break;
-		case ITEM_ID.pot_of_greed: { return  150; } break;
-		default:				   { return 10; } break;
-	}
-}
-
-function item(_name = "", _item_id = 0, _amount = 0) constructor
-{
-	name      =    _name;
-	item_id   = _item_id;
-	amount    =  _amount;
-	
-	static isEmpty = function()
-	{
-		return (name == "" && item_id == 0 && amount = 0);
-	}
-	
-	static equals = function(_name, _item_id)
-	{
-		return (name == _name && item_id == _item_id);	
-	}
-	
-	static toString = function()
-	{
-		return string("Item is: { Name:" + name + ", Item ID: " + string(item_id)) + "}";	
-	}
 }
 
 function tile_is_adjacent(x, y, object)
@@ -318,46 +214,6 @@ function tile_is_adjacent(x, y, object)
 
 	return noone;
 }	
-
-enum ITEM_ID
-{
-	none,
-	
-	grass,
-	stone,
-	
-	coal,
-	copper,
-	iron,
-	silver,
-	gold,
-	ruby,
-	sapphire,
-	emerald,
-	diamond,
-	
-	amethyst,
-	tin,
-	aluminum,
-	nickel,
-	beryllium,
-	buried_stars,
-	cobalt,
-	garnet,
-	ground_lemons,
-	hematite,
-	lapis,
-	moon_cheese,
-	obsidian,
-	topaz,
-	typhoonium,
-	void_glass,
-	zinc,
-	
-	
-	enemy_parts, //Used as last_ore in code
-	pot_of_greed,
-}
 
 
 enum UPGRADE
@@ -449,34 +305,6 @@ function init_player()
 	jetpack_regen_cooldown = stat_jetpack_cooldown;
 	jetpack_set_init_delay = 15; 
 	jetpack_init_delay = jetpack_set_init_delay; //How long it takes for the jetpack to be usable after leaving the ground
-}
-
-global.ore_distribution = array_create(ITEM_ID.enemy_parts);
-global.ore_distribution[ITEM_ID.coal] =       { high: 2000, low: 3000    };
-global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 1000  };
-global.ore_distribution[ITEM_ID.iron] =		  { high: -3500, low: 500 };
-global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -500 };
-global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
-global.ore_distribution[ITEM_ID.ruby] =		  { high: -7500, low: -2500 };
-global.ore_distribution[ITEM_ID.sapphire] =   { high: -8500, low: -3500 };
-global.ore_distribution[ITEM_ID.emerald] =    { high: -9000, low: -4000 };
-global.ore_distribution[ITEM_ID.diamond] =    { high: -10000, low: -5000 };
-
-
-function choose_ore(y)
-{
-	var _g = global.ore_distribution;
-	
-	show_debug_message("y is: ");
-	show_debug_message(y);
-	
-	for (var _i = ITEM_ID.enemy_parts-1; _i > ITEM_ID.stone; _i--)
-	{
-		if (y < _g[_i].low && y <= irandom_range(_g[_i].high, _g[_i].low))
-			return _i;	
-	}
-	
-	return ITEM_ID.diamond;
 }
 
 
