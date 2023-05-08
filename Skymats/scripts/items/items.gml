@@ -69,7 +69,7 @@ function get_tile_object_from_item(item_id)
 		case ITEM_ID.ground_lemons:    { return obj_ground_lemons;} break;
 		case ITEM_ID.hematite:	       { return obj_hematite;     } break;
 		case ITEM_ID.lapis:		       { return obj_lapis_lazuli; } break;
-		case ITEM_ID.moon_cheese:      { return obj_moon_cheese;  } break
+		case ITEM_ID.moon_cheese:      { return obj_moon_cheese;  } break;
 		case ITEM_ID.obsidian:		   { return obj_obsidian;     } break;
 		case ITEM_ID.topaz:			   { return obj_topaz;        } break;
 		case ITEM_ID.typhoonium:	   { return obj_typhoonium;   } break;
@@ -169,7 +169,7 @@ function get_item_name(item_id)
 		case ITEM_ID.ground_lemons:    { return "Ground Lemons";} break;
 		case ITEM_ID.hematite:	       { return "Hematite";     } break;
 		case ITEM_ID.lapis:		       { return "Lapis Lazuli"; } break;
-		case ITEM_ID.moon_cheese:      { return "Moon Cheese";  } break
+		case ITEM_ID.moon_cheese:      { return "Moon Cheese";  } break;
 		case ITEM_ID.obsidian:		   { return "Obsidian";     } break;
 		case ITEM_ID.topaz:			   { return "Topaz";        } break;
 		case ITEM_ID.typhoonium:	   { return "Typhoonium";   } break;
@@ -180,23 +180,40 @@ function get_item_name(item_id)
 
 
 global.ore_distribution = array_create(ITEM_ID.enemy_parts);
-global.ore_distribution[ITEM_ID.coal] =       { high: 2000, low: 3000    };
-global.ore_distribution[ITEM_ID.copper] =     { high: -2000, low: 1000  };
-global.ore_distribution[ITEM_ID.iron] =		  { high: -3500, low: 500 };
-global.ore_distribution[ITEM_ID.silver] =     { high: -5000, low: -500 };
-global.ore_distribution[ITEM_ID.gold] =       { high: -6500, low: -2000 };
-global.ore_distribution[ITEM_ID.ruby] =		  { high: -7500, low: -2500 };
-global.ore_distribution[ITEM_ID.sapphire] =   { high: -8500, low: -3500 };
-global.ore_distribution[ITEM_ID.emerald] =    { high: -9000, low: -4000 };
-global.ore_distribution[ITEM_ID.diamond] =    { high: -10000, low: -5000 };
+global.ore_distribution[ITEM_ID.coal] =       { high: -50000, low: 3000  };
+global.ore_distribution[ITEM_ID.tin] =     { high: -12000, low: 1000  };
+global.ore_distribution[ITEM_ID.aluminum] =		  { high: -13500, low: 500   };
+global.ore_distribution[ITEM_ID.nickel] =     { high: -15000, low: -1500  };
+global.ore_distribution[ITEM_ID.copper] =       { high: -16500, low: -3000 };
+global.ore_distribution[ITEM_ID.zinc] =		  { high: -17500, low: -4500 };
+global.ore_distribution[ITEM_ID.iron] =   { high: -18500, low: -6500 };
+global.ore_distribution[ITEM_ID.silver] =    { high: -19000, low: -8000 };
+global.ore_distribution[ITEM_ID.gold] =    { high: -20000, low: -8500 };
+global.ore_distribution[ITEM_ID.sapphire] =    { high: -21000, low: -9500 };
+global.ore_distribution[ITEM_ID.ruby] =    { high: -23000, low: -10500 };
+global.ore_distribution[ITEM_ID.topaz] =    { high: -25000, low: -12500 };
+global.ore_distribution[ITEM_ID.lapis] =    { high: -27000, low: -14500 };
+global.ore_distribution[ITEM_ID.emerald] =    { high: -29000, low: -15000 };
+global.ore_distribution[ITEM_ID.amethyst] =    { high: -31000, low: -16500 };
+global.ore_distribution[ITEM_ID.diamond] =    { high: -33000, low: -17500 };
+global.ore_distribution[ITEM_ID.garnet] =    { high: -35000, low: -19500 };
+global.ore_distribution[ITEM_ID.beryllium] =    { high: -37000, low: -21500 };
+global.ore_distribution[ITEM_ID.hematite] =    { high: -39000, low: -23500 };
+global.ore_distribution[ITEM_ID.obsidian] =    { high: -41000, low: -25500 };
+global.ore_distribution[ITEM_ID.cobalt] =    { high: -43000, low: -27500 };
+global.ore_distribution[ITEM_ID.void_glass] =    { high: -45000, low: -29500 };
+global.ore_distribution[ITEM_ID.buried_stars] =    { high: -50000, low: -31500 };
+global.ore_distribution[ITEM_ID.moon_cheese] =    { high: -50000, low: -32500 };
+global.ore_distribution[ITEM_ID.typhoonium] =    { high: -60000, low: -33500 };
+global.ore_distribution[ITEM_ID.ground_lemons] =    { high: -60000, low: -34500 };
 
 
 function choose_ore(y)
 {
 	var _g = global.ore_distribution;
 	
-	//show_debug_message("y is: ");
-	//show_debug_message(y);
+	show_debug_message("y is: ");
+	show_debug_message(y);
 	
 	for (var _i = ITEM_ID.enemy_parts-1; _i > ITEM_ID.stone; _i--)
 	{
@@ -204,7 +221,7 @@ function choose_ore(y)
 			return _i;	
 	}
 	
-	return ITEM_ID.diamond;
+	return ITEM_ID.stone;
 }
 
 

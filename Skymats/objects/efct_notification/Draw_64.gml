@@ -12,7 +12,10 @@ if (time > 0)
 
 	draw_sprite_ext(spr_ui_black_background, 0, _x, _y, _xscale*time, _yscale*time, 0, c_white, time);
 
-	draw_set_halign(fa_center);
-	draw_text_scribble_ext(_x + _width/2, _y + _height/2 - 32, text, _width - 8, string_length(text)*(time-0.5));
-	draw_set_halign(fa_left);
+	if (time > 0.9)
+	{
+		draw_set_halign(fa_center);
+		draw_text_scribble_ext(_x + _width/2, _y + _height/2 - 32, text, _width - 8, string_length(text)*time);
+		draw_set_halign(fa_left);
+	}
 }
