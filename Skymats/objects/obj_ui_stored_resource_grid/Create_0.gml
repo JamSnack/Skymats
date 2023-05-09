@@ -8,9 +8,12 @@ function draw_widget(x, y)
 		if (_i >= ITEM_ID.enemy_parts)
 		{
 			if (_i == ITEM_ID.enemy_parts)
+			{
 				draw_text_scribble(5, y + _i*32 + 16, "[scale, 2]Enemy Drops");
+				y += 32+16;
+			}
 			
-			y += 32+16;
+			
 		}
 		else if (_i == 1) draw_text_scribble(5, y, "[scale, 2]Ores and Minerals");
 		
