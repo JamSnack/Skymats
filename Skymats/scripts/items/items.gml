@@ -38,6 +38,9 @@ enum ITEM_ID
 	
 	enemy_parts, //Used as last_ore in code
 	pot_of_greed,
+	greenthin_legs,
+	
+	last,
 }
 
 function get_tile_object_from_item(item_id)
@@ -83,39 +86,42 @@ function get_item_value(item_id)
 {
 	switch item_id
 	{
-		case ITEM_ID.grass:		   { return  1;  } break;
-		case ITEM_ID.stone:		   { return  1;  } break;
-		case ITEM_ID.coal:         { return  2;  } break;
-		case ITEM_ID.tin:          { return  4;  } break;
-		case ITEM_ID.aluminum:     { return  6;  } break;
-		case ITEM_ID.nickel:       { return  8;  } break;
-		case ITEM_ID.copper:	   { return  11; } break;
-		case ITEM_ID.zinc:         { return  13; } break;
-		case ITEM_ID.iron:	       { return  16; } break;
-		case ITEM_ID.silver:	   { return  19; } break;
-		case ITEM_ID.gold:		   { return  21; } break;
-		case ITEM_ID.sapphire:	   { return  23; } break;
-		case ITEM_ID.ruby:		   { return  25; } break;
-		case ITEM_ID.topaz:		   { return  29; } break;
-		case ITEM_ID.lapis:        { return  34; } break;
-		case ITEM_ID.emerald:	   { return  38; } break;
-		case ITEM_ID.amethyst:     { return  43; } break;
-		case ITEM_ID.diamond:	   { return  49; } break;
-		case ITEM_ID.garnet:       { return  54; } break;
-		case ITEM_ID.beryllium:    { return  59; } break;
-		case ITEM_ID.hematite:     { return  65; } break;
-		case ITEM_ID.obsidian:     { return  70; } break;
-		case ITEM_ID.cobalt:       { return  75; } break;
-		case ITEM_ID.void_glass:   { return  100; } break;
-		case ITEM_ID.buried_stars: { return  150; } break;
-		case ITEM_ID.ground_lemons:{ return  200; } break;
-		case ITEM_ID.moon_cheese:  { return  127; } break;
-		case ITEM_ID.typhoonium:   { return  300; } break;
+		//tiles
+		case ITEM_ID.grass:					{ return  1;  } break;
+		case ITEM_ID.stone:					{ return  1;  } break;
+		case ITEM_ID.coal:					{ return  2;  } break;
+		case ITEM_ID.tin:					{ return  4;  } break;
+		case ITEM_ID.aluminum:				{ return  6;  } break;
+		case ITEM_ID.nickel:				{ return  8;  } break;
+		case ITEM_ID.copper:				{ return  11; } break;
+		case ITEM_ID.zinc:					{ return  13; } break;
+		case ITEM_ID.iron:					{ return  16; } break;
+		case ITEM_ID.silver:				{ return  19; } break;
+		case ITEM_ID.gold:					{ return  21; } break;
+		case ITEM_ID.sapphire:				{ return  23; } break;
+		case ITEM_ID.ruby:					{ return  25; } break;
+		case ITEM_ID.topaz:					{ return  29; } break;
+		case ITEM_ID.lapis:					{ return  34; } break;
+		case ITEM_ID.emerald:				{ return  38; } break;
+		case ITEM_ID.amethyst:				{ return  43; } break;
+		case ITEM_ID.diamond:				{ return  49; } break;
+		case ITEM_ID.garnet:				{ return  54; } break;
+		case ITEM_ID.beryllium:				{ return  59; } break;
+		case ITEM_ID.hematite:				{ return  65; } break;
+		case ITEM_ID.obsidian:				{ return  70; } break;
+		case ITEM_ID.cobalt:				{ return  75; } break;
+		case ITEM_ID.void_glass:			{ return  100; } break;
+		case ITEM_ID.buried_stars:			{ return  150; } break;
+		case ITEM_ID.ground_lemons:			{ return  200; } break;
+		case ITEM_ID.moon_cheese:			{ return  127; } break;
+		case ITEM_ID.typhoonium:			{ return  300; } break;
 		
-		case ITEM_ID.enemy_parts:  { return  5; } break;
-		case ITEM_ID.pot_of_greed: { return  250; } break;
+		//items
+		case ITEM_ID.enemy_parts:			{ return  5; } break;
+		case ITEM_ID.pot_of_greed:			{ return  250; } break;
+		case ITEM_ID.greenthin_legs:        { return  6; } break;
 		
-		default:				   { return -1; } break;
+		default:							{ return -1; } break;
 	}
 }
 
@@ -133,8 +139,11 @@ function get_fuel_value(item_id)
 		case ITEM_ID.ruby:		   
 		case ITEM_ID.emerald:	   
 		case ITEM_ID.diamond:	   { return  45; } break;
-		case ITEM_ID.enemy_parts:  { return  60; } break;
+		
 		case ITEM_ID.pot_of_greed: { return  150; } break;
+		
+		case ITEM_ID.enemy_parts:  
+		case ITEM_ID.greenthin_legs: { return  5; } break;
 		default:				   { return 30; } break;
 	}
 }
@@ -156,6 +165,7 @@ function get_item_name(item_id)
 		case ITEM_ID.diamond:          { return "Diamond";		} break;
 		case ITEM_ID.pot_of_greed:     { return "Pot of Greed"; } break;
 		case ITEM_ID.enemy_parts:      { return "Enemy Parts";  } break;
+		case ITEM_ID.greenthin_legs:   { return "Greenthin Legs"; } break;
 
 		case ITEM_ID.amethyst:         { return "Amethyst";     } break;
 		case ITEM_ID.tin:		       { return "Tin";          } break;

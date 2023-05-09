@@ -261,6 +261,7 @@
     {"id":{"name":"scribble_super_create","path":"scripts/scribble_super_create/scribble_super_create.yy",},"order":1,},
     {"id":{"name":"__scribble_get_typewriter_events_map","path":"scripts/__scribble_get_typewriter_events_map/__scribble_get_typewriter_events_map.yy",},"order":15,},
     {"id":{"name":"tutorialControl","path":"objects/tutorialControl/tutorialControl.yy",},"order":2,},
+    {"id":{"name":"obj_greenthin","path":"objects/obj_greenthin/obj_greenthin.yy",},"order":4,},
     {"id":{"name":"snd_entered_empyrious","path":"sounds/snd_entered_empyrious/snd_entered_empyrious.yy",},"order":0,},
     {"id":{"name":"scribble_font_duplicate","path":"scripts/scribble_font_duplicate/scribble_font_duplicate.yy",},"order":6,},
     {"id":{"name":"obj_lapis_lazuli","path":"objects/obj_lapis_lazuli/obj_lapis_lazuli.yy",},"order":11,},

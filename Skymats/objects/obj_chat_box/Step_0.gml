@@ -21,6 +21,12 @@ if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), x, y,
 		mouse_y_before_pressed = device_mouse_y_to_gui(0) - y;
 		dragging = true;
 	}
+	
+	//message offset control
+	if (mouse_wheel_down())
+		chat_message_offset -= 10;
+	else if (mouse_wheel_up())
+		chat_message_offset += 10;
 }
 
 
@@ -62,14 +68,9 @@ if (global.chatting)
 if (char_append_delay > 0)
 	char_append_delay--;
 	
-if (chat_alpha > 0.1)
+if (chat_alpha > 0)
 	chat_alpha -= 0.02;
 	
 //- message offset
 chat_message_offset = clamp(chat_message_offset, -4, min(300, string_height(chat_message_offset)+64));
 chat_message_offset_draw = lerp(chat_message_offset_draw, chat_message_offset, 0.3);
-
-if (mouse_wheel_down())
-	chat_message_offset -= 10;
-else if (mouse_wheel_up())
-	chat_message_offset += 10;
