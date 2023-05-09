@@ -92,19 +92,18 @@ function spawn_mobs()
 	static enemy_spawn_delay = 1;
 	
 	//Enemy spawning
-	if (global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < 15)
+	if (enemy_spawn_delay <= 0 && global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < 15)
 	{	
 		var _p = irandom(instance_number(PLAYER)-1);
 		var player = instance_find(PLAYER, _p);
 		var _y = player.y;
 		var _x = player.x;
 	
-		if (enemy_spawn_delay <= 0 && global.platform_height < -3000)
+		if (global.platform_height < -3000)
 		{
-			enemy_spawn_delay = 60*60*irandom_range(1,2);
+			enemy_spawn_delay = irandom_range(1,2);
 			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
-		else enemy_spawn_delay--;
 	
 		//Other
 		var _r = irandom(99999);
@@ -115,4 +114,5 @@ function spawn_mobs()
 				instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), WORLD_BOUND_BOTTOM+60, "Instances", obj_balloonimal);
 		}
 	}	
+	else enemy_spawn_delay--;
 }

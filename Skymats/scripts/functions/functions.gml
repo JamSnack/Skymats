@@ -13,6 +13,9 @@
 #macro SCROLL_SPEED 0.2
 #macro SCROLL_CONDITIONS global.tutorial_complete
 
+#macro ENEMY_CAP 15
+#macro INVASION_START_CONDITIONS (instance_number(ENEMY) < ENEMY_CAP)
+
 global.can_grapple = true;
 global.can_jetpack = true;
 global.stored_resources = array_create(ITEM_ID.last, 0);
