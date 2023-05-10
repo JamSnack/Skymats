@@ -214,7 +214,8 @@ if (jetpack_regen_cooldown > 0)
 	jetpack_regen_cooldown--;
 else if (jetpack_fuel < stat_jetpack_fuel)
 {
-	jetpack_fuel += stat_jetpack_regen_rate;	
+	//Player receives fuel faster if they are standing on the ground
+	jetpack_fuel += stat_jetpack_regen_rate + (stat_jetpack_regen_rate*4)*(on_ground != noone);	
 }
 
 //Auto-Attack
