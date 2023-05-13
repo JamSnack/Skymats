@@ -1,9 +1,21 @@
 //Simple player-tracking Ai
+if (!position_meeting(bbox_right + SCROLL_SPEED, y, OBSTA))
+	x += SCROLL_SPEED;
+
+var over_ground = collision_line(x + hspd*16, bbox_bottom, x + hspd*16, bbox_bottom+64, OBSTA, false, true);
+
 var _p = instance_nearest(x, y, PLAYER);
 	
 if (_p != noone)
-	motion_add_custom(point_direction(x, y, _p.x, _p.y), 0.1);
+	motion_add_custom(point_direction(x, 0, _p.x, 0), 0.1);
 	
+if (over_ground == noone)
+	motion_add_custom(point_direction(x, y, x-ground_direction, y), 0.5);
+else 
+{
+	ground_direction = sign(hspd);
+}
+
 vspd += GRAVITY*weight;
 calculate_collisions();
 keep_in_bounds();
