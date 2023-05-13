@@ -61,7 +61,7 @@ function create_new_islands()
 	
 		if (_tiles < 1400 && interval_delay <= 0)
 		{
-			interval_delay = (SYSTEM_INTERVAL)*(12);
+			interval_delay = (SYSTEM_INTERVAL)*(8 + irandom(4));
 			instance_create_layer(-270, global.platform_height + 100 + irandom(1000), "Instances", obj_island_generator);
 		}
 		else if (interval_delay > 0) 
@@ -101,7 +101,7 @@ function spawn_mobs()
 	
 		if (global.platform_height < -3000)
 		{
-			enemy_spawn_delay = irandom_range(1,2);
+			enemy_spawn_delay = 60*60*irandom_range(1,2);
 			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
 	

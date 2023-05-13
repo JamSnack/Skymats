@@ -22,6 +22,21 @@ global.stored_resources = array_create(ITEM_ID.last, 0);
 global.stored_resources_unlocked = array_create(ITEM_ID.last, 1);
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
+function keep_in_bounds()
+{
+	if (x > WORLD_BOUND_RIGHT)
+	motion_add_custom(180, 1);
+	
+	else if (x < WORLD_BOUND_LEFT)
+		motion_add_custom(0, 1);
+	
+	if (y < WORLD_BOUND_TOP)
+		motion_add_custom(270, 1);
+	
+	else if (y > WORLD_BOUND_BOTTOM)
+		motion_add_custom(90, 1);
+}
+
 function create_notification(text)
 {
 	instance_create_layer(0, 0, "Instances", efct_notification, {text: text});

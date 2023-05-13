@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_bedrock",
-    "path": "sprites/spr_bedrock/spr_bedrock.yy",
+    "name": "spr_greenthin",
+    "path": "sprites/spr_greenthin/spr_greenthin.yy",
   },
   "solid": false,
   "visible": true,

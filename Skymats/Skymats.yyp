@@ -80,6 +80,7 @@
     {"id":{"name":"spr_items","path":"sprites/spr_items/spr_items.yy",},"order":2,},
     {"id":{"name":"obj_tile_breaker","path":"objects/obj_tile_breaker/obj_tile_breaker.yy",},"order":17,},
     {"id":{"name":"clientControl","path":"objects/clientControl/clientControl.yy",},"order":0,},
+    {"id":{"name":"spr_greenthin","path":"sprites/spr_greenthin/spr_greenthin.yy",},"order":37,},
     {"id":{"name":"spr_greed_collector","path":"sprites/spr_greed_collector/spr_greed_collector.yy",},"order":33,},
     {"id":{"name":"__scribble_get_macros_map","path":"scripts/__scribble_get_macros_map/__scribble_get_macros_map.yy",},"order":13,},
     {"id":{"name":"__scribble_class_typist","path":"scripts/__scribble_class_typist/__scribble_class_typist.yy",},"order":6,},

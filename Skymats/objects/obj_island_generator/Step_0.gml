@@ -102,6 +102,9 @@ if (time > width)
 	//send new island to clients
 	with (marker_object) event_user(0);
 	
+	//Create a greenthin
+	instance_create_layer(marker_object.x, marker_object.y, "Instances", obj_greenthin);
+	
 	//for (var i = 0; i < width; i++)
 	//{
 	//	show_debug_message(chunk_grid[# width, i]);

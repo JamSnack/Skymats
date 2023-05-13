@@ -6,6 +6,7 @@ if (_p != noone)
 	
 vspd += GRAVITY*weight;
 calculate_collisions();
+keep_in_bounds();
 target_x += hspd;
 target_y += vspd;
 	

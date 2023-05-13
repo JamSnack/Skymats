@@ -6,6 +6,7 @@ key_right =  keyboard_check(ord("D"));
 
 hmove = (key_right - key_left);
 var on_ground = noone;
+var true_speed = (abs(hspd)+abs(vspd)); 
 
 if (vspd >= 0)
 	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true);
@@ -143,17 +144,7 @@ else
 	
 
 //Stay in-bounds
-if (x > WORLD_BOUND_RIGHT)
-	motion_add_custom(180, 1);
-	
-if (x < WORLD_BOUND_LEFT)
-	motion_add_custom(0, 1);
-	
-if (y < WORLD_BOUND_TOP)
-	motion_add_custom(270, 1);
-	
-if (y > WORLD_BOUND_BOTTOM)
-	motion_add_custom(90, 1);
+keep_in_bounds();
 	
 //Tile mininig
 var _selected_slot = global.inventory.selected_slot;
@@ -220,7 +211,10 @@ else if (jetpack_fuel < stat_jetpack_fuel)
 
 //Auto-Attack
 if (weapon_cooldown > 0)
-	weapon_cooldown--;
+{
+	var bonus_cooldown = true_speed*0.1;
+	weapon_cooldown -= (1 + bonus_cooldown);
+}
 	
 if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 {
@@ -231,6 +225,11 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 	{
 		if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
 		{
+			//Speed bonuses
+			
+			var bonus_knockback = true_speed/2;
+			var bonus_attack = round(true_speed/2);
+			
 			//Weapon dooldown
 			weapon_cooldown = stat_weapon_cooldown;
 		
@@ -238,7 +237,7 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 			var dir_knock = point_direction(x, y, _e.x, _e.y);
 		
 			//Deal damage and apply knockback
-			hurt_enemy(_e, dir_knock, stat_weapon_knockback, stat_weapon_damage);
+			hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage + bonus_attack);
 			
 			if (!global.is_host && global.multiplayer)
 				send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, dir_knock: dir_knock, knock_amt: stat_weapon_knockback});
