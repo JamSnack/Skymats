@@ -19,7 +19,7 @@
 global.can_grapple = true;
 global.can_jetpack = true;
 global.stored_resources = array_create(ITEM_ID.last, 0);
-global.stored_resources_unlocked = array_create(ITEM_ID.last, 1);
+global.stored_resources_unlocked = array_create(ITEM_ID.last, 0);
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function keep_in_bounds()

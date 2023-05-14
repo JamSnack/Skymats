@@ -37,7 +37,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 			x = 2513.44;
 			y = 136;
 			global.can_grapple = true;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-shot unlocked! Press right click to grapple to surfaces!"});
+			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-Claw unlocked! Press right click to grapple to surfaces!"});
 		}
 		break;
 		
