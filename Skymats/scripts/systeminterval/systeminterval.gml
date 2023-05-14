@@ -8,12 +8,14 @@ function process_system_interval()
 	
 	switch (current_interval)
 	{
-		case 0: { sync_player_stats(); } break;
+		case 0: { sync_player_stats(); sync_mobs(); } break;
 		case 1: { cull_tiles();        } break;
 		case 2: { create_new_islands(); } break;
 		case 3: { sync_platform(); } break;
+		case 6: { sync_mobs(); } break;
 		case 5: { spawn_mobs(); } break;
-		case 7: { sync_mobs(); } break;
+		case 9: { sync_mobs(); } break;
+		case 12: { sync_mobs(); } break;
 		case 15: { sync_mobs(); } break;
 		case 16: { sync_platform(); } break;
 	}
