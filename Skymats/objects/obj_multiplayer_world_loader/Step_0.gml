@@ -41,9 +41,6 @@ else
 		{
 			//ds_list_add(packet_list, {_ti:item_id, _ti:x, _ti:y});
 			packet_string += "{\"item_id\": " + string(_ti.item_id) + ", \"x\": " + string(_ti.x) + ", \"y\": " + string(_ti.y) +"}, ";
-			//var _data = json_stringify({cmd: "create_tile", item_id: _ti.item_id, x: _ti.x, y: _ti.y});
-			//buffer_write(packet_batch, buffer_text, _data);
-			//send_data({cmd: "create_tile", x: _ti.x, y: _ti.y, item_id: _ti.item_id}, target_socket);
 		}
 	}
 }
@@ -75,7 +72,7 @@ if (collision_list_size == 0)
 	if (single_chunk)
 	{
 		//show_debug_message("Chunk sent! destroying object");
-		send_data({cmd: "chunk_sent", x: x, y: y}, target_socket);
+		//send_data({cmd: "chunk_sent", x: x, y: y}, target_socket);
 		instance_destroy();	
 	}
 
@@ -90,7 +87,7 @@ if (collision_list_size == 0)
 	
 		if (y <= 0)
 		{
-			send_data({cmd: "world_loaded"}, target_socket);
+			//send_data({cmd: "world_loaded"}, target_socket);
 			instance_destroy(); //mission complete!
 		}
 			

@@ -128,27 +128,6 @@ function handle_data(data)
 			}
 			break;
 			
-			case "desync_detected":
-			{
-				
-				if (!global.is_host)
-				{
-					obj_chat_box.add("Loading new chunk");
-					var _x = parsed_data.x;
-					var _y = parsed_data.y;
-					
-					instance_create_layer(_x, _y, "Instances", obj_client_request_chunk);
-					
-					//Erase old chunk
-					while (collision_rectangle(_x, _y, _x+CHUNK_WIDTH, _y+CHUNK_HEIGHT, TILE, false, true))
-					{
-						with collision_rectangle(_x, _y, _x+CHUNK_WIDTH, _y+CHUNK_HEIGHT, TILE, false, true)
-							instance_destroy();
-					}
-				}
-			}
-			break;
-			
 			case "player_pos":
 			{
 				var _id = parsed_data.id;
@@ -458,16 +437,6 @@ function handle_data(data)
 				if (global.is_host)
 				{
 					show_debug_message("Islands requested");
-					//var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_multiplayer_world_loader);
-					
-					//If the world loader requested doesn't exist or one does exist but it is far away:
-					//if ((_r != noone && point_distance(parsed_data.x, parsed_data.y, _r.x, _r.y) > 1) || _r == noone)
-					//{
-					//show_debug_message(parsed_data.x);
-					//show_debug_message(parsed_data.y);
-					//instance_create_layer(parsed_data.x, parsed_data.y, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
-					//instance_create_layer(0, WORLD_BOUND_TOP, "Instances", obj_multiplayer_world_loader, {target_socket: async_load[? "id"], single_chunk: true});	
-					//}
 					
 					//Run mutliplayer init events inside island markers
 					with (obj_island_marker)
@@ -499,17 +468,7 @@ function handle_data(data)
 				}
 			}
 			break;
-			
-			case "chunk_sent":
-			{
-				//var _r = instance_nearest(parsed_data.x, parsed_data.y, obj_client_request_chunk);
-				
-				//if (_r != noone && point_distance(0, 0, _r.x, _r.y) <= 1)
-				//	with _r instance_destroy();
-				
-				//with (obj_client_request_chunk) instance_destroy();
-			}
-			break;
+
 			
 			case "create_chunk":
 			{

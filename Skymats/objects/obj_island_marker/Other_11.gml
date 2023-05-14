@@ -23,7 +23,7 @@ if (ds_exists(chunk_grid_type, ds_type_grid))
 		
 			if (_t != obj_bedrock)
 			{
-				var _id = instance_create_layer(x + j*16, y + k*16 + _offset, "Instances", _t, {owner: id, grid_pos: {x: j, y: k}});
+				var _id = instance_create_layer(x + j*16 - ISLAND_MARKER_OFFSET_X, y + k*16 + _offset - ISLAND_MARKER_OFFSET_Y, "Instances", _t, {owner: id, grid_pos: {x: j, y: k}});
 				chunk_grid_instance[# j, k] = _id;
 			}
 		}
