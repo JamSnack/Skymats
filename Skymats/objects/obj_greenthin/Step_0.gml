@@ -12,7 +12,7 @@ if (_p != noone)
 	
 	//Jump if target player is above the creature
 	if (on_ground && vspd == 0 && obj_player.y < y-8 && distance_to_object(_p) < 16*12)
-		motion_add_custom(90, 2);
+		motion_add_custom(90, 3);
 }
 
 //Keep the enemy on the ground
