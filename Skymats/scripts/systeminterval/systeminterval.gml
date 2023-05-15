@@ -16,8 +16,6 @@ function process_system_interval()
 		case 6:  { sync_mobs(); } break;
 		case 5:  { spawn_mobs(); } break;
 		case 9:  { sync_mobs(); } break;
-		case 12: { sync_mobs(); } break;
-		case 15: { sync_mobs(); } break;
 		case 16: { sync_platform(); } break;
 	}
 	
@@ -77,17 +75,25 @@ function create_new_islands()
 		if (_tiles < 1400 && interval_delay <= 0)
 		{
 			interval_delay = (SYSTEM_INTERVAL)*(8 + irandom(4));
-			instance_create_layer(-270, global.platform_height + 100 + irandom(1000), "Instances", obj_island_generator);
+			var chosen_y = global.platform_height + 100 + irandom(1000);
+			instance_create_layer(-270, chosen_y, "Instances", obj_island_generator);
+			
+			//Create a double-island
+			if (irandom(2) == 1)
+			{
+				instance_create_layer(-270 - 17*16 + 3 + SCROLL_SPEED, chosen_y, "Instances", obj_island_generator);
+				interval_delay += SYSTEM_INTERVAL*6;
+				
+				//Create a triple-island!
+				if (irandom(2) == 1)
+				{
+					instance_create_layer(-270 + (-17*16 + 3 + SCROLL_SPEED)*2, chosen_y, "Instances", obj_island_generator);
+					interval_delay += SYSTEM_INTERVAL*6;
+				}
+			}
 		}
 		else if (interval_delay > 0) 
 		{
-			/*if (_tiles < 100)
-				interval_delay = 0;
-			else if (_tiles < 300)
-				interval_delay -= 3;
-			else if (_tiles < 650)
-				interval_delay -= 2;
-			else*/
 			interval_delay--;
 		}
 	}
@@ -98,7 +104,7 @@ function sync_mobs()
 	if (global.is_host)
 	{
 		with (ENEMY)
-			send_data({cmd: "enemy_pos", x: x, y: y, connected_id: connected_id, hp: hp, object: object_index});
+			send_enemy_position();
 	}
 }
 

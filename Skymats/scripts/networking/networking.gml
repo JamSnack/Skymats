@@ -316,6 +316,7 @@ function handle_data(data)
 						target_y = _y;
 						hp = parsed_data.hp;
 						create_new = false;
+						random_factor = parsed_data.random_factor;
 							
 						//Break
 						break;
@@ -493,4 +494,9 @@ function handle_data(data)
 			default: { show_debug_message("data received: " + parsed_data.cmd); }
 		}
 	}
+}
+
+function send_enemy_position()
+{
+	send_data({cmd: "enemy_pos", x: x, y: y, random_factor: random_factor, connected_id: connected_id, hp: hp, object: object_index});
 }

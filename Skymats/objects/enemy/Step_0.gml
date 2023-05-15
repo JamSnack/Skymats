@@ -12,6 +12,12 @@ if (!global.is_host)
 	if (kill_timer <= 0)
 		instance_destroy();
 }
+else if (sync_timer < 0)
+{
+	send_enemy_position();
+	sync_timer = 1;
+}
+else sync_timer--;
 
 //Check for damage outside of global.is_host condition
 if (instance_exists(obj_player) && obj_player.can_hurt)

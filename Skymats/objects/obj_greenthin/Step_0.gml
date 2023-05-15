@@ -11,15 +11,15 @@ if (_p != noone)
 	motion_add_custom(point_direction(x, 0, _p.x, 0), 0.1);
 	
 	//Jump if target player is above the creature
-	if (on_ground && vspd == 0 && obj_player.y < y-(8-random_factor*8) && distance_to_object(_p) < 16*12)
+	if (on_ground && vspd == 0 && _p.y < y-(8-random_factor*8) && distance_to_object(_p) < 16*12)
 		motion_add_custom(90, 3);
 		
 	//Throw spear
-	if (spear_delay <= 0 && collision_line(x, y, obj_player.x, obj_player.y, OBSTA, false, true) == noone)
+	if (spear_delay <= 0 && collision_line(x, y, _p.x, _p.y, OBSTA, false, true) == noone)
 	{
 		spear_delay = 60 + 45*(random_factor*15);
 		var _s = instance_create_layer(x, y, "Instances", obj_greenthin_spear);
-		with (_s) motion_add_custom(point_direction(x, y, obj_player.x, obj_player.y - 8 - random_factor*4), 8);
+		with (_s) motion_add_custom(point_direction(x, y, _p.x, _p.y - 8 - random_factor*4), 8);
 	}
 }
 
