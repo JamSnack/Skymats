@@ -2,6 +2,7 @@
 // You can write your code in this editor
 event_inherited();
 draw_self();
+//draw_sprite_ext(sprite_index, image_index, target_x, target_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 
 if (hp < max_hp)
 {

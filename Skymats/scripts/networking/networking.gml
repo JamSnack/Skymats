@@ -308,23 +308,28 @@ function handle_data(data)
 				var _id = parsed_data.connected_id;
 				var create_new = true;
 				
-				with (ENEMY)
+				if (ds_list_find_index(global.recently_destroyed_list, _id) == -1)
 				{
-					if (_id == connected_id)
+					with (ENEMY)
 					{
-						target_x = _x;
-						target_y = _y;
-						hp = parsed_data.hp;
-						create_new = false;
-						random_factor = parsed_data.random_factor;
+						if (_id == connected_id)
+						{
+							target_x = _x + (global.lag * SCROLL_SPEED);
+							target_y = _y;
+							hp = parsed_data.hp;
+							create_new = false;
+							random_factor = parsed_data.random_factor;
+							hspd = parsed_data.hspd;
+							vspd = parsed_data.vspd;
 							
-						//Break
-						break;
+							//Break
+							break;
+						}
 					}
-				}
 					
-				if (create_new)
-					instance_create_layer(_x, _y, "Instances", parsed_data.object, {connected_id: _id, target_x: _x, target_y: _y})
+					if (create_new)
+						instance_create_layer(_x, _y, "Instances", parsed_data.object, {connected_id: _id, target_x: _x, target_y: _y, hspd: parsed_data.hspd, vspd: parsed_data.vspd, random_factor: parsed_data.random_factor})
+				}
 			}
 			break;
 			
@@ -498,5 +503,5 @@ function handle_data(data)
 
 function send_enemy_position()
 {
-	send_data({cmd: "enemy_pos", x: x, y: y, random_factor: random_factor, connected_id: connected_id, hp: hp, object: object_index});
+	send_data({cmd: "enemy_pos", x: x, y: y, hspd: hspd, vspd: vspd, random_factor: random_factor, connected_id: connected_id, hp: hp, object: object_index});
 }

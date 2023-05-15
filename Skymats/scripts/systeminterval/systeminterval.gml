@@ -1,5 +1,10 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+//Used for ignoring packets regarding recently destroyed instances in multiplayer.
+#macro RECENTLY_DESTROYED_LIST_MAX_SIZE 5
+global.recently_destroyed_list = ds_list_create();
+
 #macro SYSTEM_INTERVAL 16
 
 function process_system_interval()
@@ -16,11 +21,19 @@ function process_system_interval()
 		case 6:  { sync_mobs(); } break;
 		case 5:  { spawn_mobs(); } break;
 		case 9:  { sync_mobs(); } break;
+		case 10: { manage_recently_destroyed(); } break;
 		case 16: { sync_platform(); } break;
 	}
 	
 	current_interval++;
 	if (current_interval > SYSTEM_INTERVAL) current_interval = 0;
+}
+
+function manage_recently_destroyed()
+{
+	//Remove the oldest ID stored in the recently_destroyed_list
+	if (ds_list_size(global.recently_destroyed_list > RECENTLY_DESTROYED_LIST_MAX_SIZE))
+		ds_list_delete(global.recently_destroyed_list, 0);
 }
 
 function sync_platform()

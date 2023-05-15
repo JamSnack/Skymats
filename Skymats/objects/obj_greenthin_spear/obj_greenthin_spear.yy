@@ -26,6 +26,7 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [
@@ -34,6 +35,7 @@
     {"propertyId":{"name":"bounciness","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"0","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"max_hp","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"hp","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"max_hp","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"clientside_physics","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"True","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Enemies",

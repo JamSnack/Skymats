@@ -65,8 +65,8 @@ function approach(a, b, amt)
 
 function sync_position()
 {
-	x = lerp(x, target_x, 0.33);
-	y = lerp(y, target_y, 0.33);
+	x = lerp(x, target_x, 0.2);
+	y = lerp(y, target_y, 0.2);
 }
 
 function hurt_tile(_damage)

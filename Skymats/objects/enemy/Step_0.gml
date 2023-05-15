@@ -1,9 +1,11 @@
 //host stuff
 if (!global.is_host)
 { 
-	sync_position();
+	if (!clientside_physics)
+		sync_position();
 	
 	//Rid ourselves of falsehood.
+	/*
 	if (x == xprevious && y == yprevious)
 		kill_timer--;
 	else
@@ -11,6 +13,7 @@ if (!global.is_host)
 		
 	if (kill_timer <= 0)
 		instance_destroy();
+	*/
 }
 else if (sync_timer < 0)
 {
@@ -34,4 +37,6 @@ if (instance_exists(obj_player) && obj_player.can_hurt)
 		}
 	}
 }
+
+//Update shadow
 event_inherited();
