@@ -4,5 +4,7 @@
 y -= 0.5;
 lifetime -= 0.1;
 
+gui_coords = world_to_gui_coords(x, y);
+
 if (lifetime <= 0)
 	instance_destroy();

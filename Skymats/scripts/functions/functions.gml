@@ -538,3 +538,11 @@ function init_expedition()
 	global.platform_height = 0;
 	global.tutorial_complete = false;
 }
+
+function world_to_gui_coords(x, y)
+{
+	return { 
+		x: (x-camera_get_view_x(view_camera[0]))*(display_get_gui_width()/camera_get_view_width(view_camera[0])),
+		y: (y-camera_get_view_y(view_camera[0]))*(display_get_gui_height()/camera_get_view_height(view_camera[0]))
+	}
+}
