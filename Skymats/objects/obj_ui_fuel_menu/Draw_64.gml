@@ -47,7 +47,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		}
 		else if (_i == 1) draw_text_scribble(5, _y2, "[font]Ores and Minerals");
 		
-		if (global.stored_resources_auto_burn[_i] == 0)
+		if (global.stored_resources_auto_burn[_i])
 			draw_sprite_stretched(spr_ui_burn_background, 0, 2, _y2 - 4 + _i*32, width-2, 34);
 		
 		if (global.stored_resources_unlocked[_i])

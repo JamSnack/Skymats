@@ -22,9 +22,10 @@ mouse_resize_offset_y = 0;
 resizing = false;
 
 //Init scrolling
+scroll_offset_target = 0;
 scroll_offset = 0;
 max_scroll_offset = 0;
-scroll_length = 40*(ITEM_ID.last-1) + 128; //How much to scroll
+scroll_length = 40*(ITEM_ID.last-1) + 256; //How much to scroll
 
 //Constants
 _topbar_height = 30;

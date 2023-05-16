@@ -59,18 +59,18 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 	{
 		if (mouse_wheel_up())
 		{
-			scroll_offset -= scroll_speed;
+			scroll_offset_target -= scroll_speed;
 			_free_surface = true;
 		}
 		else if (mouse_wheel_down())
 		{
-			scroll_offset += scroll_speed;
+			scroll_offset_target += scroll_speed;
 			_free_surface = true;
 		}
 		
 		//Clamp
 		max_scroll_offset = max(0, scroll_length - height);
-		scroll_offset = clamp(scroll_offset, -max_scroll_offset, 0);
+		scroll_offset_target = clamp(scroll_offset_target, -max_scroll_offset, 0);
 	}
 }
 else
@@ -136,6 +136,12 @@ if (height != target_height)
 	_free_surface = true;
 }
 
+if (scroll_offset != scroll_offset_target)
+{
+	scroll_offset = lerp(scroll_offset, scroll_offset_target, 0.33);
+	_free_surface = true;
+}
+
 //Window alpha
 if (window_alpha != 1)
 {
@@ -159,10 +165,13 @@ if (_released_left_click)
 		
 		var _current_y = _y2 - 4 + _i*32;
 		
-		if (point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y, pos_x + width-2, pos_y + _current_y + 30))
+		if (point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y + 2, pos_x + width-2, pos_y + _current_y + 30))
 		{
 			global.stored_resources_auto_burn[_i] = !global.stored_resources_auto_burn[_i];
 			_free_surface = true;
+			
+			//Play sound effect
+			
 			break;
 		}
 	}
