@@ -19,6 +19,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		{
 			x = 400;
 			y = 602;
+			tutorial_index = 2;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Mine tiles with left click."});
 		}
 		break;
@@ -28,6 +29,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 			x = 28.5;
 			y = 586;
 			global.can_jetpack = true;
+			tutorial_index = 3;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Airpack unlocked! Hold JUMP to fly!"});
 		}
 		break;
@@ -37,6 +39,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 			x = 2513.44;
 			y = 136;
 			global.can_grapple = true;
+			tutorial_index = 4;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-Claw unlocked! Press right click to grapple to surfaces!"});
 		}
 		break;
@@ -45,6 +48,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		{
 			x = 1440;
 			y = 800;
+			tutorial_index = 5;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Defeat the enemy. Collect the Fuel-Cell."});
 		}
 		break;
@@ -53,6 +57,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		{
 			x = 0;
 			y = 0;
+			tutorial_index = 0;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Place the Fuel-Cell into the engine!"});
 			obj_platform.fuel += 1500;
 		}

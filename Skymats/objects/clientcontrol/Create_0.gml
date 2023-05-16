@@ -107,4 +107,4 @@ inventory_open_animcurve_channel = animcurve_get_channel(curve, 0);
 frame = 0;
 
 //Init game
-init_game();
+init_expedition();

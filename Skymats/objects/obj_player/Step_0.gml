@@ -218,7 +218,13 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 		jetpack_regen_cooldown = stat_jetpack_cooldown;
 		
 		//effects
-		create_smoke(x - (3*image_xscale), y + 5, point_direction(xprevious, yprevious, x, y), 4);
+		if (key_up)
+			create_smoke(x - (3*image_xscale), y + 5, -90, 4);
+			
+		if (key_left)
+			create_smoke(x - (3*image_xscale), y + 5, 0, 4);
+		else if (key_right)
+			create_smoke(x - (3*image_xscale), y + 5, 180, 4);
 	}
 }
 else if (on_ground == noone && jetpack_init_delay > 0)

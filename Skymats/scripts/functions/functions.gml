@@ -396,7 +396,7 @@ function update_shadow(shadow)
 	}
 }
 
-function save_game()
+function save_character(username = "character")
 {
 	if (instance_exists(obj_player))
 	{
@@ -422,15 +422,12 @@ function save_game()
 					
 				upgrades_purchased: upgrades_purchased,
 				gold: gold,
-					
-				platform_height: global.platform_height,
-				tutorial_complete: global.tutorial_complete
 			}
 				
 			var json = json_stringify(save_struct);
 			var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
 			buffer_write(_buff, buffer_string, json);
-			buffer_save(_buff, "test.data");
+			buffer_save(_buff, string(username)+".charc");
 	
 			//cleanup
 			buffer_delete(_buff);
@@ -438,7 +435,35 @@ function save_game()
 	}
 }
 
-function load_game(file)
+function save_expedition(expedition_name = "exped")
+{
+	if (instance_exists(obj_platform))
+	{
+		with (obj_platform)
+		{
+			var save_struct = {
+				platform_height: global.platform_height,
+				tutorial_complete: global.tutorial_complete
+			}
+				
+			var json = json_stringify(save_struct);
+			var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
+			buffer_write(_buff, buffer_string, json);
+			buffer_save(_buff, string(expedition_name)+".exped");
+	
+			//cleanup
+			buffer_delete(_buff);
+		}
+	}
+}
+
+function save_game()
+{
+	save_character();
+	save_expedition();
+}
+
+function load_character(file)
 {
 	if (file_exists(file))
 	{
@@ -471,7 +496,25 @@ function load_game(file)
 			//Purchase
 			upgrades_purchased = _data.upgrades_purchased;
 			gold = _data.gold;
-		
+		}
+		catch (e)
+		{
+			show_debug_message("Error loading file");
+			show_debug_message(e);
+		}
+	}
+}
+
+function load_expedition(file)
+{
+	if (file_exists(file))
+	{
+		var _buff = buffer_load(file);	
+		var _string = buffer_read(_buff, buffer_string);
+		var _data = json_parse(_string);
+	
+		try
+		{
 			//Platform
 			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
@@ -484,7 +527,13 @@ function load_game(file)
 	}
 }
 
-function init_game()
+function load_game(character_file, expedition_file)
+{
+	load_character(character_file);
+	load_expedition(expedition_file);
+}
+
+function init_expedition()
 {
 	global.platform_height = 0;
 	global.tutorial_complete = false;

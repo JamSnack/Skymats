@@ -1,5 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-stage = 0;
-tutorial_index = 1;
+draw_self();
+draw_sprite(spr_tutorial_node_inner, tutorial_index, x, y);
