@@ -30,9 +30,10 @@ function process_system_interval()
 	if (current_interval > SYSTEM_INTERVAL) current_interval = 0;
 }
 
+//Checks the height and certain conditions to determine if an event should be activated or not.
 function check_height()
 {
-	
+	var _height = global.platform_height;
 }
 
 function manage_recently_destroyed()
