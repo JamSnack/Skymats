@@ -3,6 +3,7 @@
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
 key_right =  keyboard_check(ord("D"));
+key_down  =  keyboard_check(ord("S"));
 key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
@@ -202,6 +203,8 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 			//Go up
 			motion_add_custom(90, stat_jetpack_strength);
 		}
+		else if (key_down)
+			motion_add_custom(270, stat_jetpack_strength);
 		
 		//Horizontal jetpack
 		if (key_right)
@@ -212,7 +215,7 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 	}
 	
 	//Remove fuel
-	if ((key_shift && (key_right || key_left || key_up)))
+	if ((key_shift && (key_right || key_left || key_up || key_down)))
 	{
 		jetpack_fuel -= 1;
 		jetpack_regen_cooldown = stat_jetpack_cooldown;
@@ -220,6 +223,8 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 		//effects
 		if (key_up)
 			create_smoke(x - (3*image_xscale), y + 5, -90, 4);
+		else if (key_down)
+			create_smoke(x - (3*image_xscale), y + 5, 90, 4);
 			
 		if (key_left)
 			create_smoke(x - (3*image_xscale), y + 5, 0, 4);
