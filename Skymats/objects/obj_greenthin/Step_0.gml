@@ -20,9 +20,7 @@ if (_p != noone)
 		if (spear_delay <= 0 && collision_line(x, y, _p.x, _p.y, OBSTA, false, true) == noone)
 		{
 			spear_delay = 60 + 45*(random_factor*15);
-			var _s = instance_create_layer(x, y, "Instances", obj_greenthin_spear);
-			var _dir = point_direction(x, y, _p.x, _p.y - 8 - random_factor*4);
-			with (_s) motion_add_custom(_dir, 8);
+			instance_create_layer(x, y, "Instances", obj_greenthin_spear);
 		}
 	}
 }
