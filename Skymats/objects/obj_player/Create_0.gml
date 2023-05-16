@@ -43,6 +43,7 @@ stat_jetpack_fuel = 70; //How many frames can pass before the jetpack runs out o
 stat_jetpack_strength = 0.15; //How fast the jetpack boosts you + 0.025
 stat_jetpack_cooldown = 90; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
 stat_jetpack_regen_rate = 0.2; //How much jetpack fuel regenerates each frame. +0.05
+jetpack_refuel_rate = 0; //How much fuel the jetpack will receive in the next tick.
 
 //- weapon
 stat_weapon_cooldown = 100; //How many frames it takes to prepare the auto-attack

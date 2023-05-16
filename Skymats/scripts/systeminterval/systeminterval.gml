@@ -22,11 +22,17 @@ function process_system_interval()
 		case 5:  { spawn_mobs(); } break;
 		case 9:  { sync_mobs(); } break;
 		case 10: { manage_recently_destroyed(); } break;
+		case 11: { check_height(); } break;
 		case 16: { sync_platform(); } break;
 	}
 	
 	current_interval++;
 	if (current_interval > SYSTEM_INTERVAL) current_interval = 0;
+}
+
+function check_height()
+{
+	
 }
 
 function manage_recently_destroyed()

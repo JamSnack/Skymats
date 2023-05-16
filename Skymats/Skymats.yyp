@@ -15,6 +15,7 @@
     {"id":{"name":"obj_silver","path":"objects/obj_silver/obj_silver.yy",},"order":5,},
     {"id":{"name":"obj_ui_stored_resource_grid","path":"objects/obj_ui_stored_resource_grid/obj_ui_stored_resource_grid.yy",},"order":3,},
     {"id":{"name":"scribble_anim_rainbow","path":"scripts/scribble_anim_rainbow/scribble_anim_rainbow.yy",},"order":4,},
+    {"id":{"name":"efct_smoke","path":"objects/efct_smoke/efct_smoke.yy",},"order":4,},
     {"id":{"name":"obj_topaz","path":"objects/obj_topaz/obj_topaz.yy",},"order":1,},
     {"id":{"name":"spr_grapple","path":"sprites/spr_grapple/spr_grapple.yy",},"order":4,},
     {"id":{"name":"obj_gold","path":"objects/obj_gold/obj_gold.yy",},"order":6,},
@@ -89,6 +90,7 @@
     {"id":{"name":"obj_island_marker","path":"objects/obj_island_marker/obj_island_marker.yy",},"order":3,},
     {"id":{"name":"string_height_scribble_ext","path":"scripts/string_height_scribble_ext/string_height_scribble_ext.yy",},"order":3,},
     {"id":{"name":"scribble_anim_pulse","path":"scripts/scribble_anim_pulse/scribble_anim_pulse.yy",},"order":3,},
+    {"id":{"name":"spr_smoke","path":"sprites/spr_smoke/spr_smoke.yy",},"order":0,},
     {"id":{"name":"spr_purple_stone","path":"sprites/spr_purple_stone/spr_purple_stone.yy",},"order":29,},
     {"id":{"name":"obj_amethyst","path":"objects/obj_amethyst/obj_amethyst.yy",},"order":2,},
     {"id":{"name":"obj_sapphire","path":"objects/obj_sapphire/obj_sapphire.yy",},"order":9,},
@@ -336,6 +338,7 @@
     {"folderPath":"folders/Objects/GooeyJam.yy","order":34,"resourceVersion":"1.0","name":"GooeyJam","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Tiles/New Tiles.yy","order":17,"resourceVersion":"1.0","name":"New Tiles","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Enemies.yy","order":38,"resourceVersion":"1.0","name":"Enemies","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sprites/Effects.yy","order":40,"resourceVersion":"1.0","name":"Effects","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

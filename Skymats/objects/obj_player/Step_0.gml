@@ -3,6 +3,7 @@
 key_left  =  keyboard_check(ord("A"));
 key_up    =  keyboard_check(ord("W"));
 key_right =  keyboard_check(ord("D"));
+key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
 var on_ground = noone;
@@ -137,7 +138,7 @@ grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
 //Control angle
 if (grapple_is_launching || grappling)
 	draw_angle = lerp(draw_angle, point_direction(x, y, grapple_point_x, grapple_point_y)-90, 0.25);
-else if (vspd > 2)
+else if (vspd > 2 || true_speed > 2 && key_shift)
 	draw_angle = lerp(draw_angle, point_direction(x, y, x+hspd, y+vspd)-90, 0.1);
 else
 	draw_angle = lerp(draw_angle, 0, 0.2);
@@ -186,28 +187,59 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 else if (mine_cooldown > 0) mine_cooldown--;
 
 //Jetpack
-if (global.can_jetpack && key_up && jetpack_fuel > 0 && jetpack_init_delay <= 0)
+if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 {
-	if (vspd > 0)
-		vspd = approach(vspd, 0, 0.175);
+	//Apply force
+	if (key_shift)
+	{
+		//Vertical jetpack
+		if (key_up)
+		{
+			//Stop falling faster
+			if (vspd > 0)
+				vspd = approach(vspd, 0, 0.175);
+		
+			//Go up
+			motion_add_custom(90, stat_jetpack_strength);
+		}
+		
+		//Horizontal jetpack
+		if (key_right)
+			motion_add_custom(0, stat_jetpack_strength);
+			
+		else if (key_left)
+			motion_add_custom(180, stat_jetpack_strength);
+	}
 	
-	jetpack_fuel -= 1;
-	//show_debug_message(stat_jetpack_strength);
-	jetpack_regen_cooldown = stat_jetpack_cooldown;
-	motion_add_custom(90, stat_jetpack_strength);
+	//Remove fuel
+	if ((key_shift && (key_right || key_left || key_up)))
+	{
+		jetpack_fuel -= 1;
+		jetpack_regen_cooldown = stat_jetpack_cooldown;
+		
+		//effects
+		create_smoke(x - (3*image_xscale), y + 5, point_direction(xprevious, yprevious, x, y), 4);
+	}
 }
 else if (on_ground == noone && jetpack_init_delay > 0)
 	jetpack_init_delay--;
 else if (on_ground != noone)
 	jetpack_init_delay = jetpack_set_init_delay;
 
+
+//Jetpack cooldown
 if (jetpack_regen_cooldown > 0)
 	jetpack_regen_cooldown--;
 else if (jetpack_fuel < stat_jetpack_fuel)
 {
-	//Player receives fuel faster if they are standing on the ground
-	jetpack_fuel += stat_jetpack_regen_rate + (stat_jetpack_regen_rate*4)*(on_ground != noone);	
+	//Player receives more fuel the longer they are under certain conditions
+	jetpack_fuel += jetpack_refuel_rate;
+	jetpack_refuel_rate = lerp(jetpack_refuel_rate, stat_jetpack_regen_rate + (stat_jetpack_regen_rate*2)*(on_ground != noone) + (stat_jetpack_regen_rate*2)*(grappling), 0.1);
 }
+
+//Instant cooldown
+if (on_ground != noone || grappling)
+	jetpack_regen_cooldown = 0;
 
 //Auto-Attack
 if (weapon_cooldown > 0)

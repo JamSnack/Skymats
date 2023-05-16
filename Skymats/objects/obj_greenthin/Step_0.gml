@@ -21,7 +21,8 @@ if (_p != noone)
 		{
 			spear_delay = 60 + 45*(random_factor*15);
 			var _s = instance_create_layer(x, y, "Instances", obj_greenthin_spear);
-			with (_s) motion_add_custom(point_direction(x, y, _p.x, _p.y - 8 - random_factor*4), 8);
+			var _dir = point_direction(x, y, _p.x, _p.y - 8 - random_factor*4);
+			with (_s) motion_add_custom(_dir, 8);
 		}
 	}
 }

@@ -25,6 +25,11 @@ global.stored_resources = array_create(ITEM_ID.last, 0);
 global.stored_resources_unlocked = array_create(ITEM_ID.last, 0);
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
+function create_smoke(x, y, direction, speed)
+{
+	instance_create_layer(x, y, "Instances", efct_smoke, {direction: direction, speed: speed});
+}
+
 function keep_in_bounds()
 {
 	if (x > WORLD_BOUND_RIGHT)
