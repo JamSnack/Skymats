@@ -546,3 +546,14 @@ function world_to_gui_coords(x, y)
 		y: (y-camera_get_view_y(view_camera[0]))*(display_get_gui_height()/camera_get_view_height(view_camera[0]))
 	}
 }
+
+function instance_destroy_safe(instance)
+{
+	if (instance_exists(instance))
+	{
+		with (instance)
+		{
+			instance_destroy();
+		}
+	}
+}

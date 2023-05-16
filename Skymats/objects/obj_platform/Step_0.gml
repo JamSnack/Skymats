@@ -33,13 +33,17 @@ else
 //Collision and movement stuff
 if (y != target_y)
 {
+	//Move the platform
 	y = lerp(y, target_y, 0.1);
 	
-	obj_market.y = bbox_top-74;
-	obj_power_button.y = bbox_top-2;
-	
+	// - snap if close to target_y
 	if (point_distance(0, y, 0, target_y) < 1)
 		y = target_y;
+	
+	//Move all platform objects
+	obj_market.y = bbox_top-74;
+	obj_power_button.y = bbox_top-2;
+	obj_fuel_storage.y = bbox_top+16;
 }
 
 if (y != yprevious)

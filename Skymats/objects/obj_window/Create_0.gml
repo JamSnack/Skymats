@@ -81,6 +81,9 @@ widgets = {
 //Window surface
 window_surface = noone;
 
+//Other Window
+window_alpha = 0;
+
 /*
 TODO:
 - Collapse Arrow bool

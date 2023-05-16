@@ -1,4 +1,5 @@
 /// @description Draw Window and its contents
+draw_set_alpha(window_alpha);
 
 //Draw background
 if (sprite_exists(sprite_background))
@@ -61,3 +62,6 @@ if (scrollable && widgets.widget_length > height)
 	draw_rectangle_color(pos_x + width + 4, pos_y, pos_x + width + 4 + 4, pos_y + height, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(pos_x + width + 4, pos_y + scroll_offset*(scroll_offset/max_scroll_offset), pos_x + width + 4 + 4, pos_y + height-max_scroll_offset + scroll_offset*(scroll_offset/max_scroll_offset), c_white, c_white, c_white, c_white, false);
 }
+
+//reset
+draw_set_alpha(1);

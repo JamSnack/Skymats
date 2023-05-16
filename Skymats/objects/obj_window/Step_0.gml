@@ -5,6 +5,7 @@ var _mx = device_mouse_x_to_gui(0);
 var _my = device_mouse_y_to_gui(0);
 var _holding_left_click = mouse_check_button(mb_left);
 var _pressed_left_click = mouse_check_button_pressed(mb_left);
+var _released_left_click = mouse_check_button_released(mb_left);
 var _free_surface = false;
 
 //Window interaction
@@ -72,8 +73,14 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 		scroll_offset = clamp(scroll_offset, -max_scroll_offset, 0);
 	}
 }
-else if (window_get_cursor() != cr_default)
-	window_set_cursor(cr_default);
+else
+{
+	if (window_get_cursor() != cr_default)
+		window_set_cursor(cr_default);
+		
+	if (click_off_to_close && _released_left_click)
+		instance_destroy();
+}
 	
 //Continuous dragging
 if (dragging && !resizing && _holding_left_click)
@@ -126,6 +133,13 @@ if (width != target_width)
 if (height != target_height)
 {
 	height = lerp(height, target_height, 0.43);
+	_free_surface = true;
+}
+
+//Window alpha
+if (window_alpha != 1)
+{
+	window_alpha = lerp(window_alpha, 1, 0.33);
 	_free_surface = true;
 }
 

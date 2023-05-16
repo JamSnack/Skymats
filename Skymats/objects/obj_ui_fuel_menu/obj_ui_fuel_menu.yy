@@ -26,6 +26,7 @@
   "overriddenProperties": [
     {"propertyId":{"name":"pos_x","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"30","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"draw_topbar","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"click_off_to_close","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"True","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "GooeyJam",
