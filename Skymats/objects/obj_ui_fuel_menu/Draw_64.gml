@@ -18,7 +18,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 	//Current fuel
 	var _y1 = 16 + scroll_offset;
 	
-	draw_text_scribble(width/2, _y1, "[scale, 3][fa_center]Fuel Management");
+	draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
 	
 	_y1 += 128;
 	
@@ -39,13 +39,13 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		{
 			if (_i == ITEM_ID.enemy_parts)
 			{
-				draw_text_scribble(5, _y2 + _i*32 + 16, "[scale, 2]Enemy Drops");
+				draw_text_scribble(5, _y2 + _i*32 + 16, "[font]Enemy Drops");
 				_y2 += 32+16;
 			}
 			
 			
 		}
-		else if (_i == 1) draw_text_scribble(5, _y2, "[scale, 2]Ores and Minerals");
+		else if (_i == 1) draw_text_scribble(5, _y2, "[font]Ores and Minerals");
 		
 		if (global.stored_resources_unlocked[_i])
 		{
@@ -56,7 +56,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		else
 		{
 			draw_sprite(spr_items, 0, 5, _y2 + _i*32);
-			draw_text(48, _y2 + 2 + _i*32, "?????????????????????????????");
+			draw_text_scribble(48, _y2 + 2 + _i*32, "?????????????????????????????");
 		}
 	}
 	

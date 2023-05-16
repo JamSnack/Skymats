@@ -114,6 +114,7 @@
     {"id":{"name":"spr_break_tile","path":"sprites/spr_break_tile/spr_break_tile.yy",},"order":9,},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},"order":0,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":1,},
+    {"id":{"name":"font","path":"sprites/font/font.yy",},"order":0,},
     {"id":{"name":"string_height_scribble","path":"scripts/string_height_scribble/string_height_scribble.yy",},"order":2,},
     {"id":{"name":"spr_sapphire","path":"sprites/spr_sapphire/spr_sapphire.yy",},"order":5,},
     {"id":{"name":"efct_floating_text","path":"objects/efct_floating_text/efct_floating_text.yy",},"order":0,},
@@ -349,6 +350,7 @@
     {"folderPath":"folders/Sprites/Enemies.yy","order":38,"resourceVersion":"1.0","name":"Enemies","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Effects.yy","order":40,"resourceVersion":"1.0","name":"Effects","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Platform.yy","order":41,"resourceVersion":"1.0","name":"Platform","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sprites/Fonts.yy","order":42,"resourceVersion":"1.0","name":"Fonts","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -356,7 +358,9 @@
   "TextureGroups": [
     {"isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"font.json","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2022.5.0.8",
   },
