@@ -24,7 +24,7 @@ resizing = false;
 //Init scrolling
 scroll_offset = 0;
 max_scroll_offset = 0;
-scroll_length = 40*(ITEM_ID.last-1) + 32 + 16; //How much to scroll
+scroll_length = 40*(ITEM_ID.last-1) + 128; //How much to scroll
 
 //Constants
 _topbar_height = 30;
