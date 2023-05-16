@@ -69,7 +69,7 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 		}
 		
 		//Clamp
-		max_scroll_offset = max(0, widgets.widget_length - height);
+		max_scroll_offset = max(0, scroll_length - height);
 		scroll_offset = clamp(scroll_offset, -max_scroll_offset, 0);
 	}
 }
@@ -147,5 +147,5 @@ if (window_alpha != 1)
 if (_free_surface)
 {
 	surface_free(window_surface);
-	window_surface = -1;
+	//window_surface = -1;
 }

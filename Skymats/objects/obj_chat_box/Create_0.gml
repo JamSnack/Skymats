@@ -3,6 +3,9 @@
 width = 400;
 height = 200;
 
+x = 1366;
+y = 768;
+
 mouse_x_before_pressed = 0;
 mouse_y_before_pressed = 0;
 dragging = false;

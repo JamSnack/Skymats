@@ -42,6 +42,7 @@ widgets = {
 		
 		widget_length += (new_widget.length + 10);
 		surface_free(parent_window.window_surface);
+		parent_window.window_surface = -1;
 	},
 	remove : function(target_widget)
 	{
@@ -53,6 +54,7 @@ widgets = {
 			widgets_amount--;
 			widget_length -= (_t.length + 10);
 			surface_free(parent_window.window_surface);
+			parent_window.window_surface = -1;
 			
 			with (_t) instance_destroy();
 		}
@@ -73,6 +75,7 @@ widgets = {
 		ds_list_clear(widgets);
 		widgets_amount = 0;
 		surface_free(parent_window.window_surface);
+		parent_window.window_surface = -1;
 	}
 	
 	

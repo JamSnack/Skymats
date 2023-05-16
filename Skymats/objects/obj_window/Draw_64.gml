@@ -14,7 +14,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 
 	surface_set_target(window_surface);
 
-	if (widgets.widgets_amount > 0)
+	/*if (widgets.widgets_amount > 0)
 	{
 		var last_y = scroll_offset + draw_topbar*(_topbar_height + widget_padding);
 		for (var _w = 0; _w < widgets.widgets_amount; _w++)
@@ -41,7 +41,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 				last_y += current_widget.length + widget_padding;
 			}
 		}
-	}
+	}*/
 
 	surface_reset_target();
 }
@@ -60,7 +60,7 @@ if (scrollable && widgets.widget_length > height)
 {
 	//background
 	draw_rectangle_color(pos_x + width + 4, pos_y, pos_x + width + 4 + 4, pos_y + height, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(pos_x + width + 4, pos_y + scroll_offset*(scroll_offset/max_scroll_offset), pos_x + width + 4 + 4, pos_y + height-max_scroll_offset + scroll_offset*(scroll_offset/max_scroll_offset), c_white, c_white, c_white, c_white, false);
+	draw_rectangle_color(pos_x + width + 4, pos_y + scroll_offset*(scroll_offset/max_scroll_offset), pos_x + width + 4 + 4, pos_y + max(1, height-max_scroll_offset) + scroll_offset*(scroll_offset/max_scroll_offset), c_white, c_white, c_white, c_white, false);
 }
 
 //reset
