@@ -39,10 +39,10 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					create_depot(_p.x, _p.y, _slot.item_id);
 			
 					//Add fuel to the platform
-					var fuel_amt = _slot.amount*get_fuel_value(_slot.item_id);
+					//var fuel_amt = _slot.amount*get_fuel_value(_slot.item_id);
 					
-					client_fuel += fuel_amt;
-					obj_platform.fuel += fuel_amt;
+					//client_fuel += fuel_amt;
+					//obj_platform.fuel += fuel_amt;
 						
 					
 					//if (obj_platform.fuel > obj_platform.max_fuel)

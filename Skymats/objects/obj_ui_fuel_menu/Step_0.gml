@@ -143,6 +143,31 @@ if (window_alpha != 1)
 	_free_surface = true;
 }
 
+//Interact with Auto-Burn menu
+if (_released_left_click)
+{
+	var _y1 = 16 + scroll_offset + 128;
+	var _y2 = _y1 + 256;
+	
+	for (var _i = 1; _i < ITEM_ID.last; _i++)
+	{
+		if (_i >= ITEM_ID.enemy_parts)
+		{
+			if (_i == ITEM_ID.enemy_parts)
+				_y2 += 32+16;
+		}
+		
+		var _current_y = _y2 - 4 + _i*32;
+		
+		if (point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y, pos_x + width-2, pos_y + _current_y + 30))
+		{
+			global.stored_resources_auto_burn[_i] = !global.stored_resources_auto_burn[_i];
+			_free_surface = true;
+			break;
+		}
+	}
+}
+
 //free surface
 if (_free_surface)
 {

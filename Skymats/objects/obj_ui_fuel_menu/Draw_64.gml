@@ -47,11 +47,17 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		}
 		else if (_i == 1) draw_text_scribble(5, _y2, "[font]Ores and Minerals");
 		
+		if (global.stored_resources_auto_burn[_i] == 0)
+			draw_sprite_stretched(spr_ui_burn_background, 0, 2, _y2 - 4 + _i*32, width-2, 34);
+		
 		if (global.stored_resources_unlocked[_i])
 		{
 			draw_sprite(spr_items, _i, 5, _y2 + _i*32);
 			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
-			draw_text_scribble(200, _y2 + 2 + _i*32, "|[c_green] " + string(get_item_value(_i)) + "$ [c_white]|[c_red] %" + string(get_fuel_value(_i)/250) + " Fuel");
+			draw_text_scribble(200, _y2 + 2 + _i*32, "|[c_green] " +
+			string(get_item_value(_i)) + "$ [c_white]|[c_red] %" +
+			string(get_fuel_value(_i)/250) + " Fuel[/c]"
+			);
 		}
 		else
 		{
