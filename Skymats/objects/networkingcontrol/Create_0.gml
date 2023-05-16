@@ -19,5 +19,5 @@ global.game_state = "PLAY";
 enemy_spawn_delay = 0;
 loading_world = false;
 
-room_goto(rm_menu);
 draw_set_font(fnt_default);
+room_goto(rm_menu);
