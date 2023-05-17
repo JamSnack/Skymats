@@ -28,8 +28,19 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 	draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
 	draw_set_color(c_white);
 	
+	//Fuel efficiency and item to burn
 	if (global.stored_resource_to_burn != 0)
+	{
+		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75]"+get_item_name(global.stored_resource_to_burn));
 		draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
+		draw_text_scribble(_selected_item_x + 128 + 20, _y1 + 64, "[font]"+string(global.stored_resources[global.stored_resource_to_burn]));
+		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: " + string(get_item_bonus_fuel(global.stored_resource_to_burn)) + "%");
+	}
+	else
+	{
+		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75][c_red]No Item Available[\c]");
+		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
+	}
 	
 	//Resource journal
 	var _y2 = _y1 + 256;
@@ -57,7 +68,8 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
 			draw_text_scribble(200, _y2 + 2 + _i*32, "|[c_green] " +
 			string(get_item_value(_i)) + "$ [c_white]|[c_red] %" +
-			string(get_fuel_value(_i)/250) + " Fuel[/c]"
+			string(get_fuel_value(_i)/250) + " Fuel[/c] | " + 
+			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency"
 			);
 		}
 		else

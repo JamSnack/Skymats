@@ -1,6 +1,7 @@
 /// @description
 fuel = 0;
 max_fuel = 250;
+fuel_efficieny = 0;
 target_y = y;
 
 obstruction = false;

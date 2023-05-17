@@ -7,7 +7,7 @@ if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1
 	if (fuel > 1 && powered && power_delay <= 0)
 	{
 		global.platform_height -= 1;
-		fuel -= 1;
+		fuel -= (1 - (fuel_efficieny/100));
 		
 		if (global.tutorial_complete && spawn_high_island_delay < 0 && (fuel > 400))
 		{

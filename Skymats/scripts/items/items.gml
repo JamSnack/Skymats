@@ -125,6 +125,50 @@ function get_item_value(item_id)
 	}
 }
 
+function get_item_bonus_fuel(item_id)
+{
+	switch item_id
+	{
+		//tiles
+		case ITEM_ID.grass:					{ return  5;  } break;
+		case ITEM_ID.coal:					{ return  15;  } break;
+		
+		case ITEM_ID.stone:					
+		case ITEM_ID.tin:					
+		case ITEM_ID.aluminum:				
+		case ITEM_ID.nickel:				
+		case ITEM_ID.copper:				
+		case ITEM_ID.zinc:					
+		case ITEM_ID.iron:					
+		case ITEM_ID.silver:				
+		case ITEM_ID.gold:					
+		case ITEM_ID.sapphire:				
+		case ITEM_ID.ruby:					
+		case ITEM_ID.topaz:					
+		case ITEM_ID.lapis:					
+		case ITEM_ID.emerald:				
+		case ITEM_ID.amethyst:				
+		case ITEM_ID.diamond:				
+		case ITEM_ID.garnet:				
+		case ITEM_ID.beryllium:				
+		case ITEM_ID.hematite:				
+		case ITEM_ID.obsidian:				
+		case ITEM_ID.cobalt:				
+		case ITEM_ID.void_glass:			
+		case ITEM_ID.buried_stars:			
+		case ITEM_ID.ground_lemons:			
+		case ITEM_ID.moon_cheese:			
+		case ITEM_ID.typhoonium:			{ return  1; } break;
+		
+		//items
+		case ITEM_ID.enemy_parts:			{ return  5; } break;
+		case ITEM_ID.pot_of_greed:			{ return  0; } break;
+		case ITEM_ID.greenthin_legs:        { return  6; } break;
+		
+		default:							{ return -1; } break;
+	}
+}
+
 function get_fuel_value(item_id)
 {
 	switch item_id
