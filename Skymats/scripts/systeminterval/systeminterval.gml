@@ -18,11 +18,13 @@ function process_system_interval()
 		case 2:  { create_new_islands(); } break;
 		case 3:  { sync_platform(); } break;
 		case 4:  { cull_enemies();  } break;
-		case 6:  { sync_mobs(); } break;
 		case 5:  { spawn_mobs(); } break;
+		case 6:  { sync_mobs(); } break;
+		case 7:  { manage_auto_burn(); } break;
 		case 9:  { sync_mobs(); } break;
 		case 10: { manage_recently_destroyed(); } break;
 		case 11: { check_height(); } break;
+		case 12: { manage_auto_burn(); } break;
 		case 16: { sync_platform(); } break;
 	}
 	
@@ -36,6 +38,33 @@ function check_height()
 	var _height = global.platform_height;
 }
 
+function manage_auto_burn()
+{
+	static resource_to_check = 1;
+	
+	if (global.stored_resources_auto_burn[resource_to_check] && global.stored_resources[resource_to_check] > 0)
+	{
+		if (global.stored_resource_to_burn != resource_to_check)
+		{
+			global.stored_resource_to_burn = resource_to_check;
+		
+			//Reset relevant Ui
+			if (instance_exists(obj_ui_fuel_menu))
+				with (obj_ui_fuel_menu) { surface_free(window_surface) };
+		}
+	}
+	else
+	{
+		if (resource_to_check == global.stored_resource_to_burn)
+			global.stored_resource_to_burn = 0;
+		
+		resource_to_check++;
+		
+		if (resource_to_check >= ITEM_ID.last)
+			resource_to_check = 1;
+	}
+}
+
 function manage_recently_destroyed()
 {
 	//Remove the oldest ID stored in the recently_destroyed_list
@@ -47,6 +76,7 @@ function sync_platform()
 {
 	if (global.is_host && instance_exists(obj_platform))
 	{
+		//Send platform stats
 		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel});
 	}
 }

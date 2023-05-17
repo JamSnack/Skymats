@@ -9,3 +9,5 @@ power_delay = 0;
 power_button = false;
 
 spawn_high_island_delay = 0;
+
+alarm[0] = 10;

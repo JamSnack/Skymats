@@ -168,6 +168,12 @@ if (_released_left_click)
 		if (point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y + 2, pos_x + width-2, pos_y + _current_y + 30))
 		{
 			global.stored_resources_auto_burn[_i] = !global.stored_resources_auto_burn[_i];
+			
+			if (global.stored_resources_auto_burn[_i])
+				global.stored_resource_to_burn = _i;
+			else if (global.stored_resource_to_burn == _i)
+				global.stored_resource_to_burn = 0;
+				
 			_free_surface = true;
 			
 			//Play sound effect

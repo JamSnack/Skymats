@@ -28,7 +28,8 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 	draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
 	draw_set_color(c_white);
 	
-	draw_sprite_ext(spr_items, ITEM_ID.coal, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
+	if (global.stored_resource_to_burn != 0)
+		draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
 	
 	//Resource journal
 	var _y2 = _y1 + 256;
