@@ -42,6 +42,8 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
 	}
 	
+	draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
+	
 	//Resource journal
 	var _y2 = _y1 + 256;
 	
@@ -62,15 +64,26 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 		if (global.stored_resources_auto_burn[_i])
 			draw_sprite_stretched(spr_ui_burn_background, 0, 2, _y2 - 4 + _i*32, width-2, 34);
 		
+		//Resource description
 		if (global.stored_resources_unlocked[_i])
 		{
-			draw_sprite(spr_items, _i, 5, _y2 + _i*32);
-			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
-			draw_text_scribble(200, _y2 + 2 + _i*32, "|[c_green] " +
+			//Create item description
+			var _str = "|[c_green] " +
 			string(get_item_value(_i)) + "$ [c_white]|[c_red] %" +
 			string(get_fuel_value(_i)/250) + " Fuel[/c] | " + 
-			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency"
-			);
+			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
+			
+			if (_i > ITEM_ID.stone && _i < ITEM_ID.enemy_parts)
+			{
+				var _ore_dist = global.ore_distribution[_i];
+				if (_ore_dist != 0)
+					_str += " | Height Found: " + string(-min(0, _ore_dist.low))
+			}
+			
+			//Draw stuff
+			draw_sprite(spr_items, _i, 5, _y2 + _i*32);
+			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
+			draw_text_scribble(200, _y2 + 2 + _i*32, _str);
 		}
 		else
 		{

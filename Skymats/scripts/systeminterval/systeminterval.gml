@@ -172,7 +172,7 @@ function spawn_mobs()
 	
 		if (global.platform_height < -3000)
 		{
-			enemy_spawn_delay = 60*60*irandom_range(1,2);
+			enemy_spawn_delay = 45*15*irandom_range(1,2);
 			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
 	
