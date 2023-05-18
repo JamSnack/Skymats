@@ -50,12 +50,13 @@ time++;
 //The island is complete
 if (time > width)
 {
-	var veins = 2 + irandom(3);
+	var veins = 2 + irandom(3) + floor(global.platform_height/5000)*5000;
+	var count = 0;
 
 	//Guaranteed ore spawn
 	repeat(veins)
 	{
-		var chosen_ore = choose_ore(current_y);
+		var chosen_ore = choose_ore(current_y); //TODO: Figure out how to utilize count here
 		var prev_x = x + 16*irandom(width-1);
 		var prev_y = y + 16*4 + 16*irandom(height-4);
 		var ore_amount = 3 + irandom(3);
