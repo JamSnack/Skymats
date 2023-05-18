@@ -77,7 +77,7 @@ function sync_platform()
 	if (global.is_host && instance_exists(obj_platform))
 	{
 		//Send platform stats
-		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel});
+		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel, stored_resources: global.stored_resources, unlocked: global.stored_resources_unlocked});
 	}
 }
 

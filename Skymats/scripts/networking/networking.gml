@@ -74,7 +74,7 @@ function handle_data(data)
 	//show_debug_message("Handling data: "+string(data));
 	if (!global.is_host)
 	{
-		global.lag = global.current_tick - parsed_data.tick;
+		global.lag = 0;//global.current_tick - parsed_data.tick;
 	}
 	
 	if (parsed_data != -1)
@@ -85,6 +85,8 @@ function handle_data(data)
 			case "sync_platform":
 			{
 				global.platform_height = parsed_data.height;
+				global.stored_resources = parsed_data.stored_resources;
+				global.stored_resources_unlocked = parsed_data.unlocked;
 				
 				if (instance_exists(obj_platform))
 				{
@@ -98,13 +100,30 @@ function handle_data(data)
 					}
 				
 				}
+				
+				if (instance_exists(obj_ui_fuel_menu))
+					surface_free(obj_ui_fuel_menu.window_surface);
 			}
 			break;
 			
 			case "request_fuel_added":
 			{
 				if (instance_exists(obj_platform))
+				{
 					obj_platform.fuel += parsed_data.amt;
+
+					for (var _j = 0; _j < parsed_data.size; _j++)
+					{
+						var _i = parsed_data.stash[_j];
+						global.stored_resources[_i[0]] += _i[1];
+						
+						if (global.stored_resources_unlocked[_i[0]] == 0)
+						{
+							global.stored_resources_unlocked[_i[1]] = 1;
+							create_notification( "[wave][scale, 1.5]" + get_item_name(_i[1]) + " [spr_items, "+ string(_i[1]) + "] Discovered!");
+						}
+					}
+				}
 			}
 			break;
 			

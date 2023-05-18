@@ -22,7 +22,7 @@
 global.can_grapple = true;
 global.can_jetpack = true;
 global.stored_resources = array_create(ITEM_ID.last, 0);
-global.stored_resources_unlocked = array_create(ITEM_ID.last, 1);
+global.stored_resources_unlocked = array_create(ITEM_ID.last, 0);
 global.stored_resources_auto_burn = array_create(ITEM_ID.last, 0);
 global.stored_resource_to_burn = 1;
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
@@ -370,7 +370,7 @@ function draw_shadow(sprite_index, image_index, x_offset, y_offset, image_xscale
 
 function create_shadow()
 {
-	var shadow = layer_sprite_create("Shadows", x+2, y+2, sprite_index);
+	var shadow = layer_sprite_create("Shadows", x+1, y+1, sprite_index);
 	layer_sprite_alpha(shadow, 0.5);
 	layer_sprite_blend(shadow, c_black);
 	layer_sprite_index(shadow, image_index);

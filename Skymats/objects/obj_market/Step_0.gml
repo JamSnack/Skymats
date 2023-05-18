@@ -9,9 +9,13 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 	{
 		if (global.inventory.held_value > 0)
 		{
-
 			//Prepare fuel to be sent to host if multiplayer and client
 			var client_fuel = 0;
+			var client_stash;
+			var client_stash_size = 0;
+			
+			if (!global.is_host)
+				client_stash = array_create(global.inventory.size);
 			
 			//Accrue wealth
 			for (var _i = 0; _i < global.inventory.size; _i++)
@@ -28,10 +32,18 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					//Store resources
 					global.stored_resources[_slot.item_id] += _slot.amount;
 					
-					if (global.stored_resources_unlocked[_slot.item_id] == 0)
+					if (global.is_host)
 					{
-						global.stored_resources_unlocked[_slot.item_id] = 1;
-						create_notification( "[wave][scale, 1.5]" + get_item_name(_slot.item_id) + " [spr_items, "+ string(_slot.item_id) + "] Discovered!");
+						if (global.stored_resources_unlocked[_slot.item_id] == 0)
+						{
+							global.stored_resources_unlocked[_slot.item_id] = 1;
+							create_notification( "[wave][scale, 1.5]" + get_item_name(_slot.item_id) + " [spr_items, "+ string(_slot.item_id) + "] Discovered!");
+						}
+					}
+					else
+					{
+						//Prepare structure with resource ID and amount to host for addition to the host's stash
+						client_stash[client_stash_size++] = [_slot.item_id, _slot.amount];
 					}
 					
 					
@@ -68,7 +80,9 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 			*/
 			//Send client fuel
 			if (!global.is_host && global.multiplayer)
-				send_data({ cmd: "request_fuel_added", amt: client_fuel});
+			{
+				send_data({ cmd: "request_fuel_added", amt: client_fuel, stash: client_stash, size: client_stash_size});
+			}
 			
 			//Save game
 			save_game();

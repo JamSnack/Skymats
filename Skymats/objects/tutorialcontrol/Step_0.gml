@@ -30,7 +30,7 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 			y = 586;
 			global.can_jetpack = true;
 			tutorial_index = 3;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Airpack unlocked! Hold JUMP to fly!"});
+			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Airpack unlocked! Hold SHIFT to fly!"});
 		}
 		break;
 		

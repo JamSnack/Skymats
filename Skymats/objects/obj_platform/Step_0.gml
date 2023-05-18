@@ -58,6 +58,7 @@ if (y != yprevious)
 }
 
 
+//Position the target coordinate of the platform at 938 pixels under WORLD_BOUND_TOP.
 if (target_y != global.platform_height+938)
 	target_y = global.platform_height+938;
 

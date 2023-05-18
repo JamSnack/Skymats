@@ -193,16 +193,18 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 	//Apply force
 	if (key_shift)
 	{
+		//Stabilize
+		if (vspd > 0 && !key_down)
+		{
+			vspd = approach(vspd, 0, 0.175 + stat_jetpack_strength*0.01);
+			
+			create_smoke(x - (3*image_xscale), y + 5, -90, 2);
+			jetpack_fuel -= 1;
+		}
+		
 		//Vertical jetpack
 		if (key_up)
-		{
-			//Stop falling faster
-			if (vspd > 0)
-				vspd = approach(vspd, 0, 0.175);
-		
-			//Go up
 			motion_add_custom(90, stat_jetpack_strength);
-		}
 		else if (key_down)
 			motion_add_custom(270, stat_jetpack_strength);
 		
