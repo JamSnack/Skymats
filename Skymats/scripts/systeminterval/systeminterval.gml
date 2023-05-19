@@ -167,14 +167,21 @@ function spawn_mobs()
 	{	
 		var _p = irandom(instance_number(PLAYER)-1);
 		var player = instance_find(PLAYER, _p);
-		var _y = player.y;
+		//var _y = player.y;
 		var _x = player.x;
 	
 		if (global.platform_height < -3000)
 		{
-			enemy_spawn_delay = 45*15*irandom_range(1,2);
+			enemy_spawn_delay = 45*15*irandom_range(1,2) + global.platform_height/100;
 			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
+		
+		if (global.platform_height < -3000 && irandom(5) == 1)
+		{
+			repeat(-floor(global.platform_height/1200))
+				instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
+		}
+			
 	
 		//Other
 		var _r = irandom(99999);

@@ -291,7 +291,7 @@ function get_upgrade_cost(upgrade_id)
 			case UPGRADE.weapon_range:		{ return power(5, _up); } break;
 			case UPGRADE.weapon_knockback:  { return power(5, _up); } break;
 			*/
-			default: { return 5 + 25*(_up*(_up-1)) + power(2, _up-1); } break;
+			default: { return 10 + 30*(_up*(_up-1)) + power(3, _up-1); } break;
 		}
 	}
 	else return noone;
@@ -305,15 +305,15 @@ function apply_upgrade(upgrade_id)
 	
 		switch (upgrade_id)
 		{
-			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = 100 + 25*_up; } break;
-			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = 6 + 2*_up; } break;
-			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = 0.25 + 0.05*_up; } break;
+			case UPGRADE.grapple_range:		{ obj_player.stat_grapple_range = 100 + 15*_up; } break;
+			case UPGRADE.grapple_travel:	{ obj_player.stat_grapple_speed = 6 + _up; } break;
+			case UPGRADE.grapple_strength:  { obj_player.stat_grapple_force = 0.20 + 0.025*_up; } break;
 											 
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
-			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 4*_up; } break;
+			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 3*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 70 + _up*30; } break;
-			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.15 + _up*0.025; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 100 + _up*20; } break;
+			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.15 + _up*0.020; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
 											  
@@ -342,25 +342,37 @@ function get_background_colors(height)
 	//Color 1 is higher than Color 2.
 	//As the player falls, Color 1 will approach Color 2.
 	//As the player rises, Color 2 will approach Color 1.
-	if (height <= 8000 && height > 7000)
-		return [[86/255, 135/255, 1.0, 1.0], [86/255, 135/255, 1.0, 1.0]]; //Void to Tier 1
-	else if (height <= 7000 && height > 6000)
-		return [[89/255, 113/255, 249/255, 1.0], [86/255, 135/255, 1.0, 1.0]]; //Tier 1 to Tier 1
-	else if (height <= 6000 && height > 5000)
+	if (height < 1000)
+		return [[86/255, 135/255, 1.0, 1.0],[0.0, 0.0, 0.1, 1.0]];
+	else if (height >= 1000 && height < 5000)
+		return [[86/255, 135/255, 1.0, 1.0], [86/255, 135/255, 1.0, 1.0]];
+	
+	else if (height >= 5000 && height < 6000)
+		return [[89/255, 113/255, 249/255, 1.0], [86/255, 135/255, 1.0, 1.0]];
+	
+	else if (height >= 6000 && height < 7000)
+		return [[89/255, 113/255, 249/255, 1.0], [89/255, 113/255, 249/255, 1.0]];
+		
+	else if (height >= 7000 && height < 8000)
 		return [[255/255, 248/255, 127/255, 1.0], [89/255, 113/255, 249/255, 1.0]]; //Tier 1 to Tier 2
-	else if (height <= 5000 && height > 4000)
+		
+	else if (height >= 8000 && height < 9000)
 		return [[225/255, 124/255, 10/255, 1.0], [255/255, 248/255, 127/255, 1.0]]; //Tier 2 to Tier 2.1
-	else if (height <= 4000 && height > 3000)
+		
+	else if (height >= 9000 && height < 13000)
+		return [[225/255, 124/255, 10/255, 1.0], [225/255, 124/255, 10/255, 1.0]];
+	
+	else if (height >= 13000 && height < 14000)
 		return [[168/255, 0, 56/255, 1.0],[225/255, 124/255, 10/255, 1.0]]; //Tier 2.1 to Tier 2.2
-	else if (height <= 3000 && height > 2000)
-		return [[225/255, 124/255, 10/255, 1.0], [0.0, 1/255, 20/255, 1.0]]; //Tier 2.2 to Space
-	else if (height <= 2000 && height > 1000)
-		return [[0.0, 1/255, 20/255, 1.0],[0.0, 0, 0, 1.0]]; //Space to Deep Space
-	else if (height <= 1000 && height > 0)
-		return [[0.0, 0, 0, 1.0],[0.75, 0.75, 0.75, 1.0]]; //Deep Space to Sky
+		
+	else if (height >= 14000 && height < 15000)
+		return [[0.0, 0, 0.1, 1.0], [168/255, 0, 56/255, 1.0]]; //Tier 2.2 to Space
+		
+	else if (height >= 15000)
+		return [[0.0, 0, 0.1, 1.0],[0.0, 0, 0.1, 1.0]];
 	
 	//Default colors
-	return [[86/255, 135/255, 1.0, 1.0],[0.0, 0.0, 0.1, 1.0]]; //Void
+	return [[0.0, 0, 0, 1.0],[0.0, 0.0, 0.1, 1.0]]; //Void
 }
 
 function draw_shadow(sprite_index, image_index, x_offset, y_offset, image_xscale, image_yscale, image_angle, color, image_alpha)

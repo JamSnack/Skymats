@@ -125,7 +125,7 @@ else if (grappling)
 		if (grappling_to.object_index == obj_platform)
 		{
 			if (obj_platform.powered && obj_platform.fuel > 2 && !obj_platform.obstruction)
-				grapple_point_y = obj_platform.y;
+				grapple_point_y -= 1;
 		} else if (SCROLL_CONDITIONS) grapple_point_x += SCROLL_SPEED;
 	}
 }

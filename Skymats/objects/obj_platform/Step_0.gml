@@ -6,12 +6,12 @@ if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1
 	obstruction = false;
 	if (fuel > 1 && powered && power_delay <= 0)
 	{
-		global.platform_height -= 1;
+		global.platform_height -= 3;
 		fuel -= (1 - (fuel_efficieny/100));
 		
 		if (global.tutorial_complete && spawn_high_island_delay < 0 && (fuel > 400))
 		{
-			instance_create_layer(bbox_left + irandom_range(-250, 250), WORLD_BOUND_TOP - 300, "Instances", obj_island_generator);
+			//instance_create_layer(bbox_left + irandom_range(-250, 250), WORLD_BOUND_TOP - 300, "Instances", obj_island_generator);
 			spawn_high_island_delay = 60*15;
 		}
 		else spawn_high_island_delay--;
