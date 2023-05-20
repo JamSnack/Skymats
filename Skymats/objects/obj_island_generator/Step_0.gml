@@ -35,7 +35,7 @@ for (var i = 0; i < column_height; i++)
 	//select tile type to place
 	var _obj = obj_grass;
 	
-	if (irandom(2) + i > 4 || global.platform_height < 12000)
+	if (irandom(2) + i > 4 && global.platform_height > -12000)
 		_obj = obj_stone;
 	
 	//place tile

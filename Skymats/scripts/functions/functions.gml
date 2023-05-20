@@ -35,7 +35,7 @@ function create_smoke(x, y, direction, speed)
 function keep_in_bounds()
 {
 	if (x > WORLD_BOUND_RIGHT)
-	motion_add_custom(180, 1);
+		motion_add_custom(180, 1);
 	
 	else if (x < WORLD_BOUND_LEFT)
 		motion_add_custom(0, 1);

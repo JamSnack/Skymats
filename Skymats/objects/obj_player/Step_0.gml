@@ -146,7 +146,17 @@ else
 	
 
 //Stay in-bounds
-keep_in_bounds();
+if (y <= WORLD_BOUND_BOTTOM)
+	keep_in_bounds();
+else
+{
+	//We have entered the void
+	if (vspd > 0)
+		vspd = lerp(vspd, 0, 0.23);
+	
+	//Regen jetpack fuel
+	jetpack_regen_cooldown = 0;
+}
 	
 //Tile mininig
 var _selected_slot = global.inventory.selected_slot;
@@ -243,7 +253,7 @@ else if (on_ground != noone)
 //Jetpack cooldown
 if (jetpack_regen_cooldown > 0)
 	jetpack_regen_cooldown--;
-else if (jetpack_fuel < stat_jetpack_fuel)
+else if (!key_shift && jetpack_fuel < stat_jetpack_fuel)
 {
 	//Player receives more fuel the longer they are under certain conditions
 	jetpack_fuel += jetpack_refuel_rate;

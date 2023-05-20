@@ -13,4 +13,4 @@ last_chunk_x = 0;
 last_chunk_y = 0;
 boundary_size = 368;
 
-sync_delay = 60*120;
+//layer_depth("Void", -99);

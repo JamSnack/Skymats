@@ -2,8 +2,8 @@
 // You can write your code in this editor
 if (instance_exists(camera))
 {
-	var _x = camera.x-1366/2;//camera_get_view_border_x(view_camera[0]);
-	var _y = camera.y-768/2;//camera_get_view_border_y(view_camera[0]);
+	var _x = camera_get_view_x(view_camera[0])-1366/2;
+	var _y =  camera_get_view_y(view_camera[0])-768/2;
 	var colors = get_background_colors(-global.platform_height);
 	show_debug_message(colors[1]);
 	shader_set(shd_mix_colors);
