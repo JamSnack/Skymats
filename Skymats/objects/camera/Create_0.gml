@@ -2,6 +2,13 @@
 // You can write your code in this editor
 
 follow_this = obj_player;
+
+if (instance_exists(follow_this))
+{
+	x = follow_this.x;
+	y = follow_this.y;
+}
+
 local_camera = view_get_camera(view_current);
 
 zoom = 2;
