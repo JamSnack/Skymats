@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Mats",
-    "path": "folders/Sprites/Mats.yy",
+    "name": "Ore",
+    "path": "folders/Sprites/Ore.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_ground_lemons",

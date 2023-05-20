@@ -39,6 +39,7 @@ enum ITEM_ID
 	enemy_parts, //Used as last_ore in code
 	pot_of_greed,
 	greenthin_legs,
+	star_finger,
 	
 	last,
 }
@@ -120,6 +121,7 @@ function get_item_value(item_id)
 		case ITEM_ID.enemy_parts:			{ return  5; } break;
 		case ITEM_ID.pot_of_greed:			{ return  250; } break;
 		case ITEM_ID.greenthin_legs:        { return  6; } break;
+		case ITEM_ID.star_finger:           { return 50; } break;
 		
 		default:							{ return -1; } break;
 	}
@@ -130,8 +132,8 @@ function get_item_bonus_fuel(item_id)
 	switch item_id
 	{
 		//tiles
-		case ITEM_ID.grass:					{ return  5;  } break;
-		case ITEM_ID.coal:					{ return  15;  } break;
+		case ITEM_ID.grass:					{ return  15;  } break;
+		case ITEM_ID.coal:					{ return  25;  } break;
 		
 		case ITEM_ID.stone:					
 		case ITEM_ID.tin:					
@@ -164,6 +166,7 @@ function get_item_bonus_fuel(item_id)
 		case ITEM_ID.enemy_parts:			{ return  5; } break;
 		case ITEM_ID.pot_of_greed:			{ return  0; } break;
 		case ITEM_ID.greenthin_legs:        { return  6; } break;
+		case ITEM_ID.star_finger:           { return 10; } break;
 		
 		default:							{ return -1; } break;
 	}
@@ -210,6 +213,7 @@ function get_item_name(item_id)
 		case ITEM_ID.pot_of_greed:     { return "Pot of Greed"; } break;
 		case ITEM_ID.enemy_parts:      { return "Enemy Parts";  } break;
 		case ITEM_ID.greenthin_legs:   { return "Greenthin Legs"; } break;
+		case ITEM_ID.star_finger:      { return "Star Finger"; } break;
 
 		case ITEM_ID.amethyst:         { return "Amethyst";     } break;
 		case ITEM_ID.tin:		       { return "Tin";          } break;
@@ -278,24 +282,23 @@ function choose_ore(y)
 }
 
 
-function item(_name = "", _item_id = 0, _amount = 0) constructor
+function item(_item_id = 0, _amount = 0) constructor
 {
-	name      =    _name;
 	item_id   = _item_id;
 	amount    =  _amount;
 	
 	static isEmpty = function()
 	{
-		return (name == "" && item_id == 0 && amount = 0);
+		return (item_id == 0 && amount = 0);
 	}
 	
-	static equals = function(_name, _item_id)
+	static equals = function(_item_id)
 	{
-		return (name == _name && item_id == _item_id);	
+		return (item_id == _item_id);	
 	}
 	
-	static toString = function()
+	/*static toString = function()
 	{
 		return string("Item is: { Name:" + name + ", Item ID: " + string(item_id)) + "}";	
-	}
+	}*/
 }

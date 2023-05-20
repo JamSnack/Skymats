@@ -15,7 +15,7 @@ if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1
 			spawn_high_island_delay = 60*15;
 		}
 		else spawn_high_island_delay--;
-	}
+	}  
 }
 else
 {

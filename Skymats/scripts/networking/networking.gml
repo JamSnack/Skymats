@@ -24,40 +24,43 @@ function connect_to_server(ip, port)
 
 function send_data(data_struct, specific_socket = -1)
 {
-	data_struct.tick = global.current_tick;
-	var json_map = json_stringify(data_struct);
-	var buff = buffer_create(128, buffer_grow, 1);
-	
-	buffer_seek(buff, buffer_seek_start, 0);
-	//var _header = buffer_write(buff, buffer_text, string(string_byte_length(json_map)) + "|");
-	var _b = buffer_write(buff, buffer_text, json_map);
-	
-	//if (_header == -1) then show_debug_message("header write failed.");
-	if (_b == -1) then show_debug_message("buffer_write failed.");
-	
-	//show_debug_message(json_map);
-	var packet_sent = -1;
-	
-	if (global.is_host && specific_socket == -1)
+	if (global.multiplayer)
 	{
-		for (var _c = 0; _c < ds_list_size(global.socket_list); _c++)
-			packet_sent = network_send_packet(global.socket_list[| _c], buff, buffer_tell(buff));
+		data_struct.tick = global.current_tick;
+		var json_map = json_stringify(data_struct);
+		var buff = buffer_create(128, buffer_grow, 1);
+	
+		buffer_seek(buff, buffer_seek_start, 0);
+		//var _header = buffer_write(buff, buffer_text, string(string_byte_length(json_map)) + "|");
+		var _b = buffer_write(buff, buffer_text, json_map);
+	
+		//if (_header == -1) then show_debug_message("header write failed.");
+		if (_b == -1) then show_debug_message("buffer_write failed.");
+	
+		//show_debug_message(json_map);
+		var packet_sent = -1;
+	
+		if (global.is_host && specific_socket == -1)
+		{
+			for (var _c = 0; _c < ds_list_size(global.socket_list); _c++)
+				packet_sent = network_send_packet(global.socket_list[| _c], buff, buffer_tell(buff));
+		}
+		else if (global.is_host && specific_socket != -1)
+		{
+			packet_sent = network_send_packet(specific_socket, buff, buffer_tell(buff));
+		}
+		else packet_sent = network_send_packet(global.host_socket, buff, buffer_tell(buff));
+	
+		if (packet_sent == 0)
+		{
+			//the send has failed. We need to try again later.
+			show_debug_message("FAILED TO SEND: PACKET IS " + string(data_struct.cmd));
+		}// else global.packets_sent++;
+	
+	
+		//cleanup
+		buffer_delete(buff);
 	}
-	else if (global.is_host && specific_socket != -1)
-	{
-		packet_sent = network_send_packet(specific_socket, buff, buffer_tell(buff));
-	}
-	else packet_sent = network_send_packet(global.host_socket, buff, buffer_tell(buff));
-	
-	if (packet_sent == 0)
-	{
-		//the send has failed. We need to try again later.
-		show_debug_message("FAILED TO SEND: PACKET IS " + string(data_struct.cmd));
-	}// else global.packets_sent++;
-	
-	
-	//cleanup
-	buffer_delete(buff);
 }
 
 function handle_data(data)
@@ -384,7 +387,7 @@ function handle_data(data)
 			
 			case "add_item":
 			{
-				global.inventory.addItem("", parsed_data.item_id, parsed_data.amt);
+				global.inventory.addItem(parsed_data.item_id, parsed_data.amt);
 			}
 			break;
 			

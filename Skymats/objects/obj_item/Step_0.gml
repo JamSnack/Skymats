@@ -22,9 +22,9 @@ if (global.is_host)
 		{
 			if (_p.object_index == obj_player)
 			{		
-				global.inventory.addItem("", item_id, 1);
+				global.inventory.addItem(item_id, 1);
 			}
-			else
+			else if (global.multiplayer)
 			{
 				var _s = {cmd: "add_item", amt: 1, item_id: item_id}
 				send_data(_s, _p.connected_socket);	

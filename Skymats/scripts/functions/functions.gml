@@ -115,7 +115,10 @@ function hurt_enemy(inst, k_direction, k_amt, damage)
 			create_floating_text(x, y, damage, c_red);
 			
 			if (hp <= 0)
+			{
+				drop_item = true;
 				instance_destroy();
+			}
 		}
 	}
 }

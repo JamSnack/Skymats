@@ -152,10 +152,13 @@ else
 {
 	//We have entered the void
 	if (vspd > 0)
-		vspd = lerp(vspd, 0, 0.23);
+		vspd = lerp(vspd, 0, 0.1);
 	
 	//Regen jetpack fuel
 	jetpack_regen_cooldown = 0;
+	
+	if (instance_number(obj_void_fiend) < 5)
+		instance_create_layer(choose(0, room_width), WORLD_BOUND_BOTTOM+768, "Instances", obj_void_fiend);
 }
 	
 //Tile mininig

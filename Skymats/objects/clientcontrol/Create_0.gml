@@ -46,7 +46,7 @@ global.inventory = {
 		return -1;
 	},
 	
-	createItem : function(_name, _item_id, _amount) {
+	createItem : function(_item_id, _amount) {
 		var _f = firstEmptySlot();
 		
 		if (_f != -1)
@@ -58,11 +58,11 @@ global.inventory = {
 		} else return false;
 	},
 	
-	addItem : function(_name, _item_id, _amount) {
+	addItem : function(_item_id, _amount) {
 		
 		for (var i = 0; i < size; i++)
 		{
-			if (contents[i].equals(_name, _item_id))
+			if (contents[i].equals(_item_id))
 			{
 				contents[i].amount += _amount;
 				//obj_player.weight += _amount/10;
@@ -71,7 +71,7 @@ global.inventory = {
 			}
 		}
 		
-		if (createItem(_name, _item_id, _amount))
+		if (createItem(_item_id, _amount))
 			held_value += get_item_value(_item_id)*_amount;
 	},
 	clear : function() {

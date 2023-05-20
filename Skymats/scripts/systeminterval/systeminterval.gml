@@ -108,7 +108,7 @@ function cull_enemies()
 	{
 		with (ENEMY)
 		{
-			if (y > WORLD_BOUND_BOTTOM+300)
+			if (y > WORLD_BOUND_BOTTOM+768)
 				instance_destroy();
 		}
 	}
