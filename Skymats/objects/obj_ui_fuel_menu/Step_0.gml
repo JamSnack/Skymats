@@ -59,12 +59,12 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 	{
 		if (mouse_wheel_up())
 		{
-			scroll_offset_target -= scroll_speed;
+			scroll_offset_target += scroll_speed;
 			_free_surface = true;
 		}
 		else if (mouse_wheel_down())
 		{
-			scroll_offset_target += scroll_speed;
+			scroll_offset_target -= scroll_speed;
 			_free_surface = true;
 		}
 		

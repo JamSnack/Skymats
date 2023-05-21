@@ -3,7 +3,7 @@ global.is_host = true;
 global.client_id = 0;
 global.world_seed = random_get_seed();
 
-var port = 6510;
+var port = real(string_digits(get_string("Enter Port", "6510")));
 server = network_create_server(network_socket_tcp, port, 32);
 
 while (server < 0 && port < 65535)

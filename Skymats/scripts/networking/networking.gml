@@ -71,8 +71,8 @@ function handle_data(data)
 	}
 	catch (e)
 	{
-		show_debug_message(e);
-		return false;	
+		//show_debug_message(e);
+		return false;
 	}
 	//show_debug_message("Handling data: "+string(data));
 	if (!global.is_host)
@@ -82,6 +82,8 @@ function handle_data(data)
 	
 	if (parsed_data != -1)
 	{
+		try
+		{
 		switch parsed_data.cmd
 		{	
 			
@@ -168,6 +170,14 @@ function handle_data(data)
 						{
 							target_x = _x;
 							target_y = _y;
+							jetpacking_amt = 3*parsed_data.jetpack;
+							target_angle = parsed_data.angle;
+							
+							target_grapple_point_x = parsed_data.gx;
+							target_grapple_point_y = parsed_data.gy;
+							grapple_direction = parsed_data.gd;
+							grapple_amt = 5*parsed_data.gg;
+							
 							create_new = false;
 							
 							//Bounce this data to other clients
@@ -466,7 +476,7 @@ function handle_data(data)
 			{
 				if (global.is_host)
 				{
-					show_debug_message("Islands requested");
+					//show_debug_message("Islands requested");
 					
 					//Run mutliplayer init events inside island markers
 					with (obj_island_marker)
@@ -479,7 +489,7 @@ function handle_data(data)
 			{
 				//Load the chunk string
 				var _str = parsed_data.chunk_string
-				show_debug_message(_str);
+				//show_debug_message(_str);
 				
 				//Create new island marker
 				var _i = instance_create_layer(parsed_data.x + global.lag*SCROLL_SPEED, parsed_data.y, "Instances", obj_island_marker, {connected_id: parsed_data.connected_id, chunk_array_heights: parsed_data.heights});
@@ -521,6 +531,11 @@ function handle_data(data)
 			case "chat": { obj_chat_box.add(parsed_data.text); } break;
 			
 			default: { show_debug_message("data received: " + parsed_data.cmd); }
+		}
+		}
+		catch (e)
+		{
+			show_debug_message("Error");
 		}
 	}
 }

@@ -276,6 +276,7 @@
     {"id":{"name":"spr_tin","path":"sprites/spr_tin/spr_tin.yy",},"order":18,},
     {"id":{"name":"obj_copper","path":"objects/obj_copper/obj_copper.yy",},"order":4,},
     {"id":{"name":"spr_player_fall","path":"sprites/spr_player_fall/spr_player_fall.yy",},"order":28,},
+    {"id":{"name":"snd_Skymats","path":"sounds/snd_Skymats/snd_Skymats.yy",},"order":2,},
     {"id":{"name":"obj_tin","path":"objects/obj_tin/obj_tin.yy",},"order":6,},
     {"id":{"name":"scribble_super_create","path":"scripts/scribble_super_create/scribble_super_create.yy",},"order":1,},
     {"id":{"name":"__scribble_get_typewriter_events_map","path":"scripts/__scribble_get_typewriter_events_map/__scribble_get_typewriter_events_map.yy",},"order":15,},

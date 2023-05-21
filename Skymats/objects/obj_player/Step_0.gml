@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 key_left  =  keyboard_check(ord("A"));
-key_up    =  keyboard_check(ord("W"));
+key_up    =  keyboard_check(ord("W")) || keyboard_check(vk_space);
 key_right =  keyboard_check(ord("D"));
 key_down  =  keyboard_check(ord("S"));
 key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
@@ -332,7 +332,7 @@ else if (dead)
 //Send coordinates
 if ((x != xprevious || y != yprevious) && global.client_id != -1 && global.multiplayer && position_update_delay == 0)
 {
-	var _struct = {cmd: "player_pos", x: x, y: y, id: global.client_id};
+	var _struct = {cmd: "player_pos", x: x, y: y, id: global.client_id, angle: draw_angle, jetpack: (key_shift && global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0), gx: grapple_point_x, gy: grapple_point_y, gd: grapple_direction, gg: (grappling || grapple_is_launching)};
 	send_data(_struct);
 	position_update_delay = 3;
 }
