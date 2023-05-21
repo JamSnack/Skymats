@@ -17,7 +17,7 @@ function process_system_interval()
 		case 1:  { cull_tiles();        } break;
 		case 2:  { create_new_islands(); } break;
 		case 3:  { sync_platform(); } break;
-		case 4:  { cull_enemies();  } break;
+		case 4:  { cull_enemies(); cull_items(); } break;
 		case 5:  { spawn_mobs(); } break;
 		case 6:  { sync_mobs(); } break;
 		case 7:  { manage_auto_burn(); } break;
@@ -96,7 +96,19 @@ function cull_tiles()
 	{
 		with (TILE)
 		{
-			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+300)
+			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
+				instance_destroy();
+		}
+	}
+}
+
+function cull_items()
+{
+	if (global.tutorial_complete)
+	{
+		with (obj_item)
+		{
+			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
 				instance_destroy();
 		}
 	}
