@@ -316,13 +316,13 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 3*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*7; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 55 + _up*8; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.13 + _up*0.0175; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
 											  
 			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = 120 - 10*_up; } break;
-			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = _up; } break;
+			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = 1 + _up; } break;
 			case UPGRADE.weapon_range:		{ obj_player.stat_weapon_range      = 24 + _up; } break;
 			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = 4 + _up; } break;
 		}
