@@ -28,6 +28,12 @@ grappling_to = noone;
 mine_cooldown = 0;
 
 //Stats
+weapon_cooldown = 0;
+	
+jetpack_fuel = 0;
+jetpack_regen_cooldown = 0;
+jetpack_set_init_delay = 0; 
+jetpack_init_delay = 0; //How long it takes for the jetpack to be usable after leaving the ground
 
 //- grapple
 stat_grapple_force = 0.25; //How much force is applied to the player +0.5
@@ -51,14 +57,14 @@ stat_weapon_damage = 1;
 stat_weapon_knockback = 6;
 stat_weapon_range = 28;
 
-init_player();
-
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);
 username = "";
 
 //Load game
 load_game("character.charc", "exped.exped");
+
+init_player();
 
 obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 

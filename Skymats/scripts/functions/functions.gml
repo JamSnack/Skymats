@@ -266,6 +266,7 @@ enum UPGRADE
 	jetpack_force,
 	jetpack_cooldown,
 	jetpack_regen_rate,
+	
 	last
 }
 
@@ -294,7 +295,7 @@ function get_upgrade_cost(upgrade_id)
 			case UPGRADE.weapon_range:		{ return power(5, _up); } break;
 			case UPGRADE.weapon_knockback:  { return power(5, _up); } break;
 			*/
-			default: { return 10 + 35*(_up*(_up-1)) + power(3, _up-1); } break;
+			default: { return 50 + 35*(_up*(_up-1)) + power(3, _up-1); } break;
 		}
 	}
 	else return noone;
@@ -304,7 +305,7 @@ function apply_upgrade(upgrade_id)
 {
 	if (instance_exists(obj_player))
 	{
-		var _up = obj_player.upgrades_purchased[upgrade_id];
+		var _up = obj_player.upgrades_purchased[upgrade_id]-1;
 	
 		switch (upgrade_id)
 		{
@@ -315,27 +316,24 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 3*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 60 + _up*10; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 50 + _up*7; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.13 + _up*0.0175; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
 											  
-			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = 100 - 10*_up; } break;
+			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = 120 - 10*_up; } break;
 			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = _up; } break;
 			case UPGRADE.weapon_range:		{ obj_player.stat_weapon_range      = 24 + _up; } break;
-			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = 5 + _up; } break;
+			case UPGRADE.weapon_knockback:  { obj_player.stat_weapon_knockback  = 4 + _up; } break;
 		}
 	}
 }
 
 function init_player()
 {
-	weapon_cooldown = stat_weapon_cooldown
-	
-	jetpack_fuel = stat_jetpack_fuel;
-	jetpack_regen_cooldown = stat_jetpack_cooldown;
-	jetpack_set_init_delay = 15; 
-	jetpack_init_delay = jetpack_set_init_delay; //How long it takes for the jetpack to be usable after leaving the ground
+	var _i = 1;
+	repeat(UPGRADE.last-1)
+		apply_upgrade(_i++);
 }
 
 

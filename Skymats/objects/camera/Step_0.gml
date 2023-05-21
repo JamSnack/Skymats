@@ -14,7 +14,7 @@ if (lerped_zoom != zoom)
 	camera_set_view_size(local_camera,  view_wport[0]/lerped_zoom, view_hport[0]/lerped_zoom);
 }
 	
-camera_set_view_pos(local_camera, clamp(x - 1366/(2*lerped_zoom), 0, room_width-1366), clamp(y - 768/(2*lerped_zoom), WORLD_BOUND_TOP, WORLD_BOUND_BOTTOM));
+camera_set_view_pos(local_camera, clamp(x - 1366/(2*lerped_zoom), 0, room_width-768), clamp(y - 768/(2*lerped_zoom), WORLD_BOUND_TOP, WORLD_BOUND_BOTTOM));
 
 //Tile culling
 if (keyboard_check_released(vk_rshift) && global.is_host == false)

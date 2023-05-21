@@ -7,4 +7,4 @@ draw_text(x, y, "Height: " + string(global.platform_height) + "\n" +
 );
 
 if (obstruction)
-	draw_text(x, y+20, "OBSTRUCTED!!!");
+	draw_text(x, y-64, "OBSTRUCTED!!!");

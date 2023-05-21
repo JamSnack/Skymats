@@ -2,4 +2,4 @@
 // You can write your code in this editor
 
 draw_self();
-draw_text(x-30, y-20, obj_platform.powered ? "Engines Enabled" : "Engines Disabled");
+draw_text(x-30, y+30, (obj_platform.powered ? "Engines Enabled" : "Engines Disabled") + "\nPress 'G'");
