@@ -165,7 +165,7 @@ if (_released_left_click)
 		
 		var _current_y = _y2 - 4 + _i*32;
 		
-		if (point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y + 2, pos_x + width-2, pos_y + _current_y + 30))
+		if (global.stored_resources_unlocked[_i] && point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y + 2, pos_x + width-2, pos_y + _current_y + 30))
 		{
 			global.stored_resources_auto_burn[_i] = !global.stored_resources_auto_burn[_i];
 			

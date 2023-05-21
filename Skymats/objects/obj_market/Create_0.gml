@@ -3,3 +3,4 @@
 
 image_alpha = 0.25;
 display_market_animation = 0;
+heal_delay = 100;

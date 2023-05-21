@@ -89,7 +89,17 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 		}
 		
 		//Market stuff
-		display_market_animation = lerp(display_market_animation, 1, 0.1);
+		if (instance_exists(obj_ui_fuel_menu))
+			display_market_animation = lerp(display_market_animation, 1, 0.1);
+		else display_market_animation = lerp(display_market_animation, 0, 0.1);
+		
+		//Heal the player
+		if (heal_delay <= 0 && _p.hp < _p.max_hp)
+		{
+			_p.hp++;
+			heal_delay = 60*2;
+		}
+		else heal_delay--;
 	} 
 	else 
 	{
