@@ -90,6 +90,8 @@ function handle_data(data)
 				global.platform_height = parsed_data.height;
 				global.stored_resources = parsed_data.stored_resources;
 				global.stored_resources_unlocked = parsed_data.unlocked;
+				global.stored_resources_auto_burn = parsed_data.burn;
+				global.stored_resource_to_burn = parsed_data.auto;
 				
 				if (instance_exists(obj_platform))
 				{
@@ -122,8 +124,8 @@ function handle_data(data)
 						
 						if (global.stored_resources_unlocked[_i[0]] == 0)
 						{
-							global.stored_resources_unlocked[_i[1]] = 1;
-							create_notification( "[wave][scale, 1.5]" + get_item_name(_i[1]) + " [spr_items, "+ string(_i[1]) + "] Discovered!");
+							global.stored_resources_unlocked[_i[0]] = 1;
+							create_notification( "[wave][scale, 1.5]" + get_item_name(_i[0]) + " [spr_items, "+ string(_i[0]) + "] Discovered!");
 						}
 					}
 				}
