@@ -160,13 +160,13 @@ function get_item_bonus_fuel(item_id)
 		case ITEM_ID.buried_stars:			
 		case ITEM_ID.ground_lemons:			
 		case ITEM_ID.moon_cheese:			
-		case ITEM_ID.typhoonium:			{ return  1; } break;
+		case ITEM_ID.typhoonium:			{ return  5; } break;
 		
 		//items
-		case ITEM_ID.enemy_parts:			{ return  5; } break;
-		case ITEM_ID.pot_of_greed:			{ return  0; } break;
-		case ITEM_ID.greenthin_legs:        { return  6; } break;
-		case ITEM_ID.star_finger:           { return 10; } break;
+		case ITEM_ID.enemy_parts:			{ return  8; } break;
+		case ITEM_ID.pot_of_greed:			{ return  5; } break;
+		case ITEM_ID.greenthin_legs:        { return  9; } break;
+		case ITEM_ID.star_finger:           { return 20; } break;
 		
 		default:							{ return -1; } break;
 	}

@@ -163,7 +163,7 @@ function create_new_islands()
 
 function sync_mobs()
 {
-	if (global.is_host)
+	if (global.is_host && global.multiplayer)
 	{
 		with (ENEMY)
 			send_enemy_position();
@@ -205,4 +205,15 @@ function spawn_mobs()
 		}
 	}	
 	else enemy_spawn_delay--;
+	
+	//Check if players are in the void
+	if (global.is_host)
+	{
+		with (PLAYER)
+		{
+			if (instance_number(obj_void_fiend) < 5)
+				instance_create_layer(choose(0, room_width), WORLD_BOUND_BOTTOM+768, "Instances", obj_void_fiend);
+			else break;
+		}
+	}
 }

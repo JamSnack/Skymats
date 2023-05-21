@@ -157,9 +157,6 @@ else
 	//Regen jetpack fuel
 	jetpack_regen_cooldown = 0;
 	
-	if (instance_number(obj_void_fiend) < 5)
-		instance_create_layer(choose(0, room_width), WORLD_BOUND_BOTTOM+768, "Instances", obj_void_fiend);
-	
 	//If the player goes underneath the world, drain hp quickly
 	if (y > WORLD_BOUND_BOTTOM + 384)
 		hp -= 0.05;
