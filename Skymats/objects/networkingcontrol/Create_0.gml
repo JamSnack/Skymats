@@ -21,3 +21,5 @@ loading_world = false;
 
 draw_set_font(fnt_default);
 room_goto(rm_menu);
+
+network_timeout = 500;

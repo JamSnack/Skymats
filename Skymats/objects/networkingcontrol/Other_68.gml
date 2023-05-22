@@ -10,6 +10,8 @@ switch(t)
 		obj_chat_box.add("Somebody connected!");
 		
 		show_debug_message("Player connected");
+		
+		network_timeout = 10*60;
 	}
 	break;
 	
@@ -30,26 +32,13 @@ switch(t)
 	{
 		var b_data = async_load[? "buffer"];
 		var data = buffer_read(b_data, buffer_text);
-		
-		//unpickle the data
-		var _l = string_length(data)
-		var temp_data = "";
-		
-		for (var i = 1; i <= _l; i++)
-		{
-			var _c = string_char_at(data, i);
-			
-			temp_data += _c;
-			
-			if (_c == "}")
-			{
-				handle_data(temp_data);
-				temp_data = "";
-			}
-		}
+	
+		handle_data(data);
 		
 		//buffer cleanup
 		buffer_delete(b_data);
+		
+		network_timeout = 10*60;
 	}
 	break;
 }

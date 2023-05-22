@@ -26,6 +26,17 @@ if (loading_world && (room == Room1 || room == rm_small || room == rm_large))
 //multiplayer
 if (global.multiplayer)
 {
+	network_timeout--;
+	
+	if (network_timeout <= 0)
+	{
+		global.multiplayer = false;
+		global.is_host = true;
+		//TODO: cleanup server stuff
+		
+		obj_chat_box.add("Timed out!");
+	}
+	
 	global.current_tick++;
 }
 
