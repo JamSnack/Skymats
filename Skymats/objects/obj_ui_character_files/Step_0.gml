@@ -3,158 +3,53 @@
 
 var _mx = device_mouse_x_to_gui(0);
 var _my = device_mouse_y_to_gui(0);
-var _holding_left_click = mouse_check_button(mb_left);
-var _pressed_left_click = mouse_check_button_pressed(mb_left);
+//var _holding_left_click = mouse_check_button(mb_left);
+//var _pressed_left_click = mouse_check_button_pressed(mb_left);
 var _released_left_click = mouse_check_button_released(mb_left);
-var _free_surface = false;
 
-//Window interaction
-if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
-{	
-	//Dragging	
-	if (draggable)
+var _w = display_get_gui_width();
+var _h = display_get_gui_height();
+
+
+// Button interaction
+if (_released_left_click)
+{
+	if (_my < _h/2)
 	{
-		if (_pressed_left_click && (!draw_topbar || (draw_topbar && point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + _topbar_height))))
+		var _x = _w/2 - w_size/2 + character_x_offset;
+		var _y = _h/6 - 100;
+		
+		//Characters
+		for (var i=0; i<=characters; i++)
 		{
-			mouse_drag_offset_x = _mx - pos_x;
-			mouse_drag_offset_y = _my - pos_y;
-			dragging = true;
+			if ( point_in_rectangle(_mx, _my, _x, _y, _x + w_size, _y + h_size))
+				character_selected = i;
+	
+			_x += h_size;
 		}
 	}
-	
-	
-	//Resizing
-	if (resizeable && !resizing)
+	else
 	{
-		var _border = 3;
-		var _left = point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + _border, pos_y + height);
-		var _top =  point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + _border);
-		var _bottom =  point_in_rectangle(_mx, _my, pos_x, pos_y + height - _border, pos_x + width, pos_y + height);
-		var _right =  point_in_rectangle(_mx, _my, pos_x + width - _border, pos_y, pos_x + width, pos_y + height);
+		var _x = _w/2 - w_size_exped/2 + expedition_x_offset;
+		var _y = _h - _h/6 - 200;
 		
-		if ((_left && _top) || (_right && _bottom))
-			window_set_cursor(cr_size_nwse);
-		else if ((_right && _top) || (_left && _bottom))
-			window_set_cursor(cr_size_nesw);
-		else if (_left || _right)
-			window_set_cursor(cr_size_we);
-		else if (_top || _bottom)
-			window_set_cursor(cr_size_ns);
-		else window_set_cursor(cr_default);
-		
-		if (_pressed_left_click && (_left || _top || _right || _bottom))
+		//Expeditions
+		for (var i=0; i<=expeditions; i++)
 		{
-			resizing = true;
-			resize_left = _left;
-			resize_right = _right;
-			resize_top = _top;
-			resize_bottom = _bottom;
-			mouse_resize_offset_x = _mx;
-			mouse_resize_offset_y = _my;
+			if ( point_in_rectangle(_mx, _my, _x, _y, _x + w_size_exped, _y + h_size_exped))
+				expedition_selected = i;
+	
+			_x += w_size_exped + w_size_exped/2;
 		}
 	}
-	
-	//Scrolling
-	if (scrollable && !dragging && !resizing)
-	{
-		if (mouse_wheel_up())
-		{
-			scroll_offset_target += scroll_speed;
-			_free_surface = true;
-		}
-		else if (mouse_wheel_down())
-		{
-			scroll_offset_target -= scroll_speed;
-			_free_surface = true;
-		}
-		
-		//Clamp
-		max_scroll_offset = max(0, scroll_length - height);
-		scroll_offset_target = clamp(scroll_offset_target, -max_scroll_offset, 0);
-	}
-	
-	//Interact with File Buttons
-	if (_released_left_click)
-	{
-		var _y1 = 16 + scroll_offset + 128;
-	}
-}
-else
-{
-	if (window_get_cursor() != cr_default)
-		window_set_cursor(cr_default);
-		
-	if (click_off_to_close && _released_left_click)
-		instance_destroy();
-}
-	
-//Continuous dragging
-if (dragging && !resizing && _holding_left_click)
-{
-	target_x = _mx - mouse_drag_offset_x;
-	target_y = _my - mouse_drag_offset_y;
-} else dragging = false;
-
-//Continuous resizing
-if (resizing && _holding_left_click)
-{
-	if (resize_right)
-		target_width = _mx - pos_x;
-	else if (resize_left)
-	{
-		target_width = width + (pos_x - _mx);
-		target_x = _mx;
-	}
-	
-	if (resize_bottom)
-		target_height = _my - pos_y;
-	else if (resize_top)
-	{
-		target_height = height + (pos_y - _my);
-		target_y = _my;
-	}
-}
-else 
-{
-	resizing = false;
-	resize_left = false;
-	resize_right = false;
-	resize_top = false;
-	resize_bottom = false;
-}
-
-//Lerping
-if (pos_x != target_x)
-	pos_x = lerp(pos_x, target_x, 0.43);
-	
-if (pos_y != target_y)
-	pos_y = lerp(pos_y, target_y, 0.43);
-	
-if (width != target_width)
-{
-	width = lerp(width, target_width, 0.43);
-	_free_surface = true;
-}
-	
-if (height != target_height)
-{
-	height = lerp(height, target_height, 0.43);
-	_free_surface = true;
-}
-
-if (scroll_offset != scroll_offset_target)
-{
-	scroll_offset = lerp(scroll_offset, scroll_offset_target, 0.33);
-	_free_surface = true;
 }
 
 //Window alpha
 if (window_alpha != 1)
 {
 	window_alpha = lerp(window_alpha, 1, 0.33);
-	_free_surface = true;
 }
 
-//free surface
-if (_free_surface)
-	surface_free(window_surface);
+//Lerping
+character_x_offset = lerp(character_x_offset, -192*character_selected, 0.25);
+expedition_x_offset = lerp(expedition_x_offset, -192*expedition_selected, 0.25);

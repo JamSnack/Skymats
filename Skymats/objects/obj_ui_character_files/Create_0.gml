@@ -41,8 +41,14 @@ window_alpha = 0;
 init_player_stats();
 gold = 0;
 
+// - init expedition locally
+platform_height = 0;
+tutorial_complete = 0;
+
+
+//Init character files
 character_files = [];
-number_of_files = 0;
+characters = 0;
 var file_name = file_find_first(working_directory+"/*.charc", 0);
 
 while (file_name != "")
@@ -52,9 +58,9 @@ while (file_name != "")
 }
 
 file_find_close();
-number_of_files = array_length(character_files);
+characters = array_length(character_files);
 
-if (number_of_files == 0)
+if (characters == 0)
 {
 	//Enter the game
 	global.is_host = true;
@@ -62,7 +68,31 @@ if (number_of_files == 0)
 	room_goto(rm_small);
 }
 
+//Init expedition files
+expedition_files = [];
+expeditions = 0;
+var file_name = file_find_first(working_directory+"/*.exped", 0);
 
+while (file_name != "")
+{
+    array_push(expedition_files, file_name);
+    file_name = file_find_next();
+}
+
+file_find_close();
+expeditions = array_length(expedition_files);
+
+
+//Local
+character_x_offset = 0;
+expedition_x_offset = 0;
+w_size = 144;
+h_size = 192;
+w_size_exped = 288;
+h_size_exped = 384;
+
+character_selected = 0;
+expedition_selected = 0;
 
 /*
 TODO:

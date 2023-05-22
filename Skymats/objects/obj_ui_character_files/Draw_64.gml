@@ -1,49 +1,72 @@
 /// @description Draw Window and its contents
-
-//Draw background
-if (sprite_exists(sprite_background))
-{
-	draw_sprite_stretched(sprite_background, 0, pos_x, pos_y, width, height);
-}
-
-//Draw surface
-if (!surface_exists(window_surface) && width > 0 && height > 7)
-{
-	window_surface = surface_create(width, height - 6);
-	
-	surface_set_target(window_surface);
-	
-	draw_clear_alpha(c_white, 0);
-	
-	for (var i=0; i<number_of_files; i++)
-	{
-		read_character(character_files[i]);
-		draw_sprite(spr_player, 0, 4, 16*i);
-		draw_text(48, i*16, "Gold: " + string(gold));
-		draw_text(48, 16 + i*16, "Level: " + string(player_level));
-	}
-
-	surface_reset_target();
-}
-
 draw_set_alpha(window_alpha);
 
-if (surface_exists(window_surface))
-	draw_surface(window_surface, pos_x, pos_y + 3);
+var _w = display_get_gui_width();
+var _h = display_get_gui_height();
 
-//Draw topbar
-if (draw_topbar)
+draw_set_halign(fa_center);
+
+//CHARACTERS 
+var _x = _w/2 - w_size/2 + character_x_offset;
+var _y = _h/6 - 100;
+
+for (var i=0; i<=characters; i++)
 {
-	draw_sprite_stretched(sprite_background, 0, pos_x, pos_y, width, _topbar_height);
+	var card_size = 1;
+	var center_x = _x + (w_size/2)*card_size;
+	var center_y = _y + (h_size/2)*card_size;
+	
+	if (character_selected == i)
+	{
+		draw_rectangle(center_x - (w_size/2)*card_size, center_y - (h_size/2)*card_size, center_x + (w_size/2)*card_size, center_y + (h_size/2)*card_size, false);
+	}
+	
+	if (i != characters)
+	{
+		read_character(character_files[i]);
+		//draw_rectangle(_x, _y, _x + w_size, _y + h_size, false);
+		draw_sprite_ext(spr_player_run, current_time/100, _x + w_size/2, _y + h_size/2, 12*card_size, 12*card_size, 0, c_white, 1.0);
+		draw_text(_x + w_size/2, _y + h_size + 32, "Gold: " + string(gold));
+		draw_text(_x + w_size/2, _y + h_size + 48, "Level: " + string(player_level));
+	}
+	else
+	{
+		//New character button
+		draw_text_transformed(_x + w_size/2, _y, "+", 8, 8, 0);
+	}
+	
+	_x += h_size;
 }
 
-//Draw scrollbar
-if (scrollable && scroll_length > height)
+//EXPEDITIONS
+var _x = _w/2 - w_size_exped/2 + expedition_x_offset;
+var _y = _h - _h/6 - 250;
+
+for (var i=0; i<=expeditions; i++)
 {
-	//background
-	draw_rectangle_color(pos_x + width + 4, pos_y, pos_x + width + 4 + 4, pos_y + height, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(pos_x + width + 4, pos_y + scroll_offset*(scroll_offset/max_scroll_offset), pos_x + width + 4 + 4, pos_y + max(1, height-max_scroll_offset) + scroll_offset*(scroll_offset/max_scroll_offset), c_white, c_white, c_white, c_white, false);
+	var card_size = 1;
+	var center_x = _x + (w_size_exped/2)*card_size;
+	var center_y = _y + (h_size_exped/2)*card_size;
+	
+	if (expedition_selected == i)
+	{
+		draw_rectangle(center_x - (h_size_exped/2)*card_size, center_y - (w_size_exped/2)*card_size, center_x + (h_size_exped/2)*card_size, center_y + (w_size_exped/2)*card_size, false);
+	}
+	
+	if (i != expeditions)
+	{
+		read_expedition(expedition_files[i]);
+		draw_text(_x + h_size_exped/2, _y + w_size_exped + 16, "Height: " + string(platform_height));
+	}
+	else
+	{
+		//New expedition button
+		draw_text_transformed(_x + h_size_exped/2, _y, "+", 8, 8, 0);
+	}
+	
+	_x += w_size_exped + w_size_exped/2;
 }
 
 //reset
 draw_set_alpha(1);
+draw_set_halign(fa_left);
