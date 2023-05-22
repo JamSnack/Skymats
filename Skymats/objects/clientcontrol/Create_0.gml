@@ -108,3 +108,4 @@ frame = 0;
 
 //Init game
 init_expedition();
+load_expedition("exped.exped"); //TODO: This is temporary

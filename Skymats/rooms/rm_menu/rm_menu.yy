@@ -21,9 +21,6 @@
         {"properties":[
             {"propertyId":{"name":"text","path":"objects/obj_text/obj_text.yy",},"objectId":{"name":"obj_text","path":"objects/obj_text/obj_text.yy",},"value":"\"[scale,5][pulse]Play Game\"","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
           ],"isDnd":false,"objectId":{"name":"obj_text","path":"objects/obj_text/obj_text.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":11.421875,"scaleY":2.2265625,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":392.5,"y":106.0,"resourceVersion":"1.0","name":"inst_636CB526","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[
-            {"propertyId":{"name":"text","path":"objects/obj_text/obj_text.yy",},"objectId":{"name":"obj_text","path":"objects/obj_text/obj_text.yy",},"value":"\"[scale,5][pulse]Join Game\"","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-          ],"isDnd":false,"objectId":{"name":"obj_text","path":"objects/obj_text/obj_text.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":5.734375,"scaleY":2.0234375,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":392.5,"y":367.0,"resourceVersion":"1.0","name":"inst_52281F2A","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"assets":[
         {"spriteId":{"name":"spr_ui_black_background","path":"sprites/spr_ui_black_background/spr_ui_black_background.yy",},"headPosition":0.0,"rotation":0.0,"scaleX":7.5925927,"scaleY":13.0,"animationSpeed":1.0,"colour":4294967295,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":928.0,"y":32.0,"resourceVersion":"1.0","name":"graphic_D2527E0","tags":[],"resourceType":"GMRSpriteGraphic",},
@@ -37,7 +34,6 @@
     {"name":"inst_419B970A","path":"rooms/rm_menu/rm_menu.yy",},
     {"name":"inst_40BF9560","path":"rooms/rm_menu/rm_menu.yy",},
     {"name":"inst_636CB526","path":"rooms/rm_menu/rm_menu.yy",},
-    {"name":"inst_52281F2A","path":"rooms/rm_menu/rm_menu.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

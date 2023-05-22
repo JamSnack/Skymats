@@ -25,7 +25,7 @@ resizing = false;
 scroll_offset_target = 0;
 scroll_offset = 0;
 max_scroll_offset = 0;
-scroll_length = 40*(ITEM_ID.last-1) + 256; //How much to scroll
+scroll_length = 40; //How much to scroll
 
 //Constants
 _topbar_height = 30;
@@ -36,6 +36,33 @@ content_surface = noone;
 
 //Other Window
 window_alpha = 0;
+
+//Files and stuff
+init_player_stats();
+gold = 0;
+
+character_files = [];
+number_of_files = 0;
+var file_name = file_find_first(working_directory+"/*.charc", 0);
+
+while (file_name != "")
+{
+    array_push(character_files, file_name);
+    file_name = file_find_next();
+}
+
+file_find_close();
+number_of_files = array_length(character_files);
+
+if (number_of_files == 0)
+{
+	//Enter the game
+	global.is_host = true;
+	networkingControl.loading_world = true;
+	room_goto(rm_small);
+}
+
+
 
 /*
 TODO:

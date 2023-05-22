@@ -10,12 +10,18 @@ if (sprite_exists(sprite_background))
 if (!surface_exists(window_surface) && width > 0 && height > 7)
 {
 	window_surface = surface_create(width, height - 6);
-
+	
 	surface_set_target(window_surface);
 	
 	draw_clear_alpha(c_white, 0);
 	
-	
+	for (var i=0; i<number_of_files; i++)
+	{
+		read_character(character_files[i]);
+		draw_sprite(spr_player, 0, 4, 16*i);
+		draw_text(48, i*16, "Gold: " + string(gold));
+		draw_text(48, 16 + i*16, "Level: " + string(player_level));
+	}
 
 	surface_reset_target();
 }

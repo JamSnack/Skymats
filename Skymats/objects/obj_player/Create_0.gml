@@ -27,44 +27,14 @@ grappling_to = noone;
 //Mine
 mine_cooldown = 0;
 
-//Stats
-weapon_cooldown = 0;
-	
-jetpack_fuel = 0;
-jetpack_regen_cooldown = 0;
-jetpack_set_init_delay = 0; 
-jetpack_init_delay = 0; //How long it takes for the jetpack to be usable after leaving the ground
-
-//- grapple
-stat_grapple_force = 0.25; //How much force is applied to the player +0.5
-stat_grapple_speed = 6; //How fast the hook travels +2
-stat_grapple_range = 100; //How far the hook can go (600 is about the edge of the screen) +20
-
-//- mining tool
-stat_mine_level = 1; //Determines which blocks can be destroyed and not
-stat_mine_cooldown = 45; //Determines how much time must pass before the pickaxe can be swung again
-
-//- jetpack
-stat_jetpack_fuel = 70; //How many frames can pass before the jetpack runs out of fuel. +30
-stat_jetpack_strength = 0.15; //How fast the jetpack boosts you + 0.025
-stat_jetpack_cooldown = 90; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
-stat_jetpack_regen_rate = 0.2; //How much jetpack fuel regenerates each frame. +0.05
-jetpack_refuel_rate = 0; //How much fuel the jetpack will receive in the next tick.
-
-//- weapon
-stat_weapon_cooldown = 100; //How many frames it takes to prepare the auto-attack
-stat_weapon_damage = 1;
-stat_weapon_knockback = 6;
-stat_weapon_range = 28;
+init_player_stats();
 
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);
 username = "";
 
-//Load game
-load_game("character.charc", "exped.exped");
-
 init_player();
+calculate_player_level();
 
 obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 

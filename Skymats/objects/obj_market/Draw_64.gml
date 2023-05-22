@@ -9,7 +9,7 @@ if (display_market_animation > 0)
 	draw_rectangle_color(_w - 400, 30, _w - 30, 500, c_black, c_black, c_black, c_black, false);
 	
 	//Label
-	draw_text_scribble(_w-230, 10, "[c_white][wave]Market");
+	draw_text_scribble(_w-230, 10, "[c_white][scale,1.5][wave]Market");
 	
 	//Upgrades
 	var _x = _w - 400 + 20;
@@ -45,7 +45,7 @@ if (display_market_animation > 0)
 	
 	//- Gold
 	if (instance_exists(obj_player))
-		draw_text_scribble(_w-260, 500 - 60, "Gold - " + string(obj_player.gold));
+		draw_text_scribble(_w-260, 500 - 60, "Gold - " + string(obj_player.gold) + "\n Level - "+ string(obj_player.player_level));
 		
 	//- Instructions
 	draw_text_scribble(_w-411, 500 + 12, "Mouse over an upgrade you'd like to buy.\nLeft click to purchase it.");

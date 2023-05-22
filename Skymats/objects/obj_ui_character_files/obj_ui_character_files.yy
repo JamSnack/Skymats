@@ -36,7 +36,7 @@
     {"varType":0,"value":"10","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"widget_padding","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":3,"value":"True","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"scrollable","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":0,"value":"40","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"scroll_speed","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":3,"value":"True","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"click_off_to_close","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":3,"value":"False","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"click_off_to_close","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],
   "parent": {

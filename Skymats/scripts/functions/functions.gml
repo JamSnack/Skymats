@@ -336,6 +336,50 @@ function init_player()
 		apply_upgrade(_i++);
 }
 
+function calculate_player_level()
+{
+	var _l = 0;
+	for (var k=0; k < UPGRADE.last; k++)
+		_l += obj_player.upgrades_purchased[k];
+	
+	return _l - UPGRADE.last;
+}
+
+function init_player_stats()
+{
+	//Stats
+	weapon_cooldown = 0;
+	
+	jetpack_fuel = 0;
+	jetpack_regen_cooldown = 0;
+	jetpack_set_init_delay = 0; 
+	jetpack_init_delay = 0; //How long it takes for the jetpack to be usable after leaving the ground
+
+	//- grapple
+	stat_grapple_force = 0.25; //How much force is applied to the player +0.5
+	stat_grapple_speed = 6; //How fast the hook travels +2
+	stat_grapple_range = 100; //How far the hook can go (600 is about the edge of the screen) +20
+
+	//- mining tool
+	stat_mine_level = 1; //Determines which blocks can be destroyed and not
+	stat_mine_cooldown = 45; //Determines how much time must pass before the pickaxe can be swung again
+
+	//- jetpack
+	stat_jetpack_fuel = 70; //How many frames can pass before the jetpack runs out of fuel. +30
+	stat_jetpack_strength = 0.15; //How fast the jetpack boosts you + 0.025
+	stat_jetpack_cooldown = 90; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
+	stat_jetpack_regen_rate = 0.2; //How much jetpack fuel regenerates each frame. +0.05
+	jetpack_refuel_rate = 0; //How much fuel the jetpack will receive in the next tick.
+
+	//- weapon
+	stat_weapon_cooldown = 100; //How many frames it takes to prepare the auto-attack
+	stat_weapon_damage = 1;
+	stat_weapon_knockback = 6;
+	stat_weapon_range = 28;
+	
+	player_level = 0;
+}
+
 
 function get_background_colors(height)
 {
@@ -437,6 +481,7 @@ function save_character(username = "character")
 					
 				upgrades_purchased: upgrades_purchased,
 				gold: gold,
+				player_level: player_level
 			}
 				
 			var json = json_stringify(save_struct);
@@ -476,8 +521,10 @@ function save_game()
 {
 	save_character();
 	save_expedition();
+	
+	instance_create_layer(x, y, "Instances", efct_game_save);
 }
-
+/*
 function load_character(file)
 {
 	if (file_exists(file))
@@ -519,7 +566,53 @@ function load_character(file)
 		}
 	}
 }
-/*
+*/
+
+function read_character(file)
+{
+	if (file_exists(file))
+	{
+		var _buff = buffer_load(file);	
+		var _string = buffer_read(_buff, buffer_string);
+		var _data = json_parse(_string);
+	
+		try
+		{
+			stat_grapple_force = _data.stat_grapple_force; //How much force is applied to the player +0.5
+			stat_grapple_speed = _data.stat_grapple_speed; //How fast the hook travels +2
+			stat_grapple_range = _data.stat_grapple_range; //How far the hook can go (600 is about the edge of the screen) +20
+
+			//- mining tool
+			stat_mine_level = _data.stat_mine_level; //Determines which blocks can be destroyed and not
+			stat_mine_cooldown = _data.stat_mine_cooldown; //Determines how much time must pass before the pickaxe can be swung again
+
+			//- jetpack
+			stat_jetpack_fuel = _data.stat_jetpack_fuel; //How many frames can pass before the jetpack runs out of fuel. +30
+			stat_jetpack_strength = _data.stat_jetpack_strength; //How fast the jetpack boosts you + 0.025
+			stat_jetpack_cooldown = _data.stat_jetpack_cooldown; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
+			stat_jetpack_regen_rate = _data.stat_jetpack_regen_rate; //How much jetpack fuel regenerates each frame. +0.05
+
+			//- weapon
+			stat_weapon_cooldown = _data.stat_weapon_cooldown; //How many frames it takes to prepare the auto-attack
+			stat_weapon_damage = _data.stat_weapon_damage;
+			stat_weapon_knockback = _data.stat_weapon_knockback;
+			stat_weapon_range = _data.stat_weapon_range;
+	
+			//Purchase
+			upgrades_purchased = _data.upgrades_purchased;
+			gold = _data.gold;
+			player_level = _data.player_level;
+		}
+		catch (e)
+		{
+			show_debug_message("Error loading file");
+			show_debug_message(e);
+		}
+	}
+}
+
+
+
 function load_expedition(file)
 {
 	if (file_exists(file))
@@ -541,7 +634,7 @@ function load_expedition(file)
 		}
 	}
 }
-*/
+
 
 // Read the expedition file and load its contents into a file object
 function read_expedition(file)
