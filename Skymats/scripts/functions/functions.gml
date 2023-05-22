@@ -519,7 +519,7 @@ function load_character(file)
 		}
 	}
 }
-
+/*
 function load_expedition(file)
 {
 	if (file_exists(file))
@@ -541,12 +541,38 @@ function load_expedition(file)
 		}
 	}
 }
+*/
 
+// Read the expedition file and load its contents into a file object
+function read_expedition(file)
+{
+	if (file_exists(file))
+	{
+		var _buff = buffer_load(file);	
+		var _string = buffer_read(_buff, buffer_string);
+		var _data = json_parse(_string);
+	
+		try
+		{
+			//Platform
+			platform_height = _data.platform_height;
+			tutorial_complete = _data.tutorial_complete;
+		}
+		catch (e)
+		{
+			show_debug_message("Error reading file");
+			show_debug_message(e);
+		}
+	}
+}
+
+/*
 function load_game(character_file, expedition_file)
 {
 	load_character(character_file);
 	load_expedition(expedition_file);
 }
+*/
 
 function init_expedition()
 {

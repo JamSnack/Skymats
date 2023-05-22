@@ -73,38 +73,10 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 		scroll_offset_target = clamp(scroll_offset_target, -max_scroll_offset, 0);
 	}
 	
-	//Interact with Auto-Burn menu
+	//Interact with File Buttons
 	if (_released_left_click)
 	{
 		var _y1 = 16 + scroll_offset + 128;
-		var _y2 = _y1 + 256;
-	
-		for (var _i = 1; _i < ITEM_ID.last; _i++)
-		{
-			if (_i >= ITEM_ID.enemy_parts)
-			{
-				if (_i == ITEM_ID.enemy_parts)
-					_y2 += 32+16;
-			}
-		
-			var _current_y = _y2 - 4 + _i*32;
-		
-			if (global.stored_resources_unlocked[_i] && point_in_rectangle(_mx, _my, pos_x + 2, pos_y + _current_y + 2, pos_x + width-2, pos_y + _current_y + 30))
-			{
-				global.stored_resources_auto_burn[_i] = !global.stored_resources_auto_burn[_i];
-			
-				if (global.stored_resources_auto_burn[_i])
-					global.stored_resource_to_burn = _i;
-				else if (global.stored_resource_to_burn == _i)
-					global.stored_resource_to_burn = 0;
-				
-				_free_surface = true;
-			
-				//Play sound effect
-			
-				break;
-			}
-		}
 	}
 }
 else
@@ -185,7 +157,4 @@ if (window_alpha != 1)
 
 //free surface
 if (_free_surface)
-{
 	surface_free(window_surface);
-	//window_surface = -1;
-}
