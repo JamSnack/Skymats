@@ -200,7 +200,6 @@
     {"id":{"name":"spr_ruby","path":"sprites/spr_ruby/spr_ruby.yy",},"order":4,},
     {"id":{"name":"spr_beryllium","path":"sprites/spr_beryllium/spr_beryllium.yy",},"order":15,},
     {"id":{"name":"efct_greed","path":"objects/efct_greed/efct_greed.yy",},"order":26,},
-    {"id":{"name":"rm_large","path":"rooms/rm_large/rm_large.yy",},"order":4,},
     {"id":{"name":"__scribble_get_generator_state","path":"scripts/__scribble_get_generator_state/__scribble_get_generator_state.yy",},"order":9,},
     {"id":{"name":"scribble_refresh_everything","path":"scripts/scribble_refresh_everything/scribble_refresh_everything.yy",},"order":9,},
     {"id":{"name":"obj_play_button","path":"objects/obj_play_button/obj_play_button.yy",},"order":2,},
@@ -262,6 +261,7 @@
     {"id":{"name":"__scribble_gen_9_write_vbuffs","path":"scripts/__scribble_gen_9_write_vbuffs/__scribble_gen_9_write_vbuffs.yy",},"order":9,},
     {"id":{"name":"scribble_font_set_style_family","path":"scripts/scribble_font_set_style_family/scribble_font_set_style_family.yy",},"order":15,},
     {"id":{"name":"efct_game_save","path":"objects/efct_game_save/efct_game_save.yy",},"order":5,},
+    {"id":{"name":"spr_ui_background_2","path":"sprites/spr_ui_background_2/spr_ui_background_2.yy",},"order":12,},
     {"id":{"name":"scribble_kerning_pair_get","path":"scripts/scribble_kerning_pair_get/scribble_kerning_pair_get.yy",},"order":18,},
     {"id":{"name":"spr_obsidian","path":"sprites/spr_obsidian/spr_obsidian.yy",},"order":17,},
     {"id":{"name":"__scribble_gen_4_build_words","path":"scripts/__scribble_gen_4_build_words/__scribble_gen_4_build_words.yy",},"order":4,},
@@ -289,7 +289,6 @@
     {"id":{"name":"spr_emerald","path":"sprites/spr_emerald/spr_emerald.yy",},"order":6,},
     {"id":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"order":1,},
     {"id":{"name":"obj_diamond","path":"objects/obj_diamond/obj_diamond.yy",},"order":12,},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Linux","path":"options/linux/options_linux.yy",},
@@ -306,10 +305,8 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
-    {"roomId":{"name":"rm_large","path":"rooms/rm_large/rm_large.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

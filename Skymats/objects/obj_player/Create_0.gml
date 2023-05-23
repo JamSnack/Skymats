@@ -29,6 +29,8 @@ mine_cooldown = 0;
 
 init_player_stats();
 
+load_character(networkingControl.character_file);
+
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);
 username = "";

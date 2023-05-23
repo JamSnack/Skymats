@@ -524,7 +524,7 @@ function save_game()
 	
 	instance_create_layer(x, y, "Instances", efct_game_save);
 }
-/*
+
 function load_character(file)
 {
 	if (file_exists(file))
@@ -566,7 +566,7 @@ function load_character(file)
 		}
 	}
 }
-*/
+
 
 function read_character(file)
 {
@@ -578,33 +578,39 @@ function read_character(file)
 	
 		try
 		{
-			stat_grapple_force = _data.stat_grapple_force; //How much force is applied to the player +0.5
-			stat_grapple_speed = _data.stat_grapple_speed; //How fast the hook travels +2
-			stat_grapple_range = _data.stat_grapple_range; //How far the hook can go (600 is about the edge of the screen) +20
+			var data_struct = 
+			{
+				stat_grapple_force : _data.stat_grapple_force,
+				stat_grapple_speed : _data.stat_grapple_speed,
+				stat_grapple_range : _data.stat_grapple_range,
 
-			//- mining tool
-			stat_mine_level = _data.stat_mine_level; //Determines which blocks can be destroyed and not
-			stat_mine_cooldown = _data.stat_mine_cooldown; //Determines how much time must pass before the pickaxe can be swung again
+				//- mining tool
+				stat_mine_level : _data.stat_mine_level, 
+				stat_mine_cooldown : _data.stat_mine_cooldown, 
 
-			//- jetpack
-			stat_jetpack_fuel = _data.stat_jetpack_fuel; //How many frames can pass before the jetpack runs out of fuel. +30
-			stat_jetpack_strength = _data.stat_jetpack_strength; //How fast the jetpack boosts you + 0.025
-			stat_jetpack_cooldown = _data.stat_jetpack_cooldown; //How many frames of inactivity need to pass before the jetpack fuel begins regenerating -10
-			stat_jetpack_regen_rate = _data.stat_jetpack_regen_rate; //How much jetpack fuel regenerates each frame. +0.05
+				//- jetpack
+				stat_jetpack_fuel : _data.stat_jetpack_fuel, 
+				stat_jetpack_strength : _data.stat_jetpack_strength,
+				stat_jetpack_cooldown : _data.stat_jetpack_cooldown,
+				stat_jetpack_regen_rate : _data.stat_jetpack_regen_rate,
 
-			//- weapon
-			stat_weapon_cooldown = _data.stat_weapon_cooldown; //How many frames it takes to prepare the auto-attack
-			stat_weapon_damage = _data.stat_weapon_damage;
-			stat_weapon_knockback = _data.stat_weapon_knockback;
-			stat_weapon_range = _data.stat_weapon_range;
+				//- weapon
+				stat_weapon_cooldown : _data.stat_weapon_cooldown, 
+				stat_weapon_damage : _data.stat_weapon_damage,
+				stat_weapon_knockback : _data.stat_weapon_knockback,
+				stat_weapon_range : _data.stat_weapon_range,
 	
-			//Purchase
-			upgrades_purchased = _data.upgrades_purchased;
-			gold = _data.gold;
-			player_level = _data.player_level;
+				//Purchase
+				upgrades_purchased : _data.upgrades_purchased,
+				gold : _data.gold,
+				player_level : _data.player_level
+			}
+			
+			return data_struct;
 		}
 		catch (e)
 		{
+			return -1;
 			show_debug_message("Error loading file");
 			show_debug_message(e);
 		}
@@ -641,31 +647,37 @@ function read_expedition(file)
 {
 	if (file_exists(file))
 	{
+		
 		var _buff = buffer_load(file);	
 		var _string = buffer_read(_buff, buffer_string);
 		var _data = json_parse(_string);
 	
 		try
 		{
-			//Platform
-			platform_height = _data.platform_height;
-			tutorial_complete = _data.tutorial_complete;
+			var data_struct = 
+			{
+				platform_height : _data.platform_height,
+				tutorial_complete : _data.tutorial_complete
+			}
+			
+			return data_struct;
 		}
 		catch (e)
 		{
 			show_debug_message("Error reading file");
 			show_debug_message(e);
+			return -1;
 		}
 	}
 }
 
-/*
+
 function load_game(character_file, expedition_file)
 {
 	load_character(character_file);
 	load_expedition(expedition_file);
 }
-*/
+
 
 function init_expedition()
 {

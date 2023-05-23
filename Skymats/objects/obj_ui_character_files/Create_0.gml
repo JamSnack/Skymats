@@ -48,34 +48,32 @@ tutorial_complete = 0;
 
 //Init character files
 character_files = [];
+character_information = [];
 characters = 0;
 var file_name = file_find_first(working_directory+"/*.charc", 0);
 
 while (file_name != "")
 {
     array_push(character_files, file_name);
+	array_push(character_information, read_character(file_name));
     file_name = file_find_next();
 }
 
 file_find_close();
 characters = array_length(character_files);
 
-if (characters == 0)
-{
-	//Enter the game
-	global.is_host = true;
-	networkingControl.loading_world = true;
-	room_goto(rm_small);
-}
+
 
 //Init expedition files
 expedition_files = [];
+expedition_information = [];
 expeditions = 0;
 var file_name = file_find_first(working_directory+"/*.exped", 0);
 
 while (file_name != "")
 {
     array_push(expedition_files, file_name);
+	array_push(expedition_information, read_expedition(file_name));
     file_name = file_find_next();
 }
 
@@ -88,11 +86,19 @@ character_x_offset = 0;
 expedition_x_offset = 0;
 w_size = 144;
 h_size = 192;
-w_size_exped = 288;
-h_size_exped = 384;
+w_size_exped = 384;
+h_size_exped = 288;
 
-character_selected = 0;
-expedition_selected = 0;
+character_selected = -1;
+expedition_selected = -1;
+
+
+//If we have no characters and no expeditions, start the game
+if (characters == 0 && expeditions == 0)
+{
+	//Enter the game
+	event_user(0);
+}
 
 /*
 TODO:

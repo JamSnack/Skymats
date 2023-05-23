@@ -17,7 +17,7 @@ global.current_tick = 0;
 global.game_state = "PLAY";
 
 enemy_spawn_delay = 0;
-loading_world = false;
+character_file = -1;
 
 draw_set_font(fnt_default);
 room_goto(rm_menu);

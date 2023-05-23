@@ -17,10 +17,10 @@ if (_released_left_click)
 	if (_my < _h/2)
 	{
 		var _x = _w/2 - w_size/2 + character_x_offset;
-		var _y = _h/6 - 100;
+		var _y = _h/6 - 60;
 		
 		//Characters
-		for (var i=0; i<=characters; i++)
+		for (var i=-1; i<characters; i++)
 		{
 			if ( point_in_rectangle(_mx, _my, _x, _y, _x + w_size, _y + h_size))
 				character_selected = i;
@@ -34,13 +34,19 @@ if (_released_left_click)
 		var _y = _h - _h/6 - 200;
 		
 		//Expeditions
-		for (var i=0; i<=expeditions; i++)
+		for (var i=-1; i<expeditions; i++)
 		{
 			if ( point_in_rectangle(_mx, _my, _x, _y, _x + w_size_exped, _y + h_size_exped))
 				expedition_selected = i;
 	
-			_x += w_size_exped + w_size_exped/2;
+			_x += w_size_exped + 32;
 		}
+	}
+	
+	//Begin game
+	if (point_in_rectangle(_mx, _my, _w/2 - 80, _h/2 - 40, _w/2 + 80, _h/2 + 30))
+	{
+		event_user(0);
 	}
 }
 
@@ -51,5 +57,5 @@ if (window_alpha != 1)
 }
 
 //Lerping
-character_x_offset = lerp(character_x_offset, -192*character_selected, 0.25);
-expedition_x_offset = lerp(expedition_x_offset, -192*expedition_selected, 0.25);
+character_x_offset = lerp(character_x_offset, -192*(character_selected+1), 0.25);
+expedition_x_offset = lerp(expedition_x_offset, -(w_size_exped + 32)*(expedition_selected+1), 0.25);
