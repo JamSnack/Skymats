@@ -9,6 +9,10 @@ else networkingControl.character_file = -1;
 //Load the expedition into global-scope.
 if (expedition_selected != -1)
 	load_expedition(expedition_files[expedition_selected]);
+else
+{
+	init_expedition();
+}
 
 //Goto rm_small
 room_goto(rm_small);

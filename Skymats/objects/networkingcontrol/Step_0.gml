@@ -5,6 +5,10 @@ if (global.multiplayer == false && keyboard_check_released(vk_f1))
 	event_user(0);
 }
 
+if (room == rm_small && !instance_exists(obj_player))
+	instance_create_layer(room_width/2, global.platform_height+900, "Instances", obj_player);
+
+
 //Send client id
 if (!global.is_host && global.client_id == -1 && global.multiplayer && current_time mod 4 == 0)
 	send_data({cmd: "request_client_id"});

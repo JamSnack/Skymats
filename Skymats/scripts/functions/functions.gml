@@ -580,6 +580,7 @@ function read_character(file)
 		{
 			var data_struct = 
 			{
+				/*
 				stat_grapple_force : _data.stat_grapple_force,
 				stat_grapple_speed : _data.stat_grapple_speed,
 				stat_grapple_range : _data.stat_grapple_range,
@@ -601,7 +602,7 @@ function read_character(file)
 				stat_weapon_range : _data.stat_weapon_range,
 	
 				//Purchase
-				upgrades_purchased : _data.upgrades_purchased,
+				upgrades_purchased : _data.upgrades_purchased,*/
 				gold : _data.gold,
 				player_level : _data.player_level
 			}
@@ -672,12 +673,11 @@ function read_expedition(file)
 }
 
 
-function load_game(character_file, expedition_file)
+/*function load_game(character_file, expedition_file)
 {
 	load_character(character_file);
 	load_expedition(expedition_file);
-}
-
+}*/
 
 function init_expedition()
 {

@@ -69,12 +69,12 @@ for (var i=-1; i<expeditions; i++)
 		var _d = expedition_information[i];
 		
 		if (_d != -1)
-			draw_text(_x + h_size_exped/2, _y + w_size_exped + 16, "Height: " + string(_d.platform_height));
+			draw_text(_x + w_size_exped/2, _y + 16, "Height: " + string(-_d.platform_height));
 	}
 	else
 	{
 		//New expedition button
-		draw_text_transformed(_x + h_size_exped/2, _y, "+", 8, 8, 0);
+		draw_text_transformed(_x + w_size_exped/2, _y, "+", 8, 8, 0);
 	}
 	
 	_x += w_size_exped + 32;
