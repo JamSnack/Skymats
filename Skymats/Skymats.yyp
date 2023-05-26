@@ -133,6 +133,7 @@
     {"id":{"name":"__shd_scribble","path":"shaders/__shd_scribble/__shd_scribble.yy",},"order":0,},
     {"id":{"name":"spr_ui_market","path":"sprites/spr_ui_market/spr_ui_market.yy",},"order":0,},
     {"id":{"name":"scribble_super_glyph_copy","path":"scripts/scribble_super_glyph_copy/scribble_super_glyph_copy.yy",},"order":2,},
+    {"id":{"name":"obj_ui_character_creator","path":"objects/obj_ui_character_creator/obj_ui_character_creator.yy",},"order":9,},
     {"id":{"name":"snd_jump","path":"sounds/snd_jump/snd_jump.yy",},"order":1,},
     {"id":{"name":"obj_typhoonium","path":"objects/obj_typhoonium/obj_typhoonium.yy",},"order":16,},
     {"id":{"name":"obj_obsidian","path":"objects/obj_obsidian/obj_obsidian.yy",},"order":5,},
@@ -243,6 +244,7 @@
     {"id":{"name":"scribble_font_add_from_sprite","path":"scripts/scribble_font_add_from_sprite/scribble_font_add_from_sprite.yy",},"order":2,},
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},"order":0,},
     {"id":{"name":"obj_player_dummy","path":"objects/obj_player_dummy/obj_player_dummy.yy",},"order":7,},
+    {"id":{"name":"rm_character_creator","path":"rooms/rm_character_creator/rm_character_creator.yy",},"order":4,},
     {"id":{"name":"obj_item","path":"objects/obj_item/obj_item.yy",},"order":5,},
     {"id":{"name":"obj_altar_of_greed","path":"objects/obj_altar_of_greed/obj_altar_of_greed.yy",},"order":27,},
     {"id":{"name":"scribble_font_add","path":"scripts/scribble_font_add/scribble_font_add.yy",},"order":0,},
@@ -307,6 +309,7 @@
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"roomId":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"roomId":{"name":"rm_character_creator","path":"rooms/rm_character_creator/rm_character_creator.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

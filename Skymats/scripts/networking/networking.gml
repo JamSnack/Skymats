@@ -176,7 +176,7 @@ function handle_data(data)
 							target_grapple_point_x = parsed_data.gx;
 							target_grapple_point_y = parsed_data.gy;
 							grapple_direction = parsed_data.gd;
-							grapple_amt = 5*parsed_data.gg;
+							grapple_amt = 8*parsed_data.gg;
 							
 							create_new = false;
 							
