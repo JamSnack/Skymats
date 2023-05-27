@@ -481,7 +481,8 @@ function save_character(username = "character")
 					
 				upgrades_purchased: upgrades_purchased,
 				gold: gold,
-				player_level: player_level
+				player_level: player_level,
+				username: username
 			}
 				
 			var json = json_stringify(save_struct);
@@ -519,8 +520,10 @@ function save_expedition(expedition_name = "exped")
 
 function save_game()
 {
-	save_character();
-	save_expedition();
+	if (instance_exists(obj_player))
+		save_character(obj_player.username);
+		
+	save_expedition(networkingControl.exped_name);
 	
 	instance_create_layer(x, y, "Instances", efct_game_save);
 }
@@ -558,6 +561,8 @@ function load_character(file)
 			//Purchase
 			upgrades_purchased = _data.upgrades_purchased;
 			gold = _data.gold;
+			username = _data.username;
+			player_level = _data.player_level;
 		}
 		catch (e)
 		{
@@ -604,7 +609,8 @@ function read_character(file)
 				//Purchase
 				upgrades_purchased : _data.upgrades_purchased,*/
 				gold : _data.gold,
-				player_level : _data.player_level
+				player_level : _data.player_level,
+				username: _data.username
 			}
 			
 			return data_struct;
@@ -655,10 +661,13 @@ function read_expedition(file)
 	
 		try
 		{
+			var _c = get_background_colors(-_data.platform_height);
+			
 			var data_struct = 
 			{
 				platform_height : _data.platform_height,
-				tutorial_complete : _data.tutorial_complete
+				tutorial_complete : _data.tutorial_complete,
+				colors : [make_color_rgb(_c[0][0]*255, _c[0][1]*255, _c[0][2]*255), make_color_rgb(_c[1][0]*255, _c[1][1]*255, _c[1][2]*255)]
 			}
 			
 			return data_struct;

@@ -27,18 +27,18 @@ grappling_to = noone;
 //Mine
 mine_cooldown = 0;
 
+//init upgrades purchased list
+upgrades_purchased = array_create(UPGRADE.last, 1);
+
+username = networkingControl.username;
 init_player_stats();
 
 load_character(networkingControl.character_file);
 
-//init upgrades purchased list
-upgrades_purchased = array_create(UPGRADE.last, 1);
-username = "";
-
 init_player();
 calculate_player_level();
 
-obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
+//obj_chat_box.add("Welcome to " + string(room_get_name(room)) + "!");
 
 //Sync chunks
 //if (!global.is_host && global.multiplayer)
@@ -57,4 +57,6 @@ if (global.tutorial_complete != true)
 	global.platform_height = 0;
 	global.can_grapple = false;
 	global.can_jetpack = false;
+	
+	save_game();
 } else y = global.platform_height;

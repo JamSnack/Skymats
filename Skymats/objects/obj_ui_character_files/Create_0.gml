@@ -61,7 +61,7 @@ while (file_name != "")
 
 file_find_close();
 characters = array_length(character_files);
-
+networkingControl.username = "Player_"+string(characters);
 
 
 //Init expedition files
@@ -79,6 +79,7 @@ while (file_name != "")
 
 file_find_close();
 expeditions = array_length(expedition_files);
+networkingControl.exped_name = "expedition_"+string(expeditions);
 
 
 //Local

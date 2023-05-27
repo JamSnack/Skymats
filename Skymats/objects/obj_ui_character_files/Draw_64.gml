@@ -28,10 +28,16 @@ for (var i=-1; i<characters; i++)
 		if (_d != -1)
 		{
 			//draw_rectangle(_x, _y, _x + w_size, _y + h_size, false);
-			draw_text(_x + w_size/2, _y - 16, string(character_files[i]));
+			draw_text_scribble_ext(_x + w_size/2, _y - 48, "[default_outlined]"+string(_d.username), 190);
 			draw_sprite_ext(spr_player_run, i + current_time/100, _x + w_size/2, _y + h_size/2, 12*card_size, 12*card_size, 0, c_white, 1.0);
-			draw_text(_x + w_size/2, _y + h_size + 32, "Gold: " + string(_d.gold));
-			draw_text(_x + w_size/2, _y + h_size + 48, "Level: " + string(_d.player_level));
+			draw_text_scribble(_x + w_size/2, _y + h_size + 32, "[default_outlined]Gold: " + string(_d.gold));
+			draw_text_scribble(_x + w_size/2, _y + h_size + 48, "[default_outlined]Level: " + string(_d.player_level));
+		}
+		else
+		{
+			draw_text_scribble(_x + w_size/2, _y - 48, "[default_outlined]Error Loading File");
+			draw_sprite_ext(spr_player_error, i + current_time/100, _x + w_size/2, _y + h_size/2, 12*card_size, 12*card_size, 0, c_white, 1.0);
+			draw_text_scribble(_x + w_size/2, _y + h_size + 32, "[default_outlined]Some data could\nnot be loaded.");
 		}
 	}
 	else
@@ -69,7 +75,12 @@ for (var i=-1; i<expeditions; i++)
 		var _d = expedition_information[i];
 		
 		if (_d != -1)
+		{
+			var _c = _d.colors;
+			draw_rectangle_color(_x + 2, _y + 2, _x + w_size_exped-2, _y + h_size_exped-2, _c[0], _c[0], _c[1], _c[1], false);
+			
 			draw_text(_x + w_size_exped/2, _y + 16, "Height: " + string(-_d.platform_height));
+		}
 	}
 	else
 	{

@@ -15,7 +15,10 @@ else
 
 //Load the expedition into global-scope.
 if (expedition_selected != -1)
+{
 	load_expedition(expedition_files[expedition_selected]);
+	networkingControl.exped_name = "expedition_"+string(expedition_selected);
+}
 else
 {
 	init_expedition();

@@ -17,9 +17,14 @@ global.current_tick = 0;
 global.game_state = "PLAY";
 
 enemy_spawn_delay = 0;
+
+//Game information
 character_file = -1;
+username = "Player";
+exped_name = "expedition";
 
 draw_set_font(fnt_default);
+scribble_font_bake_outline_4dir("fnt_default", "default_outlined", c_black, false);
 room_goto(rm_menu);
 
 network_timeout = 500;

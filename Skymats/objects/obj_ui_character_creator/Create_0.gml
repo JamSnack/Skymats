@@ -40,3 +40,4 @@ window_alpha = 0;
 
 //Local
 typing_name = false;
+username = networkingControl.username;

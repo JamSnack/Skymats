@@ -22,6 +22,7 @@
     {"id":{"name":"obj_gold","path":"objects/obj_gold/obj_gold.yy",},"order":6,},
     {"id":{"name":"spr_grass","path":"sprites/spr_grass/spr_grass.yy",},"order":1,},
     {"id":{"name":"spr_aluminum","path":"sprites/spr_aluminum/spr_aluminum.yy",},"order":19,},
+    {"id":{"name":"spr_player_error","path":"sprites/spr_player_error/spr_player_error.yy",},"order":47,},
     {"id":{"name":"obj_beryllium","path":"objects/obj_beryllium/obj_beryllium.yy",},"order":3,},
     {"id":{"name":"spr_zinc","path":"sprites/spr_zinc/spr_zinc.yy",},"order":22,},
     {"id":{"name":"obj_emerald","path":"objects/obj_emerald/obj_emerald.yy",},"order":11,},
