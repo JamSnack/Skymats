@@ -504,7 +504,11 @@ function save_expedition(expedition_name = "exped")
 		{
 			var save_struct = {
 				platform_height: global.platform_height,
-				tutorial_complete: global.tutorial_complete
+				tutorial_complete: global.tutorial_complete,
+				stored_resources: global.stored_resources,
+				stored_resources_unlocked: global.stored_resources_unlocked,
+				auto_burn: global.stored_resources_auto_burn,
+				burning: global.stored_resource_to_burn
 			}
 				
 			var json = json_stringify(save_struct);
@@ -639,6 +643,10 @@ function load_expedition(file)
 			//Platform
 			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
+			global.stored_resources = _data.stored_resources;
+			global.stored_resources_unlocked = _data.stored_resources_unlocked;
+			global.stored_resources_auto_burn = _data.auto_burn;
+			global.stored_resource_to_burn = _data.burning;
 		}
 		catch (e)
 		{
@@ -667,7 +675,14 @@ function read_expedition(file)
 			{
 				platform_height : _data.platform_height,
 				tutorial_complete : _data.tutorial_complete,
-				colors : [make_color_rgb(_c[0][0]*255, _c[0][1]*255, _c[0][2]*255), make_color_rgb(_c[1][0]*255, _c[1][1]*255, _c[1][2]*255)]
+				colors : [make_color_rgb(_c[0][0]*255, _c[0][1]*255, _c[0][2]*255), make_color_rgb(_c[1][0]*255, _c[1][1]*255, _c[1][2]*255)],
+				resources_discovered : 0
+			}
+			
+			for (var _i = 0; _i < ITEM_ID.last; _i++)
+			{
+				if (_data.stored_resources_unlocked[_i])
+					data_struct.resources_discovered++;
 			}
 			
 			return data_struct;

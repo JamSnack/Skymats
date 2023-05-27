@@ -80,6 +80,12 @@ for (var i=-1; i<expeditions; i++)
 			draw_rectangle_color(_x + 2, _y + 2, _x + w_size_exped-2, _y + h_size_exped-2, _c[0], _c[0], _c[1], _c[1], false);
 			
 			draw_text(_x + w_size_exped/2, _y + 16, "Height: " + string(-_d.platform_height));
+			draw_text(_x + w_size_exped/2, _y + 64, "Resources Discovered: " + string( (_d.resources_discovered/(ITEM_ID.last-1))*100 ) + "%");
+		}
+		else
+		{
+			draw_rectangle_color(_x + 2, _y + 2, _x + w_size_exped-2, _y + h_size_exped-2, c_maroon, c_maroon, c_maroon, c_maroon, false);
+			draw_text(_x + w_size_exped/2, _y + 16, "Error loading expedition");
 		}
 	}
 	else
