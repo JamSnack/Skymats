@@ -25,6 +25,10 @@ if (weapon_cooldown > 0)
 	draw_rectangle_color(x-20, y+30, x-20 + 40*(weapon_cooldown/stat_weapon_cooldown), y+30+4, c_red, c_red, c_red, c_red, false);
 }
 
+//Tile selection
+if (instance_exists(_tile) && _tile.tile_level <= stat_mine_level)
+	draw_sprite_ext(spr_tile_selection, 0, _tile.x, _tile.y, 1, 1, 0, c_white, 0.1 + 0.3*abs(sin(current_time/900)) );
+
 //Tile placement
 /*
 var _x = get_coordinate_on_world_grid(mouse_x+8);

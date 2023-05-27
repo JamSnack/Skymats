@@ -48,6 +48,7 @@ dead = false;
 respawn_delay = 60;
 can_hurt = true;
 can_hurt_delay = 0;
+_tile = noone;
 
 if (global.tutorial_complete != true)
 {

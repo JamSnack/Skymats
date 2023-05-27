@@ -163,13 +163,12 @@ else
 }
 	
 //Tile mininig
-var _selected_slot = global.inventory.selected_slot;
+//var _selected_slot = global.inventory.selected_slot;
+_tile = collision_point(mouse_x, mouse_y, TILE, false, true);
 
-if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64 && mouse_check_button(mb_left))
+if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64)
 {
-	_tile = collision_point(mouse_x, mouse_y, TILE, false, true)
-	
-	if (_tile != noone && _tile.tile_level <= stat_mine_level)
+	if (_tile != noone && _tile.tile_level <= stat_mine_level && mouse_check_button(mb_left))
 	{
 		if (global.is_host)
 		{
@@ -200,7 +199,6 @@ if (_selected_slot == -1 && mine_cooldown <= 0 && point_distance(x, y, mouse_x, 
 	}
 }
 else if (mine_cooldown > 0) mine_cooldown--;
-
 //Jetpack
 if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 {
