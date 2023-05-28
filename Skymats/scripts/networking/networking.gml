@@ -375,7 +375,7 @@ function handle_data(data)
 				{
 					if (_id == connected_id)
 					{
-						hurt_enemy(self, parsed_data.dir_knock, parsed_data.knock_amt, parsed_data.damage);
+						hurt_enemy(self, parsed_data.dir_knock, parsed_data.knock_amt, parsed_data.damage, 0);
 						break;
 					}
 				}

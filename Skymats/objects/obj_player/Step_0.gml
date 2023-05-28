@@ -294,7 +294,7 @@ if (instance_exists(ENEMY) && weapon_cooldown <= 0)
 			var dir_knock = point_direction(x, y, _e.x, _e.y);
 		
 			//Deal damage and apply knockback
-			hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage + bonus_attack);
+			hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
 			
 			if (!global.is_host && global.multiplayer)
 				send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage + bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});

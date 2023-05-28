@@ -80,8 +80,6 @@ function hurt_tile(_damage)
 {
 	hp -= _damage;
 	
-	create_floating_text(mouse_x, mouse_y, _damage, c_red);
-	
 	draw_damage = true;
 	damage = (hp/max_hp)*7;
 	
@@ -103,17 +101,26 @@ function audio_play_standard(sound, priority, loops, overwrites=false)
 	audio_play_sound(sound, priority, loops);
 }
 
-function hurt_enemy(inst, k_direction, k_amt, damage)
+function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 {
 	if (instance_exists(inst))
 	{
 		with (inst)
 		{
 			motion_add_custom(k_direction, max(k_amt-weight, 0));
-			hp -= damage;
+			
+			var true_damage = damage+bonus_damage;
+			
+			hp -= true_damage;
 			hit_effect = 1;
 			
-			create_floating_text(x, y, "[wobble][pulse]"+string(damage), "[c_red]");
+			
+			
+			if (bonus_damage >= 6)
+				create_floating_text(x, y, "[wobble][pulse][scale, 1.5]"+string(true_damage), "[rainbow][spr_ui_star]");
+			else if (bonus_damage >= 3)
+				create_floating_text(x, y, "[wobble][pulse]"+string(true_damage), "[c_red]");
+			else create_floating_text(x, y, "[wobble][pulse][scale, 0.5]"+string(true_damage), "[c_orange]");
 			
 			if (hp <= 0)
 			{
