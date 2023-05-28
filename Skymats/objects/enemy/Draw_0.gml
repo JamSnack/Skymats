@@ -4,10 +4,10 @@ event_inherited();
 if (hit_effect != 0)
 {
 	gpu_set_fog(true, c_white, 0, 1);
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale + hit_effect, image_yscale + hit_effect, image_angle, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale + hit_effect, image_yscale + hit_effect, draw_angle, c_white, image_alpha);
 	gpu_set_fog(false, c_white, 0, 0);
 }
-else draw_self();
+else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
 
 if (hp < max_hp)
 {

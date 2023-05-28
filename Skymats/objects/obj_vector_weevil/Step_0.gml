@@ -11,5 +11,8 @@ target_y += vspd;
 //Speed clamp
 clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);
 
+//image angle
+draw_angle = point_direction(x, y, x+hspd, y+vspd);
+
 
 event_inherited();

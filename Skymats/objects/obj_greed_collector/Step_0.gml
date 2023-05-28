@@ -13,7 +13,7 @@ else instance_destroy();
 x += hspd;
 y += vspd;
 	
-image_angle += (hspd + vspd);
+draw_angle += (hspd + vspd);
 	
 //Speed clamp
 clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);

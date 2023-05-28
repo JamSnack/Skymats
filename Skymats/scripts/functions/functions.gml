@@ -651,15 +651,40 @@ function load_expedition(file)
 			//Platform
 			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
-			global.stored_resources = _data.stored_resources;
-			global.stored_resources_unlocked = _data.stored_resources_unlocked;
-			global.stored_resources_auto_burn = _data.auto_burn;
 			global.stored_resource_to_burn = _data.burning;
 		}
 		catch (e)
 		{
 			show_debug_message("Error loading file");
 			show_debug_message(e);
+		}
+		
+		//Load unlocked resources
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+			{
+				if (_data.stored_resources_unlocked[_i])
+					global.stored_resources_unlocked[_i] = 1;
+			}
+		}
+		
+		//Load resources
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.stored_resources); _i++)
+			{
+				global.stored_resources[_i] = _data.stored_resources[_i];
+			}
+		}
+		
+		//Load auto-burn list
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.auto_burn); _i++)
+			{
+				global.auto_burn[_i] = _data.auto_burn[_i];
+			}
 		}
 	}
 }
@@ -687,20 +712,21 @@ function read_expedition(file)
 				resources_discovered : 0
 			}
 			
-			for (var _i = 0; _i < ITEM_ID.last; _i++)
-			{
-				if (_data.stored_resources_unlocked[_i])
-					data_struct.resources_discovered++;
-			}
-			
-			return data_struct;
-		}
+				}
 		catch (e)
 		{
 			show_debug_message("Error reading file");
 			show_debug_message(e);
-			return -1;
+			//return -1;
 		}
+			
+		for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+		{
+			if (_data.stored_resources_unlocked[_i])
+				data_struct.resources_discovered++;
+		}
+			
+		return data_struct;
 	}
 }
 

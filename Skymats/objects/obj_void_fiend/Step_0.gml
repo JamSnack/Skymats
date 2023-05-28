@@ -20,7 +20,7 @@ if (y < WORLD_BOUND_BOTTOM)
 clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);
 
 //image angle
-image_angle = point_direction(x, y, x+hspd, y+vspd);
+draw_angle = point_direction(x, y, x+hspd, y+vspd);
 
 
 event_inherited();

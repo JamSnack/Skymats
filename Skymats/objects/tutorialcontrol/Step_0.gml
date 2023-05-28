@@ -9,9 +9,10 @@ if (global.tutorial_complete == true)
 	instance_destroy();
 	
 //Increase tut stage
-if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true))
+if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true) || update_stage))
 {
 	stage++;
+	update_stage = false;
 	
 	switch stage
 	{
@@ -46,8 +47,8 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		
 		case 4:
 		{
-			x = 1440;
-			y = 800;
+			x = -300;//1440;
+			y = 0;//800;
 			tutorial_index = 5;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Defeat the enemy. Collect the Fuel-Cell."});
 		}
@@ -55,11 +56,10 @@ if (instance_exists(obj_player) && collision_rectangle(bbox_left, bbox_top, bbox
 		
 		case 5:
 		{
-			x = 0;
+			x = -300;
 			y = 0;
 			tutorial_index = 0;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Place the Fuel-Cell into the engine!"});
-			obj_platform.fuel += 1500;
 		}
 		break;
 	}

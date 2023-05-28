@@ -5,7 +5,8 @@ calculate_collisions();
 target_x += hspd;
 target_y += vspd;
 
-image_angle = point_direction(xprevious, yprevious, x, y);
+image_angle = point_direction(xprevious, yprevious, x, y); //We actually want to change the hitbox in this case
+draw_angle = image_angle;
 
 //Speed clamp
 clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);

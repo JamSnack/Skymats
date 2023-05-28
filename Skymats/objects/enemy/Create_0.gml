@@ -11,4 +11,6 @@ kill_timer = 60*5;
 sync_timer = 0;
 hit_effect = 0;
 
+draw_angle = 0;
+
 send_enemy_position();

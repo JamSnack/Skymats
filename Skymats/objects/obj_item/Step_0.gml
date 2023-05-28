@@ -4,31 +4,32 @@ if (global.is_host)
 {
 	vspd += GRAVITY*weight;
 
-	var _p = instance_nearest(x, y, PLAYER);
+	target = instance_nearest(x, y, PLAYER);
 
-	if (_p != noone)
+	if (target != noone)
 	{
-		_dist = distance_to_object(_p);	
+		_dist = distance_to_object(target);	
 	
 		//Attract
 		if (_dist < 64 || speed != 0)
 		{
-			x = lerp(x, _p.x, 0.3);
-			y = lerp(y, _p.y, 0.3);
+			x = lerp(x, target.x, rate);
+			y = lerp(y, target.y, rate);
+			rate += 0.01;
 		}
 	
 		//Collect
 		if (_dist < 4)
 		{
-			if (_p.object_index == obj_player)
+			if (target.object_index == obj_player)
 			{		
 				global.inventory.addItem(item_id, 1);
 			}
-			else if (global.multiplayer)
+			/*else if (global.multiplayer)
 			{
 				var _s = {cmd: "add_item", amt: 1, item_id: item_id}
-				send_data(_s, _p.connected_socket);	
-			}
+				send_data(_s, target.connected_socket);	
+			}*/
 			
 			instance_destroy();
 		}

@@ -1,5 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+global.debug = true;
+
 
 //Used for ignoring packets regarding recently destroyed instances in multiplayer.
 #macro RECENTLY_DESTROYED_LIST_MAX_SIZE 5

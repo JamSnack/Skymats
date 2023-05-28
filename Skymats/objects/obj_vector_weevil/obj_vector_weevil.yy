@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_bedrock",
-    "path": "sprites/spr_bedrock/spr_bedrock.yy",
+    "name": "spr_vector_weevil",
+    "path": "sprites/spr_vector_weevil/spr_vector_weevil.yy",
   },
   "solid": false,
   "visible": true,
