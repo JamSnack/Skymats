@@ -7,7 +7,7 @@ else if (lifetime <= 0)
 {
 	time -= 0.01;
 	
-	if (time <= 0)
+	if (time <= -120)
 		instance_destroy();
 }
 else lifetime--;

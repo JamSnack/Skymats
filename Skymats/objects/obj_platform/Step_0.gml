@@ -15,7 +15,7 @@ if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1
 			spawn_high_island_delay = 60*15;
 		}
 		else spawn_high_island_delay--;
-	}  
+	} 
 }
 else
 {
@@ -57,6 +57,8 @@ if (y != yprevious)
 	}
 }
 
+//fuel clamp
+fuel = clamp(fuel, 0, max_fuel);
 
 //Position the target coordinate of the platform at 938 pixels under WORLD_BOUND_TOP.
 if (target_y != global.platform_height+938)

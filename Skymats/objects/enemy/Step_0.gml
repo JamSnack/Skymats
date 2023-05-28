@@ -44,4 +44,4 @@ if (hit_effect != 0)
 	hit_effect = approach(hit_effect, 0, 0.1);
 
 //Update shadow
-event_inherited();
+update_shadow(shadow, draw_angle);

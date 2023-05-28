@@ -15,11 +15,11 @@ if (global.is_host)
 		{
 			x = lerp(x, target.x, rate);
 			y = lerp(y, target.y, rate);
-			rate += 0.01;
+			rate += 0.02;
 		}
 	
 		//Collect
-		if (_dist < 4)
+		if (_dist < 2)
 		{
 			if (target.object_index == obj_player)
 			{		

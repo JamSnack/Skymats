@@ -449,7 +449,7 @@ function destroy_shadow(shadow)
 		layer_sprite_destroy(shadow);
 }
 
-function update_shadow(shadow)
+function update_shadow(shadow, angle = image_angle)
 {
 	if (layer_sprite_exists("Shadows", shadow))
 	{
@@ -457,7 +457,7 @@ function update_shadow(shadow)
 		layer_sprite_y(shadow, y+2);
 		layer_sprite_index(shadow, image_index);
 		layer_sprite_change(shadow, sprite_index);
-		layer_sprite_angle(shadow, image_angle);
+		layer_sprite_angle(shadow, angle);
 		layer_sprite_xscale(shadow, image_xscale);
 		layer_sprite_yscale(shadow, image_yscale);
 	}
@@ -766,4 +766,28 @@ function instance_destroy_safe(instance)
 			instance_destroy();
 		}
 	}
+}
+
+function draw_sprite_outlined_ext(sprite_index, image_index, x, y, outline_color, xscale, yscale, angle, image_alpha)
+{
+	//This script currently only supports white outlines. See shd_whiteout for deatils.
+	
+	//set shader
+	gpu_set_fog(true, c_white, 0, 1);
+
+	//Outline color
+	draw_sprite_ext(sprite_index, image_index, x+xscale, y+yscale, xscale, yscale, angle, outline_color, image_alpha);  
+	draw_sprite_ext(sprite_index, image_index, x-xscale, y-yscale, xscale, yscale, angle, outline_color, image_alpha);    
+	draw_sprite_ext(sprite_index, image_index, x       , y+yscale, xscale, yscale, angle, outline_color, image_alpha);    
+	draw_sprite_ext(sprite_index, image_index, x+xscale, y       , xscale, yscale, angle, outline_color, image_alpha);   
+	draw_sprite_ext(sprite_index, image_index, x       , y-yscale, xscale, yscale, angle, outline_color, image_alpha);    
+	draw_sprite_ext(sprite_index, image_index, x-xscale, y       , xscale, yscale, angle, outline_color, image_alpha);   
+	draw_sprite_ext(sprite_index, image_index, x-xscale, y+yscale, xscale, yscale, angle, outline_color, image_alpha);    
+	draw_sprite_ext(sprite_index, image_index, x+xscale, y-yscale, xscale, yscale, angle, outline_color, image_alpha);    
+	
+	//reset
+	gpu_set_fog(false, c_white, 0, 0);
+  
+	//Draw sprite on-top of outline color
+	draw_sprite_ext(sprite_index, image_index, x, y, xscale, yscale, angle, c_white, image_alpha);
 }
