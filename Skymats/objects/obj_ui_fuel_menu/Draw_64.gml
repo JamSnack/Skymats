@@ -45,6 +45,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 	draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
 	
 	//Resource journal
+	var max_fuel = obj_platform.max_fuel;
 	var _y2 = _y1 + 256;
 	
 	for (var _i = 1; _i < ITEM_ID.last; _i++)
@@ -70,7 +71,7 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 			//Create item description
 			var _str = "|[c_green] " +
 			string(get_item_value(_i)) + "$ [c_white]|[c_red] %" +
-			string(get_fuel_value(_i)/250) + " Fuel[/c] | " + 
+			string(100*(get_fuel_value(_i)/max_fuel)) + " Fuel[/c] | " + 
 			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
 			
 			if (_i > ITEM_ID.stone && _i < ITEM_ID.enemy_parts)
