@@ -36,6 +36,7 @@ content_surface = noone;
 
 //Other Window
 window_alpha = 0;
+draw_item_index = 1;
 
 /*
 TODO:

@@ -60,12 +60,12 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 		if (mouse_wheel_up())
 		{
 			scroll_offset_target += scroll_speed;
-			_free_surface = true;
+			//_free_surface = true;
 		}
 		else if (mouse_wheel_down())
 		{
 			scroll_offset_target -= scroll_speed;
-			_free_surface = true;
+			//_free_surface = true;
 		}
 		
 		//Clamp
@@ -161,19 +161,19 @@ if (pos_y != target_y)
 if (width != target_width)
 {
 	width = lerp(width, target_width, 0.43);
-	_free_surface = true;
+	//_free_surface = true;
 }
 	
 if (height != target_height)
 {
 	height = lerp(height, target_height, 0.43);
-	_free_surface = true;
+	//_free_surface = true;
 }
 
 if (scroll_offset != scroll_offset_target)
 {
 	scroll_offset = lerp(scroll_offset, scroll_offset_target, 0.33);
-	_free_surface = true;
+	//_free_surface = true;
 }
 
 //Window alpha

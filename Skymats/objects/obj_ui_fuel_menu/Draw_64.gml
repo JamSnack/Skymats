@@ -6,50 +6,57 @@ if (sprite_exists(sprite_background))
 	draw_sprite_stretched(sprite_background, 0, pos_x, pos_y, width, height);
 }
 
-//Draw surface
-if (!surface_exists(window_surface) && width > 0 && height > 7)
+//Draw to content surface
+if (!surface_exists(content_surface))
 {
-	window_surface = surface_create(width, height - 6);
-
-	surface_set_target(window_surface);
+	content_surface = surface_create(width, height - 6);
+	draw_item_index = 1;
 	
+	surface_set_target(content_surface);
 	draw_clear_alpha(c_white, 0);
-
-	//Current fuel
-	var _y1 = 16 + scroll_offset;
+	surface_reset_target();
+}
+else if (draw_item_index != ITEM_ID.last)
+{
+	surface_set_target(content_surface);
 	
-	draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
-	
-	_y1 += 128;
-	
-	var _selected_item_x = 500;
-	
-	draw_set_color(c_gray);
-	draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
-	draw_set_color(c_white);
-	
-	//Fuel efficiency and item to burn
-	if (global.stored_resource_to_burn != 0)
+	repeat(5)
 	{
-		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75]"+get_item_name(global.stored_resource_to_burn));
-		draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
-		draw_text_scribble(_selected_item_x + 128 + 20, _y1 + 64, "[font]"+string(global.stored_resources[global.stored_resource_to_burn]));
-		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: " + string(get_item_bonus_fuel(global.stored_resource_to_burn)) + "%");
-	}
-	else
-	{
-		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75][c_red]No Item Available[\c]");
-		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
-	}
+		//Current fuel
+		var _y1 = 16 + scroll_offset;
 	
-	draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
+		draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
 	
-	//Resource journal
-	var max_fuel = obj_platform.max_fuel;
-	var _y2 = _y1 + 256;
+		_y1 += 128;
 	
-	for (var _i = 1; _i < ITEM_ID.last; _i++)
-	{
+		var _selected_item_x = 500;
+	
+		draw_set_color(c_gray);
+		draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
+		draw_set_color(c_white);
+	
+		//Fuel efficiency and item to burn
+		if (global.stored_resource_to_burn != 0)
+		{
+			draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75]"+get_item_name(global.stored_resource_to_burn));
+			draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
+			draw_text_scribble(_selected_item_x + 128 + 20, _y1 + 64, "[font]"+string(global.stored_resources[global.stored_resource_to_burn]));
+			draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: " + string(get_item_bonus_fuel(global.stored_resource_to_burn)) + "%");
+		}
+		else
+		{
+			draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75][c_red]No Item Available[\c]");
+			draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
+		}
+	
+		draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
+	
+		//Resource journal
+		var max_fuel = obj_platform.max_fuel;
+		var _y2 = _y1 + 256;
+	
+		var _i = draw_item_index;
+	
 		if (_i >= ITEM_ID.enemy_parts)
 		{
 			if (_i == ITEM_ID.enemy_parts)
@@ -91,17 +98,32 @@ if (!surface_exists(window_surface) && width > 0 && height > 7)
 			draw_sprite(spr_items, 0, 5, _y2 + _i*32);
 			draw_text_scribble(48, _y2 + 2 + _i*32, "?????????????????????????????");
 		}
+
+		draw_item_index++;
+		
+		if (draw_item_index == ITEM_ID.last)
+			break;
 	}
 	
-	//At this point in the code, _y2 is the bottom of the final grid space
-
 	surface_reset_target();
 }
 
+
+//Main draw
 draw_set_alpha(window_alpha);
 
-if (surface_exists(window_surface))
+if (!surface_exists(window_surface))
+	window_surface = surface_create(width, height - 6);
+
+if (surface_exists(content_surface))
+{
+	surface_set_target(window_surface);
+	draw_clear_alpha(c_white, 0);
+	draw_surface(content_surface, 0, scroll_offset);
+	surface_reset_target();
+	
 	draw_surface(window_surface, pos_x, pos_y + 3);
+}
 
 //Draw topbar
 if (draw_topbar)
