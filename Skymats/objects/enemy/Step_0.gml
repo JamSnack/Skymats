@@ -34,9 +34,14 @@ if (instance_exists(obj_player) && obj_player.can_hurt)
 			motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
 			hp -= other.damage;
 			can_hurt = false;
+			hurt_effect = 1;
 		}
 	}
 }
+
+//Hit stuff
+if (hit_effect != 0)
+	hit_effect = approach(hit_effect, 0, 0.1);
 
 //Update shadow
 event_inherited();

@@ -1,8 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
 event_inherited();
-draw_self();
-//draw_sprite_ext(sprite_index, image_index, target_x, target_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+if (hit_effect != 0)
+{
+	gpu_set_fog(true, c_white, 0, 1);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale + hit_effect, image_yscale + hit_effect, image_angle, c_white, image_alpha);
+	gpu_set_fog(false, c_white, 0, 0);
+}
+else draw_self();
 
 if (hp < max_hp)
 {

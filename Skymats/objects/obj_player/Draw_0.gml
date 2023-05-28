@@ -43,4 +43,10 @@ else if (global.inventory.selected_slot != -1)
 */
 
 //Draw player
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
+if (hurt_effect != 0)
+{
+	gpu_set_fog(true, c_red, 0, hurt_effect);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale + hurt_effect/2, image_yscale + hurt_effect/2, draw_angle, c_white, image_alpha);
+	gpu_set_fog(false, c_white, 0, 0);
+}
+else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);

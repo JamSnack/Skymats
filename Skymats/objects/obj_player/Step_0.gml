@@ -382,6 +382,10 @@ if (!can_hurt)
 	if (can_hurt_delay <= 0)
 	{
 		can_hurt = true;
-		can_hurt_delay = 10;
+		can_hurt_delay = 30;
 	}
 }
+
+//Hurt effect
+if (hurt_effect != 0)
+	hurt_effect = approach(hurt_effect, 0, 0.1);
