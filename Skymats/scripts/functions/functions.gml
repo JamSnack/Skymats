@@ -80,7 +80,7 @@ function hurt_tile(_damage)
 {
 	hp -= _damage;
 	
-	//create_floating_text(mouse_x, mouse_y, _damage, c_red);
+	create_floating_text(mouse_x, mouse_y, _damage, c_red);
 	
 	draw_damage = true;
 	damage = (hp/max_hp)*7;
@@ -113,7 +113,7 @@ function hurt_enemy(inst, k_direction, k_amt, damage)
 			hp -= damage;
 			hit_effect = 1;
 			
-			create_floating_text(x, y, damage, c_red);
+			create_floating_text(x, y, "[wobble][pulse]"+string(damage), "[c_red]");
 			
 			if (hp <= 0)
 			{
