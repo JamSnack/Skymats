@@ -9,6 +9,7 @@
     {"id":{"name":"__scribble_get_glyph_data","path":"scripts/__scribble_get_glyph_data/__scribble_get_glyph_data.yy",},"order":10,},
     {"id":{"name":"scribble","path":"scripts/scribble/scribble.yy",},"order":8,},
     {"id":{"name":"spr_ui_player1","path":"sprites/spr_ui_player1/spr_ui_player1.yy",},"order":1,},
+    {"id":{"name":"spr_tile_shadow","path":"sprites/spr_tile_shadow/spr_tile_shadow.yy",},"order":30,},
     {"id":{"name":"spr_typhoonium","path":"sprites/spr_typhoonium/spr_typhoonium.yy",},"order":28,},
     {"id":{"name":"spr_tutorial_node_inner","path":"sprites/spr_tutorial_node_inner/spr_tutorial_node_inner.yy",},"order":10,},
     {"id":{"name":"spr_ui_selected_slot","path":"sprites/spr_ui_selected_slot/spr_ui_selected_slot.yy",},"order":3,},

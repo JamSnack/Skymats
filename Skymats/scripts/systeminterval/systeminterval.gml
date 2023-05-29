@@ -154,7 +154,7 @@ function create_new_islands()
 	
 		if (_tiles < 1400 && interval_delay <= 0)
 		{
-			interval_delay = (SYSTEM_INTERVAL)*(8 + irandom(4));
+			interval_delay = 13//(SYSTEM_INTERVAL)*(8 + irandom(4));
 			var chosen_y = global.platform_height + 100 + irandom(1000);
 			instance_create_layer(-270, chosen_y, "Instances", obj_island_generator);
 			

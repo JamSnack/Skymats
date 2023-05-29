@@ -73,5 +73,8 @@ else if (!powered) power_delay = 60;
 if (SCROLL_CONDITIONS)
 {
 	with (TILE)
+	{
 		x += SCROLL_SPEED;
+		layer_sprite_x(shadow, x+2); //Update shadows
+	}
 }

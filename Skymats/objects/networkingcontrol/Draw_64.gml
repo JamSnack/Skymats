@@ -3,7 +3,7 @@
 
 //var _w = display_get_gui_width();
 //var _h = display_get_gui_height();
-/*
+
 draw_text(1100, 10, 
 	"Socket_list size: " + string(ds_list_size(global.socket_list)) + "\n" +
 	"Client ID: " + string(global.client_id) + "\n" +
@@ -12,7 +12,7 @@ draw_text(1100, 10,
 	"Enemies: " + string(instance_number(ENEMY)) + "\n" +
 	"Scroll Lag: " + string(global.lag)
 );
-*/
+
 /*
 if (instance_exists(obj_island_generator) || instance_exists(obj_ore_generator))
 {

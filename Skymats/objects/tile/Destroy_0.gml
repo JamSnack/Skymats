@@ -12,3 +12,6 @@ if (instance_exists(owner) && ds_exists(owner.chunk_grid_type, ds_type_grid) && 
 {
 	owner.chunk_grid_type[# grid_pos.x, grid_pos.y] = 0;
 }
+
+if (layer_sprite_exists("Shadows", shadow))
+	layer_sprite_destroy(shadow);
