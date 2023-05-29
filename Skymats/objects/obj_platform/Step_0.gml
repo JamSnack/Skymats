@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if true||(collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
+if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
 {
 	obstruction = false;
 	if (fuel > 1 && powered && power_delay <= 0)
@@ -72,7 +72,14 @@ if (target_y != global.platform_height+938)
 //Powered
 if (global.is_host && powered && power_delay > 0)
 	power_delay--;
-else if (!powered) power_delay = 60;
+else if (!powered || fuel <= 1) power_delay = 60;
+
+if (keyboard_check_released(ord("G")))
+{
+	if (!powered && fuel >= fuel_power_threshold)
+		powered = true;
+	else powered = false;
+}
 
 //move everything
 if (SCROLL_CONDITIONS)

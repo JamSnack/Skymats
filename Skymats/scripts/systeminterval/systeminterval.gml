@@ -45,19 +45,21 @@ function check_height()
 	var _height = global.platform_height;
 	
 	//Handle particles
-	if (foreground_cloud_timer <= 0 && _height < -2000 && _height > -11000)
+	//- Clouds
+	if (foreground_cloud_timer <= 0 && _height < -2000 && _height > -13000)
 	{
 		foreground_cloud_timer = 20 + irandom(60) + cloud_timer_variation;
 		part_particles_create(global.foreground_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.foreground_cloud, 1);
 	} else if foreground_cloud_timer > 0 foreground_cloud_timer--;
 	
-	if (background_cloud_timer <= 0 && _height < -2000 && _height > -11000)
+	if (background_cloud_timer <= 0 && _height < -2000 && _height > -13000)
 	{
 		background_cloud_timer = 20 + irandom(70) + cloud_timer_variation;
 		part_particles_create(global.background_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.background_cloud1, 1);
 	} else if background_cloud_timer > 0 background_cloud_timer--;
 	
-	if (background_island_timer <= 0 && _height < -2000 && _height > -11000)
+	//- Islands
+	if (background_island_timer <= 0 && _height < -5000 && _height > -11000)
 	{
 		background_island_timer = 100 + irandom(70);
 		part_particles_create(global.background_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.background_islands1, 1);

@@ -32,7 +32,7 @@ layer_y("Void", global.platform_height);
 //Paralaxing
 var _x = camera_get_view_x(view_camera[0]);
 var _y = camera_get_view_y(view_camera[0]);
-layer_y("Background_Mountains", _y/(1.025));
+layer_y("Background_Mountains", _y/(1.05));
 layer_y("Background_Trees_1", _y/(1.5));
 layer_y("Background_Trees_2", _y/(1.15));
 

@@ -1,6 +1,7 @@
 /// @description
 fuel = 0;
 max_fuel = 2000;
+fuel_power_threshold = round(max_fuel*0.1);
 fuel_efficieny = 0;
 target_y = y;
 

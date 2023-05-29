@@ -1,7 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 global.background_particles = part_system_create();
-part_system_depth(global.background_particles, 96);
+part_system_depth(global.background_particles, 32); //33 is the depth of the Background_Trees layer
 
 global.foreground_particles = part_system_create();
 part_system_depth(global.foreground_particles, -2);
