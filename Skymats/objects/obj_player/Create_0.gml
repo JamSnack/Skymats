@@ -51,6 +51,9 @@ can_hurt_delay = 0;
 _tile = noone;
 hurt_effect = 0;
 
+//Combat stuff
+enemy_hurt_list = ds_list_create();
+
 if (global.tutorial_complete != true)
 {
 	x = 30;

@@ -24,6 +24,7 @@ if (global.is_host)
 			if (target.object_index == obj_player)
 			{		
 				global.inventory.addItem(item_id, 1);
+				create_floating_text(obj_player.x + irandom_range(-10, 10), obj_player.y - 10, "[scale, 0.5][wobble]+[spr_items, "+string(item_id)+"]");
 			}
 			/*else if (global.multiplayer)
 			{

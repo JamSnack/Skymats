@@ -34,6 +34,8 @@ function create_sprite_shatter(x, y, amount, sprite, speed, direction, weight)
 		var _i = instance_create_layer(x, y, "Instances", efct_sprite_piece, {sprite: sprite, speed: speed, direction: direction + irandom_range(-10, 10)});
 		_i.left = irandom(sprite_get_width(sprite)/2);
 		_i.top = irandom(sprite_get_height(sprite)/2);
+		_i.width = irandom(sprite_get_width(sprite)/2);
+		_i.height = irandom(sprite_get_height(sprite)/2);
 		_i.gravity = weight+GRAVITY;
 		//_i.friction = weight*0.1;
 	}
@@ -64,7 +66,7 @@ function create_notification(text)
 	instance_create_layer(0, 0, "Instances", efct_notification, {text: text});
 }
 
-function create_floating_text(x, y, text, color)
+function create_floating_text(x, y, text, color="[c_white]")
 {
 	instance_create_layer(x, y, "Instances", efct_floating_text, {text: text, color: color});
 }
@@ -96,7 +98,10 @@ function hurt_tile(_damage)
 	damage = (hp/max_hp)*7;
 	
 	if (hp <= 0)
+	{
 		instance_destroy();
+		create_sprite_shatter(x, y, 6 + irandom(4), sprite_index, 2, 90, 0);
+	}
 	
 	if (global.multiplayer && global.is_host && instance_exists(owner))
 	{

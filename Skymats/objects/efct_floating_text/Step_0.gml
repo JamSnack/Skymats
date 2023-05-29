@@ -9,3 +9,6 @@ image_alpha = lifetime;
 
 if (lifetime <= 0)
 	instance_destroy();
+	
+if (SCROLL_CONDITIONS)
+	x += SCROLL_SPEED;

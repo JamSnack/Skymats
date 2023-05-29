@@ -273,36 +273,43 @@ if (weapon_cooldown > 0)
 	weapon_cooldown -= (1 + bonus_cooldown);
 }
 	
-if (instance_exists(ENEMY) && weapon_cooldown <= 0)
+if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) <= stat_weapon_range && weapon_cooldown <= 0)
 {
-	var _e = collision_circle(x, y, stat_weapon_range, ENEMY, false, true);
+	var _amt = collision_circle_list(x, y, stat_weapon_range, ENEMY, false, true, enemy_hurt_list, false);
 	
 	//Hit the nearby mob
-	if (_e != noone)
+	if (_amt > 0)
 	{
-		if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
+		for (var _i = 0; _i < _amt; _i++)
 		{
-			//Speed bonuses
+			var _e = enemy_hurt_list[| _i];
 			
-			var bonus_knockback = true_speed/2;
-			var bonus_attack = round(true_speed/2);
+			if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
+			{
+				//Speed bonuses
 			
-			//Weapon dooldown
-			weapon_cooldown = stat_weapon_cooldown;
-		
-			//knockback direction
-			var dir_knock = point_direction(x, y, _e.x, _e.y);
-		
-			//Deal damage and apply knockback
-			hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
+				var bonus_knockback = true_speed/2;
+				var bonus_attack = round(true_speed/2);
 			
-			if (!global.is_host && global.multiplayer)
-				send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage + bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
+				//Weapon dooldown
+				weapon_cooldown = stat_weapon_cooldown;
 		
-			//Hit effect
-			instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+				//knockback direction
+				var dir_knock = point_direction(x, y, _e.x, _e.y);
+		
+				//Deal damage and apply knockback
+				hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
+			
+				if (!global.is_host && global.multiplayer)
+					send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage + bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
+		
+				//Hit effect
+				instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+			}
 		}
 	}
+	
+	ds_list_clear(enemy_hurt_list);
 }
 
 //Death
