@@ -186,6 +186,6 @@ if (window_alpha != 1)
 //free surface
 if (_free_surface)
 {
-	surface_free(window_surface);
+	surface_free(content_surface);
 	//window_surface = -1;
 }

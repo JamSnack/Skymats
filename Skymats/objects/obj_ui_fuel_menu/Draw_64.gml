@@ -23,7 +23,7 @@ else if (draw_item_index != ITEM_ID.last)
 	repeat(5)
 	{
 		//Current fuel
-		var _y1 = 16 + scroll_offset;
+		var _y1 = 16;
 	
 		draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
 	
@@ -121,9 +121,9 @@ if (surface_exists(content_surface))
 	draw_clear_alpha(c_white, 0);
 	draw_surface(content_surface, 0, scroll_offset);
 	surface_reset_target();
-	
-	draw_surface(window_surface, pos_x, pos_y + 3);
 }
+
+draw_surface(window_surface, pos_x, pos_y + 3);
 
 //Draw topbar
 if (draw_topbar)

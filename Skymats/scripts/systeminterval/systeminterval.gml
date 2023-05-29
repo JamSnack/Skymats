@@ -39,21 +39,32 @@ function check_height()
 {
 	static foreground_cloud_timer = 30;
 	static background_cloud_timer = 30;
+	static background_island_timer = 30;
+	static cloud_timer_variation = 0;
 	
 	var _height = global.platform_height;
 	
 	//Handle particles
 	if (foreground_cloud_timer <= 0 && _height < -2000 && _height > -11000)
 	{
-		foreground_cloud_timer = 10 + irandom(60);
-		part_particles_create(global.foreground_particles, -300, global.platform_height + irandom(1366), global.particle_library.foreground_cloud, 1);
+		foreground_cloud_timer = 20 + irandom(60) + cloud_timer_variation;
+		part_particles_create(global.foreground_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.foreground_cloud, 1);
 	} else if foreground_cloud_timer > 0 foreground_cloud_timer--;
 	
 	if (background_cloud_timer <= 0 && _height < -2000 && _height > -11000)
 	{
-		background_cloud_timer = 5 + irandom(10);
-		part_particles_create(global.background_particles, -300, global.platform_height + irandom(1366), global.particle_library.background_cloud1, 1);
+		background_cloud_timer = 20 + irandom(70) + cloud_timer_variation;
+		part_particles_create(global.background_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.background_cloud1, 1);
 	} else if background_cloud_timer > 0 background_cloud_timer--;
+	
+	if (background_island_timer <= 0 && _height < -2000 && _height > -11000)
+	{
+		background_island_timer = 100 + irandom(70);
+		part_particles_create(global.background_particles, -300, global.platform_height + irandom(1366) - 100, global.particle_library.background_islands1, 1);
+	} else if background_island_timer > 0 background_island_timer--;
+	
+	cloud_timer_variation += sin(current_time/1000);
+	cloud_timer_variation = clamp(cloud_timer_variation, -5, 90);
 }
 
 function manage_auto_burn()
@@ -154,7 +165,7 @@ function create_new_islands()
 	
 		if (_tiles < 1400 && interval_delay <= 0)
 		{
-			interval_delay = 13//(SYSTEM_INTERVAL)*(8 + irandom(4));
+			interval_delay = (SYSTEM_INTERVAL)*(8 + irandom(4));
 			var chosen_y = global.platform_height + 100 + irandom(1000);
 			instance_create_layer(-270, chosen_y, "Instances", obj_island_generator);
 			
