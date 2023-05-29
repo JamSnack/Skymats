@@ -28,3 +28,14 @@ if (keyboard_check_released(vk_rshift) && global.is_host == false)
 
 //Void
 layer_y("Void", global.platform_height);
+
+//Paralaxing
+var _x = camera_get_view_x(view_camera[0]);
+var _y = camera_get_view_y(view_camera[0]);
+layer_y("Background_Mountains", _y/(1.025));
+layer_y("Background_Trees_1", _y/(1.5));
+layer_y("Background_Trees_2", _y/(1.15));
+
+layer_x("Background_Mountains", _x*0.4);
+layer_x("Background_Trees_1", _x*0.2);
+layer_x("Background_Trees_2", _x*0.3);

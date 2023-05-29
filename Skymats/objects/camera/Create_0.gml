@@ -21,3 +21,5 @@ last_chunk_y = 0;
 boundary_size = 368;
 
 //layer_depth("Void", -99);
+mountains = layer_sprite_get_id("Background_Elements1", bkg_mountains);
+trees = layer_sprite_get_id("Background_Elements1", bkg_trees);
