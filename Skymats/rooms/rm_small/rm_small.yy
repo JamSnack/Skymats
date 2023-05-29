@@ -268,11 +268,11 @@
         {"type":0,"name":"g_CamOffsetScale","value":"1",},
         {"type":2,"name":"g_DistortTexture","value":"_filter_heathaze_noise_sprite",},
       ],"resourceVersion":"1.0","name":"HazyMazeCave","tags":[],"resourceType":"GMREffectLayer",},
+    {"spriteId":null,"colour":4294377363,"x":0,"y":0,"htiled":false,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":15.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":false,"depth":98,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Background","tags":[],"resourceType":"GMRBackgroundLayer",},
     {"assets":[
         {"spriteId":{"name":"spr_void","path":"sprites/spr_void/spr_void.yy",},"headPosition":0.0,"rotation":0.0,"scaleX":47.0,"scaleY":6.0,"animationSpeed":1.0,"colour":4294967295,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":1504.0,"resourceVersion":"1.0","name":"graphic_2C78AB01","tags":[],"resourceType":"GMRSpriteGraphic",},
         {"spriteId":{"name":"spr_darkness","path":"sprites/spr_darkness/spr_darkness.yy",},"headPosition":0.0,"rotation":0.0,"scaleX":47.0,"scaleY":1.0,"animationSpeed":1.0,"colour":4294967295,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":1440.0,"resourceVersion":"1.0","name":"graphic_465FF1FE","tags":[],"resourceType":"GMRSpriteGraphic",},
       ],"visible":true,"depth":98,"userdefinedDepth":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Void","tags":[],"resourceType":"GMRAssetLayer",},
-    {"spriteId":null,"colour":4294377363,"x":0,"y":0,"htiled":false,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":15.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":false,"depth":198,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Background","tags":[],"resourceType":"GMRBackgroundLayer",},
   ],
   "inheritLayers": false,
   "creationCodeFile": "",

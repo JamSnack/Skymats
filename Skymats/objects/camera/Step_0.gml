@@ -36,6 +36,6 @@ layer_y("Background_Mountains", _y/(1.025));
 layer_y("Background_Trees_1", _y/(1.5));
 layer_y("Background_Trees_2", _y/(1.15));
 
-layer_x("Background_Mountains", _x*0.4);
+layer_x("Background_Mountains", _x*0.01);
 layer_x("Background_Trees_1", _x*0.2);
-layer_x("Background_Trees_2", _x*0.3);
+layer_x("Background_Trees_2", _x*0.1);

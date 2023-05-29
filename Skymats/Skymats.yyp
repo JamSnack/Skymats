@@ -275,6 +275,7 @@
     {"id":{"name":"__scribble_gen_9_write_vbuffs","path":"scripts/__scribble_gen_9_write_vbuffs/__scribble_gen_9_write_vbuffs.yy",},"order":9,},
     {"id":{"name":"scribble_font_set_style_family","path":"scripts/scribble_font_set_style_family/scribble_font_set_style_family.yy",},"order":15,},
     {"id":{"name":"efct_game_save","path":"objects/efct_game_save/efct_game_save.yy",},"order":5,},
+    {"id":{"name":"efct_sprite_piece","path":"objects/efct_sprite_piece/efct_sprite_piece.yy",},"order":6,},
     {"id":{"name":"spr_ui_background_2","path":"sprites/spr_ui_background_2/spr_ui_background_2.yy",},"order":12,},
     {"id":{"name":"scribble_kerning_pair_get","path":"scripts/scribble_kerning_pair_get/scribble_kerning_pair_get.yy",},"order":18,},
     {"id":{"name":"spr_obsidian","path":"sprites/spr_obsidian/spr_obsidian.yy",},"order":17,},

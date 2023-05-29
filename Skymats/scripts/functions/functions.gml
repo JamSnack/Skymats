@@ -27,6 +27,18 @@ global.stored_resources_auto_burn = array_create(ITEM_ID.last, 0);
 global.stored_resource_to_burn = 1;
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
+function create_sprite_shatter(x, y, amount, sprite, speed, direction, weight)
+{
+	repeat(amount)
+	{
+		var _i = instance_create_layer(x, y, "Instances", efct_sprite_piece, {sprite: sprite, speed: speed, direction: direction + irandom_range(-10, 10)});
+		_i.left = irandom(sprite_get_width(sprite)/2);
+		_i.top = irandom(sprite_get_height(sprite)/2);
+		_i.gravity = weight+GRAVITY;
+		//_i.friction = weight*0.1;
+	}
+}
+
 function create_smoke(x, y, direction, speed)
 {
 	instance_create_layer(x, y, "Instances", efct_smoke, {direction: direction, speed: speed});
@@ -126,6 +138,8 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 			{
 				drop_item = true;
 				instance_destroy();
+				create_sprite_shatter(x, y, 2 + irandom(2), sprite_index, irandom(2) + k_amt/3, k_direction, weight);
+				create_smoke(x, y, k_direction, 1);
 			}
 		}
 	}
