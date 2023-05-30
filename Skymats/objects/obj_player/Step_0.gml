@@ -179,12 +179,11 @@ if (mouse_check_button(mb_left))
 }
 
 _tile = collision_point(mine_x, mine_y, TILE, false, true);
-_mob = collision_point(mine_x, mine_y, ENEMY, false, true);
 
 //mining functionality
-if (mine_cooldown <= 0)
+if (mine_cooldown <= 0 && mouse_check_button(mb_left))
 {
-	if (_tile != noone && _tile.tile_level <= stat_mine_level && mouse_check_button(mb_left))
+	if (_tile != noone && _tile.tile_level <= stat_mine_level)
 	{
 		if (global.is_host)
 		{
@@ -215,10 +214,20 @@ if (mine_cooldown <= 0)
 	}
 	
 	//Deal mining damage to enemies
-	if (_mob != noone && collision_line(x, y, mine_x, mine_y, OBSTA, false, true) == noone)
+	_mob = collision_line_list(x, y, mine_x, mine_y, ENEMY, false, true, enemy_hurt_list_mining, false);
+
+	if (_mob > 0 && collision_line(x, y, mine_x, mine_y, OBSTA, false, true) == noone)
 	{
-		hurt_enemy(_mob, mine_laser_direction, 1, 1, 0);
+		for (var _m = 0; _m < _mob; _m++)
+		{
+			var _inst = enemy_hurt_list_mining[| _m];
+			hurt_enemy(_inst, mine_laser_direction, 1, 1, 0);
+		}
+		
 		mine_cooldown = stat_mine_cooldown/2;
+		
+		//reset
+		ds_list_clear(enemy_hurt_list_mining);
 	}
 }
 else if (mine_cooldown > 0) mine_cooldown--;

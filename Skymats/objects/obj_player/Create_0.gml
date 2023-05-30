@@ -56,6 +56,7 @@ hurt_effect = 0;
 
 //Combat stuff
 enemy_hurt_list = ds_list_create();
+enemy_hurt_list_mining = ds_list_create();
 
 if (global.tutorial_complete != true)
 {
