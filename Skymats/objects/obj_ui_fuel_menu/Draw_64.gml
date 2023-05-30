@@ -9,48 +9,49 @@ if (sprite_exists(sprite_background))
 //Draw to content surface
 if (!surface_exists(content_surface))
 {
-	content_surface = surface_create(width, height - 6);
+	content_surface = surface_create(width, scroll_length);
 	draw_item_index = 1;
 	
 	surface_set_target(content_surface);
 	draw_clear_alpha(c_white, 0);
 	surface_reset_target();
 }
-else if (draw_item_index != ITEM_ID.last)
+
+if (draw_item_index < ITEM_ID.last)
 {
 	surface_set_target(content_surface);
 	
-	repeat(5)
+	//Current fuel
+	var _y1 = 16;
+	
+	draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
+	
+	_y1 += 128;
+	
+	var _selected_item_x = 500;
+	
+	draw_set_color(c_gray);
+	draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
+	draw_set_color(c_white);
+	
+	//Fuel efficiency and item to burn
+	if (global.stored_resource_to_burn != 0)
 	{
-		//Current fuel
-		var _y1 = 16;
+		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75]"+get_item_name(global.stored_resource_to_burn));
+		draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
+		draw_text_scribble(_selected_item_x + 128 + 20, _y1 + 64, "[font]"+string(global.stored_resources[global.stored_resource_to_burn]));
+		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: " + string(get_item_bonus_fuel(global.stored_resource_to_burn)) + "%");
+	}
+	else
+	{
+		draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75][c_red]No Item Available[\c]");
+		draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
+	}
 	
-		draw_text_scribble(width/2, _y1, "[font][scale, 2][fa_center]Fuel Management");
+	draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
 	
-		_y1 += 128;
-	
-		var _selected_item_x = 500;
-	
-		draw_set_color(c_gray);
-		draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
-		draw_set_color(c_white);
-	
-		//Fuel efficiency and item to burn
-		if (global.stored_resource_to_burn != 0)
-		{
-			draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75]"+get_item_name(global.stored_resource_to_burn));
-			draw_sprite_ext(spr_items, global.stored_resource_to_burn, _selected_item_x, 4 + _y1, 4, 4, 0, c_white, 1);
-			draw_text_scribble(_selected_item_x + 128 + 20, _y1 + 64, "[font]"+string(global.stored_resources[global.stored_resource_to_burn]));
-			draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: " + string(get_item_bonus_fuel(global.stored_resource_to_burn)) + "%");
-		}
-		else
-		{
-			draw_text_scribble(_selected_item_x + 64, _y1-20, "[font][fa_center][scale, 0.75][c_red]No Item Available[\c]");
-			draw_text_scribble(_selected_item_x + 64, _y1 + 150, "[font][fa_center]Fuel Efficiency: 0%\n[scale, 0.5]Increase fuel efficiency by selecting an item to burn.");
-		}
-	
-		draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
-	
+	repeat(ITEM_ID.last)
+	{
 		//Resource journal
 		var max_fuel = obj_platform.max_fuel;
 		var _y2 = _y1 + 256;
@@ -62,10 +63,9 @@ else if (draw_item_index != ITEM_ID.last)
 			if (_i == ITEM_ID.enemy_parts)
 			{
 				draw_text_scribble(5, _y2 + _i*32 + 16, "[font]Enemy Drops");
-				_y2 += 32+16;
 			}
 			
-			
+			_y2 += 32+16;
 		}
 		else if (_i == 1) draw_text_scribble(5, _y2, "[font]Ores and Minerals");
 		
@@ -77,8 +77,8 @@ else if (draw_item_index != ITEM_ID.last)
 		{
 			//Create item description
 			var _str = "|[c_green] " +
-			string(get_item_value(_i)) + "$ [c_white]|[c_red] %" +
-			string(100*(get_fuel_value(_i)/max_fuel)) + " Fuel[/c] | " + 
+			string(get_item_value(_i)) + "$ [c_white]|[c_red] " +
+			string(100*(get_fuel_value(_i)/max_fuel)) + "% Fuel[/c] | " + 
 			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
 			
 			if (_i > ITEM_ID.stone && _i < ITEM_ID.enemy_parts)
@@ -101,7 +101,7 @@ else if (draw_item_index != ITEM_ID.last)
 
 		draw_item_index++;
 		
-		if (draw_item_index == ITEM_ID.last)
+		if (draw_item_index >= ITEM_ID.last)
 			break;
 	}
 	

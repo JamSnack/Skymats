@@ -12,7 +12,7 @@ if (global.stored_resource_to_burn != 0 && global.stored_resources[global.stored
 	
 		//Reset relevant ui
 		if (instance_exists(obj_ui_fuel_menu))
-				with (obj_ui_fuel_menu) { surface_free(window_surface) };
+				with (obj_ui_fuel_menu) { surface_free(content_surface) };
 	}
 			
 	alarm[0] = 45;

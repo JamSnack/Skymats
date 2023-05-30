@@ -109,7 +109,7 @@ function handle_data(data)
 				}
 				
 				if (instance_exists(obj_ui_fuel_menu))
-					surface_free(obj_ui_fuel_menu.window_surface);
+					surface_free(obj_ui_fuel_menu.content_surface);
 			}
 			break;
 			
