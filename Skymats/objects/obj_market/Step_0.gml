@@ -63,6 +63,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 					//reset slot
 					global.inventory.deleteItemAtSlot(_i);
 					global.inventory.held_value = 0;
+					global.inventory.held_fuel = 0;
 				}
 			}
 			

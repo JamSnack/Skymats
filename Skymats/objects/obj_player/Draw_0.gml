@@ -42,6 +42,24 @@ else if (global.inventory.selected_slot != -1)
 	draw_sprite(spr_place_no_item, current_time/100, _x, _y);
 */
 
+//Mining-Laser
+if (mouse_check_button(mb_left))
+{
+	if (!surface_exists(mine_surface))
+		mine_surface = surface_create(64 + 8, 8);
+	
+	surface_set_target(mine_surface);
+	draw_clear_alpha(c_white, 0);
+	draw_sprite_stretched_ext(spr_mining_laser, current_time/40, 0, 0, mine_laser_distance, 6, c_white, 0.9 + 0.1*sin(current_time/20));
+	draw_sprite_ext(spr_mine_spark, 0, mine_laser_distance, 0, 0.6+random(0.4), 0.6+irandom(0.4), 0, c_white, 1);
+	surface_reset_target();
+	
+	draw_surface_ext(mine_surface, x, y, 1, 1, mine_laser_direction, c_white, 1);
+	
+	
+	
+}
+
 //Draw player
 if (hurt_effect != 0)
 {

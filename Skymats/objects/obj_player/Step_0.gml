@@ -164,9 +164,25 @@ else
 	
 //Tile mininig
 //var _selected_slot = global.inventory.selected_slot;
-_tile = collision_point(mouse_x, mouse_y, TILE, false, true);
 
-if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64)
+//Mining Visuals
+mine_laser_distance = min(point_distance(x, y, mouse_x, mouse_y), 64);
+mine_laser_direction = point_direction(x, y, mouse_x, mouse_y);
+
+var mine_x = x + lengthdir_x(mine_laser_distance, mine_laser_direction);
+var mine_y = y + lengthdir_y(mine_laser_distance, mine_laser_direction);
+
+if (mouse_check_button(mb_left))
+{
+	//effects
+	part_particles_create(global.foreground_particles, mine_x, mine_y, global.particle_library.mining_spark, 2);
+}
+
+_tile = collision_point(mine_x, mine_y, TILE, false, true);
+_mob = collision_point(mine_x, mine_y, ENEMY, false, true);
+
+//mining functionality
+if (mine_cooldown <= 0)
 {
 	if (_tile != noone && _tile.tile_level <= stat_mine_level && mouse_check_button(mb_left))
 	{
@@ -197,8 +213,16 @@ if (mine_cooldown <= 0 && point_distance(x, y, mouse_x, mouse_y) < 64)
 		
 		mine_cooldown = stat_mine_cooldown;
 	}
+	
+	//Deal mining damage to enemies
+	if (_mob != noone && collision_line(x, y, mine_x, mine_y, OBSTA, false, true) == noone)
+	{
+		hurt_enemy(_mob, mine_laser_direction, 1, 1, 0);
+		mine_cooldown = stat_mine_cooldown/2;
+	}
 }
 else if (mine_cooldown > 0) mine_cooldown--;
+
 //Jetpack
 if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 {

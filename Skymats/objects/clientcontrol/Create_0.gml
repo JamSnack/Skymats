@@ -8,6 +8,7 @@ global.inventory = {
 	size        : 10,
 	selected_slot : -1,
 	held_value: 0,
+	held_fuel: 0,
 	
 	deleteItemAtSlot : function(slot) {
 		held_value -= get_item_value(contents[slot])*contents[slot].amount;
@@ -67,18 +68,23 @@ global.inventory = {
 				contents[i].amount += _amount;
 				//obj_player.weight += _amount/10;
 				held_value += get_item_value(_item_id)*_amount;
+				held_fuel += get_fuel_value(_item_id)*_amount;
 				return i;
 			}
 		}
 		
 		if (createItem(_item_id, _amount))
+		{
 			held_value += get_item_value(_item_id)*_amount;
+			held_fuel += get_fuel_value(_item_id)*_amount;
+		}
 	},
 	clear : function() {
 		for (var i = 0; i < size; i++)
 			deleteItemAtSlot(i);
 		
 		held_value = 0;
+		held_fuel = 0;
 	}
 	
 }

@@ -32,9 +32,19 @@ part_type_direction(p_background_islands1, 0, 0, 0, 0);
 part_type_speed(p_background_islands1, SCROLL_SPEED/3, SCROLL_SPEED/3 + 0.05, 0, 0);
 part_type_life(p_background_islands1, (300+1366)/(SCROLL_SPEED/3), (300+1366)/(SCROLL_SPEED/3) + 10);
 
+var p_mine_spark = part_type_create();
+part_type_alpha2(p_mine_spark, 1.0, 0);
+part_type_sprite(p_mine_spark, spr_mine_spark, false, false, true);
+part_type_scale(p_mine_spark, 0.2, 0.2);
+part_type_direction(p_mine_spark, 0, 359, 0, 0);
+part_type_gravity(p_mine_spark, 0.1, 270);
+part_type_speed(p_mine_spark, 1, 2, 0, 0);
+part_type_life(p_mine_spark, 5, 9);
+
 global.particle_library =
 {
 	foreground_cloud : p_foreground_cloud,
 	background_cloud1 : p_background_cloud1,
-	background_islands1: p_background_islands1
+	background_islands1: p_background_islands1,
+	mining_spark: p_mine_spark
 }

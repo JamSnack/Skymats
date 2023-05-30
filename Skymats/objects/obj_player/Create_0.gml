@@ -26,6 +26,9 @@ grappling_to = noone;
 
 //Mine
 mine_cooldown = 0;
+mine_surface = noone;
+mine_laser_distance = 0;
+mine_laser_direction = 0;
 
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);

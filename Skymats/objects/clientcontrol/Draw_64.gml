@@ -41,7 +41,7 @@ if (inventory_open_animation > 0)
 	}
 	
 	//Draw held value and level
-	draw_text_scribble(_x, _y - 20, "[c_white]Value of Stash: [c_lime]" + string(global.inventory.held_value));
+	draw_text_scribble(_x, _y - 20, "[c_white]Value of Stash: [c_lime]" + string(global.inventory.held_value) + "[/c] |[c_red] " + string(global.inventory.held_fuel) );
 }
 
 //Draw compass
