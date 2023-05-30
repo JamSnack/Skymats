@@ -34,6 +34,7 @@ if (draw_item_index < ITEM_ID.last)
 	draw_rectangle(_selected_item_x, 4 + _y1, _selected_item_x + 128, 4 + 128 + _y1, false);
 	draw_set_color(c_white);
 	
+	
 	//Fuel efficiency and item to burn
 	if (global.stored_resource_to_burn != 0)
 	{
@@ -53,7 +54,6 @@ if (draw_item_index < ITEM_ID.last)
 	repeat(ITEM_ID.last)
 	{
 		//Resource journal
-		var max_fuel = obj_platform.max_fuel;
 		var _y2 = _y1 + 256;
 	
 		var _i = draw_item_index;
@@ -77,8 +77,8 @@ if (draw_item_index < ITEM_ID.last)
 		{
 			//Create item description
 			var _str = "|[c_green] " +
-			string(get_item_value(_i)) + "$ [c_white]|[c_red] " +
-			string(100*(get_fuel_value(_i)/max_fuel)) + "% Fuel[/c] | " + 
+			string(get_item_value(_i)) + "$ [c_white]|[c_red] Fuel: " +
+			string(get_fuel_value(_i)) + "[/c] | " + 
 			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
 			
 			if (_i > ITEM_ID.stone && _i < ITEM_ID.enemy_parts)
@@ -119,7 +119,22 @@ if (surface_exists(content_surface))
 {
 	surface_set_target(window_surface);
 	draw_clear_alpha(c_white, 0);
+	
 	draw_surface(content_surface, 0, scroll_offset);
+	
+	//live information
+	draw_text_scribble(128, 128 + scroll_offset, "[font][fa_center]Max Fuel: " + string(obj_platform.max_fuel) +
+		"\nFuel: " + string(obj_platform.fuel)
+	);
+	
+	var _p = obj_platform.powered;
+	var str = (_p == true) ? "[c_lime]ON" : "[c_red]OFF";
+	
+	draw_text_scribble(128, 200 + scroll_offset, "[font][fa_center]" + str);
+	
+	draw_text_scribble(128, 250 + scroll_offset, "[font][fa_center][scale, 0.75]Fuel needed to start: " + string(obj_platform.max_fuel*0.1) );
+	
+	
 	surface_reset_target();
 }
 
