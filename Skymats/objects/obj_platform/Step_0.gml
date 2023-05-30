@@ -72,7 +72,10 @@ if (target_y != global.platform_height+938)
 //Powered
 if (global.is_host && powered && power_delay > 0)
 	power_delay--;
-else if (!powered || fuel <= 1) power_delay = 60;
+else if (!powered) power_delay = 60;
+
+if (powered && fuel <= 1)
+	powered = false;
 
 if (keyboard_check_released(ord("G")))
 {
