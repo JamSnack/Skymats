@@ -1,4 +1,4 @@
-   // Script assets have changed for v2.3.0 see
+    // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
 #macro GRAVITY 0.1
@@ -535,7 +535,9 @@ function save_expedition(expedition_name = "exped")
 				stored_resources: global.stored_resources,
 				stored_resources_unlocked: global.stored_resources_unlocked,
 				auto_burn: global.stored_resources_auto_burn,
-				burning: global.stored_resource_to_burn
+				burning: global.stored_resource_to_burn,
+				fuel: fuel,
+				max_fuel: max_fuel
 			}
 				
 			var json = json_stringify(save_struct);
@@ -659,51 +661,58 @@ function read_character(file)
 
 function load_expedition(file)
 {
+	//NOTE: This function is expected to be executed twice. Once before obj_platform is loaded, and once after obj_platform is loaded.
+	show_debug_message("Attempting to load " + file);
+	
 	if (file_exists(file))
 	{
 		var _buff = buffer_load(file);	
 		var _string = buffer_read(_buff, buffer_string);
 		var _data = json_parse(_string);
 	
-		try
+		if (!instance_exists(obj_platform))
 		{
-			//Platform
-			global.platform_height = _data.platform_height;
-			global.tutorial_complete = _data.tutorial_complete;
-			global.stored_resource_to_burn = _data.burning;
-		}
-		catch (e)
-		{
-			show_debug_message("Error loading file");
-			show_debug_message(e);
-		}
-		
-		//Load unlocked resources
-		try
-		{
-			for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+			try
 			{
-				if (_data.stored_resources_unlocked[_i])
-					global.stored_resources_unlocked[_i] = 1;
+				//Platform
+				global.platform_height = _data.platform_height;
+				global.tutorial_complete = _data.tutorial_complete;
+				global.stored_resource_to_burn = _data.burning;
+			}
+		
+			//Load unlocked resources
+			try
+			{
+				for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+				{
+					if (_data.stored_resources_unlocked[_i])
+						global.stored_resources_unlocked[_i] = 1;
+				}
+			}
+		
+			//Load resources
+			try
+			{
+				for (var _i = 0; _i < array_length(_data.stored_resources); _i++)
+				{
+					global.stored_resources[_i] = _data.stored_resources[_i];
+				}
+			}
+		
+			//Load auto-burn list
+			try
+			{
+				for (var _i = 0; _i < array_length(_data.auto_burn); _i++)
+				{
+					global.auto_burn[_i] = _data.auto_burn[_i];
+				}
 			}
 		}
-		
-		//Load resources
-		try
+		else
 		{
-			for (var _i = 0; _i < array_length(_data.stored_resources); _i++)
-			{
-				global.stored_resources[_i] = _data.stored_resources[_i];
-			}
-		}
-		
-		//Load auto-burn list
-		try
-		{
-			for (var _i = 0; _i < array_length(_data.auto_burn); _i++)
-			{
-				global.auto_burn[_i] = _data.auto_burn[_i];
-			}
+			//Load platform-scope variables
+			obj_platform.fuel = _data.fuel;
+			obj_platform.max_fuel = _data.max_fuel;
 		}
 	}
 }

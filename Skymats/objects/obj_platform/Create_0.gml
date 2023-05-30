@@ -14,3 +14,6 @@ power_delay = 0;
 spawn_high_island_delay = 0;
 
 alarm[0] = 10;
+
+//Handle platform-scope loading
+load_expedition(networkingControl.exped_name + ".exped");
