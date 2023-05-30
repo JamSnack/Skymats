@@ -17,3 +17,6 @@ if (!place_empty(x, y+vspeed, OBSTA))
 }
 else
 	gravity = 0.1;
+	
+if (SCROLL_CONDITIONS)
+	x += SCROLL_SPEED;
