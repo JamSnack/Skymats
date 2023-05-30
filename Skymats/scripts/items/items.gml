@@ -180,7 +180,7 @@ function get_fuel_value(item_id)
 	switch item_id
 	{
 		case ITEM_ID.stone:
-		case ITEM_ID.grass:		   { return  5; } break;
+		case ITEM_ID.grass:		   { return  1; } break;
 		case ITEM_ID.coal:         
 		case ITEM_ID.copper:	   
 		case ITEM_ID.iron:	       
@@ -196,7 +196,7 @@ function get_fuel_value(item_id)
 		case ITEM_ID.enemy_parts:  
 		case ITEM_ID.greenthin_legs: { return  5; } break;
 		case ITEM_ID.fuel_cell:      { return 1500;} break;
-		default:				   { return 30; } break;
+		default:				   { return 15; } break;
 	}
 }
 
