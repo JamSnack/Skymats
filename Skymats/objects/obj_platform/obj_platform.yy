@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_bedrock",
-    "path": "sprites/spr_bedrock/spr_bedrock.yy",
+    "name": "spr_platform",
+    "path": "sprites/spr_platform/spr_platform.yy",
   },
   "solid": false,
   "visible": true,

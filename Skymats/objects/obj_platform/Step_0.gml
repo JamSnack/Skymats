@@ -48,7 +48,7 @@ if (y != target_y)
 	//Move all platform objects
 	obj_market.y = bbox_top-74;
 	obj_power_button.y = bbox_top-2;
-	obj_fuel_storage.y = bbox_top+16;
+	obj_fuel_storage.y = y-36;
 }
 
 if (y != yprevious)
@@ -80,6 +80,10 @@ if (keyboard_check_released(ord("G")))
 		powered = true;
 	else powered = false;
 }
+
+//lerp fuel
+if (draw_fuel != fuel)
+	draw_fuel = lerp(draw_fuel, fuel, 0.05);
 
 //move everything
 if (SCROLL_CONDITIONS)

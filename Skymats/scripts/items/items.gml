@@ -179,6 +179,7 @@ function get_fuel_value(item_id)
 {
 	switch item_id
 	{
+		case ITEM_ID.stone:
 		case ITEM_ID.grass:		   { return  5; } break;
 		case ITEM_ID.coal:         
 		case ITEM_ID.copper:	   
