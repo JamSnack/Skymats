@@ -1,7 +1,47 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
+//Keep the platform unpowered during dungeon content.
+if (global.dungeon)
+	powered = false;
+
+//Approach dungeons, otherwise follow normal procedure regarding engine use, fuel, and flight
+if (approach_dungeon)
+{
+	//This routine is used to approach a dungeon and enter it.
+	//NOTE: approach_dungeon must be set to false by an obj_dungeon_dock_point entity.
+	with (TILE)
+		y += 1;
+		
+	with (obj_dungeon_dock_point)
+		y += 1;
+		
+	//Lerp naughty players to the correct location
+	with (obj_player)
+	{
+		if (x < other.bbox_left || x > other.bbox_right)
+			x = lerp(x, other.x, 0.015);
+			
+		if (y > other.bbox_top)
+			y = lerp(y, other.bbox_top-9, 0.015);
+	}
+		
+	if (!instance_exists(obj_dungeon_dock_point))
+	{
+		approach_dungeon = false;
+		
+		//SNAP naughty players to the correct location
+		with (obj_player)
+		{
+			if (x <= other.bbox_left || x >= other.bbox_right)
+				x = other.x;
+			
+			if (y > other.bbox_top)
+				y = other.bbox_top-10;
+		}
+	}
+}
+else if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
 {
 	obstruction = false;
 	if (fuel > 1 && powered && power_delay <= 0)

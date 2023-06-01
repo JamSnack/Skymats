@@ -138,6 +138,7 @@
     {"id":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},"order":2,},
     {"id":{"name":"scribble_add_macro","path":"scripts/scribble_add_macro/scribble_add_macro.yy",},"order":0,},
     {"id":{"name":"spr_darkness","path":"sprites/spr_darkness/spr_darkness.yy",},"order":43,},
+    {"id":{"name":"obj_dungeon_dock_point","path":"objects/obj_dungeon_dock_point/obj_dungeon_dock_point.yy",},"order":0,},
     {"id":{"name":"__scribble_get_font_data_map","path":"scripts/__scribble_get_font_data_map/__scribble_get_font_data_map.yy",},"order":8,},
     {"id":{"name":"scribble_font_exists","path":"scripts/scribble_font_exists/scribble_font_exists.yy",},"order":7,},
     {"id":{"name":"scribble_anim_wheel","path":"scripts/scribble_anim_wheel/scribble_anim_wheel.yy",},"order":8,},
@@ -378,6 +379,7 @@
     {"folderPath":"folders/Sprites/Effects/Particles.yy","order":1,"resourceVersion":"1.0","name":"Particles","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/hitboxes.yy","order":48,"resourceVersion":"1.0","name":"hitboxes","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Player.yy","order":49,"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/Dungeons.yy","order":35,"resourceVersion":"1.0","name":"Dungeons","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
