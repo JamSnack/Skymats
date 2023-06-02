@@ -19,11 +19,17 @@ if (approach_dungeon)
 	//Lerp naughty players to the correct location
 	with (obj_player)
 	{
-		if (x < other.bbox_left || x > other.bbox_right)
+		if (x < other.bbox_left + 6 || x > other.bbox_right - 6)
+		{
 			x = lerp(x, other.x, 0.015);
+			hspd = 0;
+		}
 			
-		if (y > other.bbox_top)
-			y = lerp(y, other.bbox_top-9, 0.015);
+		if (y > other.bbox_top - 8)
+		{
+			y = lerp(y, other.bbox_top-20, 0.05);
+			vspd = 0;
+		}
 	}
 		
 	if (!instance_exists(obj_dungeon_dock_point))
