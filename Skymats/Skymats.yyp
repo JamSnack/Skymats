@@ -134,6 +134,7 @@
     {"id":{"name":"spr_sapphire","path":"sprites/spr_sapphire/spr_sapphire.yy",},"order":5,},
     {"id":{"name":"efct_floating_text","path":"objects/efct_floating_text/efct_floating_text.yy",},"order":0,},
     {"id":{"name":"Files","path":"scripts/Files/Files.yy",},"order":5,},
+    {"id":{"name":"dungeonSaver","path":"objects/dungeonSaver/dungeonSaver.yy",},"order":1,},
     {"id":{"name":"obj_text","path":"objects/obj_text/obj_text.yy",},"order":23,},
     {"id":{"name":"spr_ground_lemons","path":"sprites/spr_ground_lemons/spr_ground_lemons.yy",},"order":20,},
     {"id":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},"order":2,},
@@ -249,6 +250,7 @@
     {"id":{"name":"scribble_glyph_get","path":"scripts/scribble_glyph_get/scribble_glyph_get.yy",},"order":16,},
     {"id":{"name":"curve","path":"animcurves/curve/curve.yy",},"order":0,},
     {"id":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"order":0,},
+    {"id":{"name":"dungeonCreator","path":"rooms/dungeonCreator/dungeonCreator.yy",},"order":5,},
     {"id":{"name":"__scribble_class_event","path":"scripts/__scribble_class_event/__scribble_class_event.yy",},"order":1,},
     {"id":{"name":"scribble_typewriter_add_event","path":"scripts/scribble_typewriter_add_event/scribble_typewriter_add_event.yy",},"order":7,},
     {"id":{"name":"obj_chat_box","path":"objects/obj_chat_box/obj_chat_box.yy",},"order":22,},
@@ -327,6 +329,7 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"roomId":{"name":"dungeonCreator","path":"rooms/dungeonCreator/dungeonCreator.yy",},},
     {"roomId":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_character_creator","path":"rooms/rm_character_creator/rm_character_creator.yy",},},

@@ -28,6 +28,30 @@ global.stored_resources_auto_burn = array_create(ITEM_ID.last, 0);
 global.stored_resource_to_burn = 1;
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
+function string_split(str, delimiter)
+{
+	var r;
+	
+	if (argument_count >= 3)
+	{
+	    r = argument[2];
+	    ds_list_clear(r);
+	} 
+	else r = ds_list_create();
+	
+	var p = string_pos(delimiter, str), o = 1;
+	var dl = string_length(delimiter);
+	if (dl) while (p) {
+	    ds_list_add(r, string_copy(str, o, p - o));
+	    o = p + dl;
+	    p = string_pos_ext(delimiter, str, o);
+	}
+	
+	ds_list_add(r, string_delete(str, 1, o - 1));
+	
+	return r;
+}
+
 function init_dungeon_load()
 {
 	if (instance_exists(obj_platform))

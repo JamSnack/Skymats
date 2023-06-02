@@ -16,6 +16,9 @@ if (approach_dungeon)
 	with (obj_dungeon_dock_point)
 		y += 1;
 		
+	with (obj_island_marker)
+		y += 1;
+
 	//Lerp naughty players to the correct location
 	with (obj_player)
 	{

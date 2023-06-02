@@ -1,4 +1,4 @@
-// Script assets have changed for v2.3.0 see
+ // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function save_character(username = "character")
 {
@@ -288,20 +288,31 @@ function multi_string(spacer = "")
 
 function load_dungeon(file_name)
 {
+	
 	//Used to load base64 encoded dungeons from ".dngn" files.
 	//Once loaded, a dungeon will iteratively be constructed and the game-state will be flipped to dungeon mode.
-	
-	
+	if (file_exists(working_directory + "/Dungeons/"+file_name+".dngn"))
+	{
+		
+		var _buff = buffer_load(working_directory + "/Dungeons/"+file_name+".dngn");	
+		var _string = buffer_read(_buff, buffer_string);
+		var _data = json_parse(_string);
+		
+		for (var i=0; i < array_length(_data.instances); i++)
+		{
+			var _i = _data.instances[i];
+			show_debug_message(_i);
+			instance_create_layer(_i.x, global.platform_height+_i.y - 2000, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
+		}
+		
+	}
 }
 
 function save_dungeon(file_name, instance_list)
 {
-	var file = file_text_open_write(working_directory+"/Dungeons/"+file_name+".dngn");
-	
-	var encoded_data_as_string = "";
-	
 	//Saves a list of instances to a ".dngn" file after base64 encoding them. Targets the "Dungeon" folder. Useful during development.
 	var _amt = ds_list_size(instance_list);
+	var master_string = "{ \"instances\": [";
 	
 	for (var _i = 0; _i < _amt; _i++)
 	{
@@ -309,16 +320,34 @@ function save_dungeon(file_name, instance_list)
 		
 		if (instance_exists(_inst))
 		{
-			//We want to save most important variables. Hardcode these for now.
-			encoded_data_as_string += "[";
-			encoded_data_as_string += multi_string(", ", object_get_name(object_index), x, y, image_xscale, image_yscale, image_angle);
-			encoded_data_as_string += "]";
+			with (_inst)
+			{
+				//We want to save most important variables. Hardcode these for now.
+				var _data = 
+				{
+					obj: object_get_name(object_index),
+					x: x,
+					y: y,
+					image_xscale: image_xscale,
+					image_yscale: image_yscale,
+					image_angle: image_angle
+				}
+				
+				master_string += json_stringify(_data) + ",";
+			}
 		}
 	}
 	
 	//Encode the data
 	
-	//Save data, close the opened file
-	file_text_write_string(file, encoded_data_as_string);
-	file_text_close(file);
+	//Save data
+	master_string += "] }";
+	var _buff = buffer_create(string_byte_length(master_string) + 1, buffer_fixed, 1);
+	buffer_write(_buff, buffer_string, master_string);
+	buffer_save(_buff, working_directory+"/Dungeons/"+file_name+".dngn");
+	
+	//cleanup
+	buffer_delete(_buff);
+	
+	show_debug_message("Dungeon saved successfully.");
 }
