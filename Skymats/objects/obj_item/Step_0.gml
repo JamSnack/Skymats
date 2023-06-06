@@ -11,7 +11,7 @@ if (global.is_host)
 		_dist = distance_to_object(target);	
 	
 		//Attract
-		if (_dist < 64 || speed != 0)
+		if (_dist < 64 || speed != 0 || big_suck)
 		{
 			x = lerp(x, target.x, rate);
 			y = lerp(y, target.y, rate);

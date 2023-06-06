@@ -298,26 +298,32 @@ function load_dungeon(file_name)
 		var _buff = buffer_load(working_directory + "/Dungeons/"+file_name+".dngn");	
 		var _string = buffer_read(_buff, buffer_string);
 		var _data = json_parse(_string);
-		var clear_condition_object = noone;
 		
 		for (var i=0; i < array_length(_data.instances); i++)
 		{
 			var _i = _data.instances[i];
 			var inst = instance_create_layer(_i.x, global.platform_height+_i.y - 2000, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
-			
-			if (_i.obj == "obj_dungeon_clear_condition")
-				clear_condition_object = inst;
 		}
 		
 		
 		//Clear stuff
-		if (instance_exists(clear_condition_object) && is_array(_data.clear))
+		var clear_condition_object = instance_create_layer(0, 0, "Instances", obj_dungeon_clear_condition);
+		var clear_list = _data.clear;
+		
+		if (is_array(clear_list))
 		{
-			for (var i=0; i < array_length(_data.clear); i++)
+			for (var i=0; i < array_length(clear_list); i++)
 			{
-				var _c = _data.clear;
-				var inst = collision_point(_c[1], _c[2], asset_get_index(_c[0]), false, true);
-				clear_condition_object.watch_list[| i] = inst;
+				var _c = clear_list[i];
+				var inst = instance_nearest(_c[1], _c[2], asset_get_index(_c[0]));
+				if (inst != noone)
+				{
+					ds_list_add(clear_condition_object.inst_list, inst);
+					show_debug_message("adding clear con...");
+					show_debug_message("instance: " + string(inst));
+				}
+				else show_debug_message("no instance found");
+				//clear_condition_object.watch_list[| i] = inst;
 			}
 		}
 	}
@@ -344,7 +350,7 @@ function save_dungeon(file_name, instance_list)
 				}
 				//We want to save most important variables. Hardcode these for now.
 				else
-				{ 
+				{
 					var _data = 
 					{
 						obj: object_get_name(object_index),
