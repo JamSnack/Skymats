@@ -1,5 +1,17 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+global.next_id = 1;
+global.multiplayer = false; //Whether or not we are now allowed to transmit packets.
+global.is_host = false;
+global.socket_list = ds_list_create();
+global.client_id = -1;
+global.world_seed = -1;
+global.host_socket = noone; //Clients use this to store the host's socket id.
+global.lag = 0;
+global.current_tick = 0;
+global.game_state = "PLAY";
+
+
 function connect_to_server(ip, port)
 {
 	//server_status = "Connecting to server...";

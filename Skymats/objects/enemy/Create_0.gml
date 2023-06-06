@@ -13,4 +13,7 @@ hit_effect = 0;
 
 draw_angle = 0;
 
+target_x = x;
+target_y = y;
+
 send_enemy_position();

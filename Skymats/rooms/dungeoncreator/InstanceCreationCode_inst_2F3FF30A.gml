@@ -1,0 +1,1 @@
+watch_list[0] = obj_tutorial_droid.id;
