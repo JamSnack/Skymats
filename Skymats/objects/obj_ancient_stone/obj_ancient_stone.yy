@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_white_rock",
-    "path": "sprites/spr_white_rock/spr_white_rock.yy",
+    "name": "spr_ancient_stone",
+    "path": "sprites/spr_ancient_stone/spr_ancient_stone.yy",
   },
   "solid": false,
   "visible": true,
@@ -36,7 +36,7 @@
     "path": "folders/Objects/Tiles/Structures.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_white_rock",
+  "name": "obj_ancient_stone",
   "tags": [],
   "resourceType": "GMObject",
 }
