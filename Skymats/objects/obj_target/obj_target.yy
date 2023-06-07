@@ -40,7 +40,7 @@
   "overriddenProperties": [
     {"propertyId":{"name":"bounciness","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"0","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"item_to_drop","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"ITEM_ID.last","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"max_hp","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"1 + instance_number(obj_target)","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"max_hp","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"3 + instance_number(obj_target)","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"hp","path":"objects/ENEMY/ENEMY.yy",},"objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"value":"max_hp","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {

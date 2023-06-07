@@ -8,7 +8,6 @@ key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
 var on_ground = noone;
-var true_speed = (abs(hspd)+abs(vspd)); 
 
 if (vspd >= 0)
 	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true);
@@ -25,6 +24,8 @@ if (SCROLL_CONDITIONS) && !(on_ground != noone && on_ground.object_index == obj_
 
 //Gravity
 vspd += GRAVITY*weight;
+
+var true_speed = (abs(hspd)+abs(vspd)); 
 
 //Jump
 if (key_up && collision_rectangle(bbox_left, bbox_top+2, bbox_right, bbox_bottom+2, OBSTA, false, true) != noone)

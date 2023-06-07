@@ -41,10 +41,31 @@ part_type_gravity(p_mine_spark, 0.1, 270);
 part_type_speed(p_mine_spark, 1, 2, 0, 0);
 part_type_life(p_mine_spark, 5, 9);
 
+var p_hit_effect1 = part_type_create();
+part_type_alpha2(p_hit_effect1, 1.0, 0);
+part_type_sprite(p_hit_effect1, spr_efct_hit, false, false, true);
+part_type_direction(p_hit_effect1, 0, 359, 0, 0);
+part_type_life(p_hit_effect1, 4, 4);
+
+var p_hit_effect2 = part_type_create();
+part_type_alpha2(p_hit_effect2, 1.0, 0);
+part_type_sprite(p_hit_effect2, spr_efct_hit2, false, false, true);
+part_type_direction(p_hit_effect2, 0, 359, 0, 0);
+part_type_life(p_hit_effect2, 4, 4);
+
+var p_hit_effect3 = part_type_create();
+part_type_alpha2(p_hit_effect3, 1.0, 0);
+part_type_sprite(p_hit_effect3, spr_efct_hit3, false, false, true);
+part_type_direction(p_hit_effect3, 0, 359, 0, 0);
+part_type_life(p_hit_effect3, 4, 4);
+
 global.particle_library =
 {
 	foreground_cloud : p_foreground_cloud,
 	background_cloud1 : p_background_cloud1,
 	background_islands1: p_background_islands1,
-	mining_spark: p_mine_spark
+	mining_spark: p_mine_spark,
+	hit_effect1: p_hit_effect1,
+	hit_effect2: p_hit_effect2,
+	hit_effect3: p_hit_effect3
 }

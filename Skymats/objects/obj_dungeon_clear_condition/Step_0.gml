@@ -25,7 +25,7 @@ if (alarm[0] == -1)
 			big_suck = true;
 			
 		with (obj_player)
-			create_floating_text(x, y+32, "Dungeon Completed!", "[c_lime]")
+			create_floating_text(x, y+32, "Objective Completed!", "[c_lime]")
 		
 		instance_destroy();
 		
@@ -33,7 +33,13 @@ if (alarm[0] == -1)
 			//init_dungeon_load();
 			//load_dungeon("temp_dungeon");
 		//else:
-		instance_create_layer(room_width/2, WORLD_BOUND_TOP - 54, "Instances", obj_dungeon_dock_point);
+		if (next_dungeon == "EXIT")
+			instance_create_layer(room_width/2, WORLD_BOUND_TOP - 54, "Instances", obj_dungeon_dock_point);
+		else if (next_dungeon != "NONE")
+		{
+			init_dungeon_load();
+			load_dungeon(next_dungeon);
+		}
 		
 		show_debug_message("Dungeon cleared!");
 	}

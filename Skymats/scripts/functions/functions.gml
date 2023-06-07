@@ -169,10 +169,20 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 			
 			
 			if (bonus_damage >= 6)
+			{
 				create_floating_text(x, y, "[wobble][pulse][scale, 1.5]"+string(true_damage), "[rainbow][spr_ui_star]");
+				part_particles_create(global.foreground_particles, x, y, global.particle_library.hit_effect3, 2)
+			}
 			else if (bonus_damage >= 3)
+			{
 				create_floating_text(x, y, "[wobble][pulse]"+string(true_damage), "[c_red]");
-			else create_floating_text(x, y, "[wobble][pulse][scale, 0.5]"+string(true_damage), "[c_orange]");
+				part_particles_create(global.foreground_particles, x, y, global.particle_library.hit_effect2, 2)
+			}
+			else 
+			{
+				create_floating_text(x, y, "[wobble][pulse][scale, 0.5]"+string(true_damage), "[c_orange]");
+				part_particles_create(global.foreground_particles, x, y, global.particle_library.hit_effect1, 2)
+			}
 			
 			if (hp <= 0)
 			{
