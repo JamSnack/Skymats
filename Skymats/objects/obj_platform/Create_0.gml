@@ -7,6 +7,7 @@ fuel_efficieny = 0;
 target_y = y;
 
 obstruction = false;
+waiting_for_pilot = false;
 powered = false;
 power_delay = 0;
 

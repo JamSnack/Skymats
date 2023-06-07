@@ -1,9 +1,17 @@
 /// @description Insert description here
 // You can write your code in this editor
+var player_exists = instance_exists(obj_player);
+var player_y = player_exists ? obj_player.y : 0;
 
 //Keep the platform unpowered during dungeon content.
 if (global.dungeon)
 	powered = false;
+
+//Keep the platform from flying away from the player
+if (powered && player_exists && player_y > bbox_bottom+16)
+{
+	waiting_for_pilot = true; 
+} else waiting_for_pilot = false;
 
 //Approach dungeons, otherwise follow normal procedure regarding engine use, fuel, and flight
 if (approach_dungeon)
@@ -61,6 +69,10 @@ if (approach_dungeon)
 				y = other.bbox_top-10;
 		}
 	}
+}
+else if (waiting_for_pilot)
+{
+	y = round(y);
 }
 else if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
 {

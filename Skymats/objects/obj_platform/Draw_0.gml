@@ -8,5 +8,7 @@ draw_self();
 
 if (approach_dungeon)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]Large Skymass Incoming");
+else if (waiting_for_pilot)
+	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]Waiting for pilot...");
 else if (obstruction)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]OBSTRUCTED");
