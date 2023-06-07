@@ -2,7 +2,7 @@
 // You can write your code in this editor
 if (alarm[0] == -1)
 {
-	if (ds_list_size(inst_list) <= 0)
+	if (number_of_watching <= 0)
 	{
 		global.dungeon = false;
 	
@@ -30,19 +30,19 @@ if (alarm[0] == -1)
 			//init_dungeon_load();
 			//load_dungeon("temp_dungeon");
 		//else:
-		instance_create_layer(room_width/2, global.platform_height, "Instances", obj_dungeon_dock_point);
+		instance_create_layer(room_width/2, WORLD_BOUND_TOP - 54, "Instances", obj_dungeon_dock_point);
 		
 		show_debug_message("Dungeon cleared!");
 	}
 	else
 	{
-		if (!instance_exists(inst_list[| check_index]))
+		if (inst_list[| check_index] != noone && !instance_exists(inst_list[| check_index]))
 		{
 			number_of_watching -= 1;
-			ds_list_delete(inst_list, check_index);
+			inst_list[| check_index] = noone;
 		}
 
-		if (check_index+1 < number_of_watching)
+		if (check_index+1 < ds_list_size(inst_list))
 			check_index++;
 		else check_index = 0;
 	}

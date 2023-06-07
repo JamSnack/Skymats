@@ -31,8 +31,8 @@
     {"propertyId":{"name":"hp","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "New Tiles",
-    "path": "folders/Objects/Tiles/New Tiles.yy",
+    "name": "Ores",
+    "path": "folders/Objects/Tiles/Ores.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_hematite",

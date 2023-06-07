@@ -4,6 +4,9 @@
 with (obj_dungeon_clear_condition)
 	ds_list_add(other.save_list, id);
 
+with (NOCOL)
+	ds_list_add(other.save_list, id);
+
 with (TILE)
 	ds_list_add(other.save_list, id);
 	

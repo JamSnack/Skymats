@@ -4,6 +4,9 @@ if (instance_exists(watch_this1))
 	
 if (instance_exists(watch_this2))
 	ds_list_add(inst_list, watch_this2);
+
+if (instance_exists(watch_this3))
+	ds_list_add(inst_list, watch_this3);
 	
 number_of_watching = ds_list_size(inst_list);
 show_debug_message("watch_list initialized");

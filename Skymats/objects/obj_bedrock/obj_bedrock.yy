@@ -34,8 +34,8 @@
     {"propertyId":{"name":"can_grapple","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "Tiles",
-    "path": "folders/Objects/Tiles.yy",
+    "name": "Ores",
+    "path": "folders/Objects/Tiles/Ores.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_bedrock",

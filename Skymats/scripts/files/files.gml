@@ -302,7 +302,7 @@ function load_dungeon(file_name)
 		for (var i=0; i < array_length(_data.instances); i++)
 		{
 			var _i = _data.instances[i];
-			var inst = instance_create_layer(_i.x, global.platform_height+_i.y - 2000, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
+			var inst = instance_create_layer(_i.x, global.platform_height+_i.y-1500, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
 		}
 		
 		
@@ -315,7 +315,7 @@ function load_dungeon(file_name)
 			for (var i=0; i < array_length(clear_list); i++)
 			{
 				var _c = clear_list[i];
-				var inst = instance_nearest(_c[1], _c[2], asset_get_index(_c[0]));
+				var inst = instance_nearest(_c[1], global.platform_height+_c[2]-1500, asset_get_index(_c[0]));
 				if (inst != noone)
 				{
 					ds_list_add(clear_condition_object.inst_list, inst);

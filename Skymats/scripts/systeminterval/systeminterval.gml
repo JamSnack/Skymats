@@ -132,6 +132,12 @@ function cull_tiles()
 			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
 				instance_destroy();
 		}
+		
+		with (NOCOL)
+		{
+			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
+				instance_destroy();
+		}
 	}
 }
 

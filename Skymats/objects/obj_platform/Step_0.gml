@@ -11,13 +11,25 @@ if (approach_dungeon)
 	//This routine is used to approach a dungeon and enter it.
 	//NOTE: approach_dungeon must be set to false by an obj_dungeon_dock_point entity.
 	with (TILE)
+	{
 		y += 1;
+		update_shadow(shadow);
+	}
 		
 	with (obj_dungeon_dock_point)
 		y += 1;
 		
 	with (obj_island_marker)
 		y += 1;
+		
+	with (ENEMY)
+		y += 1;
+		
+	with (NOCOL)
+	{
+		y += 1;
+		update_shadow(shadow);
+	}
 
 	//Lerp naughty players to the correct location
 	with (obj_player)
