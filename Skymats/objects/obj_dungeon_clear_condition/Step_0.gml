@@ -23,6 +23,9 @@ if (alarm[0] == -1)
 		
 		with (obj_item)
 			big_suck = true;
+			
+		with (obj_player)
+			create_floating_text(x, y+32, "Dungeon Completed!", "[c_lime]")
 		
 		instance_destroy();
 		

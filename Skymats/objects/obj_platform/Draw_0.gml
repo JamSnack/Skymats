@@ -7,6 +7,6 @@ draw_rectangle_color( bbox_left + 5, bbox_top + 2, bbox_left + (bbox_right-bbox_
 draw_self();
 
 if (approach_dungeon)
-	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]Dungeon Descending!");
+	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]Large Skymass Incoming");
 else if (obstruction)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]OBSTRUCTED");
