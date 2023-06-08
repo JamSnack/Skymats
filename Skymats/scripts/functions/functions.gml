@@ -1,4 +1,4 @@
-    // Script assets have changed for v2.3.0 see
+     // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 global.dungeon = false;
 
@@ -26,6 +26,7 @@ global.stored_resources = array_create(ITEM_ID.last, 0);
 global.stored_resources_unlocked = array_create(ITEM_ID.last, 0);
 global.stored_resources_auto_burn = array_create(ITEM_ID.last, 0);
 global.stored_resource_to_burn = 1;
+
 //(!instance_exists(obj_client_request_chunk) && !instance_exists(obj_chunk_loader) && !instance_exists(obj_island_generator) && !instance_exists(obj_client_request_chunk))
 
 function string_split(str, delimiter)
@@ -54,6 +55,9 @@ function string_split(str, delimiter)
 
 function init_dungeon_load()
 {
+	with (TILE)
+		instance_destroy();
+	
 	if (instance_exists(obj_platform))
 	{
 		obj_platform.approach_dungeon = true;

@@ -3,6 +3,10 @@
 var player_exists = instance_exists(obj_player);
 var player_y = player_exists ? obj_player.y : 0;
 
+//Check for dungeon if powered
+if (powered)
+	check_height_for_dungeon();
+
 //Keep the platform unpowered during dungeon content.
 if (global.dungeon)
 	powered = false;

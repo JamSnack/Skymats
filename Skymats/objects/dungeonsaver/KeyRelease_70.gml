@@ -17,4 +17,4 @@ with (ENEMY)
 	ds_list_add(other.save_list, id);
 
 //save_dungeon(get_string("Enter Dungeon Name: ", "Dungeon"), save_list);
-save_dungeon("temp_dungeon", save_list);
+save_dungeon("temp_dungeon", save_list, next_dungeon);

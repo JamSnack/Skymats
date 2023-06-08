@@ -41,6 +41,10 @@ if (alarm[0] == -1)
 			load_dungeon(next_dungeon);
 		}
 		
+		//Clear the dungeon
+		if (next_dungeon == "EXIT" || next_dungeon == "NONE")
+			global.game_progress[global.progress_index_to_check] = 1;
+		
 		show_debug_message("Dungeon cleared!");
 	}
 	else

@@ -25,6 +25,7 @@ if (global.is_host)
 			{		
 				global.inventory.addItem(item_id, 1);
 				create_floating_text(obj_player.x + irandom_range(-10, 10), obj_player.y - 10, "[scale, 0.5][wobble]+[spr_items, "+string(item_id)+"]");
+				audio_play_sound_custom(choose(snd_item_pickup1, snd_item_pickup2, snd_item_pickup3, snd_item_pickup4, snd_item_pickup5), 10, false);
 			}
 			/*else if (global.multiplayer)
 			{

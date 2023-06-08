@@ -307,7 +307,7 @@ function load_dungeon(file_name)
 		
 		
 		//Clear stuff
-		var clear_condition_object = instance_create_layer(0, 0, "Instances", obj_dungeon_clear_condition);
+		var clear_condition_object = instance_create_layer(0, 0, "Instances", obj_dungeon_clear_condition, { next_dungeon: _data.next_dungeon });
 		var clear_list = _data.clear;
 		
 		if (is_array(clear_list))
@@ -329,7 +329,7 @@ function load_dungeon(file_name)
 	}
 }
 
-function save_dungeon(file_name, instance_list)
+function save_dungeon(file_name, instance_list, next_dungeon)
 {
 	//Saves a list of instances to a ".dngn" file after base64 encoding them. Targets the "Dungeon" folder. Useful during development.
 	var _amt = ds_list_size(instance_list);
@@ -370,8 +370,10 @@ function save_dungeon(file_name, instance_list)
 		}
 	}
 	
-	master_string += "]";
+	//Add next dungeon clause
+	master_string += "], \"next_dungeon\": \"" + next_dungeon +"\"";
 	
+	//Add clear-condition list
 	if (instance_exists(clear_condition))
 	{
 		var _data = 
@@ -391,7 +393,6 @@ function save_dungeon(file_name, instance_list)
 		
 		master_string += ", " + string_delete(json_stringify(_data), 1, 1);
 	}
-	
 	//Encode the data
 	
 	//Save data

@@ -47,18 +47,32 @@ if (inventory_open_animation > 0)
 //Draw compass
 draw_sprite_stretched(spr_compass, 0, 455, 0, 455, 16);
 draw_sprite(spr_ui_market, 0, 455+ 455/2, 0);
-
-if (instance_exists(obj_island_marker))
+if (instance_exists(obj_player))
 {
-	for (var _i = 0; _i < instance_number(obj_island_marker); _i++)
+	//Draw island marker icon and distance arrows
+	if (instance_exists(obj_island_marker))
 	{
-		var _d = instance_find(obj_island_marker, _i);
-		draw_sprite(spr_ui_island, 0, 455 + 455*(_d.x/room_width), 0);
+		for (var _i = 0; _i < instance_number(obj_island_marker); _i++)
+		{
+			var _d = instance_find(obj_island_marker, _i);
+			var _dx = _d.x;
+			var distance = max(0, -(_d.y - obj_player.y)/400);
+			//show_debug_message(distance);
+			draw_sprite(spr_ui_island, 0, 455 + 455*(_dx/room_width), 0);
+			
+			if (distance == 0)
+				draw_sprite(spr_ui_arrow_down, distance, 4 + 455 + 455*(_dx/room_width), 0);
+			else
+				draw_sprite(spr_ui_arrow_up, distance, 4 + 455 + 455*(_dx/room_width), 0);
+		}
 	}
+	
+	//Draw player icon
+	draw_sprite(spr_ui_player1, 0, 455 + 455*(obj_player.x/room_width), 0);
 }
 
-if (instance_exists(obj_player))
-	draw_sprite(spr_ui_player1, 0, 455 + 455*(obj_player.x/room_width), 0);
+
+	
 
 if (instance_exists(obj_player_dummy))
 {
