@@ -61,9 +61,9 @@ if (instance_exists(obj_player))
 			draw_sprite(spr_ui_island, 0, 455 + 455*(_dx/room_width), 0);
 			
 			if (distance == 0)
-				draw_sprite(spr_ui_arrow_down, distance, 4 + 455 + 455*(_dx/room_width), 0);
+				draw_sprite(spr_ui_arrow_down, distance, 2 + 455 + 455*(_dx/room_width), 0);
 			else
-				draw_sprite(spr_ui_arrow_up, distance, 4 + 455 + 455*(_dx/room_width), 0);
+				draw_sprite(spr_ui_arrow_up, distance, 2 + 455 + 455*(_dx/room_width), 0);
 		}
 	}
 	

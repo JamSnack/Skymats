@@ -284,7 +284,7 @@ function choose_ore(y)
 			return _i;	
 	}
 	
-	return ITEM_ID.stone;
+	return ITEM_ID.coal;
 }
 
 
