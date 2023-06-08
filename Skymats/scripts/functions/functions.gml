@@ -182,11 +182,13 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 			{
 				create_floating_text(x, y, "[wobble][pulse]"+string(true_damage), "[c_red]");
 				part_particles_create(global.foreground_particles, x, y, global.particle_library.hit_effect2, 2);
+				audio_play_sound_custom(snd_red_crit, 10, false);
 			}
 			else 
 			{
 				create_floating_text(x, y, "[wobble][pulse][scale, 0.5]"+string(true_damage), "[c_orange]");
 				part_particles_create(global.foreground_particles, x, y, global.particle_library.hit_effect1, 2);
+				audio_play_sound_custom(snd_default_hit, 10, false);
 			}
 			
 			if (hp <= 0)
@@ -195,6 +197,9 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 				instance_destroy();
 				create_sprite_shatter(x, y, 2 + irandom(2), sprite_index, irandom(2) + k_amt/3, k_direction, weight);
 				create_smoke(x, y, k_direction, 1);
+				
+				if (instance_exists(obj_player))
+					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.1;
 			}
 		}
 	}
