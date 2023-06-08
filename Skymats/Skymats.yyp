@@ -87,6 +87,7 @@
     {"id":{"name":"scribble_font_has_character","path":"scripts/scribble_font_has_character/scribble_font_has_character.yy",},"order":11,},
     {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},"order":1,},
     {"id":{"name":"obj_vector_weevil","path":"objects/obj_vector_weevil/obj_vector_weevil.yy",},"order":1,},
+    {"id":{"name":"snd_star_crit","path":"sounds/snd_star_crit/snd_star_crit.yy",},"order":0,},
     {"id":{"name":"obj_ancient_stone","path":"objects/obj_ancient_stone/obj_ancient_stone.yy",},"order":1,},
     {"id":{"name":"__scribble_get_effects_map","path":"scripts/__scribble_get_effects_map/__scribble_get_effects_map.yy",},"order":5,},
     {"id":{"name":"spr_buried_stars","path":"sprites/spr_buried_stars/spr_buried_stars.yy",},"order":25,},
@@ -409,6 +410,7 @@
     {"folderPath":"folders/Objects/Tiles/Structures.yy","order":17,"resourceVersion":"1.0","name":"Structures","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Tiles/Structures/No-Col.yy","order":2,"resourceVersion":"1.0","name":"No-Col","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sounds/Items.yy","order":3,"resourceVersion":"1.0","name":"Items","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sounds/crits.yy","order":4,"resourceVersion":"1.0","name":"crits","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
