@@ -74,6 +74,7 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 	}
 	
 	//Interact with Auto-Burn menu
+	/*
 	if (_released_left_click)
 	{
 		var _y1 = 16 + scroll_offset + 128;
@@ -106,6 +107,7 @@ if (point_in_rectangle(_mx, _my, pos_x, pos_y, pos_x + width, pos_y + height))
 			}
 		}
 	}
+	*/
 }
 else
 {

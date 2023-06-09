@@ -10,7 +10,10 @@ draw_text(1100, 10,
 	"Chunk Request Objects: " + string(instance_number(obj_client_request_chunk)) + "\n" +
 	"Tiles: " + string(instance_number(TILE)) + "\n" +
 	"Enemies: " + string(instance_number(ENEMY)) + "\n" +
-	"Scroll Lag: " + string(global.lag)
+	"Scroll Lag: " + string(global.lag) + "\n" +
+	"Host: " + string(global.is_host) + "\n" +
+	"Multiplayer: " + string(global.multiplayer)
+	
 );
 
 /*

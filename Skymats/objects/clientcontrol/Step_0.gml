@@ -53,6 +53,6 @@ if (_height != last_height)
 	height_range = background_colors[2];
 	//show_debug_message(background_colors[0]);
 	//show_debug_message(background_colors[1]);
-	show_debug_message(background_colors[2]);
+	//show_debug_message(background_colors[2]);
 	last_height = _height;
 }

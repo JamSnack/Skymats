@@ -1,8 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (global.multiplayer == false && keyboard_check_released(vk_f1))
+if (global.multiplayer == false)
 {
-	event_user(0);
+	if (keyboard_check_released(vk_f1))
+		event_user(0);
+	else if (keyboard_check_released(vk_f2))
+		event_user(1);
 }
 
 if (room == rm_small && !instance_exists(obj_player))
@@ -16,7 +19,7 @@ if (!global.is_host && global.client_id == -1 && global.multiplayer && current_t
 //multiplayer
 if (global.multiplayer)
 {
-	network_timeout--;
+	//network_timeout--;
 	
 	if (network_timeout <= 0)
 	{

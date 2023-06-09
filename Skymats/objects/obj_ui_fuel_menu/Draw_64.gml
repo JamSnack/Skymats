@@ -28,6 +28,7 @@ if (draw_item_index < ITEM_ID.last)
 	
 	_y1 += 128;
 	
+	/*
 	var _selected_item_x = 500;
 	
 	draw_set_color(c_gray);
@@ -50,6 +51,7 @@ if (draw_item_index < ITEM_ID.last)
 	}
 	
 	draw_text_scribble(_selected_item_x + 64, _y1 + 136, "[font][fa_center][scale, 0.5]Consumption Chance: 100%");
+	*/
 	
 	repeat(ITEM_ID.last)
 	{
@@ -78,14 +80,14 @@ if (draw_item_index < ITEM_ID.last)
 			//Create item description
 			var _str = "|[c_green] " +
 			string(get_item_value(_i)) + "$ [c_white]|[c_red] Fuel: " +
-			string(get_fuel_value(_i)) + "[/c] | " + 
-			"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
+			string(get_fuel_value(_i)) + "[/c] | "; //+ 
+			//"[c_orange]"+string(get_item_bonus_fuel(_i)) + "% Efficiency[/c]";
 			
 			if (_i > ITEM_ID.stone && _i < ITEM_ID.enemy_parts)
 			{
 				var _ore_dist = global.ore_distribution[_i];
 				if (_ore_dist != 0)
-					_str += " | Height Found: " + string(-min(0, _ore_dist.low))
+					_str += " Height Found: " + string(-min(0, _ore_dist.low))
 			}
 			
 			//Draw stuff

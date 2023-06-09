@@ -44,28 +44,31 @@ function save_character(username = "character")
 
 function save_expedition(expedition_name = "exped")
 {
-	if (instance_exists(obj_platform))
+	if (global.is_host)
 	{
-		with (obj_platform)
+		if (instance_exists(obj_platform))
 		{
-			var save_struct = {
-				platform_height: global.platform_height,
-				tutorial_complete: global.tutorial_complete,
-				stored_resources: global.stored_resources,
-				stored_resources_unlocked: global.stored_resources_unlocked,
-				auto_burn: global.stored_resources_auto_burn,
-				burning: global.stored_resource_to_burn,
-				fuel: fuel,
-				max_fuel: max_fuel
-			}
+			with (obj_platform)
+			{
+				var save_struct = {
+					platform_height: global.platform_height,
+					tutorial_complete: global.tutorial_complete,
+					stored_resources: global.stored_resources,
+					stored_resources_unlocked: global.stored_resources_unlocked,
+					auto_burn: global.stored_resources_auto_burn,
+					burning: global.stored_resource_to_burn,
+					fuel: fuel,
+					max_fuel: max_fuel
+				}
 				
-			var json = json_stringify(save_struct);
-			var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
-			buffer_write(_buff, buffer_string, json);
-			buffer_save(_buff, string(expedition_name)+".exped");
+				var json = json_stringify(save_struct);
+				var _buff = buffer_create(string_byte_length(json) + 1, buffer_fixed, 1);
+				buffer_write(_buff, buffer_string, json);
+				buffer_save(_buff, string(expedition_name)+".exped");
 	
-			//cleanup
-			buffer_delete(_buff);
+				//cleanup
+				buffer_delete(_buff);
+			}
 		}
 	}
 }

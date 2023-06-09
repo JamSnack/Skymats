@@ -18,13 +18,14 @@ function connect_to_server(ip, port)
 	global.host_socket = network_create_socket(network_socket_tcp);
 	
 	//Try to connect to the main server. If we fail, look for a server over local host.
+	global.multiplayer = true;
+	global.is_host = false;
 	var _s = network_connect(global.host_socket, ip, port);
 	
 	if (_s >= 0)
 	{
 		//Success
 		show_debug_message("Connected to server");
-		global.multiplayer = true;
 		//global.game_state = "LOAD";
 	}
 	else

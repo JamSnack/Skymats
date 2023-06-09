@@ -1,3 +1,3 @@
 /// @description Join Server
-var _s = get_string_async("Insert IP","127.0.0.1");
-connect_to_server(_s, 6510);
+network_timeout = 60*10;
+connect_to_server(get_string("Enter IP", "26.198.169.147"), real(string_digits(get_string("Enter Port", "6510"))));
