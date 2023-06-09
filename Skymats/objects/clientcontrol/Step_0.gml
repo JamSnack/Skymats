@@ -44,3 +44,15 @@ else if (keyboard_check_released(ord("8")))
 else if (keyboard_check_released(ord("9")))
 	global.inventory.selected_slot = 8;
 */
+
+//Get background colors
+var _height = global.platform_height;
+if (_height != last_height)
+{
+	background_colors = get_background_colors(-_height);
+	height_range = background_colors[2];
+	//show_debug_message(background_colors[0]);
+	//show_debug_message(background_colors[1]);
+	show_debug_message(background_colors[2]);
+	last_height = _height;
+}

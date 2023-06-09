@@ -112,6 +112,11 @@ inventory_open_animcurve_channel = animcurve_get_channel(curve, 0);
 //Frame skip
 frame = 0;
 
+//Background
+last_height = 0;
+background_colors=0;
+height_range = 1000;
+
 //Init game
 //init_expedition();
 //load_expedition("exped.exped"); //TODO: This is temporary

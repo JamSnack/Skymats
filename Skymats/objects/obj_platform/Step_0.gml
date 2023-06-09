@@ -78,7 +78,7 @@ else if (waiting_for_pilot)
 {
 	y = round(y);
 }
-else if (collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
+else if true//(collision_rectangle(bbox_left + 1, bbox_top - 16*2, bbox_right-1, bbox_top-1, OBSTA, false, true) == noone)
 {
 	obstruction = false;
 	if (fuel > 1 && powered && power_delay <= 0)
