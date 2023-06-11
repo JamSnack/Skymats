@@ -113,7 +113,7 @@ inventory_open_animcurve_channel = animcurve_get_channel(curve, 0);
 frame = 0;
 
 //Background
-last_height = 0;
+last_height = -1;
 background_colors=0;
 height_range = 1000;
 

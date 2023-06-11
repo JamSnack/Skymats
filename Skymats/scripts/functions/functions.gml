@@ -498,7 +498,7 @@ function get_background_colors(height)
 		return [[0.0, 0, 0.1, 1.0],[0.0, 0, 0.1, 1.0], 1];
 	
 	//Default colors
-	return [[0.0, 0, 0, 1.0],[0.0, 0.0, 0.1, 1.0]]; //Void
+	return [[0.0, 0, 0, 1.0],[0.0, 0.0, 0.1, 1.0], 1000]; //Void
 }
 
 function draw_shadow(sprite_index, image_index, x_offset, y_offset, image_xscale, image_yscale, image_angle, color, image_alpha)

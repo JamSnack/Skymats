@@ -163,6 +163,20 @@ function handle_data(data)
 				{
 					global.client_id = parsed_data.client_id;
 					global.current_tick = parsed_data.tick;
+					
+					//Reset game state
+					
+					with (ENEMY)
+						instance_destroy();
+						
+					with (TILE)
+						instance_destroy();
+						
+					with (obj_item)
+						big_suck = true; //collect instead of destroy is probably better, even if exploitable
+						
+					//Request world data
+					sync_chunks();
 				}
 			}
 			break;

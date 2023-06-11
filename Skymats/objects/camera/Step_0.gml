@@ -17,14 +17,16 @@ if (lerped_zoom != zoom)
 camera_set_view_pos(local_camera, clamp(x - 1366/(2*lerped_zoom), 0, room_width-768), clamp(y - 768/(2*lerped_zoom), WORLD_BOUND_TOP, WORLD_BOUND_BOTTOM));
 
 //Tile culling
+/*
 if (keyboard_check_released(vk_rshift) && global.is_host == false)
 {
 	with (TILE)
 		instance_destroy();
 		
 	//instance_create_layer(0, 0, "Instances", obj_client_request_chunk);
-	sync_chunks();
+	//sync_chunks();
 }
+*/
 
 //Void
 layer_y("Void", global.platform_height);

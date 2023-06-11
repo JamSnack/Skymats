@@ -223,6 +223,10 @@ if (mine_cooldown <= 0 && mouse_check_button(mb_left))
 		{
 			var _inst = enemy_hurt_list_mining[| _m];
 			hurt_enemy(_inst, mine_laser_direction, 1, 1, 0);
+			
+			//Sync mining laser damage
+			if (!global.is_host && global.multiplayer)
+				send_data({cmd: "request_enemy_hurt", connected_id: _inst.connected_id, damage: 1, bonus_atk: 0, dir_knock: mine_laser_direction, knock_amt: 1});
 		}
 		
 		mine_cooldown = stat_mine_cooldown/2;

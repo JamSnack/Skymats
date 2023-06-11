@@ -6,7 +6,7 @@ if (instance_exists(obj_platform))
 	var _x = camera_get_view_x(view_camera[0])-1366/2;
 	var _y =  camera_get_view_y(view_camera[0])-768/2;
 	var mix =  (global.platform_height-floor(global.platform_height/height_range)*height_range)/height_range;
-	
+	show_debug_message(background_colors);
 	shader_set(shd_mix_colors);
 	shader_set_uniform_f(shader_get_uniform(shd_mix_colors, "_mix"), mix);
 	shader_set_uniform_f_array(shader_get_uniform(shd_mix_colors, "color_1"), background_colors[0]);

@@ -49,6 +49,7 @@ else if (keyboard_check_released(ord("9")))
 var _height = global.platform_height;
 if (_height != last_height)
 {
+	show_debug_message("color init");
 	background_colors = get_background_colors(-_height);
 	height_range = background_colors[2];
 	//show_debug_message(background_colors[0]);
