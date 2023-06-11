@@ -125,13 +125,13 @@ function sync_player_stats()
 
 function cull_tiles()
 {
-	static current_tile = 0;
-	static current_nocol = 0;
+	static current_tile = -1;
+	static current_nocol = -1;
 	
 	if (global.tutorial_complete)
 	{
 		
-		//Cull tiles in chunks of 100
+		//Cull tiles in chunks
 		repeat(100)
 		{
 			with (instance_find(TILE, current_tile))
@@ -151,8 +151,8 @@ function cull_tiles()
 			}
 		}
 		
-		//Cull NOCOL instances in chunks of 100
-		repeat(100)
+		//Cull NOCOL instances in chunks
+		repeat(50)
 		{
 			with (NOCOL)
 			{
