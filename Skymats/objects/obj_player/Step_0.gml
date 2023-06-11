@@ -335,7 +335,7 @@ if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) 
 				hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
 			
 				if (!global.is_host && global.multiplayer)
-					send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage + bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
+					send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, bonus_atk: bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
 		
 				//Hit effect
 				instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});

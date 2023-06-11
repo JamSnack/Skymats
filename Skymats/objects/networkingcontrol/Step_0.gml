@@ -35,6 +35,10 @@ if (global.multiplayer)
 		//Delete lingering players
 		with (obj_player_dummy)
 			instance_destroy();
+			
+		//Reset player Y
+		with (obj_player)
+			y = global.platform_height;
 	}
 	
 	global.current_tick++;
