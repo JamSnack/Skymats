@@ -183,6 +183,9 @@ function handle_data(data)
 					with (TILE)
 						instance_destroy();
 						
+					with (obj_island_marker)
+						instance_destroy();
+						
 					with (obj_item)
 						big_suck = true; //collect instead of destroy is probably better, even if exploitable
 						

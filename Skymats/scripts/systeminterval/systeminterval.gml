@@ -125,18 +125,50 @@ function sync_player_stats()
 
 function cull_tiles()
 {
+	static current_tile = 0;
+	static current_nocol = 0;
+	
 	if (global.tutorial_complete)
 	{
-		with (TILE)
+		
+		//Cull tiles in chunks of 100
+		repeat(100)
 		{
-			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
-				instance_destroy();
+			with (instance_find(TILE, current_tile))
+			{
+				if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
+				{
+					instance_destroy();
+					current_tile--;
+				}
+			}
+			
+			//Break and then reset
+			if (current_tile < 0)
+			{
+				current_tile = instance_number(TILE)-1;
+				break;
+			}
 		}
 		
-		with (NOCOL)
+		//Cull NOCOL instances in chunks of 100
+		repeat(100)
 		{
-			if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
-				instance_destroy();
+			with (NOCOL)
+			{
+				if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
+				{
+					instance_destroy();
+					current_nocol--;
+				}
+			}
+			
+			//Break and then reset
+			if (current_nocol < 0)
+			{
+				current_nocol = instance_number(NOCOL)-1;
+				break;
+			}
 		}
 	}
 }

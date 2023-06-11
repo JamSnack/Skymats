@@ -12,7 +12,7 @@ if (global.dungeon)
 	powered = false;
 
 //Keep the platform from flying away from the player
-if (powered && player_exists && player_y > bbox_bottom+16)
+if (global.is_host && powered && player_exists && player_y > bbox_bottom+16)
 {
 	waiting_for_pilot = true; 
 } else waiting_for_pilot = false;

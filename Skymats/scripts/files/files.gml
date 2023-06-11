@@ -1,6 +1,8 @@
    // Script assets have changed for v2.3.0 see
  // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+#macro EXCEPT catch (e) { show_debug_message(e); }
+
 function save_character(username = "character")
 {
 	if (instance_exists(obj_player))
@@ -58,7 +60,8 @@ function save_expedition(expedition_name = "exped")
 					auto_burn: global.stored_resources_auto_burn,
 					burning: global.stored_resource_to_burn,
 					fuel: fuel,
-					max_fuel: max_fuel
+					max_fuel: max_fuel,
+					game_progress: global.game_progress
 				}
 				
 				var json = json_stringify(save_struct);
@@ -197,8 +200,8 @@ function load_expedition(file)
 			//Platform
 			global.platform_height = _data.platform_height;
 			global.tutorial_complete = _data.tutorial_complete;
-			global.stored_resource_to_burn = _data.burning;
-		}
+			//global.stored_resource_to_burn = _data.burning;
+		} EXCEPT
 		
 		//Load unlocked resources
 		try
@@ -208,7 +211,7 @@ function load_expedition(file)
 				if (_data.stored_resources_unlocked[_i])
 					global.stored_resources_unlocked[_i] = 1;
 			}
-		}
+		} EXCEPT
 		
 		//Load resources
 		try
@@ -217,8 +220,16 @@ function load_expedition(file)
 			{
 				global.stored_resources[_i] = _data.stored_resources[_i];
 			}
-		}
+		} EXCEPT
 		
+		//Load game progress
+		try
+		{
+			global.game_progress = _data.game_progress;
+		} EXCEPT
+		
+		
+		/*
 		//Load auto-burn list
 		try
 		{
@@ -227,6 +238,8 @@ function load_expedition(file)
 				global.auto_burn[_i] = _data.auto_burn[_i];
 			}
 		}
+		*/
+		
 		
 		if (instance_exists(obj_platform))
 		{
