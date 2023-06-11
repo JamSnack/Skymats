@@ -70,9 +70,11 @@ if (draw_item_index < ITEM_ID.last)
 			_y2 += 32+16;
 		}
 		else if (_i == 1) draw_text_scribble(5, _y2, "[font]Ores and Minerals");
-		
+
+		/*
 		if (global.stored_resources_auto_burn[_i])
 			draw_sprite_stretched(spr_ui_burn_background, 0, 2, _y2 - 4 + _i*32, width-2, 34);
+		*/
 		
 		//Resource description
 		if (global.stored_resources_unlocked[_i])
@@ -92,7 +94,7 @@ if (draw_item_index < ITEM_ID.last)
 			
 			//Draw stuff
 			draw_sprite(spr_items, _i, 5, _y2 + _i*32);
-			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i) + " x " + string(global.stored_resources[_i]));
+			draw_text(48, _y2 + 2 + _i*32, get_item_name(_i));// + " x " + string(global.stored_resources[_i]));
 			draw_text_scribble(200, _y2 + 2 + _i*32, _str);
 		}
 		else

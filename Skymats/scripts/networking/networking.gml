@@ -102,12 +102,11 @@ function handle_data(data)
 			
 			case "sync_platform":
 			{
+				//Update general globals
 				global.platform_height = parsed_data.height;
-				global.stored_resources = parsed_data.stored_resources;
 				global.stored_resources_unlocked = parsed_data.unlocked;
-				global.stored_resources_auto_burn = parsed_data.burn;
-				global.stored_resource_to_burn = parsed_data.auto;
 				
+				//Update platform variables
 				if (instance_exists(obj_platform))
 				{
 					with (obj_platform)
@@ -117,12 +116,24 @@ function handle_data(data)
 						obstruction = parsed_data.obstructed;
 						fuel = parsed_data.fuel
 						max_fuel = parsed_data.max_fuel;
+						waiting_for_pilot = parsed_data.pilot;
 					}
 				
 				}
 				
+				//Update fuel menu if open
 				if (instance_exists(obj_ui_fuel_menu))
 					surface_free(obj_ui_fuel_menu.content_surface);
+					
+				//If client has no dungeon and the host does, we need to load the dungeon.
+				if (!global.dungeon && parsed_data.dung)
+				{
+					init_dungeon_load();
+					load_dungeon(parsed_data.dung_load);
+				}
+				
+				//Update dungeon status
+				global.dungeon = parsed_data.dung;
 			}
 			break;
 			

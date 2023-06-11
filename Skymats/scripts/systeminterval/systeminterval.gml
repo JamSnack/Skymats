@@ -107,16 +107,16 @@ function manage_recently_destroyed()
 
 function sync_platform()
 {
-	if (global.is_host && instance_exists(obj_platform))
-	{
+	if (global.is_host && global.multiplayer && instance_exists(obj_platform))
+	{ 
 		//Send platform stats
-		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel, stored_resources: global.stored_resources, unlocked: global.stored_resources_unlocked, auto: global.stored_resource_to_burn, burn: global.stored_resources_auto_burn });
+		send_data({cmd: "sync_platform", height: global.platform_height, target: obj_platform.target_y, powered: obj_platform.powered, obstructed: obj_platform.obstruction, fuel: obj_platform.fuel, max_fuel: obj_platform.max_fuel, unlocked: global.stored_resources_unlocked, pilot: obj_platform.waiting_for_pilot, dung: global.dungeon, dung_load: "temp_dungeon"});
 	}
 }
 
 function sync_player_stats()
 {
-	if (instance_exists(obj_player))
+	if (global.multiplayer && instance_exists(obj_player))
 	{
 		with (obj_player)
 			send_data({cmd: "player_stats", id: global.client_id, hp: hp, max_hp: max_hp});
