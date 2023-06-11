@@ -299,11 +299,16 @@ function load_dungeon(file_name)
 		var _buff = buffer_load(working_directory + "/Dungeons/"+file_name+".dngn");	
 		var _string = buffer_read(_buff, buffer_string);
 		var _data = json_parse(_string);
+		var _host = global.is_host;
 		
 		for (var i=0; i < array_length(_data.instances); i++)
 		{
 			var _i = _data.instances[i];
-			var inst = instance_create_layer(_i.x, global.platform_height+_i.y-1500, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
+			var _obj = asset_get_index(_i.obj);
+			
+			//Host will load all instances, !host will ignore enemies since they will be hosted on the host's game anyway.
+			if (_host || (!_host && object_get_parent(_obj) != ENEMY) )
+				instance_create_layer(_i.x, global.platform_height+_i.y-1500, "Instances", asset_get_index(_i.obj), {image_angle: _i.image_angle, image_xscale: _i.image_xscale, image_yscale: _i.image_yscale} );
 		}
 		
 		
