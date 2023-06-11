@@ -19,15 +19,22 @@ if (!global.is_host && global.client_id == -1 && global.multiplayer && current_t
 //multiplayer
 if (global.multiplayer)
 {
-	//network_timeout--;
+	network_timeout--;
 	
 	if (network_timeout <= 0)
 	{
+		show_debug_message("Client timed out.");
 		global.multiplayer = false;
 		global.is_host = true;
-		//TODO: cleanup server stuff
 		
-		obj_chat_box.add("Timed out!");
+		//Load previous expedition
+		load_expedition(exped_name+".exped");
+		
+		obj_chat_box.add("Lost connection with host. Returning to solo expedition!");
+		
+		//Delete lingering players
+		with (obj_player_dummy)
+			instance_destroy();
 	}
 	
 	global.current_tick++;

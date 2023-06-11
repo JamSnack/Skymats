@@ -192,45 +192,43 @@ function load_expedition(file)
 		var _string = buffer_read(_buff, buffer_string);
 		var _data = json_parse(_string);
 	
-		if (!instance_exists(obj_platform))
+		try
 		{
-			try
-			{
-				//Platform
-				global.platform_height = _data.platform_height;
-				global.tutorial_complete = _data.tutorial_complete;
-				global.stored_resource_to_burn = _data.burning;
-			}
+			//Platform
+			global.platform_height = _data.platform_height;
+			global.tutorial_complete = _data.tutorial_complete;
+			global.stored_resource_to_burn = _data.burning;
+		}
 		
-			//Load unlocked resources
-			try
+		//Load unlocked resources
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
 			{
-				for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
-				{
-					if (_data.stored_resources_unlocked[_i])
-						global.stored_resources_unlocked[_i] = 1;
-				}
-			}
-		
-			//Load resources
-			try
-			{
-				for (var _i = 0; _i < array_length(_data.stored_resources); _i++)
-				{
-					global.stored_resources[_i] = _data.stored_resources[_i];
-				}
-			}
-		
-			//Load auto-burn list
-			try
-			{
-				for (var _i = 0; _i < array_length(_data.auto_burn); _i++)
-				{
-					global.auto_burn[_i] = _data.auto_burn[_i];
-				}
+				if (_data.stored_resources_unlocked[_i])
+					global.stored_resources_unlocked[_i] = 1;
 			}
 		}
-		else
+		
+		//Load resources
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.stored_resources); _i++)
+			{
+				global.stored_resources[_i] = _data.stored_resources[_i];
+			}
+		}
+		
+		//Load auto-burn list
+		try
+		{
+			for (var _i = 0; _i < array_length(_data.auto_burn); _i++)
+			{
+				global.auto_burn[_i] = _data.auto_burn[_i];
+			}
+		}
+		
+		if (instance_exists(obj_platform))
 		{
 			//Load platform-scope variables
 			obj_platform.fuel = _data.fuel;
