@@ -132,7 +132,7 @@ function cull_tiles()
 	{
 		
 		//Cull tiles in chunks
-		repeat(100)
+		repeat(200)
 		{
 			with (instance_find(TILE, current_tile))
 			{
