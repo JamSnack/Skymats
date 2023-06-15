@@ -191,6 +191,10 @@ function handle_data(data)
 						
 					//Request world data
 					sync_chunks();
+					
+					//Set player coords
+					with (obj_player)
+						y = global.platform_height;
 				}
 			}
 			break;

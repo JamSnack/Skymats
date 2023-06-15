@@ -41,3 +41,6 @@ layer_y("Background_Trees_2", _y/(1.15));
 layer_x("Background_Mountains", _x*0.01);
 layer_x("Background_Trees_1", _x*0.2);
 layer_x("Background_Trees_2", _x*0.1);
+
+part_system_position(global.background_particles, _x*0.5, 0);
+part_system_position(global.foreground_particles, _x*1.5, 0);

@@ -10,5 +10,6 @@ uniform float _mix;
 
 void main()
 {
-    gl_FragColor = mix(color_1, color_2, _mix);//v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
+	vec4 col = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
+    gl_FragColor = col*mix(color_1, color_2, _mix);//v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
 }

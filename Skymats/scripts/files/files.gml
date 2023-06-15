@@ -1,4 +1,4 @@
-   // Script assets have changed for v2.3.0 see
+// Script assets have changed for v2.3.0 see
  // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 #macro EXCEPT catch (e) { show_debug_message(e); }
@@ -246,6 +246,12 @@ function load_expedition(file)
 			//Load platform-scope variables
 			obj_platform.fuel = _data.fuel;
 			obj_platform.max_fuel = _data.max_fuel;
+			
+			//Fill the background with particles
+			repeat(65)
+			{
+				part_particles_create(global.background_particles, irandom(2500), global.platform_height + irandom(1366) - 100, global.particle_library.background_cloud1, 1);
+			}
 		}
 	}
 }

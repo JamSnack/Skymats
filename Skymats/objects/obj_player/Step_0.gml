@@ -152,8 +152,13 @@ if (y <= WORLD_BOUND_BOTTOM)
 else
 {
 	//We have entered the void
-	if (vspd > 0)
-		vspd = lerp(vspd, 0, 0.1);
+	if (vspd > 3)
+		vspd = lerp(vspd, 0, 0.1); //Quickly reduce speed
+	else if (vspd != 0)
+	{
+		vspd -= GRAVITY*weight; //remove gravity calculation
+		vspd = lerp(vspd, 0, 0.02); //Slight resistance
+	}
 	
 	//Regen jetpack fuel
 	jetpack_regen_cooldown = 0;
@@ -176,7 +181,7 @@ var mine_y = y + lengthdir_y(mine_laser_distance, mine_laser_direction);
 if (mouse_check_button(mb_left))
 {
 	//effects
-	part_particles_create(global.foreground_particles, mine_x, mine_y, global.particle_library.mining_spark, 2);
+	part_particles_create(global.foreground_particles_fixed, mine_x, mine_y, global.particle_library.mining_spark, 2);
 }
 
 _tile = collision_point(mine_x, mine_y, TILE, false, true);
