@@ -34,13 +34,13 @@ layer_y("Void", global.platform_height);
 //Paralaxing
 var _x = camera_get_view_x(view_camera[0]);
 var _y = camera_get_view_y(view_camera[0]);
-layer_y("Background_Mountains", _y/(1.05));
-layer_y("Background_Trees_1", _y/(1.5));
-layer_y("Background_Trees_2", _y/(1.15));
+layer_y("Background_Mountains", _y*0.6);
+layer_y("Background_Trees_1", _y*0.1);
+layer_y("Background_Trees_2", _y*0.2);
 
-layer_x("Background_Mountains", _x*0.01);
-layer_x("Background_Trees_1", _x*0.2);
-layer_x("Background_Trees_2", _x*0.1);
+layer_x("Background_Trees_1", _x*0.1);
+layer_x("Background_Trees_2", _x*0.2);
+layer_x("Background_Mountains", _x*0.6);
 
-part_system_position(global.background_particles, _x*0.5, 0);
-part_system_position(global.foreground_particles, _x*1.5, 0);
+part_system_position(global.background_particles, _x*0.9, (_y-global.platform_height)*0.9);
+part_system_position(global.foreground_particles, _x*(-0.1), (_y-global.platform_height)*(-0.1));
