@@ -48,8 +48,20 @@ false_angle = point_direction(x, y, mouse_x, mouse_y);
 
 if (grappling)
 {
-	motion_add_custom(point_direction(x, y, grapple_point_x, grapple_point_y), stat_grapple_force);
+	var direction_to_grapple_point = point_direction(x, y, grapple_point_x, grapple_point_y);
+	
+	if (key_up)
+		motion_add_custom(direction_to_grapple_point, stat_grapple_force);
+		
 	grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
+	
+	//Control grapple_length
+	if (grapple_launch_length > stat_grapple_range)
+	{
+		x = grapple_point_x - lengthdir_x(stat_grapple_range, direction_to_grapple_point);
+		y = grapple_point_y - lengthdir_y(stat_grapple_range, direction_to_grapple_point);
+		motion_add_custom(direction_to_grapple_point, 1);
+	}
 	
 	//Keep hook on moving enemies
 	if (instance_exists(grappling_to) && object_get_parent(grappling_to.object_index) == ENEMY)

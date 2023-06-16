@@ -68,3 +68,11 @@ if (hurt_effect != 0)
 	gpu_set_fog(false, c_white, 0, 0);
 }
 else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
+
+//Draw direction
+/*
+draw_arrow(x, y, x+hspd, y+vspd, abs(hspd)+abs(vspd));
+draw_set_color(c_red);
+var _diff = angle_difference(point_direction(x, y, grapple_point_x, grapple_point_y), point_direction(x, y, x+hspd, y+vspd) );
+draw_arrow(x, y, x+lengthdir_x(20, _diff), y+lengthdir_y(20, _diff), 2);
+draw_set_color(c_white);
