@@ -58,8 +58,15 @@ if (grappling)
 	//Control grapple_length
 	if (grapple_launch_length > stat_grapple_range)
 	{
-		x = grapple_point_x - lengthdir_x(stat_grapple_range, direction_to_grapple_point);
-		y = grapple_point_y - lengthdir_y(stat_grapple_range, direction_to_grapple_point);
+		var _tx = grapple_point_x - lengthdir_x(stat_grapple_range, direction_to_grapple_point);
+		var _ty = grapple_point_y - lengthdir_y(stat_grapple_range, direction_to_grapple_point);
+		
+		if (!place_meeting(_tx, _ty, OBSTA))
+		{
+			x = _tx;
+			y = _ty;
+		}
+		
 		motion_add_custom(direction_to_grapple_point, 1);
 	}
 	
@@ -375,6 +382,8 @@ if (hp <= 0 && !dead)
 	y = obj_market.y;
 	hspd = 0;
 	vspd = 0;
+	grappling = false;
+	grappling_to = noone;
 	obj_chat_box.add("[c_red]Someone died!");
 	
 	//Empty inventory
