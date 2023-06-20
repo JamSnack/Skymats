@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 26,
+  "bbox_right": 15,
   "bbox_top": 0,
-  "bbox_bottom": 26,
+  "bbox_bottom": 15,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 27,
-  "height": 27,
+  "width": 16,
+  "height": 16,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -26,6 +26,7 @@
   "frames": [
     {"compositeImage":{"FrameId":{"name":"2192ace5-add2-4b39-b65e-9817366769bb","path":"sprites/spr_compass/spr_compass.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"2192ace5-add2-4b39-b65e-9817366769bb","path":"sprites/spr_compass/spr_compass.yy",},"LayerId":{"name":"e35563e5-5bde-4b19-b77f-eb1eaf847930","path":"sprites/spr_compass/spr_compass.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"2192ace5-add2-4b39-b65e-9817366769bb","path":"sprites/spr_compass/spr_compass.yy",},"LayerId":{"name":"e6e99fb7-5ac0-4735-a5cf-deef37ee9e43","path":"sprites/spr_compass/spr_compass.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_compass","path":"sprites/spr_compass/spr_compass.yy",},"resourceVersion":"1.0","name":"2192ace5-add2-4b39-b65e-9817366769bb","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -65,13 +66,14 @@
     "resourceType": "GMSequence",
   },
   "layers": [
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"e6e99fb7-5ac0-4735-a5cf-deef37ee9e43","tags":[],"resourceType":"GMImageLayer",},
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"e35563e5-5bde-4b19-b77f-eb1eaf847930","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": {
-    "left": 10,
-    "top": 9,
-    "right": 9,
-    "bottom": 9,
+    "left": 5,
+    "top": 5,
+    "right": 5,
+    "bottom": 5,
     "guideColour": [
       4294902015,
       4294902015,

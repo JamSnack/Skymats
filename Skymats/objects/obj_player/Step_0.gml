@@ -50,8 +50,7 @@ if (grappling)
 {
 	var direction_to_grapple_point = point_direction(x, y, grapple_point_x, grapple_point_y);
 	
-	if (key_up)
-		motion_add_custom(direction_to_grapple_point, stat_grapple_force);
+	motion_add_custom(direction_to_grapple_point, stat_grapple_force);
 		
 	grapple_launch_length = point_distance(x, y, grapple_point_x, grapple_point_y);
 	

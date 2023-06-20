@@ -12,3 +12,10 @@ else if (waiting_for_pilot)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]Waiting for pilot...");
 else if (obstruction)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]OBSTRUCTED");
+	
+if (fuel > 1 && powered && power_delay <= 0)
+{
+	draw_sprite(spr_platform_flame, irandom(4), bbox_left+8, bbox_bottom);
+	draw_sprite(spr_platform_flame, irandom(4), x, bbox_bottom);
+	draw_sprite(spr_platform_flame, irandom(4), bbox_right-8, bbox_bottom);
+}

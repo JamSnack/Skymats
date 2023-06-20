@@ -156,6 +156,7 @@
     {"id":{"name":"scribble_add_macro","path":"scripts/scribble_add_macro/scribble_add_macro.yy",},"order":0,},
     {"id":{"name":"spr_darkness","path":"sprites/spr_darkness/spr_darkness.yy",},"order":43,},
     {"id":{"name":"obj_dungeon_dock_point","path":"objects/obj_dungeon_dock_point/obj_dungeon_dock_point.yy",},"order":0,},
+    {"id":{"name":"spr_platform_flame","path":"sprites/spr_platform_flame/spr_platform_flame.yy",},"order":50,},
     {"id":{"name":"__scribble_get_font_data_map","path":"scripts/__scribble_get_font_data_map/__scribble_get_font_data_map.yy",},"order":8,},
     {"id":{"name":"scribble_font_exists","path":"scripts/scribble_font_exists/scribble_font_exists.yy",},"order":7,},
     {"id":{"name":"scribble_anim_wheel","path":"scripts/scribble_anim_wheel/scribble_anim_wheel.yy",},"order":8,},
