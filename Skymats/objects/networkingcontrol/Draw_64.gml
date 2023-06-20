@@ -12,7 +12,8 @@ draw_text(1100, 10,
 	"Enemies: " + string(instance_number(ENEMY)) + "\n" +
 	"Scroll Lag: " + string(global.lag) + "\n" +
 	"Host: " + string(global.is_host) + "\n" +
-	"Multiplayer: " + string(global.multiplayer)
+	"Multiplayer: " + string(global.multiplayer) + "\n" +
+	"Tutorial complete: " + string(global.tutorial_complete)
 	
 );
 

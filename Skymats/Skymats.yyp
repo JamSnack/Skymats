@@ -272,6 +272,7 @@
     {"id":{"name":"__shd_scribble_bake_outline_8dir","path":"shaders/__shd_scribble_bake_outline_8dir/__shd_scribble_bake_outline_8dir.yy",},"order":2,},
     {"id":{"name":"string_width_scribble_ext","path":"scripts/string_width_scribble_ext/string_width_scribble_ext.yy",},"order":5,},
     {"id":{"name":"scribble_super_glyph_copy_all","path":"scripts/scribble_super_glyph_copy_all/scribble_super_glyph_copy_all.yy",},"order":3,},
+    {"id":{"name":"spr_ui_minig_cursor","path":"sprites/spr_ui_minig_cursor/spr_ui_minig_cursor.yy",},"order":0,},
     {"id":{"name":"__shd_scribble_bake_outline_8dir_2px","path":"shaders/__shd_scribble_bake_outline_8dir_2px/__shd_scribble_bake_outline_8dir_2px.yy",},"order":3,},
     {"id":{"name":"__scribble_get_krutidev_matra_lookup_map","path":"scripts/__scribble_get_krutidev_matra_lookup_map/__scribble_get_krutidev_matra_lookup_map.yy",},"order":12,},
     {"id":{"name":"obj_bedrock","path":"objects/obj_bedrock/obj_bedrock.yy",},"order":2,},
@@ -426,6 +427,7 @@
     {"folderPath":"folders/Sounds/crits.yy","order":4,"resourceVersion":"1.0","name":"crits","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/Ui/Health.yy","order":20,"resourceVersion":"1.0","name":"Health","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sounds/tiles.yy","order":8,"resourceVersion":"1.0","name":"tiles","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Sprites/Ui/Cursors.yy","order":22,"resourceVersion":"1.0","name":"Cursors","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
