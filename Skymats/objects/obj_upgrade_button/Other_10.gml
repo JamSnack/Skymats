@@ -16,5 +16,8 @@ if (instance_exists(obj_player))
 		obj_player.player_level = calculate_player_level();
 		//with (obj_player)
 			//init_player();
+			
+		with (obj_market)
+			check_for_upgrades();
 	}
 }
