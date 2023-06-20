@@ -21,7 +21,7 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			x = 400;
 			y = 602;
 			tutorial_index = 2;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Mine tiles with left click."});
+			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Mining laser activated!"});
 		}
 		break;
 		
@@ -31,17 +31,17 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			y = 586;
 			global.can_jetpack = true;
 			tutorial_index = 3;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Airpack unlocked! Hold SHIFT to fly!"});
+			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Airpack activated!"});
 		}
 		break;
 		
 		case 3:
 		{
-			x = 2513.44;
-			y = 136;
+			x = 1764;
+			y = 780;
 			global.can_grapple = true;
 			tutorial_index = 4;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-Claw unlocked! Press right click to grapple to surfaces!"});
+			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-Claw activated!"});
 		}
 		break;
 		
@@ -50,7 +50,7 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			x = -300;//1440;
 			y = 0;//800;
 			tutorial_index = 5;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Defeat the enemy. Collect the Fuel-Cell."});
+			//instance_create_layer(0, 0, "Instances", efct_notification, {text: "Defeat the enemy. Collect the Fuel-Cell."});
 		}
 		break;
 		
@@ -59,7 +59,7 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			x = -300;
 			y = 0;
 			tutorial_index = 0;
-			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Place the Fuel-Cell into the engine!"});
+			//instance_create_layer(0, 0, "Instances", efct_notification, {text: "Place the Fuel-Cell into the engine!"});
 		}
 		break;
 	}
