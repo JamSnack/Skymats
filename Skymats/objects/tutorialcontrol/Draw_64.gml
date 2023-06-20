@@ -16,8 +16,8 @@ switch stage
 	
 	case 1:
 	{
-		draw_text_scribble(_x + 2, _y + 2, "[font][c_black]Use LMB to activate your mining laser and break the tiles!");
-		draw_text_scribble(_x, _y, "[font]Use [c_red]LMB[/c] to activate your [c_orange]mining laser[/c] and break the tiles!");
+		draw_text_scribble(_x + 2, _y + 2, "[font][c_black]Use Left Click to activate your mining laser and break the tiles!");
+		draw_text_scribble(_x, _y, "[font]Use [c_red]Left Click[/c] to activate your [c_orange]mining laser[/c] and break the tiles!");
 	}
 	break;
 		
@@ -30,8 +30,8 @@ switch stage
 	
 	case 3:
 	{
-		draw_text_scribble(_x + 2, _y + 2, "[font][c_black]Hold RMB to launch your grapple-claw. Try grappling to surfaces like the ceiling!");
-		draw_text_scribble(_x, _y, "[font]Hold [c_red]RMB[/c] to launch your [c_orange]grapple-claw[/c]. Try grappling to surfaces like the ceiling!");
+		draw_text_scribble(_x + 2, _y + 2, "[font][c_black]Hold Right Click to launch your grapple-claw. Try grappling to surfaces like the ceiling!");
+		draw_text_scribble(_x, _y, "[font]Hold [c_red]Right Click[/c] to launch your [c_orange]grapple-claw[/c]. Try grappling to surfaces like the ceiling!");
 	}
 	break;
 	

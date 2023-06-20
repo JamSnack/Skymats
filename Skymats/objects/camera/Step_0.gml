@@ -16,6 +16,9 @@ if (lerped_zoom != zoom)
 	
 camera_set_view_pos(local_camera, clamp(x - 1366/(2*lerped_zoom), 0, room_width-768), clamp(y - 768/(2*lerped_zoom), WORLD_BOUND_TOP, WORLD_BOUND_BOTTOM));
 
+//Audio listener
+audio_listener_position(x, y, 0);
+
 //Tile culling
 /*
 if (keyboard_check_released(vk_rshift) && global.is_host == false)

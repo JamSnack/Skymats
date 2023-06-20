@@ -12,7 +12,7 @@ if (global.dungeon)
 	powered = false;
 
 //Keep the platform from flying away from the player
-if (global.is_host && powered && player_exists && player_y > bbox_bottom+16)
+if (global.is_host && powered && player_exists && player_y > bbox_top)
 {
 	waiting_for_pilot = true; 
 } else waiting_for_pilot = false;
@@ -124,7 +124,6 @@ if (y != target_y)
 	
 	//Move all platform objects
 	obj_market.y = bbox_top-74;
-	obj_power_button.y = bbox_top-2;
 	obj_fuel_storage.y = y-36;
 }
 

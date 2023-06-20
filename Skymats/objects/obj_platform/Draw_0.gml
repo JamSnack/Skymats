@@ -25,3 +25,12 @@ else if (powered)
 	draw_sprite(spr_platform_flame_weak, irandom(4), x, bbox_bottom);
 	draw_sprite(spr_platform_flame_weak, irandom(4), bbox_right-15, bbox_bottom);
 }
+
+if (show_engine_tutorial)
+{
+	draw_set_halign(fa_center);
+	draw_text_scribble(x, y - 64, "[font][scale, 0.5][pulse]Press [c_teal]'G'[/c] to [c_orange]toggle[/c] engines.");
+	
+	//reset
+	draw_set_halign(fa_left);
+}

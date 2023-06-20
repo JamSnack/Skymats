@@ -87,6 +87,20 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 			
 			//Save game
 			save_game();
+			
+			//Check for available upgrades
+			var total_gold = _p.gold;
+			if (!upgrade_available)
+			{
+				for (var i = 0; i < UPGRADE.last; i++)
+				{
+					if (get_upgrade_cost(i) <= total_gold)
+					{
+						upgrade_available = true;
+						break;
+					}
+				}
+			}
 		}
 		
 		//Market stuff

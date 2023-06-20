@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 randomize();
-show_debug_overlay(false);
+show_debug_overlay(true);
 
 //test_list = ds_list_create();
 //ds_list_add(test_list, id);

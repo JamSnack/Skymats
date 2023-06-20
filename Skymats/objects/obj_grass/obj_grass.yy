@@ -28,6 +28,7 @@
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"item_id","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"break_sound","path":"objects/TILE/TILE.yy",},"objectId":{"name":"TILE","path":"objects/TILE/TILE.yy",},"value":"snd_dirt_break","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Tiles",

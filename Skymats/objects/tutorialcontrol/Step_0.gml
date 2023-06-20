@@ -50,7 +50,7 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			x = -300;//1440;
 			y = 0;//800;
 			tutorial_index = 5;
-			//instance_create_layer(0, 0, "Instances", efct_notification, {text: "Defeat the enemy. Collect the Fuel-Cell."});
+			instance_create_layer(1200, 812, "Instances", obj_ancient_stone, {image_xscale: 1, image_yscale: 9.5});
 		}
 		break;
 		
@@ -59,7 +59,11 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 			x = -300;
 			y = 0;
 			tutorial_index = 0;
-			//instance_create_layer(0, 0, "Instances", efct_notification, {text: "Place the Fuel-Cell into the engine!"});
+			obj_platform.show_engine_tutorial = true;
+			
+			//destroy barrier in tutorial
+			with (instance_nearest(1468, 700, obj_ancient_stone))
+				instance_destroy();
 		}
 		break;
 	}
