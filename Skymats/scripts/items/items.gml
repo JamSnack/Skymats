@@ -275,8 +275,8 @@ function choose_ore(y)
 {
 	var _g = global.ore_distribution;
 	
-	show_debug_message("y is: ");
-	show_debug_message(y);
+	//show_debug_message("y is: ");
+	//show_debug_message(y);
 	
 	for (var _i = ITEM_ID.enemy_parts-1; _i > ITEM_ID.stone; _i--)
 	{

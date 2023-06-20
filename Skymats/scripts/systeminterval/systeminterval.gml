@@ -134,12 +134,11 @@ function cull_tiles()
 		//Cull tiles in chunks
 		repeat(180)
 		{
-			with (instance_find(TILE, current_tile))
+			with (instance_find(TILE, current_tile--))
 			{
 				if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
 				{
 					instance_destroy();
-					current_tile--;
 				}
 			}
 			
@@ -147,19 +146,21 @@ function cull_tiles()
 			if (current_tile < 0)
 			{
 				current_tile = instance_number(TILE)-1;
+				//show_debug_message("reseting current_tile");
 				break;
 			}
 		}
 		
+		//show_debug_message("current_tile is: " + string(current_tile));
+		
 		//Cull NOCOL instances in chunks
 		repeat(50)
 		{
-			with (NOCOL)
+			with (instance_find(NOCOL, current_nocol--))
 			{
 				if (x-8 > WORLD_BOUND_RIGHT || y > WORLD_BOUND_BOTTOM+768)
 				{
 					instance_destroy();
-					current_nocol--;
 				}
 			}
 			
