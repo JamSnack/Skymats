@@ -107,7 +107,7 @@ else
 		y = round(y);
 		
 		if (!global.tutorial_complete)
-			instance_create_layer(0, 0, "Instances", efct_notification, { text: "The Elevator is obstructed! Remove the tiles blocking it so that it can continue to rise."});
+			instance_create_layer(0, 0, "Instances", efct_notification, { text: "The SKYMAT is obstructed! Remove the tiles blocking it so that it can continue to rise."});
 	}
 }
 

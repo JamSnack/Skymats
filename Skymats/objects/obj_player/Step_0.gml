@@ -323,6 +323,9 @@ else if (!key_shift && jetpack_fuel < stat_jetpack_fuel)
 	jetpack_refuel_rate = lerp(jetpack_refuel_rate, stat_jetpack_regen_rate + (stat_jetpack_regen_rate*2)*(on_ground != noone) + (stat_jetpack_regen_rate*2)*(grappling), 0.1);
 }
 
+//Animation
+jetpack_fuel_draw = lerp(jetpack_fuel_draw, jetpack_fuel, 0.05);
+
 //Instant cooldown
 if (on_ground != noone || grappling)
 	jetpack_regen_cooldown = 0;

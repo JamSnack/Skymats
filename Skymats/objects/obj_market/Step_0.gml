@@ -99,6 +99,9 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 		{
 			_p.hp++;
 			heal_delay = 60*2;
+			
+			//effects
+			create_floating_text(_p.x + irandom(32) - 16, _p.y, "+", "[c_lime]");
 		}
 		else heal_delay--;
 	} 

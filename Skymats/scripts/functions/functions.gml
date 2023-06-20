@@ -53,11 +53,14 @@ function string_split(str, delimiter)
 	return r;
 }
 
-function draw_healthbar_custom(x, y, current_hp, max_hp, red_bar)
+function draw_healthbar_custom(x, y, current_hp, max_hp, background_bar, color1=c_lime, color2=c_red)
 {
 	draw_sprite(spr_ui_healthbar, 0, x - 12, y);
-	draw_sprite_ext(spr_ui_healthbar_red, 0, x - 12, y, red_bar, 1, 0, c_white, 1);
+	gpu_set_fog(true, color2, 0, 1);
+	draw_sprite_ext(spr_ui_healthbar_red, 0, x - 12, y, background_bar, 1, 0, c_white, 1);
+	gpu_set_fog(true, color1, 0, 1);
 	draw_sprite_ext(spr_ui_healthbar_green, 0, x - 12, y, current_hp/max_hp, 1, 0, c_white, 1);
+	gpu_set_fog(false, c_white, 0, 0);
 }
 
 function init_dungeon_load()
@@ -206,7 +209,7 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 				create_smoke(x, y, k_direction, 1);
 				
 				if (instance_exists(obj_player))
-					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.1;
+					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.25;
 			}
 		}
 	}

@@ -30,6 +30,9 @@ mine_surface = noone;
 mine_laser_distance = 0;
 mine_laser_direction = 0;
 
+//Animation
+jetpack_fuel_draw = 0;
+
 //init upgrades purchased list
 upgrades_purchased = array_create(UPGRADE.last, 1);
 
