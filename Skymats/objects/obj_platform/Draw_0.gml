@@ -13,9 +13,15 @@ else if (waiting_for_pilot)
 else if (obstruction)
 	draw_text_scribble(x, y-96, "[fa_center][spr_ui_warning]\n[blink]OBSTRUCTED");
 	
-if (fuel > 1 && powered && power_delay <= 0)
+if (fuel > 1 && powered && power_delay <= 0 && !obstruction && !waiting_for_pilot && !approach_dungeon)
 {
-	draw_sprite(spr_platform_flame, irandom(4), bbox_left+8, bbox_bottom);
+	draw_sprite(spr_platform_flame, irandom(4), bbox_left+14, bbox_bottom);
 	draw_sprite(spr_platform_flame, irandom(4), x, bbox_bottom);
-	draw_sprite(spr_platform_flame, irandom(4), bbox_right-8, bbox_bottom);
+	draw_sprite(spr_platform_flame, irandom(4), bbox_right-15, bbox_bottom);
+}
+else if (powered)
+{
+	draw_sprite(spr_platform_flame_weak, irandom(4), bbox_left+14, bbox_bottom);
+	draw_sprite(spr_platform_flame_weak, irandom(4), x, bbox_bottom);
+	draw_sprite(spr_platform_flame_weak, irandom(4), bbox_right-15, bbox_bottom);
 }
