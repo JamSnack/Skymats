@@ -333,6 +333,10 @@ if (weapon_cooldown > 0)
 {
 	var bonus_cooldown = true_speed*0.1;
 	weapon_cooldown -= (1 + bonus_cooldown);
+	
+	//effects
+	if (weapon_cooldown <= 0)
+		audio_play_sound_custom(snd_charged, 10, false);
 }
 	
 if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) <= stat_weapon_range && weapon_cooldown <= 0)

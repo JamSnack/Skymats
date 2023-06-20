@@ -43,5 +43,9 @@ if (instance_exists(obj_player) && obj_player.can_hurt)
 if (hit_effect != 0)
 	hit_effect = approach(hit_effect, 0, 0.1);
 
+//hp bar
+if (hp_bar_red != hp/max_hp)
+	hp_bar_red = lerp(hp_bar_red, hp/max_hp, 0.05);
+
 //Update shadow
 update_shadow(shadow, draw_angle);

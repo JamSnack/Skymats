@@ -53,6 +53,13 @@ function string_split(str, delimiter)
 	return r;
 }
 
+function draw_healthbar_custom(x, y, current_hp, max_hp, red_bar)
+{
+	draw_sprite(spr_ui_healthbar, 0, x - 12, y);
+	draw_sprite_ext(spr_ui_healthbar_red, 0, x - 12, y, red_bar, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_ui_healthbar_green, 0, x - 12, y, current_hp/max_hp, 1, 0, c_white, 1);
+}
+
 function init_dungeon_load()
 {
 	with (TILE)

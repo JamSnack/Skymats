@@ -16,4 +16,6 @@ draw_angle = 0;
 target_x = x;
 target_y = y;
 
+hp_bar_red = 1;
+
 send_enemy_position();

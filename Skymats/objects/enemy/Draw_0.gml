@@ -11,6 +11,7 @@ else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale
 
 if (hp < max_hp)
 {
-	draw_rectangle_color(x-10, y + 10, x+10, y + 10 + 4, c_black, c_black, c_black, c_black, false);	
-	draw_rectangle_color(x-10, y + 10, x-10 + 20*(hp/max_hp), y + 10 + 4, c_green, c_green, c_green, c_green, false);
+	draw_healthbar_custom(x, y + 10, hp, max_hp, hp_bar_red);
+	//draw_rectangle_color(x-10, y + 10, x+10, y + 10 + 4, c_black, c_black, c_black, c_black, false);	
+	//draw_rectangle_color(x-10, y + 10, x-10 + 20*(hp/max_hp), y + 10 + 4, c_green, c_green, c_green, c_green, false);
 }
