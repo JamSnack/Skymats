@@ -42,6 +42,9 @@ enum ITEM_ID
 	pot_of_greed,
 	fuel_cell,
 	
+	upgrade_items,
+	heart_beat,
+	
 	last,
 }
 
@@ -238,6 +241,8 @@ function get_item_name(item_id)
 		case ITEM_ID.typhoonium:	   { return "Typhoonium";   } break;
 		case ITEM_ID.void_glass:	   { return "Void Glass";   } break;
 		case ITEM_ID.zinc:			   { return "Zinc";         } break;
+		
+		case ITEM_ID.heart_beat:	   { return "Heart-Beat";         } break;
 	}
 }
 

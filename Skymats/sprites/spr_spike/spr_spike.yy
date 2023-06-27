@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Ore",
-    "path": "folders/Sprites/Ore.yy",
+    "path": "folders/Sprites/Tiles/Ore.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_spike",

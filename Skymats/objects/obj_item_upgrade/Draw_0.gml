@@ -4,12 +4,6 @@
 
 // Inherit the parent event
 event_inherited();
+draw_shadow(sprite_index, image_index, 2, 2, image_xscale, image_yscale, image_angle, c_black, 0.5);
+draw_self();
 
-image_index = item_id;
-image_xscale = 0.75;
-image_yscale = 0.75;
-depth = -99;
-lifetime = 0;
-
-target = noone;
-rate = 0;

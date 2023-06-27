@@ -54,3 +54,10 @@ else
 	if lifetime <= 0
 		instance_destroy();
 }
+
+//lean
+image_angle = lerp(image_angle, (xprevious-x)*10, 0.1);
+
+//scaling
+image_xscale = 0.75 + 0.05*dsin(current_time/1000);
+image_yscale = 0.75 + 0.05*dsin(current_time/1000);
