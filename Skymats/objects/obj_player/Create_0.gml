@@ -61,6 +61,11 @@ hurt_effect = 0;
 enemy_hurt_list = ds_list_create();
 enemy_hurt_list_mining = ds_list_create();
 
+//Healthbar animation
+draw_hp = 0;
+draw_hp_red = 0;
+
+//Spawn in tutorial if not complete
 if (global.tutorial_complete != true)
 {
 	x = 30;

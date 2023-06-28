@@ -466,3 +466,7 @@ if (!can_hurt)
 //Hurt effect
 if (hurt_effect != 0)
 	hurt_effect = approach(hurt_effect, 0, 0.1);
+	
+//Healthbar animation
+draw_hp = lerp(draw_hp, hp, 0.3);
+draw_hp_red = lerp(draw_hp_red, hp, 0.1);
