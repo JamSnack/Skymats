@@ -18,7 +18,10 @@ for (var i=-1; i<characters; i++)
 	
 	if (character_selected == i)
 	{
-		draw_rectangle(center_x - (w_size/2)*card_size, center_y - (h_size/2)*card_size, center_x + (w_size/2)*card_size, center_y + (h_size/2)*card_size, false);
+		gpu_set_fog(true, c_orange, 0, 1);
+		draw_sprite_ext(spr_ui_arrow_down, 0, center_x - 8, -6, 2, 2, 0, c_white, 1);
+		gpu_set_fog(false, c_white, 0, 0);
+		//draw_rectangle(center_x - (w_size/2)*card_size, center_y - (h_size/2)*card_size, center_x + (w_size/2)*card_size, center_y + (h_size/2)*card_size, false);
 	}
 	
 	if (i != -1)
@@ -29,7 +32,13 @@ for (var i=-1; i<characters; i++)
 		{
 			//draw_rectangle(_x, _y, _x + w_size, _y + h_size, false);
 			draw_text_scribble_ext(_x + w_size/2, _y - 48, "[default_outlined]"+string(_d.username), 190);
-			draw_sprite_ext(spr_player_run, i + current_time/100, _x + w_size/2, _y + h_size/2, 12*card_size, 12*card_size, 0, c_white, 1.0);
+			
+			//Draw player sprite
+			if (character_selected == i)
+				draw_sprite_outlined_ext(spr_player_run, i + current_time/100, _x + w_size/2, _y + h_size/2, c_white, 13*card_size + sin(current_time/300), 13*card_size + sin(current_time/300), 0, 1.0);
+			else
+				draw_sprite_ext(spr_player_run, i, _x + w_size/2, _y + h_size/2, 12*card_size, 12*card_size, 0, c_white, 1.0);
+				
 			draw_text_scribble(_x + w_size/2, _y + h_size + 32, "[default_outlined]Gold: " + string(_d.gold));
 			draw_text_scribble(_x + w_size/2, _y + h_size + 48, "[default_outlined]Level: " + string(_d.player_level));
 		}
