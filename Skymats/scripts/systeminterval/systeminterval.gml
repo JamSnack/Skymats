@@ -29,6 +29,7 @@ function process_system_interval()
 		case 10: { manage_recently_destroyed(); } break;
 		case 11: { check_height(); } break;
 		case 12: { manage_auto_burn(); } break;
+		case 13: { update_music(); } break;
 		case 16: { sync_platform(); } break;
 	}
 	
@@ -288,4 +289,35 @@ function spawn_mobs()
 			else break;
 		}
 	}
+}
+
+function update_music()
+{
+	static current_music = noone;
+	
+	if (!global.tutorial_complete)
+		return 0;
+		
+	//Change background music based on certain conditions
+	if (instance_number(ENEMY) > 10 && current_music != snd_enemies_appear)
+	{
+		if (!audio_is_playing(snd_enemies_appear))
+		{
+			fade_out_music(current_music);
+			audio_play_sound(snd_enemies_appear, 10, true);
+			audio_sound_gain(snd_enemies_appear, 0.5, 5000);
+			current_music = snd_enemies_appear;
+		}
+	} 
+	else if (instance_number(ENEMY) < 6)
+	{
+		fade_out_music(current_music);
+		current_music = noone;
+	}
+}
+
+function fade_out_music(sound_id)
+{
+	if (audio_is_playing(sound_id) && !instance_exists(obj_fade_out_music))
+		instance_create_layer(0, 0, "Instances", obj_fade_out_music, { sound_id: sound_id });
 }
