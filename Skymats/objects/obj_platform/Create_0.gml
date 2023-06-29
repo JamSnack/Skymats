@@ -11,7 +11,7 @@ waiting_for_pilot = false;
 powered = false;
 power_delay = 0;
 
-show_engine_tutorial = false;
+show_engine_tutorial = true;
 
 spawn_high_island_delay = 0;
 

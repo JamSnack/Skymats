@@ -156,7 +156,10 @@ if (powered && fuel <= 1)
 if (keyboard_check_released(ord("G")))
 {
 	if (!powered && fuel >= fuel_power_threshold)
+	{
 		powered = true;
+		show_engine_tutorial = false;
+	}
 	else powered = false;
 }
 

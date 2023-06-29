@@ -269,12 +269,12 @@ function spawn_mobs()
 			
 	
 		//Other
-		var _r = irandom(99999);
-	
-		if (_r > 0 && _r < 80)
+		if (instance_number(obj_balloonimal) < 4)
 		{
-			repeat (_r mod 8)
-				instance_create_layer(random_range(_x - CHUNK_WIDTH/2, _x + CHUNK_WIDTH/2), WORLD_BOUND_BOTTOM+60, "Instances", obj_balloonimal);
+			var _r = irandom(999);
+	
+			if (_r > 0 && _r < 80)
+				instance_create_layer(random_range(WORLD_BOUND_LEFT, WORLD_BOUND_RIGHT), VOID_BOUND_BOTTOM, "Instances", obj_balloonimal);
 		}
 	}	
 	else enemy_spawn_delay--;
@@ -299,7 +299,7 @@ function update_music()
 		return 0;
 		
 	//Change background music based on certain conditions
-	if (instance_number(ENEMY) > 10 && current_music != snd_enemies_appear)
+	if (instance_number(ENEMY) > 14 && current_music != snd_enemies_appear)
 	{
 		if (!audio_is_playing(snd_enemies_appear))
 		{
@@ -309,7 +309,7 @@ function update_music()
 			current_music = snd_enemies_appear;
 		}
 	} 
-	else if (instance_number(ENEMY) < 6)
+	else if (instance_number(ENEMY) < 9)
 	{
 		fade_out_music(current_music);
 		current_music = noone;

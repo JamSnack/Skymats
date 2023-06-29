@@ -7,6 +7,7 @@ key_down  =  keyboard_check(ord("S"));
 key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
+vmove = (key_down - key_up);
 var on_ground = noone;
 
 if (vspd >= 0)
@@ -182,8 +183,19 @@ else
 	jetpack_regen_cooldown = 0;
 	
 	//If the player goes underneath the world, drain hp quickly
-	if (y > WORLD_BOUND_BOTTOM + 384)
+	if (y > VOID_BOUND_BOTTOM)
 		hp -= 0.05;
+		
+	//Allow void-swimming
+	if (key_right)
+		motion_add_custom(0, 0.1);
+	else if (key_left)
+		motion_add_custom(180, 0.1);
+		
+	if (key_up)
+		motion_add_custom(90, 0.1);
+	else if (key_down)
+		motion_add_custom(270, 0.1);
 }
 	
 //Tile mininig

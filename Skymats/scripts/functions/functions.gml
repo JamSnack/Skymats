@@ -7,6 +7,7 @@ global.dungeon = false;
 #macro WORLD_BOUND_RIGHT room_width
 #macro WORLD_BOUND_TOP global.platform_height
 #macro WORLD_BOUND_BOTTOM room_height + global.platform_height
+#macro VOID_BOUND_BOTTOM room_height + global.platform_height + 384
 
 #macro ISLAND_MARKER_OFFSET_X 16*5
 #macro ISLAND_MARKER_OFFSET_Y -16*4

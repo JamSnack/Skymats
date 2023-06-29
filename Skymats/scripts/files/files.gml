@@ -247,10 +247,23 @@ function load_expedition(file)
 			obj_platform.fuel = _data.fuel;
 			obj_platform.max_fuel = _data.max_fuel;
 			
-			//Fill the background with particles
+			//Fill the game with content!
+			
+			//-Fill the background with particles
 			repeat(65)
 			{
 				part_particles_create(global.background_particles, irandom(2500), global.platform_height + irandom(1366) - 100, global.particle_library.background_cloud1, 1);
+			}
+			
+			//- Spawns some balloonimals
+			repeat(2)
+				instance_create_layer(irandom(WORLD_BOUND_RIGHT), VOID_BOUND_BOTTOM, "Instances", obj_balloonimal);
+				
+			//- Create some sky islands
+			if (global.tutorial_complete && global.platform_height < -2000)
+			{
+				repeat(2 + irandom(1))
+					instance_create_layer(irandom(WORLD_BOUND_RIGHT), irandom(WORLD_BOUND_BOTTOM), "Instances", obj_island_generator);
 			}
 		}
 	}
