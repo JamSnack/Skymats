@@ -284,7 +284,7 @@ function spawn_mobs()
 	{
 		with (PLAYER)
 		{
-			if (instance_number(obj_void_fiend) < 5)
+			if (y > WORLD_BOUND_BOTTOM && instance_number(obj_void_fiend) < 5)
 				instance_create_layer(choose(0, room_width), WORLD_BOUND_BOTTOM+768, "Instances", obj_void_fiend);
 			else break;
 		}
