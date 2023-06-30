@@ -7,7 +7,6 @@ key_down  =  keyboard_check(ord("S"));
 key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
-vmove = (key_down - key_up);
 var on_ground = noone;
 
 if (vspd >= 0)
@@ -241,6 +240,9 @@ if (mine_cooldown <= 0 && mouse_check_button(mb_left))
 			with _tile
 			{
 				hurt_tile(other.stat_mine_level);
+				
+				if (hp <= 0)
+					event_user(0);
 				
 				send_data({cmd: "request_tile_hit", damage: other.stat_mine_level, owner_id: owner.connected_id, x: grid_pos.x, y: grid_pos.y});
 			}

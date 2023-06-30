@@ -3,5 +3,5 @@
 if (global.is_host)
 {
 	var _s = {cmd: "destroy_item", connected_id: connected_id}
-	send_data(_s);
+	//send_data(_s);
 }
