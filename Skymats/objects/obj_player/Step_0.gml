@@ -289,18 +289,31 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 			jetpack_fuel -= 1;
 		}
 		
+		//Calculate Speed limit
+		var _limit = 1.5 + stat_jetpack_strength*20;
+		var _pivot_strength = 0.175;
+		
 		//Vertical jetpack
-		if (key_up)
+		if (key_up && vspd > -_limit)
 			motion_add_custom(90, stat_jetpack_strength);
-		else if (key_down)
+		else if (key_down && vspd < _limit)
 			motion_add_custom(270, stat_jetpack_strength);
 		
 		//Horizontal jetpack
-		if (key_right)
+		if (key_right && hspd > -_limit)
+		{
+			if (hspd < 0)
+				hspd = approach(hspd, 0, _pivot_strength);
+				
 			motion_add_custom(0, stat_jetpack_strength);
-			
-		else if (key_left)
+		}
+		else if (key_left && hspd < _limit)
+		{
+			if (hspd > 0)
+				hspd = approach(hspd, 0, _pivot_strength);
+				
 			motion_add_custom(180, stat_jetpack_strength);
+		}
 	}
 	
 	//Remove fuel

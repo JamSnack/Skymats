@@ -168,7 +168,7 @@ function audio_play_standard(sound, priority, loops, overwrites=false)
 	audio_play_sound(sound, priority, loops);
 }
 
-function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
+function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel = true)
 {
 	if (instance_exists(inst))
 	{
@@ -187,30 +187,30 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage)
 			{
 				create_floating_text(x, y, "[wobble][pulse][scale, 1.5]"+string(true_damage), "[rainbow][spr_ui_star]");
 				part_particles_create(global.foreground_particles_fixed, x, y, global.particle_library.hit_effect3, 2);
-				audio_play_sound_custom(snd_star_crit, 10, false);
+				audio_play_sound_in_world(snd_star_crit, 10, false, true, x, y);
 			}
 			else if (bonus_damage >= 3)
 			{
 				create_floating_text(x, y, "[wobble][pulse]"+string(true_damage), "[c_red]");
 				part_particles_create(global.foreground_particles_fixed, x, y, global.particle_library.hit_effect2, 2);
-				audio_play_sound_custom(snd_red_crit, 10, false);
+				audio_play_sound_in_world(snd_red_crit, 10, false, true, x, y);
 			}
 			else 
 			{
 				create_floating_text(x, y, "[wobble][pulse][scale, 0.5]"+string(true_damage), "[c_orange]");
 				part_particles_create(global.foreground_particles_fixed, x, y, global.particle_library.hit_effect1, 2);
-				audio_play_sound_custom(snd_default_hit, 10, false);
+				audio_play_sound_in_world(snd_default_hit, 10, false, true, x, y);
 			}
 			
 			if (hp <= 0)
 			{
-				drop_item = true;
+				//drop_item = true;
 				instance_destroy();
 				create_sprite_shatter(x, y, 2 + irandom(2), sprite_index, irandom(2) + k_amt/3, k_direction, weight);
 				create_smoke(x, y, k_direction, 1);
 				
-				if (instance_exists(obj_player))
-					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.25;
+				if (award_fuel && instance_exists(obj_player))
+					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.13;
 			}
 		}
 	}
@@ -409,10 +409,10 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 3*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 55 + _up*8; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 200 + _up*50; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.13 + _up*0.0175; } break;
-			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 90 + -10*_up; } break;
-			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.2 + _up*0.05; } break;
+			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 120 + -10*_up; } break;
+			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.1 + _up*0.05; } break;
 											  
 			case UPGRADE.weapon_speed:		{ obj_player.stat_weapon_cooldown   = 120 - 10*_up; } break;
 			case UPGRADE.weapon_damage:		{ obj_player.stat_weapon_damage     = 1 + _up; } break;

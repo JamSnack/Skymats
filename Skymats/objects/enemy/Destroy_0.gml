@@ -10,7 +10,7 @@ if (global.is_host)
 	*/
 	
 	//Enemies drop cash instead of items
-	if (drop_item)
+	if (drop_item && cash_to_drop > 0)
 		instance_create_layer(x, y, "Instances", obj_item, {item_id: ITEM_ID.cash, cash_value: cash_to_drop });
 }
 
