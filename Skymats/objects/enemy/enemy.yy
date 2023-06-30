@@ -40,6 +40,7 @@
     {"varType":0,"value":"random(1)","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"random_factor","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":3,"value":"False","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"drop_item","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":1,"value":"ITEM_ID.enemy_parts","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"item_to_drop","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":1,"value":"max_hp + max_hspeed + max_vspeed + damage*2","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"cash_to_drop","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [
     {"propertyId":{"name":"weight","path":"objects/ENTITY/ENTITY.yy",},"objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"value":"0","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},

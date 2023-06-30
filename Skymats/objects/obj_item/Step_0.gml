@@ -78,7 +78,15 @@ if (target != noone)
 	{
 		if (target.object_index == obj_player)
 		{		
-			global.inventory.addItem(item_id, 1);
+			if (item_id != ITEM_ID.cash)
+				global.inventory.addItem(item_id, 1);
+			
+			if (cash_value > 0)
+			{
+				obj_player.gold += cash_value;
+				create_floating_text(obj_player.x + irandom_range(-10, 10), obj_player.y - 10, "[scale, 0.5][wobble][c_green]+$"+string(cash_value));
+			}
+			
 			create_floating_text(obj_player.x + irandom_range(-10, 10), obj_player.y - 10, "[scale, 0.5][wobble]+[spr_items, "+string(item_id)+"]");
 			audio_play_sound_custom(choose(snd_item_pickup1, snd_item_pickup2, snd_item_pickup3, snd_item_pickup4, snd_item_pickup5), 10, false);
 		}

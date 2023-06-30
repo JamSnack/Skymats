@@ -35,12 +35,9 @@ enum ITEM_ID
 	typhoonium,
 	ground_lemons,
 	
-	
 	enemy_parts, //Used as last_ore in code
-	greenthin_legs,
-	star_finger,
-	pot_of_greed,
 	fuel_cell,
+	cash,
 	
 	upgrade_items,
 	heart_beat,
@@ -63,7 +60,7 @@ function get_tile_object_from_item(item_id)
 		case ITEM_ID.ruby:             { return obj_ruby;         } break;
 		case ITEM_ID.emerald:          { return obj_emerald;      } break;
 		case ITEM_ID.diamond:          { return obj_diamond;      } break;
-		case ITEM_ID.pot_of_greed:     { return obj_pot_of_greed; } break;
+		//case ITEM_ID.pot_of_greed:     { return obj_pot_of_greed; } break;
 		
 		case ITEM_ID.amethyst:         { return obj_amethyst;     } break;
 		case ITEM_ID.tin:		       { return obj_tin;          } break;
@@ -123,10 +120,12 @@ function get_item_value(item_id)
 		
 		//items
 		case ITEM_ID.enemy_parts:			{ return  5; } break;
+		/*
 		case ITEM_ID.pot_of_greed:			{ return  250; } break;
 		case ITEM_ID.greenthin_legs:        { return  6; } break;
-		case ITEM_ID.star_finger:           { return 50; } break;
+		case ITEM_ID.star_finger:           { return 50; } break;*/
 		case ITEM_ID.fuel_cell:             { return 5;  } break;
+
 		
 		default:							{ return -1; } break;
 	}
@@ -169,9 +168,10 @@ function get_item_bonus_fuel(item_id)
 		
 		//items
 		case ITEM_ID.enemy_parts:			{ return  8; } break;
+		/*
 		case ITEM_ID.pot_of_greed:			{ return  5; } break;
 		case ITEM_ID.greenthin_legs:        { return  9; } break;
-		case ITEM_ID.star_finger:           { return 20; } break;
+		case ITEM_ID.star_finger:           { return 20; } break;*/
 		case ITEM_ID.fuel_cell:             { return 100;} break;
 		
 		default:							{ return -1; } break;
@@ -194,11 +194,11 @@ function get_fuel_value(item_id)
 		case ITEM_ID.emerald:	   
 		case ITEM_ID.diamond:	   { return  45; } break;
 		
-		case ITEM_ID.pot_of_greed: { return  150; } break;
-		
-		case ITEM_ID.enemy_parts:  
-		case ITEM_ID.greenthin_legs: { return  5; } break;
+		case ITEM_ID.enemy_parts:  { return  5; } break;
+		/*
+		case ITEM_ID.greenthin_legs: { return  5; } break;*/
 		case ITEM_ID.fuel_cell:      { return 1500;} break;
+		
 		default:				   { return 15; } break;
 	}
 }
@@ -218,11 +218,7 @@ function get_item_name(item_id)
 		case ITEM_ID.ruby:             { return "Ruby";			} break;
 		case ITEM_ID.emerald:          { return "Emerald";		} break;
 		case ITEM_ID.diamond:          { return "Diamond";		} break;
-		case ITEM_ID.pot_of_greed:     { return "Pot of Greed"; } break;
 		case ITEM_ID.enemy_parts:      { return "Enemy Parts";  } break;
-		case ITEM_ID.greenthin_legs:   { return "Greenthin Legs"; } break;
-		case ITEM_ID.star_finger:      { return "Star Finger"; } break;
-		case ITEM_ID.fuel_cell:        { return "Fuel Cell";   } break;
 
 		case ITEM_ID.amethyst:         { return "Amethyst";     } break;
 		case ITEM_ID.tin:		       { return "Tin";          } break;
@@ -243,6 +239,12 @@ function get_item_name(item_id)
 		case ITEM_ID.zinc:			   { return "Zinc";         } break;
 		
 		case ITEM_ID.heart_beat:	   { return "Heart-Beat";         } break;
+		
+		/*
+		case ITEM_ID.greenthin_legs:   { return "Greenthin Legs"; } break;
+		case ITEM_ID.star_finger:      { return "Star Finger"; } break;*/
+		case ITEM_ID.fuel_cell:        { return "Fuel Cell";   } break;
+
 	}
 }
 
