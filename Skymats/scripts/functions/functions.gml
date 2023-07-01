@@ -174,14 +174,14 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel =
 	{
 		with (inst)
 		{
+			drop_item = true; //still controls whether or not to drop cash //Soulbound damage
+			
 			motion_add_custom(k_direction, max(k_amt-weight, 0));
 			
 			var true_damage = damage+bonus_damage;
 			
 			hp -= true_damage;
 			hit_effect = 1;
-			
-			
 			
 			if (bonus_damage >= 6)
 			{
@@ -204,13 +204,9 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel =
 			
 			if (hp <= 0)
 			{
-				//drop_item = true;
 				instance_destroy();
 				create_sprite_shatter(x, y, 2 + irandom(2), sprite_index, irandom(2) + k_amt/3, k_direction, weight);
 				create_smoke(x, y, k_direction, 1);
-				
-				if (award_fuel && instance_exists(obj_player))
-					obj_player.jetpack_fuel += obj_player.stat_jetpack_fuel*0.13;
 			}
 		}
 	}
@@ -409,7 +405,7 @@ function apply_upgrade(upgrade_id)
 			case UPGRADE.mine_strength:	    { obj_player.stat_mine_level    = 1 + 0.5*_up; } break;
 			case UPGRADE.mine_speed:		{ obj_player.stat_mine_cooldown = 45 - 3*_up; } break;
 											 
-			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 200 + _up*50; } break;
+			case UPGRADE.jetpack_fuel:		{ obj_player.stat_jetpack_fuel = 60 + _up*20; } break;
 			case UPGRADE.jetpack_force:		{ obj_player.stat_jetpack_strength    = 0.13 + _up*0.0175; } break;
 			case UPGRADE.jetpack_cooldown:	{ obj_player.stat_jetpack_cooldown    = 120 + -10*_up; } break;
 			case UPGRADE.jetpack_regen_rate:{ obj_player.stat_jetpack_regen_rate  = 0.1 + _up*0.05; } break;

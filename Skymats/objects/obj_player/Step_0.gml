@@ -286,12 +286,11 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 			vspd = approach(vspd, 0, 0.175 + stat_jetpack_strength*0.01);
 			
 			create_smoke(x - (3*image_xscale), y + 5, -90, 2);
-			jetpack_fuel -= 1;
 		}
 		
 		//Calculate Speed limit
-		var _limit = 1.5 + stat_jetpack_strength*20;
-		var _pivot_strength = 0.175;
+		var _limit = 2 + stat_jetpack_strength*20;
+		var _pivot_strength = 0.2;
 		
 		//Vertical jetpack
 		if (key_up && vspd > -_limit)
@@ -300,24 +299,24 @@ if (global.can_jetpack && jetpack_fuel > 0 && jetpack_init_delay <= 0)
 			motion_add_custom(270, stat_jetpack_strength);
 		
 		//Horizontal jetpack
-		if (key_right && hspd > -_limit)
+		if (key_right && hspd < _limit)
 		{
-			if (hspd < 0)
-				hspd = approach(hspd, 0, _pivot_strength);
+			if (hspd < -2)
+				hspd = approach(hspd, -2, _pivot_strength);
 				
 			motion_add_custom(0, stat_jetpack_strength);
 		}
-		else if (key_left && hspd < _limit)
+		else if (key_left && hspd > -_limit)
 		{
-			if (hspd > 0)
-				hspd = approach(hspd, 0, _pivot_strength);
+			if (hspd > 2)
+				hspd = approach(hspd, 2, _pivot_strength);
 				
 			motion_add_custom(180, stat_jetpack_strength);
 		}
 	}
 	
 	//Remove fuel
-	if ((key_shift && (key_right || key_left || key_up || key_down)))
+	if (key_shift)
 	{
 		jetpack_fuel -= 1;
 		jetpack_regen_cooldown = stat_jetpack_cooldown;

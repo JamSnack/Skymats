@@ -59,7 +59,7 @@ else
 
 vspd += GRAVITY*weight;
 
-target = instance_nearest(x, y, PLAYER);
+target = instance_nearest(x, y, obj_player);
 
 if (target != noone)
 {
