@@ -36,6 +36,11 @@ if (global.multiplayer)
 			global.multiplayer = false;
 			global.is_host = true;
 			global.client_id = -1;
+			
+			if (global.host_socket != -1)
+				network_destroy(global.host_socket);
+				
+			global.host_socket = -1;
 		
 			//Load previous expedition
 			load_expedition(exped_name+".exped");

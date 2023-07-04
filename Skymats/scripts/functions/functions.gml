@@ -168,13 +168,14 @@ function audio_play_standard(sound, priority, loops, overwrites=false)
 	audio_play_sound(sound, priority, loops);
 }
 
-function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel = true)
+function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel = true, award_soulbound = true)
 {
 	if (instance_exists(inst))
 	{
 		with (inst)
 		{
-			drop_item = true; //still controls whether or not to drop cash //Soulbound damage
+			if (award_soulbound)
+				drop_item = true; //still controls whether or not to drop cash //Soulbound damage
 			
 			motion_add_custom(k_direction, max(k_amt-weight, 0));
 			

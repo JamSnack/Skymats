@@ -55,10 +55,10 @@ function save_expedition(expedition_name = "exped")
 				var save_struct = {
 					platform_height: global.platform_height,
 					tutorial_complete: global.tutorial_complete,
-					stored_resources: global.stored_resources,
-					stored_resources_unlocked: global.stored_resources_unlocked,
-					auto_burn: global.stored_resources_auto_burn,
-					burning: global.stored_resource_to_burn,
+					//stored_resources: global.stored_resources,
+					//stored_resources_unlocked: global.stored_resources_unlocked,
+					//auto_burn: global.stored_resources_auto_burn,
+					//burning: global.stored_resource_to_burn,
 					fuel: fuel,
 					max_fuel: max_fuel,
 					game_progress: global.game_progress
@@ -299,11 +299,18 @@ function read_expedition(file)
 			show_debug_message(e);
 			//return -1;
 		}
-			
-		for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+		
+		try
 		{
-			if (_data.stored_resources_unlocked[_i])
-				data_struct.resources_discovered++;
+			for (var _i = 0; _i < array_length(_data.stored_resources_unlocked); _i++)
+			{
+				if (_data.stored_resources_unlocked[_i])
+					data_struct.resources_discovered++;
+			}
+		}
+		catch (e)
+		{
+			show_debug_message("No stored resources loaded");
 		}
 			
 		return data_struct;

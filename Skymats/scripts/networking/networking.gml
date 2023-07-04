@@ -339,13 +339,8 @@ function handle_data(data)
 							
 							if (instance_exists(_tile))
 							{
-								with (_tile)
-								{
+								with (_tile) 
 									hurt_tile(parsed_data.damage);
-			
-									if (hp <= 0)
-										event_user(0);
-								}
 							}
 							break;
 						}
@@ -420,7 +415,7 @@ function handle_data(data)
 				{
 					if (_id == connected_id)
 					{
-						hurt_enemy(self, parsed_data.dir_knock, parsed_data.knock_amt, parsed_data.damage, parsed_data.bonus_atk);
+						hurt_enemy(self, parsed_data.dir_knock, parsed_data.knock_amt, parsed_data.damage, parsed_data.bonus_atk, false, false);
 						break;
 					}
 				}

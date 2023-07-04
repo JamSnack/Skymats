@@ -37,8 +37,8 @@ if (alarm[0] == -1)
 			instance_create_layer(room_width/2, WORLD_BOUND_TOP - 54, "Instances", obj_dungeon_dock_point);
 		else if (next_dungeon != "NONE")
 		{
-			init_dungeon_load();
-			load_dungeon(next_dungeon);
+			//init_dungeon_load();
+			//load_dungeon(next_dungeon);
 		}
 		
 		//Clear the dungeon
