@@ -86,7 +86,7 @@ if (instance_exists(obj_player) && instance_exists(obj_platform))
 			}
 			
 			//Save game
-			save_game();
+			//save_game();
 			
 			//Check for available upgrades
 			check_for_upgrades();

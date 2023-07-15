@@ -19,7 +19,7 @@ init_expedition();
 if (expedition_selected != -1)
 {
 	//NOTE: expedition is loaded in the platform object create event in order to access platform-specific variables
-	load_expedition(expedition_files[expedition_selected]);
+	//load_expedition(expedition_files[expedition_selected]);
 	networkingControl.exped_name = "expedition_"+string(expedition_selected);
 }
 

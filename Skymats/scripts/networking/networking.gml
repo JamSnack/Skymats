@@ -128,8 +128,8 @@ function handle_data(data)
 				//If client has no dungeon and the host does, we need to load the dungeon.
 				if (!global.dungeon && parsed_data.dung)
 				{
-					init_dungeon_load();
-					load_dungeon(parsed_data.dung_load);
+					//init_dungeon_load();
+					//load_dungeon(parsed_data.dung_load);
 				}
 				
 				//Update dungeon status

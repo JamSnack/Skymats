@@ -43,7 +43,7 @@ if (global.multiplayer)
 			global.host_socket = -1;
 		
 			//Load previous expedition
-			load_expedition(exped_name+".exped");
+			//load_expedition(exped_name+".exped");
 		
 			obj_chat_box.add("Lost connection with host. Returning to solo expedition!");
 		

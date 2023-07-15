@@ -39,7 +39,7 @@ upgrades_purchased = array_create(UPGRADE.last, 1);
 username = networkingControl.username;
 init_player_stats();
 
-load_character(networkingControl.character_file);
+//load_character(networkingControl.character_file);
 
 init_player();
 calculate_player_level();
@@ -75,5 +75,5 @@ if (global.tutorial_complete != true)
 	global.can_grapple = false;
 	global.can_jetpack = false;
 	
-	save_game();
+	//save_game();
 } else y = global.platform_height;
