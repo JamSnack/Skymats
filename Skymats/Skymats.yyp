@@ -188,7 +188,7 @@
     {"id":{"name":"obj_purple_stone","path":"objects/obj_purple_stone/obj_purple_stone.yy",},"order":20,},
     {"id":{"name":"SystemInterval","path":"scripts/SystemInterval/SystemInterval.yy",},"order":2,},
     {"id":{"name":"snd_enemies_appear","path":"sounds/snd_enemies_appear/snd_enemies_appear.yy",},"order":1,},
-    {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":1,},
+    {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},"order":1,},
     {"id":{"name":"snd_dirt_break","path":"sounds/snd_dirt_break/snd_dirt_break.yy",},"order":0,},
     {"id":{"name":"scribble_flush_everything","path":"scripts/scribble_flush_everything/scribble_flush_everything.yy",},"order":4,},
     {"id":{"name":"shd_mix_colors","path":"shaders/shd_mix_colors/shd_mix_colors.yy",},"order":0,},
@@ -366,7 +366,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"dungeonCreator","path":"rooms/dungeonCreator/dungeonCreator.yy",},},
     {"roomId":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
