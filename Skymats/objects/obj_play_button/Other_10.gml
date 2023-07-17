@@ -4,9 +4,10 @@ event_inherited();
 
 //global.is_host = true;
 //networkingControl.loading_world = true;
-room_goto(rm_small);
+room_goto(rm_game);
 
 global.is_host = true;
+global.tutorial_complete = true; //setting for rm_game
 
 //Load the expedition into global-scope.
 init_expedition();

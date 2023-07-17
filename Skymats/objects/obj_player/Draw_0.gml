@@ -28,7 +28,7 @@ if (weapon_cooldown > 0)
 }
 
 //Tile selection and cursor text
-if (instance_exists(_tile) && _tile.tile_level <= stat_mine_level)
+if (!lock_controls && instance_exists(_tile) && _tile.tile_level <= stat_mine_level)
 {
 	draw_sprite_ext(spr_tile_selection, 0, _tile.x, _tile.y, 1, 1, 0, c_white, 0.1 + 0.3*abs(sin(current_time/900)) );
 	
@@ -51,7 +51,7 @@ else if (global.inventory.selected_slot != -1)
 */
 
 //Mining-Laser
-if (mouse_check_button(mb_left))
+if (mouse_left)
 {
 	if (!surface_exists(mine_surface))
 		mine_surface = surface_create(64 + 8, 8);
@@ -78,6 +78,9 @@ if (hurt_effect != 0)
 	gpu_set_fog(false, c_white, 0, 0);
 }
 else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
+
+//draw hitbox
+draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
 
 //Draw direction
 /*

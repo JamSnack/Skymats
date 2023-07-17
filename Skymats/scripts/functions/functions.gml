@@ -554,7 +554,7 @@ function update_shadow(shadow, angle = image_angle)
 function init_expedition()
 {
 	global.platform_height = 0;
-	global.tutorial_complete = false;
+	//global.tutorial_complete = false;
 	
 	//global.can_grapple = false;
 	//global.can_jetpack = false;

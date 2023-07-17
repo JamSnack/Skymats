@@ -1,10 +1,28 @@
 /// @description Insert description here
-// You can write your code in this editor
-key_left  =  keyboard_check(ord("A"));
-key_up    =  keyboard_check(ord("W")) || keyboard_check(vk_space);
-key_right =  keyboard_check(ord("D"));
-key_down  =  keyboard_check(ord("S"));
-key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
+
+//Lock controls
+lock_controls = dead;
+
+if (lock_controls)
+{
+	key_left  =  false;
+	key_up    =  false;
+	key_right =  false;
+	key_down  =  false;
+	key_shift =	 false;
+	mouse_left = false;
+	mouse_right = false;
+}
+else
+{
+	key_left  =  keyboard_check(ord("A"));
+	key_up    =  keyboard_check(ord("W")) || keyboard_check(vk_space);
+	key_right =  keyboard_check(ord("D"));
+	key_down  =  keyboard_check(ord("S"));
+	key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
+	mouse_left = mouse_check_button(mb_left);
+	mouse_right = mouse_check_button(mb_right);
+}
 
 hmove = (key_right - key_left);
 var on_ground = noone;
@@ -83,7 +101,7 @@ if (grappling)
 	}
 }
 
-if (mouse_check_button(mb_right) && global.can_grapple)
+if (mouse_right && global.can_grapple)
 {
 	if (!grapple_is_launching && !grappling && grapple_launch_length <= 4)
 	{
@@ -207,7 +225,7 @@ mine_laser_direction = point_direction(x, y, mouse_x, mouse_y);
 var mine_x = x + lengthdir_x(mine_laser_distance, mine_laser_direction);
 var mine_y = y + lengthdir_y(mine_laser_distance, mine_laser_direction);
 
-if (mouse_check_button(mb_left))
+if (mouse_left)
 {
 	//effects
 	part_particles_create(global.foreground_particles_fixed, mine_x, mine_y, global.particle_library.mining_spark, 2);
@@ -216,7 +234,7 @@ if (mouse_check_button(mb_left))
 _tile = collision_point(mine_x, mine_y, TILE, false, true);
 
 //mining functionality
-if (mine_cooldown <= 0 && mouse_check_button(mb_left))
+if (mine_cooldown <= 0 && mouse_left)
 {
 	if (_tile != noone && _tile.tile_level <= stat_mine_level)
 	{
@@ -367,7 +385,7 @@ if (weapon_cooldown > 0)
 		audio_play_sound_custom(snd_charged, 10, false);
 }
 	
-if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) <= stat_weapon_range && weapon_cooldown <= 0)
+if (!dead && instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) <= stat_weapon_range && weapon_cooldown <= 0)
 {
 	var _amt = collision_circle_list(x, y, stat_weapon_range, ENEMY, false, true, enemy_hurt_list, false);
 	
@@ -410,24 +428,50 @@ if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) 
 if (hp <= 0 && !dead)
 {
 	dead = true;
-	x = obj_market.x;
-	y = obj_market.y;
+	//x = obj_market.x;
+	//y = obj_market.y;
 	hspd = 0;
 	vspd = 0;
 	grappling = false;
 	grappling_to = noone;
-	obj_chat_box.add("[c_red]Someone died!");
+	//obj_chat_box.add("[c_red]Someone died!");
 	
 	//Empty inventory
 	global.inventory.clear();
 }
-else if (dead && respawn_delay > 0)
-	respawn_delay--;
+else if (dead && ghosts > 0)
+{
+	if (instance_exists(obj_market))
+	{
+		x = lerp(x, obj_market.x, 0.01);
+		x = approach(x, obj_market.x, 1);
+		y = lerp(y, obj_market.y, 0.01);
+		y = approach(y, obj_market.y, 1);
+		
+		vspd = 0;
+		hspd = 0;
+		
+		can_hurt = false;
+	
+		if (point_distance(x, y, obj_market.x, obj_market.y) <= 8)
+		{
+			x = obj_market.x;
+			y = obj_market.y;
+			hp = max_hp;
+			dead = false;
+			ghosts -= 1;
+		}
+	}
+	else 
+	{
+		ghosts = 0;
+		death_message = "The market doesn't exist! How'd you do that?";
+	}
+}
 else if (dead)
 {
 	hp = max_hp;
 	dead = false;
-	respawn_delay = 60;
 }
 
 //Send coordinates
@@ -444,7 +488,13 @@ else if position_update_delay > 0
 clamp_speed(-32, 32, -32, 32);
 
 //Sprite control
-if (grapple_is_launching)
+if (dead)
+{
+	sprite_index = spr_player_ghost;
+	image_index = current_time/50;
+	draw_angle = lerp(draw_angle, point_direction(x, y, xprevious, yprevious), 0.1);
+}
+else if (grapple_is_launching)
 {
 	sprite_index = spr_player_hook;
 	image_index = lerp(image_index, 5, 0.1);
@@ -482,7 +532,7 @@ if (!can_hurt)
 {
 	can_hurt_delay--;
 	
-	if (can_hurt_delay <= 0)
+	if (can_hurt_delay <= 0 && dead == false)
 	{
 		can_hurt = true;
 		can_hurt_delay = 30;

@@ -8,7 +8,7 @@ if (global.multiplayer == false)
 		event_user(1);
 }
 
-if (room == rm_small && !instance_exists(obj_player))
+if ((room == rm_small || room == rm_game) && !instance_exists(obj_player))
 	instance_create_layer(room_width/2, global.platform_height+900, "Instances", obj_player);
 
 

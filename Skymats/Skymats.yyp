@@ -28,6 +28,7 @@
     {"id":{"name":"spr_aluminum","path":"sprites/spr_aluminum/spr_aluminum.yy",},"order":19,},
     {"id":{"name":"obj_target","path":"objects/obj_target/obj_target.yy",},"order":8,},
     {"id":{"name":"spr_player_error","path":"sprites/spr_player_error/spr_player_error.yy",},"order":1,},
+    {"id":{"name":"spr_player_ghost","path":"sprites/spr_player_ghost/spr_player_ghost.yy",},"order":10,},
     {"id":{"name":"spr_ui_warning","path":"sprites/spr_ui_warning/spr_ui_warning.yy",},"order":15,},
     {"id":{"name":"obj_beryllium","path":"objects/obj_beryllium/obj_beryllium.yy",},"order":3,},
     {"id":{"name":"spr_zinc","path":"sprites/spr_zinc/spr_zinc.yy",},"order":22,},
@@ -107,6 +108,7 @@
     {"id":{"name":"clientControl","path":"objects/clientControl/clientControl.yy",},"order":0,},
     {"id":{"name":"spr_greenthin","path":"sprites/spr_greenthin/spr_greenthin.yy",},"order":0,},
     {"id":{"name":"__scribble_get_macros_map","path":"scripts/__scribble_get_macros_map/__scribble_get_macros_map.yy",},"order":13,},
+    {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},"order":6,},
     {"id":{"name":"__scribble_class_typist","path":"scripts/__scribble_class_typist/__scribble_class_typist.yy",},"order":6,},
     {"id":{"name":"obj_zinc","path":"objects/obj_zinc/obj_zinc.yy",},"order":28,},
     {"id":{"name":"Sound","path":"scripts/Sound/Sound.yy",},"order":7,},
@@ -371,6 +373,7 @@
     {"roomId":{"name":"rm_small","path":"rooms/rm_small/rm_small.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_character_creator","path":"rooms/rm_character_creator/rm_character_creator.yy",},},
+    {"roomId":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

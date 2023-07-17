@@ -6,18 +6,24 @@ depth = 99;
 global.inventory = {
 	contents    : array_create(10, 0),
 	size        : 10,
-	selected_slot : -1,
 	held_value: 0,
 	held_fuel: 0,
+	held_bonus: 0,
+	held_item_count: 0,
 	
 	deleteItemAtSlot : function(slot) {
 		held_value -= get_item_value(contents[slot])*contents[slot].amount;
+		held_fuel -= get_fuel_value(contents[slot])*contents[slot].amount;
+		held_item_count -= contents[slot].amount;
+		calculateBonus();
 		delete contents[slot];
 		contents[slot] = new item();
 	},
 	
 	subtractItemAtSlot : function(slot, _amount){
 		contents[slot].amount -= _amount;
+		held_item_count -= _amount;
+		calculateBonus();
 		
 		if (contents[slot].amount <= 0)
 			deleteItemAtSlot(slot);
@@ -29,6 +35,8 @@ global.inventory = {
 			if (contents[i].item_id == item_id)
 			{
 				subtractItemAtSlot(i, _amount);
+				held_item_count -= _amount;
+				calculateBonus();
 				return i;
 			}
 		}
@@ -54,6 +62,8 @@ global.inventory = {
 		{
 			contents[_f].item_id = _item_id;
 			contents[_f].amount = _amount;
+			held_item_count += _amount;
+			calculateBonus();
 			return true;
 			//obj_player.weight += _amount/10; //TODO: Replace this with an encumberance mechanic. Probably some add_weight() function that uses a player's capacity stat
 		} else return false;
@@ -69,6 +79,8 @@ global.inventory = {
 				//obj_player.weight += _amount/10;
 				held_value += get_item_value(_item_id)*_amount;
 				held_fuel += get_fuel_value(_item_id)*_amount;
+				held_item_count += _amount;
+				calculateBonus();
 				return i;
 			}
 		}
@@ -77,6 +89,8 @@ global.inventory = {
 		{
 			held_value += get_item_value(_item_id)*_amount;
 			held_fuel += get_fuel_value(_item_id)*_amount;
+			held_item_count += _amount;
+			calculateBonus();
 		}
 	},
 	clear : function() {
@@ -85,6 +99,11 @@ global.inventory = {
 		
 		held_value = 0;
 		held_fuel = 0;
+		held_item_count = 0;
+		calculateBonus();
+	},
+	calculateBonus : function() {
+		held_bonus = 0;//round((held_item_count/2000)*100);
 	}
 	
 }

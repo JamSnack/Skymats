@@ -40,8 +40,9 @@ if (inventory_open_animation > 0)
 		}
 	}
 	
-	//Draw held value and level
+	//Draw held value, fuel, and bonus multiplier
 	draw_text_scribble(_x, _y - 20, "[default_outlined][c_white]Value of Stash: [c_lime]$" + string(global.inventory.held_value) + "[/c] |[c_red] F" + string(global.inventory.held_fuel) );
+	
 }
 
 //Draw compass

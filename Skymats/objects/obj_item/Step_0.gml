@@ -78,9 +78,13 @@ if (target != noone)
 	{
 		if (target.object_index == obj_player)
 		{		
+			//Increase amount of item in inventory or add it
 			if (item_id != ITEM_ID.cash)
+			{
 				global.inventory.addItem(item_id, 1);
+			}
 			
+			//Directly give the player cash
 			if (cash_value > 0)
 			{
 				obj_player.gold += cash_value;

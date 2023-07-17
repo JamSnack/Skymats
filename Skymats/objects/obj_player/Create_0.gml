@@ -10,6 +10,11 @@ position_update_delay = 10;
 client_can_place_tile = true;
 gold = 0;
 
+//Death
+dead = false;
+ghosts = 1;
+death_message = "";
+
 //Grappling
 grapple_point_x = 0;
 grapple_point_y = 0;
@@ -50,8 +55,6 @@ calculate_player_level();
 //if (!global.is_host && global.multiplayer)
 	//sync_chunks();
 
-dead = false;
-respawn_delay = 60;
 can_hurt = true;
 can_hurt_delay = 0;
 _tile = noone;
@@ -66,7 +69,8 @@ draw_hp = 0;
 draw_hp_red = 0;
 
 //Spawn in tutorial if not complete
-if (global.tutorial_complete != true)
+//if (global.tutorial_complete != true)
+if (room == rm_small)
 {
 	x = 30;
 	y = 120;
@@ -77,3 +81,6 @@ if (global.tutorial_complete != true)
 	
 	//save_game();
 } else y = global.platform_height;
+
+lock_controls = false;
+mouse_left = false;
