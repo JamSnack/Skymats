@@ -216,11 +216,13 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel =
 function calculate_collisions()
 {
 	//Horizontal collision
-	if (collision_rectangle(bbox_left + hspd, bbox_top, bbox_right + hspd, bbox_bottom, OBSTA, false, true) != noone)
+	//if (collision_rectangle(bbox_left + hspd, bbox_top, bbox_right + hspd, bbox_bottom, OBSTA, false, true) != noone)
+	if (place_meeting(x + hspd, y, OBSTA))
 	{
 		var _h = (hspd > 0) ? min(sign(hspd), hspd) : max(sign(hspd), hspd);
 	
-		while (collision_rectangle(bbox_left + _h, bbox_top, bbox_right + _h, bbox_bottom, OBSTA, false, true) == noone)
+		//while (collision_rectangle(bbox_left + _h, bbox_top, bbox_right + _h, bbox_bottom, OBSTA, false, true) == noone)
+		while (!place_meeting(x + _h, y, OBSTA))
 		{
 			x += _h;
 		}
@@ -230,11 +232,13 @@ function calculate_collisions()
 	else x += hspd;
 
 	//Vertcial Collision
-	if (collision_rectangle(bbox_left, bbox_top + vspd, bbox_right, bbox_bottom + vspd, OBSTA, false, true) != noone)
+	//if (collision_rectangle(bbox_left, bbox_top + vspd, bbox_right, bbox_bottom + vspd, OBSTA, false, true) != noone)
+	if (place_meeting(x, y + vspd, OBSTA))
 	{
 		var _v = (vspd > 0) ? min(1, vspd) : max(-1, vspd);
 	
-		while (collision_rectangle(bbox_left, bbox_top + _v, bbox_right, bbox_bottom + _v, OBSTA, false, true) == noone)
+		//while (collision_rectangle(bbox_left, bbox_top + _v, bbox_right, bbox_bottom + _v, OBSTA, false, true) == noone)
+		while (!place_meeting(x, y + _v, OBSTA))
 		{
 			y += _v;
 		}
