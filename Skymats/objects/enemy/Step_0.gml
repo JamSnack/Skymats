@@ -25,18 +25,15 @@ else sync_timer--;
 //Check for damage outside of global.is_host condition
 if (instance_exists(obj_player) && obj_player.can_hurt)
 {
-	var _c = collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_player, false, true);
+	var _c = instance_place(x, y, obj_player);
 	
-	if (_c != noone)
+	with _c
 	{
-		with _c
-		{
-			motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
-			hp -= other.damage;
-			can_hurt = false;
-			hurt_effect = 1;
-			death_instance_watching = other.id;
-		}
+		motion_add_custom(point_direction(other.x, other.y, x, y), other.knockback);
+		hp -= other.damage;
+		can_hurt = false;
+		hurt_effect = 1;
+		death_instance_watching = other.id;
 	}
 }
 

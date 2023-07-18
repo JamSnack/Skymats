@@ -28,8 +28,7 @@ hmove = (key_right - key_left);
 var on_ground = noone;
 
 if (vspd >= 0)
-	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true);
-//var vmove = (key_down  -   key_up);
+	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true); //optimization potentail: research maybe using instance_place() here
 
 //Increase speed based on movement
 if (on_ground != noone)
