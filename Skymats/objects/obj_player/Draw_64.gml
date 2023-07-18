@@ -14,6 +14,14 @@ for (var i = 0; i < ghosts; i++)
 {
 	draw_sprite(spr_player_ghost, i, _x + i*16 + 6, _y+34);
 }
+
+//Draw death
+if (dead_completely)
+{
+	draw_text_scribble(100, 100, "[default_outlined][scale, 4]You Died!");
+	draw_text_scribble(100, 300, "[default_outlined][scale, 3]"+death_message);
+}
+
 /*
 draw_text(10, 10, 
 "Health: " + string(hp) + "/" + string(max_hp) + "\n" +

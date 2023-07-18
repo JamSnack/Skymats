@@ -425,7 +425,12 @@ if (!dead && instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y,
 }
 
 //Death
-if (hp <= 0 && !dead)
+if (dead_completely)
+{
+	if (keyboard_key != 0)
+		room_goto(rm_menu);
+}
+else if (hp <= 0 && !dead)
 {
 	dead = true;
 	//x = obj_market.x;
@@ -468,10 +473,24 @@ else if (dead && ghosts > 0)
 		death_message = "The market doesn't exist! How'd you do that?";
 	}
 }
-else if (dead)
+else if (!dead_completely && dead && ghosts <= 0 && !global.multiplayer)
 {
-	hp = max_hp;
-	dead = false;
+	//No chance of respawning
+	dead_completely = true;
+	
+	if (death_instance_watching != noone)
+	{
+		if (instance_exists(death_instance_watching))
+		{
+			death_message = "... killed by " + death_instance_watching.name + ".";
+			camera.follow_this = death_instance_watching;
+		}
+			
+		death_instance_watching = noone;
+	}
+	
+	//Game Over state
+	//room_goto(rm_menu);
 }
 
 //Send coordinates

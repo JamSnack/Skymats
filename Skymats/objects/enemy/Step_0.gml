@@ -35,6 +35,7 @@ if (instance_exists(obj_player) && obj_player.can_hurt)
 			hp -= other.damage;
 			can_hurt = false;
 			hurt_effect = 1;
+			death_instance_watching = other.id;
 		}
 	}
 }

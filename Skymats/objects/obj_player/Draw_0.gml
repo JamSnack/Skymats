@@ -80,7 +80,7 @@ if (hurt_effect != 0)
 else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
 
 //draw hitbox
-draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+//draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
 
 //Draw direction
 /*

@@ -12,8 +12,10 @@ gold = 0;
 
 //Death
 dead = false;
+dead_completely = false;
 ghosts = 1;
 death_message = "";
+death_instance_watching = noone;
 
 //Grappling
 grapple_point_x = 0;
