@@ -243,50 +243,43 @@ function sync_mobs()
 	}
 }
 
-#macro MOB_CAP 20
-
-global.enemy_spawn_credits = 0;
-
 function spawn_mobs()
 {
-	//Init
-	static enemy_spawn_delay = room_speed*15;
+	static enemy_spawn_delay = 1;
 	
-	//Count down spawn timer
-	if (enemy_spawn_delay > 0)
-		enemy_spawn_delay--;
-		
-	else if (global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < MOB_CAP)
+	//Enemy spawning
+	if (enemy_spawn_delay <= 0 && global.tutorial_complete && instance_exists(obj_player) && global.is_host && instance_number(ENEMY) < 15)
 	{	
-		//select a random player to spawn things onto
-		//var _p = irandom(instance_number(PLAYER)-1);
-		//var player = instance_find(PLAYER, _p);
-		
-		//Shop for a mob!
-		if (global.enemy_spawn_credits > 0)
+		var _p = irandom(instance_number(PLAYER)-1);
+		var player = instance_find(PLAYER, _p);
+		//var _y = player.y;
+		var _x = player.x;
+	
+		if (global.platform_height < -3000)
 		{
-			var _height = global.platform_height;
-			
-			for (var i = ENEMY.last-1, i > 0; i--)
-			{
-				var enemy = global.enemies[i];
-				
-				//Purchase a mob to spawn that is within the height range and is affordable.
-				if (_height >= enemy.max_height && _height <= enemy.min_height && enemy.cost >= global.enemy_spawn_credits)
-				{
-					
-					
-					break;
-				}
-				else continue;
-			}
+			enemy_spawn_delay = 45*15*irandom_range(1,2) + global.platform_height/100;
+			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
 		}
 		
-		//reset timer
-		enemy_spawn_delay = room_speed*(2 + irandom(13)); //Spawn an enemy every 2 to 15 seconds
-	}	
+		if (global.platform_height < -3000 && irandom(5) == 1)
+		{
+			repeat(-floor(global.platform_height/1200))
+				instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
+		}
+			
 	
-	//Spawn Void Entities
+		//Other
+		if (instance_number(obj_balloonimal) < 4)
+		{
+			var _r = irandom(999);
+	
+			if (_r > 0 && _r < 80)
+				instance_create_layer(random_range(WORLD_BOUND_LEFT, WORLD_BOUND_RIGHT), VOID_BOUND_BOTTOM, "Instances", obj_balloonimal);
+		}
+	}	
+	else enemy_spawn_delay--;
+	
+	//Check if players are in the void
 	if (global.is_host)
 	{
 		with (PLAYER)
