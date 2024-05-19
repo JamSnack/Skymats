@@ -372,27 +372,30 @@ if (instance_exists(ENEMY) && distance_to_object(instance_nearest(x, y, ENEMY)) 
 		{
 			var _e = enemy_hurt_list[| _i];
 			
-			if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
+			if (instance_exists(_e))
 			{
-				//Speed bonuses
+				if (collision_line(x, y, _e.x, _e.y, TILE, false, true) == noone)
+				{
+					//Speed bonuses
 			
-				var bonus_knockback = true_speed/2;
-				var bonus_attack = round(true_speed/2);
+					var bonus_knockback = true_speed/2;
+					var bonus_attack = round(true_speed/2);
 			
-				//Weapon dooldown
-				weapon_cooldown = stat_weapon_cooldown;
+					//Weapon dooldown
+					weapon_cooldown = stat_weapon_cooldown;
 		
-				//knockback direction
-				var dir_knock = point_direction(x, y, _e.x, _e.y);
+					//knockback direction
+					var dir_knock = point_direction(x, y, _e.x, _e.y);
+					
+					if (!global.is_host && global.multiplayer)
+						send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, bonus_atk: bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
 		
-				//Deal damage and apply knockback
-				hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
-			
-				if (!global.is_host && global.multiplayer)
-					send_data({cmd: "request_enemy_hurt", connected_id: _e.connected_id, damage: stat_weapon_damage, bonus_atk: bonus_attack, dir_knock: dir_knock, knock_amt: stat_weapon_knockback + bonus_knockback});
+					//Deal damage and apply knockback
+					hurt_enemy(_e, dir_knock, stat_weapon_knockback + bonus_knockback, stat_weapon_damage, bonus_attack);
 		
-				//Hit effect
-				instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+					//Hit effect
+					instance_create_layer(x+lengthdir_x(4, dir_knock), y+lengthdir_y(4, dir_knock), "Instances", efct_attack, {image_angle: dir_knock});
+				}
 			}
 		}
 	}

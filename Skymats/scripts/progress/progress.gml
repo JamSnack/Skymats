@@ -29,13 +29,13 @@ function check_height_for_dungeon()
 	
 	if (!global.dungeon)
 	{
-		//show_debug_message("checking dungeon to load: "+ string(global.progress_index_to_check));
+		show_debug_message("checking dungeon to load: "+ string(global.progress_index_to_check));
 		var height = global.platform_height;
 	
 		if (global.game_progress[global.progress_index_to_check] == 0 && height < heights[global.progress_index_to_check])
 		{
-			//init_dungeon_load();
-			//load_dungeon(global.dungeon_names[global.progress_index_to_check]);
+			init_dungeon_load();
+			load_dungeon(global.dungeon_names[global.progress_index_to_check]);
 		}
 		else if (global.game_progress[global.progress_index_to_check] == 1 && global.progress_index_to_check+1 < PROGRESS.last)
 			global.progress_index_to_check++;
