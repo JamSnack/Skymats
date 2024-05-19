@@ -131,10 +131,13 @@ if (y != yprevious)
 {
 	if (collision_rectangle(bbox_left, ceil(bbox_top)-1, bbox_right, bbox_bottom, obj_player, false, true) != noone)
 	{
-		obj_player.y = ceil(bbox_top)-9;
+		obj_player.y = ceil(bbox_top)-8;
 			
 		if (!obj_player.grappling)
+		{
 			obj_player.vspd = 0;
+			obj_player.on_ground = true;
+		}
 	}
 }
 
@@ -166,13 +169,3 @@ if (keyboard_check_released(ord("G")))
 //lerp fuel
 if (draw_fuel != fuel)
 	draw_fuel = lerp(draw_fuel, fuel, 0.05);
-
-//move everything
-if (SCROLL_CONDITIONS)
-{
-	with (TILE)
-	{
-		x += SCROLL_SPEED;
-		layer_sprite_x(shadow, x+2); //Update shadows
-	}
-}

@@ -216,11 +216,11 @@ function hurt_enemy(inst, k_direction, k_amt, damage, bonus_damage, award_fuel =
 function calculate_collisions()
 {
 	//Horizontal collision
-	if (collision_rectangle(bbox_left + hspd, bbox_top, bbox_right + hspd, bbox_bottom, OBSTA, false, true) != noone)
+	if (place_meeting(x+hspd, y, OBSTA))//collision_rectangle(bbox_left + hspd, bbox_top, bbox_right + hspd, bbox_bottom, OBSTA, false, true) != noone)
 	{
 		var _h = (hspd > 0) ? min(sign(hspd), hspd) : max(sign(hspd), hspd);
 	
-		while (collision_rectangle(bbox_left + _h, bbox_top, bbox_right + _h, bbox_bottom, OBSTA, false, true) == noone)
+		while !(place_meeting(x+_h, y, OBSTA))//collision_rectangle(bbox_left + _h, bbox_top, bbox_right + _h, bbox_bottom, OBSTA, false, true) == noone)
 		{
 			x += _h;
 		}

@@ -77,3 +77,5 @@ if (global.tutorial_complete != true)
 	
 	save_game();
 } else y = global.platform_height;
+
+on_ground = false;

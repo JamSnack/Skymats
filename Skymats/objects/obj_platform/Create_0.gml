@@ -20,6 +20,6 @@ alarm[0] = 10;
 approach_dungeon = false;
 
 //Handle platform-scope loading
-load_expedition(networkingControl.exped_name + ".exped");
+//load_expedition(networkingControl.exped_name + ".exped");
 
 //init_dungeon_load();

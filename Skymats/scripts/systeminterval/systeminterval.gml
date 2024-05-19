@@ -309,10 +309,15 @@ function update_music()
 			current_music = snd_enemies_appear;
 		}
 	} 
-	else if (instance_number(ENEMY) < 9)
+	else if (instance_number(ENEMY) < 9 && current_music != snd_Sea_of_Starshine && global.platform_height < -7000)
 	{
-		fade_out_music(current_music);
-		current_music = noone;
+		if (!audio_is_playing(snd_Sea_of_Starshine))
+		{
+			fade_out_music(current_music);
+			audio_play_sound(snd_Sea_of_Starshine, 10, true);
+			audio_sound_gain(snd_Sea_of_Starshine, 0.5, 5000);
+			current_music = snd_Sea_of_Starshine;
+		}
 	}
 }
 

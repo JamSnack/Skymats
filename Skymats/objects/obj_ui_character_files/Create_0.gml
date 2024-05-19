@@ -79,6 +79,7 @@ while (file_name != "")
 
 file_find_close();
 expeditions = array_length(expedition_files);
+show_debug_message(expedition_files);
 networkingControl.exped_name = "expedition_"+string(expeditions);
 
 

@@ -7,10 +7,7 @@ key_down  =  keyboard_check(ord("S"));
 key_shift =	 keyboard_check(vk_lshift) || keyboard_check(vk_rshift);
 
 hmove = (key_right - key_left);
-var on_ground = noone;
 
-if (vspd >= 0)
-	on_ground = collision_line(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, OBSTA, false, true);
 //var vmove = (key_down  -   key_up);
 
 //Increase speed based on movement
@@ -18,9 +15,6 @@ if (on_ground != noone)
 	hspd = approach(hspd, hmove*max_walkspeed, 0.25);
 else
 	hspd = approach(hspd, hmove*max_walkspeed, 0.1);
-	
-if (SCROLL_CONDITIONS) && !(on_ground != noone && on_ground.object_index == obj_platform) && collision_line(bbox_right+1, bbox_top, bbox_right+1, bbox_bottom, obj_platform, false, true) == noone
-	x += SCROLL_SPEED;
 
 //Gravity
 vspd += GRAVITY*weight;
@@ -28,15 +22,12 @@ vspd += GRAVITY*weight;
 var true_speed = (abs(hspd)+abs(vspd)); 
 
 //Jump
-if (key_up && collision_rectangle(bbox_left, bbox_top+2, bbox_right, bbox_bottom+2, OBSTA, false, true) != noone)
+if (key_up && collision_rectangle(bbox_left+1, bbox_top+2, bbox_right-1, bbox_bottom+2, OBSTA, false, true) != noone)
 {
 	//vspd = -2.5;
 	motion_add_custom(90, 2.5);
 	audio_play_standard(snd_jump, 9, false, true);
 }
-
-//Collision
-calculate_collisions();
 
 //sprite
 if (hmove != 0)
@@ -355,6 +346,9 @@ jetpack_fuel_draw = lerp(jetpack_fuel_draw, jetpack_fuel, 0.05);
 //Instant cooldown
 if (on_ground != noone || grappling)
 	jetpack_regen_cooldown = 0;
+	
+//Collision
+calculate_collisions();
 
 //Auto-Attack
 if (weapon_cooldown > 0)

@@ -38,7 +38,7 @@ if (instance_exists(obj_player) && (collision_rectangle(bbox_left, bbox_top, bbo
 		case 3:
 		{
 			x = 1764;
-			y = 780;
+			y = 770;
 			global.can_grapple = true;
 			tutorial_index = 4;
 			instance_create_layer(0, 0, "Instances", efct_notification, {text: "Grapple-Claw activated!"});

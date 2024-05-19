@@ -72,18 +72,17 @@ if (time > width)
 					_inst = instance_nearest(prev_x, prev_y, obj_stone);
 	
 				//If we have an instance, infect the stone
-				if (_inst != noone)
+				if (instance_exists(_inst))
 				{
 					with (_inst)
 					{
 						var _ore = instance_create_layer(x, y, "Instances", get_tile_object_from_item(chosen_ore), {owner: owner, grid_pos: {x: grid_pos.x, y: grid_pos.y}});
 						other.chunk_grid_type[# grid_pos.x, grid_pos.y] = chosen_ore;
 						other.chunk_grid_instance[# grid_pos.x, grid_pos.y] = _ore;
+						prev_x = x;
+						prev_y = y;
 						instance_destroy();
 					}
-			
-					prev_x = _inst.x;
-					prev_y = _inst.y;
 				}
 			}
 		}
