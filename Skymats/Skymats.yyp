@@ -393,6 +393,7 @@
     {"id":{"name":"obj_upgrade_button","path":"objects/obj_upgrade_button/obj_upgrade_button.yy",},},
     {"id":{"name":"spr_platform","path":"sprites/spr_platform/spr_platform.yy",},},
     {"id":{"name":"spr_cobalt","path":"sprites/spr_cobalt/spr_cobalt.yy",},},
+    {"id":{"name":"snd_marching_over_green_lands","path":"sounds/snd_marching_over_green_lands/snd_marching_over_green_lands.yy",},},
     {"id":{"name":"spr_efct_hit2","path":"sprites/spr_efct_hit2/spr_efct_hit2.yy",},},
     {"id":{"name":"obj_aluminum","path":"objects/obj_aluminum/obj_aluminum.yy",},},
     {"id":{"name":"scribble_anim_reset","path":"scripts/scribble_anim_reset/scribble_anim_reset.yy",},},

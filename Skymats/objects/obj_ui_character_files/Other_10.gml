@@ -24,4 +24,5 @@ if (expedition_selected != -1)
 }
 
 //Effects
+audio_stop_all();
 audio_play_sound(snd_entered_empyrious, 10, false);
