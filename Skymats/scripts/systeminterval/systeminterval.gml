@@ -28,7 +28,7 @@ function process_system_interval()
 		case 9:  { sync_mobs(); } break;
 		case 10: { manage_recently_destroyed(); } break;
 		case 11: { check_height(); } break;
-		case 12: { manage_auto_burn(); } break;
+		//case 12: { manage_auto_burn(); } break;
 		case 13: { update_music(); } break;
 		case 16: { sync_platform(); } break;
 	}

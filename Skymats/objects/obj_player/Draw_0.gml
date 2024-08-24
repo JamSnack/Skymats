@@ -77,7 +77,12 @@ if (hurt_effect != 0)
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale + hurt_effect/2, image_yscale + hurt_effect/2, draw_angle, c_white, image_alpha);
 	gpu_set_fog(false, c_white, 0, 0);
 }
-else draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
+else 
+{
+	if (weapon_cooldown <= 0)
+		draw_sprite_ext(sprite_index, image_index, x, y, image_xscale+(random(0.2)+0.1)*sign(image_xscale), image_yscale+random(0.2)+0.1, draw_angle, c_aqua, 0.9);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, c_white, image_alpha);
+}
 
 //Draw direction
 /*

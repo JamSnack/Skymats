@@ -9,6 +9,7 @@
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"propertyId":{"name":"weight","path":"objects/ENTITY/ENTITY.yy",},"value":"0",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"propertyId":{"name":"bounciness","path":"objects/ENTITY/ENTITY.yy",},"value":"2",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"propertyId":{"name":"can_hurt_skymat","path":"objects/ENEMY/ENEMY.yy",},"value":"False",},
   ],
   "parent": {
     "name": "Enemies",

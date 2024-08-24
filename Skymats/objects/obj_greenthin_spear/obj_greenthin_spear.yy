@@ -16,6 +16,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENTITY","path":"objects/ENTITY/ENTITY.yy",},"propertyId":{"name":"clientside_physics","path":"objects/ENTITY/ENTITY.yy",},"value":"True",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"propertyId":{"name":"knockback","path":"objects/ENEMY/ENEMY.yy",},"value":"5",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"propertyId":{"name":"cash_to_drop","path":"objects/ENEMY/ENEMY.yy",},"value":"0",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"ENEMY","path":"objects/ENEMY/ENEMY.yy",},"propertyId":{"name":"can_hurt_skymat","path":"objects/ENEMY/ENEMY.yy",},"value":"True",},
   ],
   "parent": {
     "name": "Enemies",

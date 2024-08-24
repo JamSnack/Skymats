@@ -103,7 +103,7 @@ if (time > width)
 	with (marker_object) event_user(0);
 	
 	//Create a greenthin
-	instance_create_layer(marker_object.x, marker_object.y, "Instances", obj_greenthin);
+	//instance_create_layer(marker_object.x, marker_object.y, "Instances", obj_greenthin);
 	
 	//for (var i = 0; i < width; i++)
 	//{

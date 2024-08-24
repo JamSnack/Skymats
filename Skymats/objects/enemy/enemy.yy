@@ -7,6 +7,7 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [
@@ -45,6 +46,7 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"drop_item","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"False","varType":3,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"item_to_drop","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"ITEM_ID.enemy_parts","varType":1,},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"cash_to_drop","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"max_hp + max_hspeed + max_vspeed + damage*2","varType":1,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"can_hurt_skymat","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
   ],
   "solid": false,
   "spriteId": {
