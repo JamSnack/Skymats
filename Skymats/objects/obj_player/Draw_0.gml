@@ -6,9 +6,12 @@
 //Grapple
 if (grapple_launch_length > 0)
 {
-	draw_line(x, y, grapple_point_x, grapple_point_y);
+	if (grappling)
+		draw_line(x, y, grapple_point_x, grapple_point_y);
+	else 
+		draw_line_color(x, y, grapple_point_x, grapple_point_y, c_red, c_red);
 	
-	draw_sprite_ext(spr_grapple, 0, grapple_point_x, grapple_point_y, 1, 1, grapple_direction, c_white, 1);
+	draw_sprite_ext(spr_grapple, grappling, grapple_point_x, grapple_point_y, 1, 1, grapple_direction, c_white, 1);
 }
 
 //Jetpack

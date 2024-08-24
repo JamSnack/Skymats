@@ -116,6 +116,9 @@ if (grapple_is_launching)
 		
 		grappling = true;
 		grapple_is_launching = false;
+		
+		// effects
+		audio_play_sound_in_world(snd_clamp, 10, false, false, grapple_point_x, grapple_point_y);
 	}
 	else
 	{
