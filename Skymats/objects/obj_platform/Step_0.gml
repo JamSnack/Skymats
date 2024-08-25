@@ -113,12 +113,27 @@ else
 
 
 //Collision and movement stuff
+if (fall_amount > 0)
+{
+	if (fall_rate < 1)
+		fall_rate = 1;
+		
+	fall_rate = approach(fall_rate, fall_rate_max, 0.01);
+	fall_amount = approach(fall_amount, 0, fall_rate);
+	global.platform_height += fall_rate;
+	y += fall_rate;
+}
+else
+{
+	fall_rate = 0;
+}
+
 if (y != target_y)
 {
 	var _distance = point_distance(0, y, 0, target_y);
 	
 	//Move the platform
-	y = approach(y, target_y, 1 + fall_rate);
+	y = approach(y, target_y, 1);
 	
 	//Move all platform objects
 	obj_market.y = bbox_top-74;

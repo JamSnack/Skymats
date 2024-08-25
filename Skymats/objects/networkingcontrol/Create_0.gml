@@ -22,3 +22,4 @@ scribble_font_bake_outline_4dir("fnt_default", "default_outlined", c_black, fals
 room_goto(rm_menu);
 
 network_timeout = 500;
+server = noone;

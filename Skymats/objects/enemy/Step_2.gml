@@ -69,7 +69,7 @@ if (instance_exists(obj_platform))
 		with (obj_platform)
 		{
 			if (fuel <= 0)
-				global.platform_height += _d*5;
+				fall_amount += _d*5;
 			
 			fuel = approach(fuel, 0, _d);
 			powered = false;

@@ -15,5 +15,5 @@ clamp_speed(-max_hspeed, max_hspeed, -max_vspeed, max_vspeed);
 draw_angle = point_direction(x, y, x+hspd, y+vspd);
 
 // Spit
-if (random(1) < 0.05)
+if (random(1) < 0.02)
 	instance_create_layer(x, y, "Instances", obj_vector_weevil_spit);

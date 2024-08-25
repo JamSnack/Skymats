@@ -259,14 +259,17 @@ function spawn_mobs()
 		{
 			enemy_spawn_delay = 45*15*irandom_range(1,2) + global.platform_height/100;
 			instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
-		}
 		
-		if (global.platform_height < -3000 && irandom(5) == 1)
-		{
-			repeat(-floor(global.platform_height/1200))
-				instance_create_layer(WORLD_BOUND_RIGHT, WORLD_BOUND_TOP-100, "Instances", obj_vector_weevil);
+		
+			if (global.platform_height < -3000 && irandom(5) == 1)
+			{
+				repeat(-floor(global.platform_height/1200))
+					instance_create_layer(choose(WORLD_BOUND_RIGHT, WORLD_BOUND_LEFT+32), WORLD_BOUND_TOP-32-random(100), "Instances", obj_vector_weevil);
+			}
+		
+			if (global.platform_height < -6000)
+				instance_create_layer(choose(WORLD_BOUND_RIGHT, WORLD_BOUND_LEFT+32), WORLD_BOUND_TOP-32-random(100), "Instances", obj_vector_weevil_blue);
 		}
-			
 	
 		//Other
 		if (instance_number(obj_balloonimal) < 4)

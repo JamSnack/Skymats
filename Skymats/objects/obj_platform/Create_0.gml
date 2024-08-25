@@ -20,9 +20,9 @@ alarm[0] = 10;
 
 approach_dungeon = false;
 
-
+fall_amount = 0;
 fall_rate = 0;
-fall_rate_max = 10;
+fall_rate_max = 5;
 
 //Handle platform-scope loading
 //load_expedition(networkingControl.exped_name + ".exped");
